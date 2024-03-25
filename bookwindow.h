@@ -1,6 +1,7 @@
 #ifndef BOOKWINDOW_H
 #define BOOKWINDOW_H
 
+#include "QtWidgets/qpushbutton.h"
 #include <QMainWindow>
 #include <QtNetwork>
 #include <QtGui>
@@ -13,10 +14,35 @@
 #include <QNetworkReply>
 #include <QVBoxLayout>
 #include <QLabel>
+#include <QListWidget>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class bookWindow; }
 QT_END_NAMESPACE
+
+
+class LibraryWidget : public QWidget {
+public:
+    LibraryWidget(QWidget *parent = nullptr) : QWidget(parent) {
+        QVBoxLayout *layout = new QVBoxLayout(this);
+        QLabel *label = new QLabel("Library View", this);
+
+        layout->addWidget(label);
+        setLayout(layout);
+    }
+};
+
+
+class CollectionWidget : public QWidget {
+
+public:
+    CollectionWidget(QWidget *parent = nullptr) : QWidget(parent) {
+        QVBoxLayout *layout = new QVBoxLayout(this);
+        QLabel *label = new QLabel("Collection View", this);
+        layout->addWidget(label);
+        setLayout(layout);
+    }
+};
 
 class CustomWidget : public QWidget
 {
@@ -39,9 +65,7 @@ class bookWindow : public QMainWindow
 public:
     bookWindow(QWidget *parent = nullptr);
     ~bookWindow();
-
-    void createToolbar();
-
+    void createLibrary();
 private slots:
     void onLibraryClicked();
 
@@ -57,8 +81,28 @@ private slots:
 
     void onTranslateButtonClicked();
 
+
+
+    void showLibrary() {
+        // Clear the central widget and set LibraryWidget
+        setCentralWidget(new LibraryWidget(this));
+        qDebug() << "Library Action triggered";
+    }
+
+    void showCollection() {
+        // Clear the central widget and set CollectionWidget
+        setCentralWidget(new CollectionWidget(this));
+        qDebug() << "Collection Action triggered";
+    }
+
+
 private:
     Ui::bookWindow *ui;
+    QListWidget *libraryWidget;
+    QListWidget *collectionWidget;
+
+
+    void createToolbar();
     void translateSelectedText();
     void clearCentralWidget()
     {

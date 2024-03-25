@@ -5,47 +5,48 @@ bookWindow::bookWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::bookWindow)
 {
-
-    createToolbar();
     ui->setupUi(this);
-    ui->currentBook->append("Я ненавижу свет\n"
-                                           "Однообразных звезд.\n"
-                                           "Здравствуй, мой давний бред, —\n"
-                                           "Башни стрельчатой рост!\n"
-                                           "\n"
-                                           "Кружевом камень будь\n"
-                                           "И паутиной стань:\n"
-                                           "Неба пустую грудь\n"
-                                           "Тонкой иглою рань.\n"
-                                           "\n"
-                                           "Будет и мой черед —\n"
-                                           "Чую размах крыла.\n"
-                                           "Так — но куда уйдет\n"
-                                           "Мысли живой стрела?\n"
-                                           "\n"
-                                           "Или свой путь и срок\n"
-                                           "Я, исчерпав, вернусь:\n"
-                                           "Там — я любить не мог,\n"
-                                           "Здесь — я любить боюсь…\n"
-                         "Я ненавижу свет\n"
-                         "Однообразных звезд.\n"
-                         "Здравствуй, мой давний бред, —\n"
-                         "Башни стрельчатой рост!\n"
-                         "\n"
-                         "Кружевом камень будь\n"
-                         "И паутиной стань:\n"
-                         "Неба пустую грудь\n"
-                         "Тонкой иглою рань.\n"
-                         "\n"
-                         "Будет и мой черед —\n"
-                         "Чую размах крыла.\n"
-                         "Так — но куда уйдет\n"
-                         "Мысли живой стрела?\n"
-                         "\n"
-                         "Или свой путь и срок\n"
-                         "Я, исчерпав, вернусь:\n"
-                         "Там — я любить не мог,\n"
-                         "Здесь — я любить боюсь…");
+    createToolbar();
+
+    const char* text = "Я ненавижу свет\n"
+                       "Однообразных звезд.\n"
+                       "Здравствуй, мой давний бред, —\n"
+                       "Башни стрельчатой рост!\n"
+                       "\n"
+                       "Кружевом камень будь\n"
+                       "И паутиной стань:\n"
+                       "Неба пустую грудь\n"
+                       "Тонкой иглою рань.\n"
+                       "\n"
+                       "Будет и мой черед —\n"
+                       "Чую размах крыла.\n"
+                       "Так — но куда уйдет\n"
+                       "Мысли живой стрела?\n"
+                       "\n"
+                       "Или свой путь и срок\n"
+                       "Я, исчерпав, вернусь:\n"
+                       "Там — я любить не мог,\n"
+                       "Здесь — я любить боюсь…\n"
+                       "Я ненавижу свет\n"
+                       "Однообразных звезд.\n"
+                       "Здравствуй, мой давний бред, —\n"
+                       "Башни стрельчатой рост!\n"
+                       "\n"
+                       "Кружевом камень будь\n"
+                       "И паутиной стань:\n"
+                       "Неба пустую грудь\n"
+                       "Тонкой иглою рань.\n"
+                       "\n"
+                       "Будет и мой черед —\n"
+                       "Чую размах крыла.\n"
+                       "Так — но куда уйдет\n"
+                       "Мысли живой стрела?\n"
+                       "\n"
+                       "Или свой путь и срок\n"
+                       "Я, исчерпав, вернусь:\n"
+                       "Там — я любить не мог,\n"
+                       "Здесь — я любить боюсь…";
+    ui->currentBook->append(text);
     ui->currentBook->setReadOnly(true);
     ui->translationWindow->setReadOnly(true);
     /*QString YANDEX_FOLDER_ID = "b1gdvvrsofu7cdcuro7r";
@@ -121,10 +122,10 @@ void bookWindow::createToolbar()
     QToolBar *toolbar = addToolBar("Tools");
 
     QAction *actionLibrary = toolbar->addAction("Библиотека");
-    connect(actionLibrary, &QAction::triggered, this, &bookWindow::onLibraryClicked);
+    connect(actionLibrary, &QAction::triggered, this, &bookWindow::showLibrary);
 
     QAction *actionCollection = toolbar->addAction("Коллекция");
-    connect(actionCollection, &QAction::triggered, this, &bookWindow::onCollectionClicked);
+    connect(actionCollection, &QAction::triggered, this, &bookWindow::showCollection);
 
     QAction *actionReadingNow = toolbar->addAction("Читаю сейчас");
     connect(actionReadingNow, &QAction::triggered, this, &bookWindow::onReadingNowClicked);
@@ -140,49 +141,49 @@ void bookWindow::createToolbar()
 
 }
 
+
+void bookWindow::onLibraryClicked()
+{
+
+    setCentralWidget(libraryWidget);
+    setWindowTitle("Библиотека");
+}
+
 void bookWindow::onTranslateButtonClicked()
 {
     bookWindow::translateSelectedText();
 }
 
-void bookWindow::onLibraryClicked()
-{
-    clearCentralWidget();
-    setCentralWidget(new CustomWidget("Библиотека"));
-    setWindowTitle("Библиотека");
-}
-
 void bookWindow::onCollectionClicked()
 {
-    clearCentralWidget();
-    setCentralWidget(new CustomWidget("Коллекция"));
+
+    setCentralWidget(collectionWidget);
     setWindowTitle("Коллекция");
 }
 
 void bookWindow::onReadingNowClicked()
 {
-    clearCentralWidget();
     setCentralWidget(new CustomWidget("Читаю сейчас"));
     setWindowTitle("Читаю сейчас");
 }
 
 void bookWindow::onDictionaryClicked()
 {
-    clearCentralWidget();
+   // clearCentralWidget();
     setCentralWidget(new CustomWidget("Словарь"));
     setWindowTitle("Словарь");
 }
 
 void bookWindow::onFlashcardsClicked()
 {
-    clearCentralWidget();
+    //clearCentralWidget();
     setCentralWidget(new CustomWidget("Карточки"));
     setWindowTitle("Карточки");
 }
 
 void bookWindow::onLoginClicked()
 {
-    clearCentralWidget();
+    //clearCentralWidget();
     setCentralWidget(new CustomWidget("Войти"));
     setWindowTitle("Войти");
 }
