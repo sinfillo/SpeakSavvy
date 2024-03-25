@@ -5,6 +5,8 @@ bookWindow::bookWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::bookWindow)
 {
+
+    createToolbar();
     ui->setupUi(this);
     ui->currentBook->append("Я ненавижу свет\n"
                                            "Однообразных звезд.\n"
@@ -114,9 +116,75 @@ bookWindow::~bookWindow()
     delete ui;
 }
 
+void bookWindow::createToolbar()
+{
+    QToolBar *toolbar = addToolBar("Tools");
 
-void bookWindow::on_translateButton_clicked()
+    QAction *actionLibrary = toolbar->addAction("Библиотека");
+    connect(actionLibrary, &QAction::triggered, this, &bookWindow::onLibraryClicked);
+
+    QAction *actionCollection = toolbar->addAction("Коллекция");
+    connect(actionCollection, &QAction::triggered, this, &bookWindow::onCollectionClicked);
+
+    QAction *actionReadingNow = toolbar->addAction("Читаю сейчас");
+    connect(actionReadingNow, &QAction::triggered, this, &bookWindow::onReadingNowClicked);
+
+    QAction *actionDictionary = toolbar->addAction("Словарь");
+    connect(actionDictionary, &QAction::triggered, this, &bookWindow::onDictionaryClicked);
+
+    QAction *actionFlashcards = toolbar->addAction("Карточки");
+    connect(actionFlashcards, &QAction::triggered, this, &bookWindow::onFlashcardsClicked);
+
+    QAction *actionLogin = toolbar->addAction("Войти");
+    connect(actionLogin, &QAction::triggered, this, &bookWindow::onLoginClicked);
+
+}
+
+void bookWindow::onTranslateButtonClicked()
 {
     bookWindow::translateSelectedText();
 }
+
+void bookWindow::onLibraryClicked()
+{
+    clearCentralWidget();
+    setCentralWidget(new CustomWidget("Библиотека"));
+    setWindowTitle("Библиотека");
+}
+
+void bookWindow::onCollectionClicked()
+{
+    clearCentralWidget();
+    setCentralWidget(new CustomWidget("Коллекция"));
+    setWindowTitle("Коллекция");
+}
+
+void bookWindow::onReadingNowClicked()
+{
+    clearCentralWidget();
+    setCentralWidget(new CustomWidget("Читаю сейчас"));
+    setWindowTitle("Читаю сейчас");
+}
+
+void bookWindow::onDictionaryClicked()
+{
+    clearCentralWidget();
+    setCentralWidget(new CustomWidget("Словарь"));
+    setWindowTitle("Словарь");
+}
+
+void bookWindow::onFlashcardsClicked()
+{
+    clearCentralWidget();
+    setCentralWidget(new CustomWidget("Карточки"));
+    setWindowTitle("Карточки");
+}
+
+void bookWindow::onLoginClicked()
+{
+    clearCentralWidget();
+    setCentralWidget(new CustomWidget("Войти"));
+    setWindowTitle("Войти");
+}
+
 
