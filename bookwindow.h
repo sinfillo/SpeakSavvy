@@ -2,6 +2,13 @@
 #define BOOKWINDOW_H
 
 #include <QMainWindow>
+#include <QtNetwork>
+#include <QtGui>
+#include <QtCore>
+#include <QNetworkAccessManager>
+#include <QMetaObject>
+#include <QAction>
+#include <QNetworkReply>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class bookWindow; }
@@ -14,8 +21,9 @@ class bookWindow : public QMainWindow
 public:
     bookWindow(QWidget *parent = nullptr);
     ~bookWindow();
+
 private slots:
-    void on_currentBook_selectionChanged();
+    void on_translateButton_clicked();
 
 private:
     Ui::bookWindow *ui;

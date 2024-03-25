@@ -46,10 +46,66 @@ bookWindow::bookWindow(QWidget *parent)
                          "Здесь — я любить боюсь…");
     ui->currentBook->setReadOnly(true);
     ui->translationWindow->setReadOnly(true);
+    /*QString YANDEX_FOLDER_ID = "b1gdvvrsofu7cdcuro7r";
+    QString YANDEX_API_KEY = "AQVN1j_UcUitK4SOBOVcQTEBuyytKdDKhVEBoxY5"; // сюда ключ
+    QNetworkAccessManager manager;
+    QNetworkRequest request;
+    QUrl url("https://translate.api.cloud.yandex.net/translate/v2/translate");
+    QJsonObject json;
+    json["targetLanguageCode"] = "ru";
+    json["format"] = "PLAIN_TEXT";
+    json["texts"] = QJsonArray::fromStringList({"Hello"});
+    json["folderId"] = YANDEX_FOLDER_ID;
+
+    request.setUrl(url);
+    request.setRawHeader("Authorization", QString("Api-Key %1").arg(YANDEX_API_KEY).toUtf8());
+    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+
+    QNetworkReply* reply = manager.post(request, QJsonDocument(json).toJson());
+    QEventLoop loop;
+    QObject::connect(reply, SIGNAL(finished()), &loop, SLOT(quit()));
+    loop.exec();
+
+    QByteArray response_data = reply->readAll();
+    qDebug() << response_data;
+    QJsonDocument json_doc = QJsonDocument::fromJson(response_data);
+    QJsonObject json_obj = json_doc.object();
+    QJsonArray translations = json_obj.value("translations").toArray();
+    qDebug() << translations;
+    QJsonObject first_translation = translations.first().toObject();
+    qDebug() << first_translation.value("text").toString();*/
 }
 
 void bookWindow::translateSelectedText() {
-    ui->translationWindow->setText(ui->currentBook->textCursor().selectedText());
+    QString YANDEX_FOLDER_ID = "b1gdvvrsofu7cdcuro7r";
+    QString YANDEX_API_KEY = "AQVN1j_UcUitK4SOBOVcQTEBuyytKdDKhVEBoxY5"; // сюда ключ
+    QNetworkAccessManager manager;
+    QNetworkRequest request;
+    QUrl url("https://translate.api.cloud.yandex.net/translate/v2/translate");
+    QJsonObject json;
+    json["targetLanguageCode"] = "en";
+    json["format"] = "PLAIN_TEXT";
+    json["texts"] = QJsonArray::fromStringList({ui->currentBook->textCursor().selectedText()});
+    json["folderId"] = YANDEX_FOLDER_ID;
+
+    request.setUrl(url);
+    request.setRawHeader("Authorization", QString("Api-Key %1").arg(YANDEX_API_KEY).toUtf8());
+    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+
+    QNetworkReply* reply = manager.post(request, QJsonDocument(json).toJson());
+    QEventLoop loop;
+    QObject::connect(reply, SIGNAL(finished()), &loop, SLOT(quit()));
+    loop.exec();
+
+    QByteArray response_data = reply->readAll();
+    qDebug() << response_data;
+    QJsonDocument json_doc = QJsonDocument::fromJson(response_data);
+    QJsonObject json_obj = json_doc.object();
+    QJsonArray translations = json_obj.value("translations").toArray();
+    //qDebug() << translations;
+    QJsonObject first_translation = translations.first().toObject();
+    //qDebug() << first_translation.value("text").toString();
+    ui->translationWindow->setText(first_translation.value("text").toString());
 }
 
 
@@ -59,11 +115,8 @@ bookWindow::~bookWindow()
 }
 
 
-
-
-void bookWindow::on_currentBook_selectionChanged()
+void bookWindow::on_translateButton_clicked()
 {
-    //qDebug() << "aboba";
-    translateSelectedText();
+    bookWindow::translateSelectedText();
 }
 
