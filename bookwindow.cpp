@@ -63,7 +63,7 @@ bookWindow::~bookWindow()
 
 void bookWindow::on_currentBook_selectionChanged()
 {
-    qDebug() << "aboba";
+    //qDebug() << "aboba";
     translateSelectedText();
 }
 
