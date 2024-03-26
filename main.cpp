@@ -8,6 +8,7 @@
 #include <QToolBar>
 #include <QAction>
 #include <QMessageBox>
+#include "databasehandler.h"
 
 
 int main(int argc, char *argv[]){
