@@ -15,6 +15,10 @@
 #include <QVBoxLayout>
 #include <QLabel>
 #include <QListWidget>
+#include <QApplication>
+#include <QTableView>
+#include <QListView>
+#include <QScrollArea>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class bookWindow; }
@@ -24,11 +28,18 @@ QT_END_NAMESPACE
 class LibraryWidget : public QWidget {
 public:
     LibraryWidget(QWidget *parent = nullptr) : QWidget(parent) {
-        QVBoxLayout *layout = new QVBoxLayout(this);
-        QLabel *label = new QLabel("Library View", this);
-
-        layout->addWidget(label);
+        QGridLayout *layout = new QGridLayout(this);
+        //QLabel *label = new QLabel("Library View", this);
+        QList<QGridLayout*> books_layout;
+        for (size_t i = 0; i < 100; ++i) {
+            books_layout.append(new QGridLayout(this));
+            books_layout.at(i)->addWidget(new QPushButton(this));
+            books_layout.at(i)->addWidget(new QLabel("Aboba", this));
+            layout->addLayout(books_layout.at(i), i / 3, i % 3);
+        }
         setLayout(layout);
+
+
     }
 };
 
@@ -84,9 +95,17 @@ private slots:
 
 
     void showLibrary() {
+        QWidget *my = new LibraryWidget(this);
+        QScrollArea* m_pQScrollArea = new QScrollArea;
+        m_pQScrollArea->setWidget(my);
         // Clear the central widget and set LibraryWidget
-        setCentralWidget(new LibraryWidget(this));
+        m_pQScrollArea->setWidgetResizable(true);
+        m_pQScrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+        m_pQScrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+
+        setCentralWidget(m_pQScrollArea);
         qDebug() << "Library Action triggered";
+
     }
 
     void showCollection() {
