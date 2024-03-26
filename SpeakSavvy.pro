@@ -10,11 +10,25 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    basewindow.cpp \
+    booksmap.cpp \
+    collectionwidget.cpp \
+    dbmap.cpp \
+    librarywidget.cpp \
     main.cpp \
-    bookwindow.cpp
+    bookwindow.cpp \
+    user.cpp
 
 HEADERS += \
-    bookwindow.h
+    basewindow.h \
+    book.h \
+    booksmap.h \
+    bookwindow.h \
+    collectionwidget.h \
+    dbmap.h \
+    librarywidget.h \
+    user.h \
+    word.h
 
 FORMS += \
     bookwindow.ui
