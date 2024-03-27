@@ -17,6 +17,8 @@ SOURCES += \
     librarywidget.cpp \
     main.cpp \
     bookwindow.cpp \
+    readwidget.cpp \
+    translate.cpp \
     user.cpp
 
 HEADERS += \
@@ -27,6 +29,7 @@ HEADERS += \
     collectionwidget.h \
     dbmap.h \
     librarywidget.h \
+    readwidget.h \
     user.h \
     word.h
 

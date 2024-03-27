@@ -16,7 +16,7 @@
 #include <QApplication>
 #include <QLocale>
 #include <QTranslator>
-
+#include "readwidget.h"
 #include <QMainWindow>
 #include <QToolBar>
 #include <QAction>
@@ -44,17 +44,23 @@ int main(int argc, char *argv[]){
 
     BaseWindow connectingWindow;
     connectingWindow.setUser(&user);
+
     while (true){
 
         auto libraryWindow = new LibraryWidget(&connectingWindow, &bookRepLib);
         connectingWindow.widgetIndx_.library =
             connectingWindow.stackWidgets_.addWidget(libraryWindow);
 
+        auto readNowWindow = new ReadWidget(&connectingWindow);
+        connectingWindow.widgetIndx_.readNow =
+            connectingWindow.stackWidgets_.addWidget(readNowWindow);
+
         auto collectionWindow =
             new CollectionWidget(&connectingWindow, &bookRepCol);
 
         connectingWindow.widgetIndx_.collection =
             connectingWindow.stackWidgets_.addWidget(collectionWindow);
+
 
 
         connectingWindow.stackWidgets_.setCurrentIndex(

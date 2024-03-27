@@ -31,10 +31,7 @@ public:
 
     explicit BaseWindow(QWidget *parent = nullptr);
 
-    void updateReadNow(const std::string &title,
-                       const std::string &author,
-                       const std::string &text) const;
-
+    void updateReadNow();
     void showReadNow();
 
     void showCollection();

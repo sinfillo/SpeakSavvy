@@ -2,6 +2,7 @@
 #include <QMenuBar>
 #include "collectionwidget.h"
 #include "librarywidget.h"
+#include "readwidget.h"
 
 BaseWindow::BaseWindow(QWidget *parent)
     :stackWidgets_(new QStackedWidget), QMainWindow(parent) {
@@ -16,7 +17,7 @@ void BaseWindow::setUser(User *u) {
 void BaseWindow::addMenu() {
     collectionAction_ = new QAction("Коллекция", this);
     libraryAction_ = new QAction("Библиотека", this);
-    readNowAction_ = new QAction("Чтение", this);
+    readNowAction_ = new QAction("В процессе чтения", this);
 
     menuBar()->addAction(libraryAction_);
     menuBar()->addAction(collectionAction_);
@@ -34,6 +35,7 @@ void BaseWindow::addMenu() {
     });
 
     QObject::connect(readNowAction_, &QAction::triggered, this, [=]() {
+        updateReadNow();
         showReadNow();
     });
 
@@ -41,7 +43,9 @@ void BaseWindow::addMenu() {
 
 
 void BaseWindow::showReadNow() {
-    setWindowTitle("Книга");
+    auto readWidget =
+    dynamic_cast<ReadWidget*>(stackWidgets_.widget(widgetIndx_.readNow));
+    setWindowTitle(readWidget->getBookTitle());
     stackWidgets_.setCurrentIndex(widgetIndx_.readNow);
 }
 
@@ -60,6 +64,51 @@ void BaseWindow::showCollection() {
 void BaseWindow::updateLibrary() const {
     dynamic_cast<LibraryWidget *>(stackWidgets_.widget(widgetIndx_.library))
         ->updateWindow();
+}
+
+void BaseWindow::updateReadNow(){
+    auto readWidget =
+        dynamic_cast<ReadWidget*>(stackWidgets_.widget(widgetIndx_.readNow));
+    readWidget->displayBook("Я ненавижу свет\n"
+                       "Однообразных звезд.\n"
+                       "Здравствуй, мой давний бред, —\n"
+                       "Башни стрельчатой рост!\n"
+                       "\n"
+                       "Кружевом камень будь\n"
+                       "И паутиной стань:\n"
+                       "Неба пустую грудь\n"
+                       "Тонкой иглою рань.\n"
+                       "\n"
+                       "Будет и мой черед —\n"
+                       "Чую размах крыла.\n"
+                       "Так — но куда уйдет\n"
+                       "Мысли живой стрела?\n"
+                       "\n"
+                       "Или свой путь и срок\n"
+                       "Я, исчерпав, вернусь:\n"
+                       "Там — я любить не мог,\n"
+                       "Здесь — я любить боюсь…\n"
+                       "Я ненавижу свет\n"
+                       "Однообразных звезд.\n"
+                       "Здравствуй, мой давний бред, —\n"
+                       "Башни стрельчатой рост!\n"
+                       "\n"
+                       "Кружевом камень будь\n"
+                       "И паутиной стань:\n"
+                       "Неба пустую грудь\n"
+                       "Тонкой иглою рань.\n"
+                       "\n"
+                       "Будет и мой черед —\n"
+                       "Чую размах крыла.\n"
+                       "Так — но куда уйдет\n"
+                       "Мысли живой стрела?\n"
+                       "\n"
+                       "Или свой путь и срок\n"
+                       "Я, исчерпав, вернусь:\n"
+                       "Там — я любить не мог,\n"
+                       "Здесь — я любить боюсь…", "Wtf", "Aboba");
+    setWindowTitle(readWidget->getBookTitle());
+    readWidget->cleanTranslationDisplay();
 }
 
 
