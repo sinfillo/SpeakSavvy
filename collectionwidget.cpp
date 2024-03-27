@@ -16,8 +16,6 @@ void CollectionWidget::updateWindow(bool first) {
                 delete item;
             }
         }
-        titles_.clear();
-        buttonRead_.clear();
     }
 
     books_ = bookMap_->getAllBooks();
@@ -26,33 +24,47 @@ void CollectionWidget::updateWindow(bool first) {
     layout_ = new QGridLayout;
     box_->setLayout(layout_);
 
-    titles_ = std::vector<QLabel*>(books_.size());
-    buttonRead_ = std::vector<QPushButton*>(books_.size());
-    buttonDelete_ = std::vector<QPushButton*>(books_.size());
+    // Calculate the number of rows needed for the grid
+    int rows = (books_.size() + 2) / 3;
 
-    for (int i = 0; i < books_.size(); i++) {
-        titles_[i] = new QLabel(QString("Book Name: %1,   Author: %2")
-                                         .arg(books_[i].getName().c_str(),
-                                              books_[i].getAuthor().c_str()));
-        layout_->addWidget(titles_[i], i, 0);
+    bookWidgets_.clear();
+    bookWidgets_ = std::vector<QWidget *> (books_.size());
 
-        buttonRead_[i] = new QPushButton(tr("Read"));
-        layout_->addWidget(buttonRead_[i], i, 1);
+    int index = 0;
+    for (int i = 0; i < rows; ++i) {
+        for (int j = 0; j < 3 && index < books_.size(); ++j) {
+            bookWidgets_[index] = new QWidget;
+            QVBoxLayout *bookLayout = new QVBoxLayout;
 
-        buttonDelete_[i] = new QPushButton(tr("Delete"));
-        layout_->addWidget(buttonDelete_[i], i, 2);
+            QLabel *titleLabel = new QLabel(QString("Name: %1\nAuthor: %2")
+                                                .arg(books_[index].getName().c_str(),
+                                                     books_[index].getAuthor().c_str()));
+            QPushButton *readButton = new QPushButton("Read");
+            readButton->setFixedWidth(100);
+            QPushButton *deleteButton = new QPushButton("Delete");
+            deleteButton->setFixedWidth(100);
+            // Increase the font size of the book information labels
+            QFont font = titleLabel->font();
+            font.setPointSize(12); // Adjust the font size as needed
+            titleLabel->setFont(font);
 
-        buttonRead_[i]->setFixedWidth(100);
-        buttonRead_[i]->setFixedHeight(30);
-        buttonDelete_[i]->setFixedWidth(100);
-        buttonDelete_[i]->setFixedHeight(30);
+            bookLayout->addWidget(titleLabel);
+            bookLayout->addWidget(readButton);
+            bookLayout->addWidget(deleteButton);
+
+            bookWidgets_[index]->setLayout(bookLayout);
+
+            layout_->addWidget(bookWidgets_[index], i, j);
+
+
+            ++index;
+        }
     }
 
     scrollArea_->setWidget(box_);
     auto screen_width = QGuiApplication::primaryScreen()->availableGeometry().width() - 1000;
     auto screen_height = QGuiApplication::primaryScreen()->availableGeometry().height() - 200;
 
-    this->setStyleSheet("QLabel{margin: 5px;}");
-    box_->setFixedWidth(screen_width - 20);
-    scrollArea_->setGeometry(100, 10, screen_width, screen_height - 3);
+    this->setStyleSheet("QLabel{margin: 1px;}");
+    scrollArea_->setGeometry(10, 10, screen_width + 400, screen_height + 100);
 }

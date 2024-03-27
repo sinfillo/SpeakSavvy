@@ -16,10 +16,20 @@
 #include <QListView>
 #include <QScrollArea>
 
+
 namespace translate{
 QString translateSelectedText(QString text){
-    QString YANDEX_FOLDER_ID = "b1gdvvrsofu7cdcuro7r";
-    QString YANDEX_API_KEY = "AQVNzjMyxAqH65ORqS96-GLjposLFVFPGlJtCuja"; // сюда ключ
+    QFile file("secret_api.txt"); // Open the file with api
+
+    if (!file.open(QIODevice::ReadOnly)) {
+        qWarning() << "Failed to open file!";
+    }
+
+    QTextStream in(&file);
+
+    QString YANDEX_FOLDER_ID = "ajel9u66j5rghh6gm37d";
+    QString YANDEX_API_KEY = in.readAll(); // сюда ключ
+
     QNetworkAccessManager manager;
     QNetworkRequest request;
     QUrl url("https://translate.api.cloud.yandex.net/translate/v2/translate");

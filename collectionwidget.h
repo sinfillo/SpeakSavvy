@@ -23,9 +23,7 @@ private:
 
     QWidget *box_;
     QGridLayout *layout_ = new QGridLayout();
-    std::vector<QLabel *> titles_;
-    std::vector<QPushButton *> buttonRead_;
-    std::vector<QPushButton *> buttonDelete_;
+    std::vector<QWidget *> bookWidgets_;
 
     QScrollArea *scrollArea_ = new QScrollArea(this);
 

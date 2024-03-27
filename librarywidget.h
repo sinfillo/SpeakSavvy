@@ -21,8 +21,7 @@ private:
 
     QWidget *box_;
     QGridLayout *layout_ = new QGridLayout();
-    std::vector<QLabel *> titles_;
-    std::vector<QPushButton *> buttonAdd_;
+    std::vector<QWidget *> bookWidgets_;
     QScrollArea *scrollArea_ = new QScrollArea(this);
 
     void addToCollection(int bookId);

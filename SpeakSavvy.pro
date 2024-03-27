@@ -13,6 +13,7 @@ SOURCES += \
     basewindow.cpp \
     booksmap.cpp \
     collectionwidget.cpp \
+    databasehandler.cpp \
     dbmap.cpp \
     librarywidget.cpp \
     main.cpp \
@@ -27,6 +28,7 @@ HEADERS += \
     booksmap.h \
     bookwindow.h \
     collectionwidget.h \
+    databasehandler.h \
     dbmap.h \
     librarywidget.h \
     readwidget.h \
