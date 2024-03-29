@@ -27,6 +27,6 @@ void DbHandler::networkReplyReadyRead() {
     for (int i = 0; i < json_array.size(); ++i) {
         QJsonObject book = json_array[i].toObject();
         array_names.push_back(Book{i, book.value("name").toString().toStdString(),
-                                   book.value("name").toString().toStdString(), "" });
+                                   book.value("author").toString().toStdString(), "" });
     }
 }

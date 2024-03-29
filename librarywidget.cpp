@@ -7,7 +7,6 @@ LibraryWidget::LibraryWidget(BaseWindow *parent, BooksMap* bookMap): parent_(par
     box_ = new QWidget;
     layout_ = new QGridLayout;
     box_->setLayout(layout_);
-    updateWindow();
 
     auto screen_width = QGuiApplication::primaryScreen()->geometry().width() - 1000;
     auto screen_height = QGuiApplication::primaryScreen()->geometry().height() - 400;
