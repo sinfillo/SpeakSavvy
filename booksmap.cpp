@@ -17,7 +17,7 @@ void BooksMap::addBook(int id,
 
     std::filesystem::path pathToBook = std::filesystem::absolute(filename);
 
-    manager_->map_[tableName_][id] = {bookName, author, pathToBook.string()};
+    //manager_->map_[tableName_][id] = {bookName, author, pathToBook.string()};
 }
 
 
@@ -39,30 +39,34 @@ void BooksMap::addAndSaveBook(int id,
 }
 
 void BooksMap::deleteBookById(int id) {
-    manager_->map_[tableName_].erase(id);
+    //manager_->map_[tableName_].erase(id);
 }
 
 Book BooksMap::getBookById(int id, std::string tableName = "library") {
-    return Book{id, manager_->map_[tableName][id][0],
-                manager_->map_[tableName][id][1], manager_->map_[tableName][id][2]};
+
+    return Book{id, "", "", ""};
 }
 
 std::vector<Book> BooksMap::getAllBooks() {
 
-    std::vector<Book> books;
-    for(const auto& elem: manager_->map_[tableName_]) {
-        books.emplace_back(
-            elem.first, elem.second[0],
-            elem.second[1], elem.second[2]);
-    }
-    return books;
+    // std::vector<Book> books;
+    // for(const auto& elem: manager_->map_[tableName_]) {
+    //     books.emplace_back(
+    //         elem.first, elem.second[0],
+    //         elem.second[1], elem.second[2]);
+    // }
+    manager_->map_["library"]->getBookInfoFromDB();
+    qDebug() << manager_->map_["library"]->array_names.size() << " ";
+    if(manager_->map_["library"]->array_names.size() != 0)
+        qDebug() << manager_->map_["library"]->array_names[1].getName() << '\n';
+    return manager_->map_["library"]->array_names;
 }
 
 void BooksMap::clear() {
     std::filesystem::remove_all(pathToBooks_);
     std::filesystem::create_directories(pathToBooks_);
 
-    manager_->map_[tableName_].clear();
+    //manager_->map_[tableName_].clear();
 
     std::cout << "All books deleted" << std::endl;
 }
