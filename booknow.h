@@ -1,9 +1,9 @@
 #ifndef BOOKNOW_H
 #define BOOKNOW_H
 
-#include <QToolBar>
-#include <QTextEdit>
 #include "basewindow.h"
+#include <QTextEdit>
+#include <QToolBar>
 
 // Функция перевода
 namespace translate {
@@ -12,48 +12,46 @@ std::string translate(const std::string &text);
 
 class ReadNowWindow : public QMainWindow {
 public:
-    explicit ReadNowWindow(BaseWindow *parent);
+  explicit ReadNowWindow(BaseWindow *parent);
 
-    void printBook(const QString &book = nullptr,
-                   const QString &author = nullptr,
-                   const QString &title = nullptr);
+  void printBook(const QString &book = nullptr, const QString &author = nullptr,
+                 const QString &title = nullptr);
 
-    ~ReadNowWindow() override = default;
+  ~ReadNowWindow() override = default;
 
-    QString getAuthorTitle();
+  QString getAuthorTitle();
 
-    bool emptyTranslatedTextDisplay();
+  bool emptyTranslatedTextDisplay();
 
-    void cleanTranslatedTextDisplay();
+  void cleanTranslatedTextDisplay();
 
-    void updateToolBar();
+  void updateToolBar();
 
 private slots:
-    void translateText();
+  void translateText();
 
 private:
-    BaseWindow* parent_;
+  BaseWindow *parent_;
 
-    void createWindowWithTranslate(); // создаем окошко с переводом
-    void createButtonAddPhraseToDict();  // создание кнопки "Перевести"
-    QTextEdit *bookTextDisplay_{};  // виджет, отображающий текст
-    QPushButton *button_; // Кнопка "Добавить в словарь"
+  void createWindowWithTranslate(); // создаем окошко с переводом
+  void createButtonAddPhraseToDict(); // создание кнопки "Перевести"
+  QTextEdit *bookTextDisplay_{}; // виджет, отображающий текст
+  QPushButton *button_; // Кнопка "Добавить в словарь"
 
-    int screenWidth_;
-    int screenHeight_;
+  int screenWidth_;
+  int screenHeight_;
 
-    QAction *translateSelectedTextAction_;
+  QAction *translateSelectedTextAction_;
 
-    QString selectedText_;
-    QString translatedText_;
-    QString authorName_ = "";
-    QString title_ = "";
+  QString selectedText_;
+  QString translatedText_;
+  QString authorName_ = "";
+  QString title_ = "";
 
-    QTextEdit *translatedTextDisplay_{};  // окошко с переводом
-    QToolBar *toolBar_{};
-    void createActions();
-    void createToolBars();
-
+  QTextEdit *translatedTextDisplay_{}; // окошко с переводом
+  QToolBar *toolBar_{};
+  void createActions();
+  void createToolBars();
 };
 
-#endif  // BOOKNOW_H
+#endif // BOOKNOW_H

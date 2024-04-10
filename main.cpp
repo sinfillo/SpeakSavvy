@@ -1,77 +1,69 @@
-#include <QMainWindow>
-#include <QtNetwork>
-#include <QtGui>
-#include <QtCore>
-#include <QToolBar>
-#include <QMessageBox>
-#include <QNetworkAccessManager>
-#include <QMetaObject>
+#include "authwidget.h"
+#include "collectionwidget.h"
+#include "dbmap.h"
+#include "librarywidget.h"
+#include "readwidget.h"
 #include <QAction>
-#include <QNetworkReply>
-#include <QVBoxLayout>
+#include <QApplication>
+#include <QCoreApplication>
 #include <QLabel>
 #include <QListWidget>
-#include "librarywidget.h"
-#include "collectionwidget.h"
-#include <QApplication>
 #include <QLocale>
-#include <QTranslator>
-#include "readwidget.h"
 #include <QMainWindow>
-#include <QToolBar>
-#include <QAction>
 #include <QMessageBox>
-#include "dbmap.h"
-#include "authwidget.h"
-#include <QCoreApplication>
+#include <QMetaObject>
+#include <QNetworkAccessManager>
+#include <QNetworkReply>
+#include <QToolBar>
+#include <QTranslator>
+#include <QVBoxLayout>
+#include <QtCore>
+#include <QtGui>
+#include <QtNetwork>
 
+int main(int argc, char *argv[]) {
+  QCoreApplication::setAttribute(Qt::AA_DontUseNativeMenuBar);
 
+  QApplication a(argc, argv);
+  dbMap dbmap;
+  DbHandler dbhandler;
 
-int main(int argc, char *argv[]){
-    QCoreApplication::setAttribute(Qt::AA_DontUseNativeMenuBar);
+  // BooksMap bookRepCol(&dbmap, "collection");
+  BooksMap bookRepLib(&dbmap, "library");
+  dbmap.map_["library"] = &dbhandler;
 
-    QApplication a(argc, argv);
-    dbMap dbmap;
-    DbHandler dbhandler;
+  User user(&bookRepLib);
 
-    // BooksMap bookRepCol(&dbmap, "collection");
-    BooksMap bookRepLib(&dbmap, "library");
-    dbmap.map_["library"] = &dbhandler;
+  BaseWindow connectingWindow;
+  connectingWindow.setUser(&user);
 
-    User user(&bookRepLib);
+  while (true) {
 
-    BaseWindow connectingWindow;
-    connectingWindow.setUser(&user);
+    auto libraryWindow = new LibraryWidget(&connectingWindow, &bookRepLib);
+    connectingWindow.widgetIndx_.library =
+        connectingWindow.stackWidgets_.addWidget(libraryWindow);
 
-    while (true){
+    auto readNowWindow = new ReadWidget(&connectingWindow);
+    connectingWindow.widgetIndx_.readNow =
+        connectingWindow.stackWidgets_.addWidget(readNowWindow);
 
-        auto libraryWindow = new LibraryWidget(&connectingWindow, &bookRepLib);
-        connectingWindow.widgetIndx_.library =
-            connectingWindow.stackWidgets_.addWidget(libraryWindow);
+    auto collectionWindow =
+        new CollectionWidget(&connectingWindow, &bookRepLib);
 
-        auto readNowWindow = new ReadWidget(&connectingWindow);
-        connectingWindow.widgetIndx_.readNow =
-            connectingWindow.stackWidgets_.addWidget(readNowWindow);
+    connectingWindow.widgetIndx_.collection =
+        connectingWindow.stackWidgets_.addWidget(collectionWindow);
 
-        auto collectionWindow =
-            new CollectionWidget(&connectingWindow, &bookRepLib);
+    auto authWidget = new AuthWidget(&connectingWindow);
+    connectingWindow.widgetIndx_.auth =
+        connectingWindow.stackWidgets_.addWidget(authWidget);
 
-        connectingWindow.widgetIndx_.collection =
-            connectingWindow.stackWidgets_.addWidget(collectionWindow);
+    connectingWindow.stackWidgets_.setCurrentIndex(
+        connectingWindow.widgetIndx_.library);
 
-        auto authWidget = new AuthWidget(&connectingWindow);
-        connectingWindow.widgetIndx_.auth =
-            connectingWindow.stackWidgets_.addWidget(authWidget);
+    a.setStyleSheet("QWidget{font-size:15px;}");
 
-        connectingWindow.stackWidgets_.setCurrentIndex(
-            connectingWindow.widgetIndx_.library);
+    connectingWindow.show();
 
-
-        a.setStyleSheet("QWidget{font-size:15px;}");
-
-        connectingWindow.show();
-
-        return a.exec();
-    }
-
+    return a.exec();
+  }
 }

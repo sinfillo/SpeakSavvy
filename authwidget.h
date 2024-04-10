@@ -1,30 +1,29 @@
 #ifndef AUTHWIDGET_H
 #define AUTHWIDGET_H
 
+#include "basewindow.h"
 #include <QGridLayout>
+#include <QLabel>
 #include <QLineEdit>
 #include <QPushButton>
 #include <QWidget>
-#include <QLabel>
-#include "basewindow.h"
 
 class AuthWidget : public QWidget {
 private:
-    BaseWindow *parent_;
-    QLineEdit *loginText_= nullptr;
-    QLineEdit *passwordText_ = nullptr;
-
-    QLabel* login;
-    QLabel* password;
-
-    QWidget *box_;
-    QVBoxLayout *layout_;
-    QPushButton *signInButton_= nullptr;
-    QPushButton* signOutButton_= nullptr;
+  BaseWindow *parent_;
+  QLineEdit *loginText_ = nullptr;
+  QLineEdit *passwordText_ = nullptr;
+  QLabel *login;
+  QLabel *password;
+  QWidget *box_;
+  QVBoxLayout *layout_;
+  QPushButton *signInButton_ = nullptr;
+  QPushButton *signOutButton_ = nullptr;
 
 public:
-    explicit AuthWidget(BaseWindow *parent = nullptr);
-    void updateWindow();
+  explicit AuthWidget(BaseWindow *parent = nullptr);
+
+  void updateWindow();
 };
 
 #endif // AUTHWIDGET_H

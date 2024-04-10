@@ -6,32 +6,34 @@
 #include <queue>
 
 #include "book.h"
-#include "word.h"
-#include "dbmap.h"
 #include "booksmap.h"
+#include "dbmap.h"
+#include "word.h"
 
 struct User {
 private:
-    BooksMap *bookMap_;
-    bool isAuth_ = false;
+  BooksMap *bookMap_;
+  bool isAuth_ = false;
+
 public:
-    std::string login_ = "default";
-    std::string password_ = "default";
-    User(BooksMap *bookRep);
+  std::string login_ = "default";
+  std::string password_ = "default";
 
-    ~User();
+  User(BooksMap *bookRep);
 
-    std::vector<Book> getCollectionBooks();
+  ~User();
 
-    std::vector<Book> getLibraryBooks();
+  std::vector<Book> getCollectionBooks();
 
-    bool isAuthorized();
+  std::vector<Book> getLibraryBooks();
 
-    void init(std::string login, std::string password);
+  bool isAuthorized();
 
-    void exit();
+  void init(std::string login, std::string password);
 
-    void addBookToCollection(int bookId);
+  void exit();
+
+  void addBookToCollection(int bookId);
 };
 
-#endif  // USER_H
+#endif // USER_H

@@ -1,34 +1,32 @@
 #ifndef LIBRARYWIDGET_H
 #define LIBRARYWIDGET_H
 
-#include <QWidget>
+#include "basewindow.h"
+#include "book.h"
 #include <QBoxLayout>
+#include <QGridLayout>
 #include <QLabel>
 #include <QListWidget>
 #include <QPushButton>
-#include <QGridLayout>
-#include <QLabel>
-#include <QPushButton>
 #include <QScrollArea>
-#include "book.h"
-#include "basewindow.h"
+#include <QWidget>
 
 class LibraryWidget : public QWidget {
 private:
-    BaseWindow *parent_;
-    BooksMap *bookMap_;
-    std::vector<Book> books_;
+  BaseWindow *parent_;
+  BooksMap *bookMap_;
+  std::vector<Book> books_;
+  QWidget *box_;
+  QGridLayout *layout_ = new QGridLayout();
+  std::vector<QWidget *> bookWidgets_;
+  QScrollArea *scrollArea_ = new QScrollArea(this);
 
-    QWidget *box_;
-    QGridLayout *layout_ = new QGridLayout();
-    std::vector<QWidget *> bookWidgets_;
-    QScrollArea *scrollArea_ = new QScrollArea(this);
-
-    void addToCollection(int bookId);
+  void addToCollection(int bookId);
 
 public:
-    explicit LibraryWidget(BaseWindow *parent, BooksMap *bookMap);
-    void updateWindow();
+  explicit LibraryWidget(BaseWindow *parent, BooksMap *bookMap);
+
+  void updateWindow();
 };
 
 #endif // LIBRARYWIDGET_H

@@ -1,37 +1,34 @@
 #ifndef BOOKSMAP_H
 #define BOOKSMAP_H
 
-#include <filesystem>
 #include "book.h"
 #include "dbmap.h"
+#include <filesystem>
 
 struct BooksMap {
 private:
-    dbMap* manager_;
-    std::string tableName_;
-    std::filesystem::path pathToBooks_;
+  dbMap *manager_;
+  std::string tableName_;
+  std::filesystem::path pathToBooks_;
 
 public:
-    BooksMap(dbMap* m, std::string tableName = "collection");
+  BooksMap(dbMap *m, std::string tableName = "collection");
 
-    std::vector<Book> getAllBooks();
+  std::vector<Book> getAllBooks();
 
-    void addBook(int id,
-                 const std::string &bookName,
-                 const std::string &author,
-                 const std::string &filename);
+  void addBook(int id, const std::string &bookName, const std::string &author,
+               const std::string &filename);
 
-    void addAndSaveBook(int id,
-                        const std::string &bookName,
-                        const std::string &author,
-                        const std::string &text);
+  void addAndSaveBook(int id, const std::string &bookName,
+                      const std::string &author, const std::string &text);
 
-    void deleteBookById(int id);
+  void deleteBookById(int id);
 
-    Book getBookById(int id,  std::string tableName);
-    Book getLibBookById(int id);
+  Book getBookById(int id, std::string tableName);
 
-    void clear();
+  Book getLibBookById(int id);
+
+  void clear();
 };
 
-#endif  // BOOKSMAP_H
+#endif // BOOKSMAP_H

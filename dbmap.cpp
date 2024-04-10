@@ -1,3 +1,3 @@
 #include "dbmap.h"
 
-dbMap::dbMap(): map_() {}
+dbMap::dbMap() : map_() {}

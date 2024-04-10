@@ -1,34 +1,35 @@
 #ifndef DBHANDLER_H
 #define DBHANDLER_H
 
-#include <QObject>
+#include "book.h"
+#include <QJsonArray>
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QJsonValue>
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
-#include <QJsonDocument>
-#include <QJsonValue>
-#include <QJsonArray>
-#include <QJsonObject>
-#include "book.h"
+#include <QObject>
 
-class DbHandler : public QObject
-{
-    Q_OBJECT
+class DbHandler : public QObject {
+  Q_OBJECT
 public:
-    explicit DbHandler(QObject *parent = nullptr);
-    ~DbHandler();
-    void getBooks();
-    // TODO: void getOneBook(int i);
-    std::vector<Book> books_;
-    Book book_;
+  std::vector<Book> books_;
+  Book book_;
+  // TODO: make networkManager_ and networkReply_ private
+  QNetworkAccessManager *networkManager_;
+  QNetworkReply *networkReply_;
 
-    // TODO: make networkManager_ and networkReply_ private
-    QNetworkAccessManager *networkManager_;
-    QNetworkReply *networkReply_;
+  explicit DbHandler(QObject *parent = nullptr);
+
+  ~DbHandler();
+
+  void getBooks();
+  // TODO: void getOneBook(int i);
 
 public slots:
-    void networkReplyReadyRead();
-    void networkReadyReadOneBook(int i);
-};
+  void networkReplyReadyRead();
 
+  void networkReadyReadOneBook(int i);
+};
 
 #endif // DBHANDLER_H

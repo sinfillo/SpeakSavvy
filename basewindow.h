@@ -1,55 +1,58 @@
 #ifndef BASEWINDOW_H
 #define BASEWINDOW_H
 
-#include <QMainWindow>
-#include <QStackedWidget>
-#include <QMainWindow>
-#include <QtNetwork>
-#include <QtGui>
-#include <QtCore>
-#include <QToolBar>
-#include <QMessageBox>
-#include <QNetworkAccessManager>
-#include <QMetaObject>
-#include <QAction>
-#include <QNetworkReply>
-#include <QVBoxLayout>
-#include <QLabel>
 #include "user.h"
+#include <QAction>
+#include <QLabel>
 #include <QListWidget>
+#include <QMainWindow>
+#include <QMessageBox>
+#include <QMetaObject>
+#include <QNetworkAccessManager>
+#include <QNetworkReply>
+#include <QStackedWidget>
+#include <QToolBar>
+#include <QVBoxLayout>
+#include <QtCore>
+#include <QtGui>
+#include <QtNetwork>
 
 class BaseWindow : public QMainWindow {
-    Q_OBJECT
+  Q_OBJECT
 private:
-    QAction *collectionAction_;
-    QAction *readNowAction_;
-    QAction *libraryAction_;
-    QAction *authAction_;
+  QAction *collectionAction_;
+  QAction *readNowAction_;
+  QAction *libraryAction_;
+  QAction *authAction_;
 
-    void addMenu();
-
+  void addMenu();
 
 public:
-    // TODO: make user_ private
-    User *user_;
-    QStackedWidget stackWidgets_;
+  // TODO: make user_ private
+  User *user_;
+  QStackedWidget stackWidgets_;
 
-    struct WindowIndexes {
-        int library = -1, collection = -1, readNow = -1, auth = -1;
-    } widgetIndx_;
+  struct WindowIndexes {
+    int library = -1, collection = -1, readNow = -1, auth = -1;
+  } widgetIndx_;
 
-    explicit BaseWindow(QWidget *parent = nullptr);
+  explicit BaseWindow(QWidget *parent = nullptr);
 
-    void updateReadNow();
-    void showReadNow();
+  void showReadNow();
 
-    void showCollection();
-    void showLibrary();
-    void showAuth();
+  void showCollection();
 
-    void updateLibrary() const;
-    void updateCollection() const;
-    void setUser(User *u);
+  void showLibrary();
+
+  void showAuth();
+
+  void updateLibrary() const;
+
+  void updateReadNow();
+
+  void updateCollection() const;
+
+  void setUser(User *u);
 };
 
-#endif  // BASEWINDOW_H
+#endif // BASEWINDOW_H
