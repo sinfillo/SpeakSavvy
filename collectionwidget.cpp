@@ -30,9 +30,9 @@ void CollectionWidget::updateWindow(bool first) {
     bookWidgets_.clear();
     bookWidgets_ = std::vector<QWidget *> (books_.size());
 
-    int index = 0;
+    size_t index = 0;
     for (int i = 0; i < rows; ++i) {
-        for (int j = 0; j < 3 && index < books_.size(); ++j) {
+        for (size_t j = 0; j < 3 && index < books_.size(); ++j) {
             bookWidgets_[index] = new QWidget;
             QVBoxLayout *bookLayout = new QVBoxLayout;
 

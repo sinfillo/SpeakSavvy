@@ -43,16 +43,15 @@ void BooksMap::deleteBookById(int id) {
 }
 
 Book BooksMap::getBookById(int id, std::string tableName = "library") {
+     manager_->map_["library"]->getBooks();
 
     return Book{id, "", "", ""};
 }
 
 std::vector<Book> BooksMap::getAllBooks() {
-    manager_->map_["library"]->getBookInfoFromDB();
-    qDebug() << manager_->map_["library"]->array_names.size() << " ";
-    if(manager_->map_["library"]->array_names.size() != 0)
-        qDebug() << manager_->map_["library"]->array_names[1].getName() << '\n';
-    return manager_->map_["library"]->array_names;
+    manager_->map_["library"]->getBooks();
+
+    return  manager_->map_["library"]->books_;
 }
 
 void BooksMap::clear() {

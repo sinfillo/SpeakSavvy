@@ -14,6 +14,8 @@ private:
     std::string path_ = "";
 
 public:
+    Book(){}
+
     Book(int id, std::string name, std::string author, std::string path = "")
         : id(id),
         name_(std::move(name)),

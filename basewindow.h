@@ -26,7 +26,7 @@ public:
     QStackedWidget stackWidgets_;
 
     struct WindowIndexes {
-        int library = -1, collection = -1, readNow = -1;
+        int library = -1, collection = -1, readNow = -1, auth = -1;
     } widgetIndx_;
 
     explicit BaseWindow(QWidget *parent = nullptr);
@@ -36,15 +36,18 @@ public:
 
     void showCollection();
     void showLibrary();
+    void showAuth();
 
     void updateLibrary() const;
     void updateCollection() const;
     void setUser(User *u);
+    \
 
 private:
     QAction *collectionAction_;
     QAction *readNowAction_;
     QAction *libraryAction_;
+    QAction *authAction_;
 
     void addMenu();
 };

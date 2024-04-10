@@ -13,8 +13,10 @@
 struct User {
 private:
     BooksMap *bookMap_;
+    bool isAuth_ = false;
 public:
-
+    std::string login_ = "default";
+    std::string password_ = "default";
     User(BooksMap *bookRep);
 
     ~User();
@@ -22,6 +24,12 @@ public:
     std::vector<Book> getCollectionBooks();
 
     std::vector<Book> getLibraryBooks();
+
+    bool isAuthorized();
+
+    void init(std::string login, std::string password);
+
+    void exit();
 
     void addBookToCollection(int bookId);
 };

@@ -22,6 +22,7 @@
 #include <QAction>
 #include <QMessageBox>
 #include "dbmap.h"
+#include "authwidget.h"
 #include <QCoreApplication>
 
 
@@ -58,7 +59,9 @@ int main(int argc, char *argv[]){
         connectingWindow.widgetIndx_.collection =
             connectingWindow.stackWidgets_.addWidget(collectionWindow);
 
-
+        auto authWidget = new AuthWidget(&connectingWindow);
+        connectingWindow.widgetIndx_.auth =
+            connectingWindow.stackWidgets_.addWidget(authWidget);
 
         connectingWindow.stackWidgets_.setCurrentIndex(
             connectingWindow.widgetIndx_.library);

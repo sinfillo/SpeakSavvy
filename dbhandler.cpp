@@ -6,27 +6,42 @@
 
 DbHandler::DbHandler(QObject *parent) : QObject{parent}
 {
-    m_networkManager = new QNetworkAccessManager(this);
-    m_networkReply = m_networkManager->get(QNetworkRequest(
+    networkManager_ = new QNetworkAccessManager(this);
+    networkReply_ = networkManager_->get(QNetworkRequest(
         QUrl("https://speaksavvydb-default-rtdb.firebaseio.com/books.json")));
 }
 
 DbHandler::~DbHandler()
 {
-    m_networkManager->deleteLater();
+    networkManager_->deleteLater();
 }
 
-void DbHandler::getBookInfoFromDB() {
-    connect(m_networkReply, &QNetworkReply::readyRead, this, &DbHandler::networkReplyReadyRead);
+void DbHandler::getBooks() {
+    connect(networkReply_, &QNetworkReply::readyRead, this, &DbHandler::networkReplyReadyRead);
     networkReplyReadyRead();
 }
 
+// void DbHandler::getOneBook(int i) {
+//     connect(networkReply_, &QNetworkReply::readyRead, this, &DbHandler::networkReadyReadOneBook);
+//     networkReadyReadOneBook(i);
+// }
+
 void DbHandler::networkReplyReadyRead() {
-    QJsonDocument json_doc = QJsonDocument::fromJson(m_networkReply->readAll());
+    QJsonDocument json_doc = QJsonDocument::fromJson(networkReply_->readAll());
     QJsonArray json_array = json_doc.array();
     for (int i = 0; i < json_array.size(); ++i) {
         QJsonObject book = json_array[i].toObject();
-        array_names.push_back(Book{i, book.value("name").toString().toStdString(),
+        books_.push_back(Book{i, book.value("name").toString().toStdString(),
                                    book.value("author").toString().toStdString(), "" });
     }
 }
+
+
+void DbHandler::networkReadyReadOneBook(int i) {
+    QJsonDocument json_doc = QJsonDocument::fromJson(networkReply_->readAll());
+    QJsonArray json_array = json_doc.array();
+    book_ = Book{i, json_array[i].toObject().value("name").toString().toStdString(),
+                 json_array[i].toObject().value("author").toString().toStdString(), "" };
+
+}
+

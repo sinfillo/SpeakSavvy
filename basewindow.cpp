@@ -3,6 +3,7 @@
 #include "collectionwidget.h"
 #include "librarywidget.h"
 #include "readwidget.h"
+#include "authwidget.h"
 
 BaseWindow::BaseWindow(QWidget *parent)
     :stackWidgets_(new QStackedWidget), QMainWindow(parent) {
@@ -18,10 +19,12 @@ void BaseWindow::addMenu() {
     collectionAction_ = new QAction("Коллекция", this);
     libraryAction_ = new QAction("Библиотека", this);
     readNowAction_ = new QAction("В процессе чтения", this);
+    authAction_ = new QAction("Вход/выход", this);
 
     menuBar()->addAction(libraryAction_);
     menuBar()->addAction(collectionAction_);
     menuBar()->addAction(readNowAction_);
+    menuBar()->addAction(authAction_);
 
     setCentralWidget(&stackWidgets_);
 
@@ -32,6 +35,10 @@ void BaseWindow::addMenu() {
     QObject::connect(libraryAction_, &QAction::triggered, this, [=]() {
         updateLibrary();
         showLibrary();
+    });
+
+    QObject::connect(authAction_, &QAction::triggered, this, [=]() {
+        showAuth();
     });
 
     QObject::connect(readNowAction_, &QAction::triggered, this, [=]() {
@@ -60,6 +67,10 @@ void BaseWindow::showCollection() {
     stackWidgets_.setCurrentIndex(widgetIndx_.collection);
 }
 
+void BaseWindow::showAuth(){
+    setWindowTitle("Авторизация");
+    stackWidgets_.setCurrentIndex(widgetIndx_.auth);
+}
 
 void BaseWindow::updateLibrary() const {
     dynamic_cast<LibraryWidget *>(stackWidgets_.widget(widgetIndx_.library))
@@ -69,44 +80,8 @@ void BaseWindow::updateLibrary() const {
 void BaseWindow::updateReadNow(){
     auto readWidget =
         dynamic_cast<ReadWidget*>(stackWidgets_.widget(widgetIndx_.readNow));
-    readWidget->displayBook("Я ненавижу свет\n"
-                       "Однообразных звезд.\n"
-                       "Здравствуй, мой давний бред, —\n"
-                       "Башни стрельчатой рост!\n"
-                       "\n"
-                       "Кружевом камень будь\n"
-                       "И паутиной стань:\n"
-                       "Неба пустую грудь\n"
-                       "Тонкой иглою рань.\n"
-                       "\n"
-                       "Будет и мой черед —\n"
-                       "Чую размах крыла.\n"
-                       "Так — но куда уйдет\n"
-                       "Мысли живой стрела?\n"
-                       "\n"
-                       "Или свой путь и срок\n"
-                       "Я, исчерпав, вернусь:\n"
-                       "Там — я любить не мог,\n"
-                       "Здесь — я любить боюсь…\n"
-                       "Я ненавижу свет\n"
-                       "Однообразных звезд.\n"
-                       "Здравствуй, мой давний бред, —\n"
-                       "Башни стрельчатой рост!\n"
-                       "\n"
-                       "Кружевом камень будь\n"
-                       "И паутиной стань:\n"
-                       "Неба пустую грудь\n"
-                       "Тонкой иглою рань.\n"
-                       "\n"
-                       "Будет и мой черед —\n"
-                       "Чую размах крыла.\n"
-                       "Так — но куда уйдет\n"
-                       "Мысли живой стрела?\n"
-                       "\n"
-                       "Или свой путь и срок\n"
-                       "Я, исчерпав, вернусь:\n"
-                       "Там — я любить не мог,\n"
-                       "Здесь — я любить боюсь…", "Wtf", "Aboba");
+    const QString login_password = QString::fromStdString(user_->login_ + user_->password_);
+    readWidget->displayBook(login_password, "Wtf", "Aboba");
     setWindowTitle(readWidget->getBookTitle());
     readWidget->cleanTranslationDisplay();
 }

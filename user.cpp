@@ -23,3 +23,20 @@ void User::addBookToCollection(int bookId) {
     Book book = bookMap_->getBookById(bookId, "library");
     bookMap_->addAndSaveBook(book.getId() + 1, book.getName() + "_COLLECTION", book.getAuthor(), book.getText());
 }
+
+
+bool User::isAuthorized(){
+    return isAuth_;
+}
+
+void User::init(std::string label, std::string password){
+    login_ = label;
+    password_ = password;
+    isAuth_ = true;
+}
+
+void User::exit(){
+    login_ = "EXITED_STATUS";
+    password_ = "NO_PASSWORD";
+    isAuth_ = false;
+}
