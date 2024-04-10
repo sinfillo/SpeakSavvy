@@ -17,16 +17,17 @@ public:
     explicit DbHandler(QObject *parent = nullptr);
     ~DbHandler();
     void getBooks();
-    //void getOneBook(int i);
+    // TODO: void getOneBook(int i);
     std::vector<Book> books_;
     Book book_;
+
+    // TODO: make networkManager_ and networkReply_ private
+    QNetworkAccessManager *networkManager_;
+    QNetworkReply *networkReply_;
 
 public slots:
     void networkReplyReadyRead();
     void networkReadyReadOneBook(int i);
-public:
-    QNetworkAccessManager *networkManager_;
-    QNetworkReply *networkReply_;
 };
 
 

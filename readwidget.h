@@ -7,21 +7,6 @@
 
 
 class ReadWidget : public QMainWindow {
-public:
-    explicit ReadWidget(BaseWindow *parent);
-    ~ReadWidget() override = default;
-
-    void displayBook(const QString &book = nullptr,
-                   const QString &author = nullptr,
-                   const QString &title = nullptr);
-
-    QString getBookTitle();
-
-    void cleanTranslationDisplay();
-
-private slots:
-    void translateText();
-
 private:
     int screenWidth_;
     int screenHeight_;
@@ -34,6 +19,22 @@ private:
 
     QString author_;
     QString title_;
+
+public:
+    explicit ReadWidget(BaseWindow *parent);
+    ~ReadWidget() override = default;
+
+    void displayBook(const QString &book = nullptr,
+                     const QString &author = nullptr,
+                     const QString &title = nullptr);
+
+    QString getBookTitle();
+
+    void cleanTranslationDisplay();
+
+private slots:
+    void translateText();
+
 
 };
 

@@ -20,8 +20,17 @@
 
 class BaseWindow : public QMainWindow {
     Q_OBJECT
+private:
+    QAction *collectionAction_;
+    QAction *readNowAction_;
+    QAction *libraryAction_;
+    QAction *authAction_;
+
+    void addMenu();
+
 
 public:
+    // TODO: make user_ private
     User *user_;
     QStackedWidget stackWidgets_;
 
@@ -41,15 +50,6 @@ public:
     void updateLibrary() const;
     void updateCollection() const;
     void setUser(User *u);
-    \
-
-private:
-    QAction *collectionAction_;
-    QAction *readNowAction_;
-    QAction *libraryAction_;
-    QAction *authAction_;
-
-    void addMenu();
 };
 
 #endif  // BASEWINDOW_H

@@ -9,9 +9,8 @@
 
 struct dbMap {
     std::unordered_map<std::string, DbHandler*> map_;
-    // stores name of column and for books e. g. {id: {name, author, filename}}
-
-public:
+    // stores name of column(library, collection) and  corresponding dbhadler
+    // for for books e. g. {"library": *dbhandler ["name", "author", ...]}
     dbMap();
 
 };
