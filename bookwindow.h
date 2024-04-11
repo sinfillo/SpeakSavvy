@@ -20,6 +20,8 @@
 #include <QListView>
 #include <QScrollArea>
 #include "databasehandler.h"
+#include "authhandler.h"
+#include <QLineEdit>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class bookWindow; }
@@ -64,9 +66,39 @@ public:
         QLabel *label = new QLabel(title, this);
         label->setAlignment(Qt::AlignCenter);
         layout->addWidget(label);
+        setLayout(layout);
     }
 };
 
+class AuthorisationWidget : public QWidget
+{
+public:
+    explicit AuthorisationWidget(QWidget *parent = nullptr)
+        : QWidget(parent)
+    {
+        QVBoxLayout *layout = new QVBoxLayout(this);
+        QLabel *label = new QLabel("Войти", this);
+        login = new QLineEdit(this);
+        password = new QLineEdit(this);
+        signUpButton = new QPushButton("Войти", this);
+        label->setAlignment(Qt::AlignCenter);
+        layout->addWidget(label);
+        layout->addWidget(login);
+        layout->addWidget(password);
+        layout->addWidget(signUpButton);
+        //connect()
+        connect(signUpButton, &QPushButton::clicked, this, [=]() { getData(); });
+        setLayout(layout);
+    }
+    void getData() {
+        qDebug() << "ahahahahaa";
+        login->setText("aboba");
+    }
+private:
+    QLineEdit *login;
+    QLineEdit *password;
+    QPushButton *signUpButton;
+};
 
 class bookWindow : public QMainWindow
 {
@@ -89,7 +121,8 @@ private slots:
 
     void onLoginClicked();
 
-    void onTranslateButtonClicked();
+    void on_translateButton_clicked();
+
 public slots:
     void getBookInfo(QList<QString>& books_names) {
     }
@@ -119,8 +152,7 @@ private:
     QListWidget *libraryWidget;
     QListWidget *collectionWidget;
     DatabaseHandler* dbManager = new DatabaseHandler();
-
-
+    AuthHandler authHandler;
     void createToolbar();
     void translateSelectedText();
     void clearCentralWidget()
