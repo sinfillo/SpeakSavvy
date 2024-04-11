@@ -52,7 +52,7 @@ bookWindow::bookWindow(QWidget *parent)
 
 void bookWindow::translateSelectedText() {
     QString YANDEX_FOLDER_ID = "b1gdvvrsofu7cdcuro7r";
-    QString YANDEX_API_KEY = "AQVN1j_UcUitK4SOBOVcQTEBuyytKdDKhVEBoxY5"; // сюда ключ
+    QString YANDEX_API_KEY = "AQVNzjMyxAqH65ORqS96-GLjposLFVFPGlJtCuja"; // сюда ключ
     QNetworkAccessManager manager;
     QNetworkRequest request;
     QUrl url("https://translate.api.cloud.yandex.net/translate/v2/translate");
@@ -118,7 +118,7 @@ void bookWindow::onLibraryClicked()
     setWindowTitle("Библиотека");
 }
 
-void bookWindow::onTranslateButtonClicked()
+void bookWindow::on_translateButton_clicked()
 {
     bookWindow::translateSelectedText();
 }

@@ -89,7 +89,7 @@ private slots:
 
     void onLoginClicked();
 
-    void onTranslateButtonClicked();
+    void on_translateButton_clicked();
 public slots:
     void getBookInfo(QList<QString>& books_names) {
     }
