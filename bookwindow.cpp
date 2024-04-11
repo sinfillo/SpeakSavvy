@@ -48,11 +48,12 @@ bookWindow::bookWindow(QWidget *parent)
     ui->currentBook->append(text);
     ui->currentBook->setReadOnly(true);
     ui->translationWindow->setReadOnly(true);
+    authHandler.setAPIKey("AIzaSyCRmTQojk3l9KKMypgMBws2P4tXpmuN3kA");
 }
 
 void bookWindow::translateSelectedText() {
     QString YANDEX_FOLDER_ID = "b1gdvvrsofu7cdcuro7r";
-    QString YANDEX_API_KEY = "AQVN1j_UcUitK4SOBOVcQTEBuyytKdDKhVEBoxY5"; // сюда ключ
+    QString YANDEX_API_KEY = "AQVNzjMyxAqH65ORqS96-GLjposLFVFPGlJtCuja"; // сюда ключ
     QNetworkAccessManager manager;
     QNetworkRequest request;
     QUrl url("https://translate.api.cloud.yandex.net/translate/v2/translate");
@@ -118,7 +119,7 @@ void bookWindow::onLibraryClicked()
     setWindowTitle("Библиотека");
 }
 
-void bookWindow::onTranslateButtonClicked()
+void bookWindow::on_translateButton_clicked()
 {
     bookWindow::translateSelectedText();
 }
@@ -153,7 +154,7 @@ void bookWindow::onFlashcardsClicked()
 void bookWindow::onLoginClicked()
 {
     //clearCentralWidget();
-    setCentralWidget(new CustomWidget("Войти"));
+    setCentralWidget(new AuthorisationWidget());
     setWindowTitle("Войти");
 }
 
