@@ -1,5 +1,9 @@
 QT       += core gui
 QT       += network
+QT       += multimedia
+QT       += multimediawidgets
+QT       += svg
+QT       += widgets
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
