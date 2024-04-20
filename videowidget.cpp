@@ -280,7 +280,8 @@ void VideoWidget::on_prevVideoButton_clicked()
 
 void VideoWidget::stopVideo(int kek)
 {
-    if (kek == 0) {
+    player->setPosition(0);
+    if (kek == 4) {
         prev_file_path = path_files_video[perm[cur_index_perm]];
         gen_permutatuon(perm);
         cur_index_perm = 0;

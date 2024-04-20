@@ -14,6 +14,9 @@ MainWindow::MainWindow(QWidget *parent)
     logInWidget = new LogInWidget;
     gamesWidget = new GamesWidget;
     videoWidget = new VideoWidget;
+    quizWidget = new QuizWidget;
+    startQuizWidget = new StartQuizWidget;
+    resultQuizWidget = new ResultQuizWidget;
     ui->setupUi(this);
     ui->tabWidget->setTabBarAutoHide(true);
     ui->tabWidget->insertTab(0, signUpWidget, "SignUp");
@@ -26,6 +29,11 @@ MainWindow::MainWindow(QWidget *parent)
     connect(authHandler, &AuthHandler::userSignedIn, this, &MainWindow::LogIntoAccount);
     connect(authHandler, &AuthHandler::userSignInError, this, &MainWindow::signInError);
     connect(this, &MainWindow::signal, profile, &Profile::slot);
+    connect(ui->tabWidget, &QTabWidget::currentChanged, videoWidget, &VideoWidget::stopVideo);
+    connect(startQuizWidget, &StartQuizWidget::changeWidget, this, &MainWindow::changeToQuiz);
+    connect(quizWidget, &QuizWidget::changeWidgetToStart, this, &MainWindow::changeToStartQuizBack);
+    connect(quizWidget, &QuizWidget::changeWidgetToResult, this, &MainWindow::changeToResult);
+    connect(resultQuizWidget, &ResultQuizWidget::backToStart, this, &MainWindow::changeToStartQuizBack);
 }
 
 MainWindow::~MainWindow()
@@ -41,6 +49,7 @@ void MainWindow::LogIntoAccount(QString m_idToken, QString email)
     ui->tabWidget->insertTab(2, libraryWidget, "Library");
     ui->tabWidget->insertTab(3, gamesWidget, "Games");
     ui->tabWidget->insertTab(4, videoWidget, "Video");
+    ui->tabWidget->insertTab(5, startQuizWidget, "Quiz");
     emit signal(email);
 }
 
@@ -89,3 +98,32 @@ void MainWindow::logOut()
     ui->tabWidget->insertTab(0, signUpWidget, "SignUp");
 }
 
+void MainWindow::changeToQuiz()
+{
+    //ui->tabWidget->setTabVisible(0, false);
+    ui->tabWidget->removeTab(5);
+    quizWidget->regenNewQuiz();
+    ui->tabWidget->insertTab(5, quizWidget, "Quiz");
+    ui->tabWidget->setCurrentIndex(5);
+    ui->tabWidget->tabBar()->hide();
+}
+
+void MainWindow::changeToStartQuizBack()
+{
+    ui->tabWidget->tabBar()->show();
+    //ui->tabWidget->setTabVisible(0, true);
+    //ui->tabWidget->insertTab(0, video, "tiktok");
+    ui->tabWidget->removeTab(5);
+    ui->tabWidget->insertTab(5, startQuizWidget, "quiz");
+    ui->tabWidget->setCurrentIndex(5);
+}
+
+void MainWindow::changeToResult(size_t cnt_correct)
+{
+    ui->tabWidget->removeTab(5);
+    resultQuizWidget->updateResults(cnt_correct);
+    ui->tabWidget->insertTab(5, resultQuizWidget, "Results");
+    ui->tabWidget->setCurrentIndex(5);
+    ui->tabWidget->tabBar()->hide();
+    qDebug() << cnt_correct;
+}

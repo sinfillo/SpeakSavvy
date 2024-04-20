@@ -11,6 +11,9 @@
 #include "loginwidget.h"
 #include "gameswidget.h"
 #include "videowidget.h"
+#include "startquizwidget.h"
+#include "quizwidget.h"
+#include "resultquizwidget.h"
 
 namespace Ui {
 class MainWindow;
@@ -30,6 +33,9 @@ public:
     LogInWidget *logInWidget;
     GamesWidget *gamesWidget;
     VideoWidget *videoWidget;
+    QuizWidget *quizWidget;
+    StartQuizWidget* startQuizWidget;
+    ResultQuizWidget* resultQuizWidget;
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
@@ -48,6 +54,10 @@ private slots:
     void logIn(QString email, QString password);
 
     void logOut();
+
+    void changeToQuiz();
+    void changeToStartQuizBack();
+    void changeToResult(size_t cnt_correct);
 
 signals:
     void signal(QString nickname);
