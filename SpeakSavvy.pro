@@ -10,16 +10,44 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    authhandler.cpp \
+    book.cpp \
+    bookwidget.cpp \
     databasehandler.cpp \
+    gameswidget.cpp \
+    librarywidget.cpp \
+    loginwidget.cpp \
     main.cpp \
-    bookwindow.cpp
+    mainwindow.cpp \
+    profile.cpp \
+    readnowwidget.cpp \
+    signup.cpp \
+    videowidget.cpp
 
 HEADERS += \
-    bookwindow.h \
-    databasehandler.h
+    authhandler.h \
+    book.h \
+    bookwidget.h \
+    databasehandler.h \
+    gameswidget.h \
+    librarywidget.h \
+    loginwidget.h \
+    mainwindow.h \
+    profile.h \
+    readnowwidget.h \
+    signup.h \
+    videowidget.h
 
 FORMS += \
-    bookwindow.ui
+    bookwidget.ui \
+    gameswidget.ui \
+    librarywidget.ui \
+    loginwidget.ui \
+    mainwindow.ui \
+    profile.ui \
+    readnowwidget.ui \
+    signup.ui \
+    videowidget.ui
 
 TRANSLATIONS += \
     SpeakSavvy_ru_RU.ts

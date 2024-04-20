@@ -1,12 +1,13 @@
-#include "bookwindow.h"
-#include "ui_bookwindow.h"
+#include "readnowwidget.h"
+#include "ui_readnowwidget.h"
 
-bookWindow::bookWindow(QWidget *parent)
-    : QMainWindow(parent)
-    , ui(new Ui::bookWindow)
+
+
+ReadNowWidget::ReadNowWidget(QWidget *parent)
+    : QWidget(parent)
+    , ui(new Ui::ReadNow)
 {
     ui->setupUi(this);
-    createToolbar();
     const char* text = "Я ненавижу свет\n"
                        "Однообразных звезд.\n"
                        "Здравствуй, мой давний бред, —\n"
@@ -45,21 +46,64 @@ bookWindow::bookWindow(QWidget *parent)
                        "Я, исчерпав, вернусь:\n"
                        "Там — я любить не мог,\n"
                        "Здесь — я любить боюсь…";
-    ui->currentBook->append(text);
+    ui->currentBook->append("Nothing");
     ui->currentBook->setReadOnly(true);
     ui->translationWindow->setReadOnly(true);
+    ui->currentBook->viewport()->installEventFilter(this);
+    dbHandler = new DatabaseHandler;
+    dbHandler->getBookInfoFromDB();
+    //connect(dbHandler, &DatabaseHandler::booksRead, this, &ReadNowWidget::updateReadNowWidget);
+    //connect(this, &BookWidget::doubleClicked, this, &BookWidget::translateSelectedText);
 }
 
-void bookWindow::translateSelectedText() {
+bool ReadNowWidget::eventFilter(QObject *watched, QEvent *event)
+{
+    if ((watched == ui->currentBook || watched == ui->currentBook->viewport()) &&
+        event->type() == QEvent::MouseButtonDblClick)
+    {
+        QMouseEvent *mouseEvent = static_cast<QMouseEvent*>(event);
+        ReadNowWidget::translateSelectedText(mouseEvent);
+    }
+}
+
+void ReadNowWidget::setCurrentBookId(int bookId)
+{
+    currentBookId = bookId;
+    updateReadNowWidget();
+}
+
+ReadNowWidget::~ReadNowWidget()
+{
+    delete ui;
+}
+
+void ReadNowWidget::updateReadNowWidget()
+{
+    ui->currentBook->clear();
+    qDebug() << currentBookId;
+    if (currentBookId >= 0 && currentBookId < dbHandler->getBooks().size()) {
+        ui->currentBook->append(dbHandler->getBooks()[currentBookId].getBookText());
+    } else {
+        ui->currentBook->append("You haven't opened any books yet. Go to library and get started!");
+    }
+}
+
+void ReadNowWidget::translateSelectedText(QMouseEvent *mouseEvent)
+{
+    QTextCursor textCursor = ui->currentBook->cursorForPosition(mouseEvent->pos());
+    textCursor.select(QTextCursor::WordUnderCursor);
+    ui->currentBook->setTextCursor(textCursor);
+    QString word = textCursor.selectedText();
+
     QString YANDEX_FOLDER_ID = "b1gdvvrsofu7cdcuro7r";
     QString YANDEX_API_KEY = "AQVN1U-MaZdwjE0LDO33OkAYBC5-ntvdiIyhzzsg"; // сюда ключ
     QNetworkAccessManager manager;
     QNetworkRequest request;
     QUrl url("https://translate.api.cloud.yandex.net/translate/v2/translate");
     QJsonObject json;
-    json["targetLanguageCode"] = "en";
+    json["targetLanguageCode"] = "ru";
     json["format"] = "PLAIN_TEXT";
-    json["texts"] = QJsonArray::fromStringList({ui->currentBook->textCursor().selectedText()});
+    json["texts"] = QJsonArray::fromStringList({word});
     json["folderId"] = YANDEX_FOLDER_ID;
 
     request.setUrl(url);
@@ -72,89 +116,13 @@ void bookWindow::translateSelectedText() {
     loop.exec();
 
     QByteArray response_data = reply->readAll();
-    qDebug() << response_data;
+    //qDebug() << response_data;
     QJsonDocument json_doc = QJsonDocument::fromJson(response_data);
     QJsonObject json_obj = json_doc.object();
     QJsonArray translations = json_obj.value("translations").toArray();
     QJsonObject first_translation = translations.first().toObject();
     ui->translationWindow->setText(first_translation.value("text").toString());
+    //QMessageBox msgBox;
+    //msgBox.setText(first_translation.value("text").toString());
+    //msgBox.exec();
 }
-
-
-bookWindow::~bookWindow()
-{
-    delete ui;
-}
-
-void bookWindow::createToolbar()
-{
-    QToolBar *toolbar = addToolBar("Tools");
-
-    QAction *actionLibrary = toolbar->addAction("Библиотека");
-    connect(actionLibrary, &QAction::triggered, this, &bookWindow::showLibrary);
-
-    QAction *actionCollection = toolbar->addAction("Коллекция");
-    connect(actionCollection, &QAction::triggered, this, &bookWindow::showCollection);
-
-    QAction *actionReadingNow = toolbar->addAction("Читаю сейчас");
-    connect(actionReadingNow, &QAction::triggered, this, &bookWindow::onReadingNowClicked);
-
-    QAction *actionDictionary = toolbar->addAction("Словарь");
-    connect(actionDictionary, &QAction::triggered, this, &bookWindow::onDictionaryClicked);
-
-    QAction *actionFlashcards = toolbar->addAction("Карточки");
-    connect(actionFlashcards, &QAction::triggered, this, &bookWindow::onFlashcardsClicked);
-
-    QAction *actionLogin = toolbar->addAction("Войти");
-    connect(actionLogin, &QAction::triggered, this, &bookWindow::onLoginClicked);
-
-}
-
-
-void bookWindow::onLibraryClicked()
-{
-
-    setCentralWidget(libraryWidget);
-    setWindowTitle("Библиотека");
-}
-
-void bookWindow::on_translateButton_clicked()
-{
-    bookWindow::translateSelectedText();
-}
-
-void bookWindow::onCollectionClicked()
-{
-
-    setCentralWidget(collectionWidget);
-    setWindowTitle("Коллекция");
-}
-
-void bookWindow::onReadingNowClicked()
-{
-    setCentralWidget(new CustomWidget("Читаю сейчас"));
-    setWindowTitle("Читаю сейчас");
-}
-
-void bookWindow::onDictionaryClicked()
-{
-   // clearCentralWidget();
-    setCentralWidget(new CustomWidget("Словарь"));
-    setWindowTitle("Словарь");
-}
-
-void bookWindow::onFlashcardsClicked()
-{
-    //clearCentralWidget();
-    setCentralWidget(new CustomWidget("Карточки"));
-    setWindowTitle("Карточки");
-}
-
-void bookWindow::onLoginClicked()
-{
-    //clearCentralWidget();
-    setCentralWidget(new CustomWidget("Войти"));
-    setWindowTitle("Войти");
-}
-
-

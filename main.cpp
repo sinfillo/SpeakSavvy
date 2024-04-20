@@ -1,5 +1,3 @@
-#include "bookwindow.h"
-
 #include <QApplication>
 #include <QLocale>
 #include <QTranslator>
@@ -9,6 +7,7 @@
 #include <QAction>
 #include <QMessageBox>
 #include "databasehandler.h"
+#include "mainwindow.h"
 
 
 int main(int argc, char *argv[]){
@@ -24,7 +23,10 @@ int main(int argc, char *argv[]){
         }
     }
 
-    bookWindow w;
+    //bookWindow w;
+    //w.show();
+    MainWindow w;
+    //w.setWindowState(Qt::WindowFullScreen);
     w.show();
     return app.exec();
 }
