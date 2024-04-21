@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/img"/>
+    <qresource prefix="/txt">
+        <file>resources/Dictionary.txt</file>
+    </qresource>
+    <qresource prefix="/json">
+        <file>resources/statistics.json</file>
+    </qresource>
+</RCC>

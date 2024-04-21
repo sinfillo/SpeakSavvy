@@ -1,30 +1,13 @@
-#include "bookwindow.h"
-
+#include "mainwindow.h"
 #include <QApplication>
-#include <QLocale>
-#include <QTranslator>
 
-#include <QMainWindow>
-#include <QToolBar>
-#include <QAction>
-#include <QMessageBox>
-#include "databasehandler.h"
-
-
-int main(int argc, char *argv[]){
-    QApplication app(argc, argv);
-
-    QTranslator translator;
-    const QStringList uiLanguages = QLocale::system().uiLanguages();
-    for (const QString &locale : uiLanguages) {
-        const QString baseName = "SpeakSavvy_" + QLocale(locale).name();
-        if (translator.load(":/i18n/" + baseName)) {
-            app.installTranslator(&translator);
-            break;
-        }
-    }
-
-    bookWindow w;
+int main(int argc, char *argv[])
+{
+    QApplication a(argc, argv);
+    QFont defaultFont("Arial", 10);
+    QApplication::setFont(defaultFont);
+    srand(time(NULL));
+    WordleWindow w;
     w.show();
-    return app.exec();
+    return a.exec();
 }
