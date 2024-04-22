@@ -6,8 +6,6 @@
 #include <QKeyEvent>
 
 
-
-
 WordleWindow::WordleWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::WordleWindow)
@@ -247,6 +245,7 @@ void WordleWindow::handleWinEvent() {
     std::sort(labels.begin(), labels.end(), lambdaLess);
     labels = filterColoredLabels(labels);
 
+
     int remainingGuesses = labels.length();
     updatePlayerStats(remainingGuesses);
 
@@ -275,11 +274,11 @@ void WordleWindow::keyClicked(QAbstractButton *key){
     QList labels(ui->LettersWidget->findChildren<QLabel *>());
     std::sort(labels.begin(), labels.end(), lambdaLess);
     int ind = findEmptyLabelIndex(labels);
-    if(ind == -1 || ind % 5 == 0 && ind != 0){
+    if(/*ind == -1 ||*/ ind % 5 == 0 && ind != 0){
         return;
     }
-    labels[ind]->setText(key->text());
-    labels[ind]->setStyleSheet("border: 2px solid black;\n");
+    labels[ind == -1 ? labels.size() - 1 : ind]->setText(key->text());
+    labels[ind == -1 ? labels.size() - 1 : ind]->setStyleSheet("border: 2px solid black;\n");
 }
 
 
@@ -287,15 +286,15 @@ void WordleWindow::on_BackespaceKey_clicked(){
     if(isEndOfGame){
         return;
     }
-
+    qDebug() << "BACKSPACE";
     QList lab(ui->LettersWidget->findChildren<QLabel *>());
     std::sort(lab.begin(), lab.end(), lambdaLess);
     int ind = findEmptyLabelIndex(lab);
-    if(ind == 0 || ind == -1){
+    if(ind == 0){
         return;
     }
-    lab[ind - 1]->setText("");
-    lab[ind - 1]->setStyleSheet("");
+    lab[(ind == -1 ? lab.size() : ind) - 1]->setText("");
+    lab[(ind == -1 ? lab.size() : ind) - 1]->setStyleSheet("");
 }
 
 
