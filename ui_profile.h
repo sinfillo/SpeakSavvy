@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'profile.ui'
 **
-** Created by: Qt User Interface Compiler version 5.15.2
+** Created by: Qt User Interface Compiler version 6.6.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -14,6 +14,7 @@
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -22,82 +23,73 @@ class Ui_Profile
 {
 public:
     QGridLayout *gridLayout;
-    QLabel *label_5;
-    QLabel *label;
-    QPushButton *pushButton_4;
-    QLabel *label_4;
-    QLabel *label_3;
-    QPushButton *pushButton_3;
     QPushButton *pushButton_5;
-    QPushButton *pushButton;
-    QPushButton *pushButton_2;
     QLabel *label_2;
+    QPushButton *pushButton_6;
+    QLabel *label_4;
+    QSpacerItem *verticalSpacer_2;
+    QPushButton *pushButton;
+    QLabel *label_3;
+    QSpacerItem *verticalSpacer;
+    QSpacerItem *horizontalSpacer;
 
     void setupUi(QWidget *Profile)
     {
         if (Profile->objectName().isEmpty())
-            Profile->setObjectName(QString::fromUtf8("Profile"));
+            Profile->setObjectName("Profile");
         Profile->resize(400, 300);
         gridLayout = new QGridLayout(Profile);
-        gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
-        label_5 = new QLabel(Profile);
-        label_5->setObjectName(QString::fromUtf8("label_5"));
-        label_5->setStyleSheet(QString::fromUtf8("font: 18pt \"Andale Mono\";"));
+        gridLayout->setObjectName("gridLayout");
+        pushButton_5 = new QPushButton(Profile);
+        pushButton_5->setObjectName("pushButton_5");
+        pushButton_5->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 144, 106);\n"
+"font: 13pt \"PT Mono\";"));
 
-        gridLayout->addWidget(label_5, 4, 0, 1, 2);
+        gridLayout->addWidget(pushButton_5, 0, 4, 1, 1);
 
-        label = new QLabel(Profile);
-        label->setObjectName(QString::fromUtf8("label"));
-        label->setStyleSheet(QString::fromUtf8("font: 18pt \"Andale Mono\";"));
+        label_2 = new QLabel(Profile);
+        label_2->setObjectName("label_2");
+        label_2->setStyleSheet(QString::fromUtf8("font: 20pt \"Monaco\";"));
 
-        gridLayout->addWidget(label, 1, 1, 1, 1);
+        gridLayout->addWidget(label_2, 0, 0, 1, 1);
 
-        pushButton_4 = new QPushButton(Profile);
-        pushButton_4->setObjectName(QString::fromUtf8("pushButton_4"));
-        pushButton_4->setStyleSheet(QString::fromUtf8("background-color: rgb(233, 255, 161);"));
+        pushButton_6 = new QPushButton(Profile);
+        pushButton_6->setObjectName("pushButton_6");
+        pushButton_6->setMinimumSize(QSize(0, 0));
+        pushButton_6->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 144, 106);\n"
+"font: 20pt \"PT Mono\";"));
 
-        gridLayout->addWidget(pushButton_4, 5, 2, 1, 2);
+        gridLayout->addWidget(pushButton_6, 5, 0, 1, 4);
 
         label_4 = new QLabel(Profile);
-        label_4->setObjectName(QString::fromUtf8("label_4"));
+        label_4->setObjectName("label_4");
 
         gridLayout->addWidget(label_4, 1, 0, 1, 1);
 
-        label_3 = new QLabel(Profile);
-        label_3->setObjectName(QString::fromUtf8("label_3"));
-        label_3->setStyleSheet(QString::fromUtf8("font: 18pt \"Andale Mono\";"));
+        verticalSpacer_2 = new QSpacerItem(20, 10, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
 
-        gridLayout->addWidget(label_3, 2, 0, 1, 1);
-
-        pushButton_3 = new QPushButton(Profile);
-        pushButton_3->setObjectName(QString::fromUtf8("pushButton_3"));
-        pushButton_3->setStyleSheet(QString::fromUtf8("background-color: rgb(168, 219, 255);"));
-
-        gridLayout->addWidget(pushButton_3, 5, 0, 1, 2);
-
-        pushButton_5 = new QPushButton(Profile);
-        pushButton_5->setObjectName(QString::fromUtf8("pushButton_5"));
-        pushButton_5->setStyleSheet(QString::fromUtf8("background-color: rgb(182, 255, 229);"));
-
-        gridLayout->addWidget(pushButton_5, 0, 3, 1, 1);
+        gridLayout->addItem(verticalSpacer_2, 6, 0, 1, 1);
 
         pushButton = new QPushButton(Profile);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
-        pushButton->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 208, 158);"));
+        pushButton->setObjectName("pushButton");
+        pushButton->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 144, 106);\n"
+"font: 20pt \"PT Mono\";"));
 
-        gridLayout->addWidget(pushButton, 3, 0, 1, 2);
+        gridLayout->addWidget(pushButton, 7, 0, 1, 4);
 
-        pushButton_2 = new QPushButton(Profile);
-        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
-        pushButton_2->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 187, 217);"));
+        label_3 = new QLabel(Profile);
+        label_3->setObjectName("label_3");
+        label_3->setStyleSheet(QString::fromUtf8("font: 20pt \"PT Mono\";"));
 
-        gridLayout->addWidget(pushButton_2, 3, 2, 1, 2);
+        gridLayout->addWidget(label_3, 2, 0, 1, 4);
 
-        label_2 = new QLabel(Profile);
-        label_2->setObjectName(QString::fromUtf8("label_2"));
-        label_2->setStyleSheet(QString::fromUtf8("font: 20pt \"Monaco\";"));
+        verticalSpacer = new QSpacerItem(20, 5, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
 
-        gridLayout->addWidget(label_2, 0, 1, 1, 2);
+        gridLayout->addItem(verticalSpacer, 4, 0, 1, 1);
+
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
+
+        gridLayout->addItem(horizontalSpacer, 0, 3, 1, 1);
 
 
         retranslateUi(Profile);
@@ -108,16 +100,12 @@ public:
     void retranslateUi(QWidget *Profile)
     {
         Profile->setWindowTitle(QCoreApplication::translate("Profile", "Form", nullptr));
-        label_5->setText(QCoreApplication::translate("Profile", "Achievements", nullptr));
-        label->setText(QCoreApplication::translate("Profile", "Nickname", nullptr));
-        pushButton_4->setText(QCoreApplication::translate("Profile", "Challenger", nullptr));
-        label_4->setText(QCoreApplication::translate("Profile", "TextLabel", nullptr));
-        label_3->setText(QCoreApplication::translate("Profile", "Statistics", nullptr));
-        pushButton_3->setText(QCoreApplication::translate("Profile", "Legendary", nullptr));
-        pushButton_5->setText(QCoreApplication::translate("Profile", "Log Out", nullptr));
-        pushButton->setText(QCoreApplication::translate("Profile", "0 day steak", nullptr));
-        pushButton_2->setText(QCoreApplication::translate("Profile", "0 total XP", nullptr));
+        pushButton_5->setText(QCoreApplication::translate("Profile", "Log out", nullptr));
         label_2->setText(QCoreApplication::translate("Profile", "Profile", nullptr));
+        pushButton_6->setText(QCoreApplication::translate("Profile", "My words", nullptr));
+        label_4->setText(QCoreApplication::translate("Profile", "TextLabel", nullptr));
+        pushButton->setText(QCoreApplication::translate("Profile", "My books", nullptr));
+        label_3->setText(QCoreApplication::translate("Profile", "Hi! Happy to see you! Time to learn something new!", nullptr));
     } // retranslateUi
 
 };

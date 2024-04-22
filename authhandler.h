@@ -18,6 +18,7 @@ public:
     void signUserUp(const QString& emailAddress, const QString &password);
     void signUserIn(const QString& emailAddress, const QString &password);
     bool getIsSignedIn();
+    QString getUsername();
 
 public slots:
     void networkReplyReadyRead();

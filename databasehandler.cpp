@@ -26,10 +26,26 @@ void DatabaseHandler::getBookInfoFromDB() {
     connect(m_networkReply, &QNetworkReply::readyRead, this, &DatabaseHandler::networkReplyReadyReadBooks);
 }
 
-void DatabaseHandler::sendPostRequestWithAWord(QString m_idToken, QString word)
+void DatabaseHandler::getWordsInfoFromDB(QString email)
 {
-    //QHttpMultiPart *multiPart = new QHttpMultiPart(QHttpMultiPart::FormDataType);
-    //form multipart somehow
+    qDebug() << email;
+    m_networkReply = m_networkManager->get(QNetworkRequest(QUrl("https://speaksavvydb-default-rtdb.firebaseio.com/users/"+ email +".json")));
+    connect(m_networkReply, &QNetworkReply::readyRead, this, &DatabaseHandler::networkReplyReadyReadWords);
+}
+
+void DatabaseHandler::sendPostRequestWithAWord(QString email, QString word, QString translation)
+{
+    qDebug() << "I'm here id token";
+    //qDebug() << m_idToken;
+    QJsonObject json_object;
+    json_object.insert(word, QJsonValue::fromVariant(translation));
+    QJsonDocument json_doc(json_object);
+    m_networkReply = m_networkManager->post(QNetworkRequest(QUrl("https://speaksavvydb-default-rtdb.firebaseio.com/users/" + email +".json")), json_doc.toJson());
+    connect(m_networkReply, &QNetworkReply::finished, this, &DatabaseHandler::postRequestDone);
+}
+
+void DatabaseHandler::sendPostRequestWithABook(QString m_idToken, QString book)
+{
     qDebug() << "I'm here";
     QJsonObject json_object;
     json_object.insert("users_id_Token", QJsonValue::fromVariant("cat dog blas"));
@@ -38,14 +54,27 @@ void DatabaseHandler::sendPostRequestWithAWord(QString m_idToken, QString word)
     connect(m_networkReply, &QNetworkReply::finished, this, &DatabaseHandler::postRequestDone);
 }
 
-void DatabaseHandler::sendPostRequestWithABook(QString m_idToken, QString word)
+QList<Word> DatabaseHandler::extractPairsFromJsonDocument(const QJsonDocument &jsonDoc)
 {
-    qDebug() << "I'm here";
-    QJsonObject json_object;
-    json_object.insert("users_id_Token", QJsonValue::fromVariant("cat dog blas"));
-    QJsonDocument json_doc(json_object);
-    m_networkReply = m_networkManager->post(QNetworkRequest(QUrl("https://speaksavvydb-default-rtdb.firebaseio.com/users.json")), json_doc.toJson());
-    connect(m_networkReply, &QNetworkReply::finished, this, &DatabaseHandler::postRequestDone);
+    QList<Word> pairs;
+    QJsonObject jsonObj = jsonDoc.object();
+
+    for (auto it = jsonObj.begin(); it != jsonObj.end(); ++it) {
+        QString key = it.key();
+        QJsonObject innerObj = it.value().toObject();
+        for (auto innerIt = innerObj.begin(); innerIt != innerObj.end(); ++innerIt) {
+            Word word(innerIt.key(), innerIt.value().toString());
+            qDebug() << innerIt.key() << ": " << innerIt.value().toString();
+            pairs.append(word);
+        }
+    }
+
+    return pairs;
+}
+
+QList<Word> DatabaseHandler::getWords()
+{
+    return words;
 }
 
 void DatabaseHandler::networkReplyReadyReadBooks()
@@ -67,5 +96,12 @@ void DatabaseHandler::postRequestDone()
 {
     qDebug() << "I'm here";
     qDebug() << m_networkReply->readAll();
+}
+
+void DatabaseHandler::networkReplyReadyReadWords()
+{
+    QJsonDocument jsonDoc = QJsonDocument::fromJson(m_networkReply->readAll());
+    words = extractPairsFromJsonDocument(jsonDoc);
+    emit wordsRead();
 }
 

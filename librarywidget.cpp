@@ -5,6 +5,7 @@
 #include <QNetworkReply>
 #include <QPixmap>
 #include <QLabel>
+#include <QFont>
 
 LibraryWidget::LibraryWidget(QWidget *parent)
     : QWidget(parent)
@@ -70,10 +71,19 @@ void LibraryWidget::updateLibrary()
         int labelHeight = books[i].getBookCover().height();
         bookCoverLabel->setFixedSize(labelWidth/3, labelHeight/3);
         books_layout.at(i)->addWidget(bookCoverLabel);*/
-        books_layout.at(i)->addWidget(new QLabel("Title: " + books[i].getName(), this));
+        QFont font("PT Mono", 20);
+        QLabel *titleLabel = new QLabel("Title: " + books[i].getName(), this);
+        titleLabel->setFont(font);
+        books_layout.at(i)->addWidget(titleLabel);
         QPushButton *readButton = new QPushButton("Read");
-        books_layout.at(i)->addWidget(new QLabel("Author: " + books[i].getAuthor(), this));
-        books_layout.at(i)->addWidget(new QLabel("Genre: " + books[i].getGenre(), this));
+        readButton->setFont(font);
+        QLabel *authorLabel = new QLabel("Author: " + books[i].getAuthor(), this);
+        authorLabel->setFont(font);
+        books_layout.at(i)->addWidget(authorLabel);
+        QLabel *genreLabel = new QLabel("Genre: " + books[i].getGenre(), this);
+        genreLabel->setFont(font);
+        readButton->setStyleSheet("background-color: rgb(255, 144, 106)");
+        books_layout.at(i)->addWidget(genreLabel);
         books_layout.at(i)->addWidget(readButton);
         QObject::connect(readButton, &QPushButton::clicked, this, [=]() { emit signalToReadNow(i); });
         layout->addLayout(books_layout.at(i), i / 3, i % 3);

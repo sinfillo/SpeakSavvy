@@ -35,8 +35,9 @@ QuizWidget::QuizWidget(QWidget *parent)
     QTime end_time(0, 0, 0, 0);
     ui->timeLabel->setText(answer_time.toString(format_time));
     timer = new QTimer();
-    connect(timer, &QTimer::timeout, this, &QuizWidget::updateTimeInfo);
-    timer->start(1000);
+    //connect(timer, &QTimer::timeout, this, &QuizWidget::updateTimeInfo);
+    //timer->start(1000);
+    timer->stop();
     start_tour_time = answer_time;
     end_tour_time = end_time;
     QString remainder = "Осталось слов: " + QString::number(10 - cnt_tour);

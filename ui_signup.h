@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'signup.ui'
 **
-** Created by: Qt User Interface Compiler version 5.15.2
+** Created by: Qt User Interface Compiler version 6.6.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -47,94 +47,94 @@ public:
     void setupUi(QWidget *SignUp)
     {
         if (SignUp->objectName().isEmpty())
-            SignUp->setObjectName(QString::fromUtf8("SignUp"));
+            SignUp->setObjectName("SignUp");
         SignUp->resize(510, 384);
         gridLayout = new QGridLayout(SignUp);
-        gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
+        gridLayout->setObjectName("gridLayout");
         pushButton = new QPushButton(SignUp);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+        pushButton->setObjectName("pushButton");
         pushButton->setStyleSheet(QString::fromUtf8("font: 13pt \"Monaco\";\n"
-"background-color: rgb(198, 232, 255);"));
+"background-color: rgb(255, 144, 106);"));
 
         gridLayout->addWidget(pushButton, 6, 2, 1, 2);
 
-        horizontalSpacer_5 = new QSpacerItem(96, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        horizontalSpacer_5 = new QSpacerItem(96, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
 
         gridLayout->addItem(horizontalSpacer_5, 3, 0, 1, 2);
 
-        horizontalSpacer_3 = new QSpacerItem(96, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        horizontalSpacer_3 = new QSpacerItem(96, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
 
         gridLayout->addItem(horizontalSpacer_3, 6, 0, 1, 2);
 
-        horizontalSpacer_10 = new QSpacerItem(67, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        horizontalSpacer_10 = new QSpacerItem(67, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
 
         gridLayout->addItem(horizontalSpacer_10, 1, 5, 1, 1);
 
         pushButton_2 = new QPushButton(SignUp);
-        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
+        pushButton_2->setObjectName("pushButton_2");
         pushButton_2->setStyleSheet(QString::fromUtf8("font: 13pt \"Monaco\";\n"
-"background-color: rgb(198, 232, 255);"));
+"background-color: rgb(255, 144, 106);"));
 
         gridLayout->addWidget(pushButton_2, 11, 3, 1, 1);
 
-        verticalSpacer_3 = new QSpacerItem(20, 53, QSizePolicy::Minimum, QSizePolicy::Expanding);
+        verticalSpacer_3 = new QSpacerItem(20, 53, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
 
         gridLayout->addItem(verticalSpacer_3, 7, 2, 1, 2);
 
-        horizontalSpacer_6 = new QSpacerItem(77, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        horizontalSpacer_6 = new QSpacerItem(77, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
 
         gridLayout->addItem(horizontalSpacer_6, 3, 4, 1, 2);
 
-        verticalSpacer = new QSpacerItem(276, 53, QSizePolicy::Minimum, QSizePolicy::Expanding);
+        verticalSpacer = new QSpacerItem(276, 53, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
 
         gridLayout->addItem(verticalSpacer, 0, 2, 1, 2);
 
-        horizontalSpacer = new QSpacerItem(86, 18, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        horizontalSpacer = new QSpacerItem(86, 18, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
 
         gridLayout->addItem(horizontalSpacer, 11, 0, 1, 1);
 
-        horizontalSpacer_7 = new QSpacerItem(77, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        horizontalSpacer_7 = new QSpacerItem(77, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
 
         gridLayout->addItem(horizontalSpacer_7, 4, 4, 1, 2);
 
         label_2 = new QLabel(SignUp);
-        label_2->setObjectName(QString::fromUtf8("label_2"));
+        label_2->setObjectName("label_2");
         label_2->setStyleSheet(QString::fromUtf8("font: 13pt \"Monaco\";"));
 
         gridLayout->addWidget(label_2, 11, 2, 1, 1);
 
-        verticalSpacer_2 = new QSpacerItem(276, 54, QSizePolicy::Minimum, QSizePolicy::Expanding);
+        verticalSpacer_2 = new QSpacerItem(276, 54, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
 
         gridLayout->addItem(verticalSpacer_2, 2, 2, 1, 2);
 
-        horizontalSpacer_2 = new QSpacerItem(77, 17, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        horizontalSpacer_2 = new QSpacerItem(77, 17, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
 
         gridLayout->addItem(horizontalSpacer_2, 11, 4, 1, 2);
 
         lineEdit = new QLineEdit(SignUp);
-        lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
+        lineEdit->setObjectName("lineEdit");
 
         gridLayout->addWidget(lineEdit, 3, 2, 1, 2);
 
         lineEdit_2 = new QLineEdit(SignUp);
-        lineEdit_2->setObjectName(QString::fromUtf8("lineEdit_2"));
+        lineEdit_2->setObjectName("lineEdit_2");
 
         gridLayout->addWidget(lineEdit_2, 4, 2, 1, 2);
 
-        horizontalSpacer_8 = new QSpacerItem(77, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        horizontalSpacer_8 = new QSpacerItem(77, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
 
         gridLayout->addItem(horizontalSpacer_8, 6, 4, 1, 2);
 
-        horizontalSpacer_9 = new QSpacerItem(86, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        horizontalSpacer_9 = new QSpacerItem(86, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
 
         gridLayout->addItem(horizontalSpacer_9, 1, 0, 1, 1);
 
-        horizontalSpacer_4 = new QSpacerItem(96, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        horizontalSpacer_4 = new QSpacerItem(96, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
 
         gridLayout->addItem(horizontalSpacer_4, 4, 0, 1, 2);
 
         label = new QLabel(SignUp);
-        label->setObjectName(QString::fromUtf8("label"));
+        label->setObjectName("label");
         label->setStyleSheet(QString::fromUtf8("font: 16pt \"Monaco\";"));
 
         gridLayout->addWidget(label, 1, 2, 1, 2);

@@ -34,6 +34,20 @@ MainWindow::MainWindow(QWidget *parent)
     connect(quizWidget, &QuizWidget::changeWidgetToStart, this, &MainWindow::changeToStartQuizBack);
     connect(quizWidget, &QuizWidget::changeWidgetToResult, this, &MainWindow::changeToResult);
     connect(resultQuizWidget, &ResultQuizWidget::backToStart, this, &MainWindow::changeToStartQuizBack);
+    connect(profile, &Profile::goToRevision, this,  &MainWindow::changeTabToRevision);
+}
+
+QString MainWindow::removeSpecialCharsFromEmail(QString email)
+{
+    QString result;
+
+    for (QChar c : email) {
+        if(c != '@' && c != '.') {
+            result += c;
+        }
+    }
+
+    return result;
 }
 
 MainWindow::~MainWindow()
@@ -43,6 +57,8 @@ MainWindow::~MainWindow()
 
 void MainWindow::LogIntoAccount(QString m_idToken, QString email)
 {
+    revisionWidget = new RevisionWidget(this->removeSpecialCharsFromEmail(authHandler->getUsername()));
+    connect(revisionWidget, &RevisionWidget::endRevision, this, &MainWindow::endRevision);
     ui->tabWidget->clear();
     ui->tabWidget->insertTab(0, profile, "Profile");
     ui->tabWidget->insertTab(1, readNowWidget, "Reading now");
@@ -50,6 +66,7 @@ void MainWindow::LogIntoAccount(QString m_idToken, QString email)
     ui->tabWidget->insertTab(3, gamesWidget, "Games");
     ui->tabWidget->insertTab(4, videoWidget, "Video");
     ui->tabWidget->insertTab(5, startQuizWidget, "Quiz");
+    readNowWidget->setEmail(this->removeSpecialCharsFromEmail(authHandler->getUsername()));
     emit signal(email);
 }
 
@@ -83,6 +100,7 @@ void MainWindow::signUp(QString email, QString password)
 {
     authHandler->setAPIKey("AIzaSyBk6-Ki3TqW5sxiMTshkKgX2RSx6nCzEkY");
     authHandler->signUserUp(email, password);
+
 }
 
 void MainWindow::logIn(QString email, QString password)
@@ -126,4 +144,19 @@ void MainWindow::changeToResult(size_t cnt_correct)
     ui->tabWidget->setCurrentIndex(5);
     ui->tabWidget->tabBar()->hide();
     qDebug() << cnt_correct;
+}
+
+void MainWindow::changeTabToRevision()
+{
+    //revisionWidget->setUsername(this->removeSpecialCharsFromEmail(authHandler->getUsername()));
+    ui->tabWidget->insertTab(6, revisionWidget, "Revision");
+    ui->tabWidget->setCurrentIndex(6);
+    ui->tabWidget->tabBar()->hide();
+}
+
+void MainWindow::endRevision()
+{
+    ui->tabWidget->removeTab(6);
+    ui->tabWidget->setCurrentIndex(0);
+    ui->tabWidget->tabBar()->show();
 }

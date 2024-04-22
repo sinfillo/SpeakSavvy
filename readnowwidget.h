@@ -10,6 +10,7 @@
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
 #include <QTextCursor>
+#include <QPushButton>
 #include "databasehandler.h"
 
 namespace Ui {
@@ -25,10 +26,13 @@ public:
     bool eventFilter(QObject *watched, QEvent *event);
     void setCurrentBookId(int bookId);
     ~ReadNowWidget();
+    void setEmail(QString email);
 
 private slots:
     //void translateSelectedText();
     void updateReadNowWidget();
+
+    void on_pushButton_2_clicked();
 
 signals:
     void doubleClicked();
@@ -38,6 +42,8 @@ private:
     void translateSelectedText(QMouseEvent *mouseEvent);
     DatabaseHandler* dbHandler;
     int currentBookId = 0;
+    QString email;
+    QString currentWord;
 };
 
 #endif // READNOWWIDGET_H

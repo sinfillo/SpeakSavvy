@@ -6,48 +6,45 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>815</width>
-    <height>544</height>
+    <width>648</width>
+    <height>359</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QPushButton" name="startQuizButton">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>400</y>
-     <width>761</width>
-     <height>121</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">font: 24pt &quot;Academy Engraved LET&quot;;</string>
-   </property>
-   <property name="text">
-    <string>ПОПРОБУЙ СВОИ СИЛЫ!</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="instructionLabel">
-   <property name="geometry">
-    <rect>
-     <x>30</x>
-     <y>70</y>
-     <width>741</width>
-     <height>301</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">font: 36pt &quot;Academy Engraved LET&quot;;</string>
-   </property>
-   <property name="text">
-    <string>ЗДЕСЬ ИНСТРУКЦИЯ</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
-   </property>
-  </widget>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <widget class="QLabel" name="instructionLabel">
+     <property name="whatsThis">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;You will see a word in English and several translations.&lt;/p&gt;&lt;p&gt;Choose the correct one. &lt;/p&gt;&lt;p&gt;But hurry, time is limited!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 20pt &quot;PT Mono&quot;;</string>
+     </property>
+     <property name="text">
+      <string>You will see a word in English and several translations. Choose the correct one. But hurry, time is limited! Good luck!</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QPushButton" name="startQuizButton">
+     <property name="styleSheet">
+      <string notr="true">font: 24pt &quot;PT Mono&quot;;
+background-color: rgb(255, 144, 106);</string>
+     </property>
+     <property name="text">
+      <string>Start quiz</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
  </widget>
  <resources/>
  <connections/>

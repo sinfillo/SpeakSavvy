@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>508</width>
+    <width>584</width>
     <height>367</height>
    </rect>
   </property>
@@ -199,7 +199,7 @@
    <item row="9" column="3">
     <widget class="QPushButton" name="pushButton_2">
      <property name="styleSheet">
-      <string notr="true">background-color: rgb(198, 232, 255);
+      <string notr="true">background-color: rgb(255, 144, 106);
 font: 14pt &quot;Monaco&quot;; </string>
      </property>
      <property name="text">
@@ -211,7 +211,7 @@ font: 14pt &quot;Monaco&quot;; </string>
     <widget class="QPushButton" name="pushButton">
      <property name="styleSheet">
       <string notr="true">font: 13pt &quot;Monaco&quot;;
-background-color: rgb(198, 232, 255);</string>
+background-color: rgb(255, 144, 106);</string>
      </property>
      <property name="text">
       <string>Log In</string>

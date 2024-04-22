@@ -53,6 +53,11 @@ bool AuthHandler::getIsSignedIn()
     return user_is_signed_in;
 }
 
+QString AuthHandler::getUsername()
+{
+    return username;
+}
+
 void AuthHandler::networkReplyReadyRead()
 {
     QByteArray response = m_networkReply->readAll();

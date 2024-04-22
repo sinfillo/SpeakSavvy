@@ -8,48 +8,11 @@ ReadNowWidget::ReadNowWidget(QWidget *parent)
     , ui(new Ui::ReadNow)
 {
     ui->setupUi(this);
-    const char* text = "Я ненавижу свет\n"
-                       "Однообразных звезд.\n"
-                       "Здравствуй, мой давний бред, —\n"
-                       "Башни стрельчатой рост!\n"
-                       "\n"
-                       "Кружевом камень будь\n"
-                       "И паутиной стань:\n"
-                       "Неба пустую грудь\n"
-                       "Тонкой иглою рань.\n"
-                       "\n"
-                       "Будет и мой черед —\n"
-                       "Чую размах крыла.\n"
-                       "Так — но куда уйдет\n"
-                       "Мысли живой стрела?\n"
-                       "\n"
-                       "Или свой путь и срок\n"
-                       "Я, исчерпав, вернусь:\n"
-                       "Там — я любить не мог,\n"
-                       "Здесь — я любить боюсь…\n"
-                       "Я ненавижу свет\n"
-                       "Однообразных звезд.\n"
-                       "Здравствуй, мой давний бред, —\n"
-                       "Башни стрельчатой рост!\n"
-                       "\n"
-                       "Кружевом камень будь\n"
-                       "И паутиной стань:\n"
-                       "Неба пустую грудь\n"
-                       "Тонкой иглою рань.\n"
-                       "\n"
-                       "Будет и мой черед —\n"
-                       "Чую размах крыла.\n"
-                       "Так — но куда уйдет\n"
-                       "Мысли живой стрела?\n"
-                       "\n"
-                       "Или свой путь и срок\n"
-                       "Я, исчерпав, вернусь:\n"
-                       "Там — я любить не мог,\n"
-                       "Здесь — я любить боюсь…";
-    ui->currentBook->append("Nothing");
+    ui->currentBook->append("You haven't opened any books yet. Go to library and get started!");
     ui->currentBook->setReadOnly(true);
     ui->translationWindow->setReadOnly(true);
     ui->currentBook->viewport()->installEventFilter(this);
+    qDebug() << ui->pushButton_2->text();
     dbHandler = new DatabaseHandler;
     dbHandler->getBookInfoFromDB();
     //connect(dbHandler, &DatabaseHandler::booksRead, this, &ReadNowWidget::updateReadNowWidget);
@@ -77,6 +40,11 @@ ReadNowWidget::~ReadNowWidget()
     delete ui;
 }
 
+void ReadNowWidget::setEmail(QString email)
+{
+    this->email = email;
+}
+
 void ReadNowWidget::updateReadNowWidget()
 {
     ui->currentBook->clear();
@@ -94,6 +62,7 @@ void ReadNowWidget::translateSelectedText(QMouseEvent *mouseEvent)
     textCursor.select(QTextCursor::WordUnderCursor);
     ui->currentBook->setTextCursor(textCursor);
     QString word = textCursor.selectedText();
+    currentWord = word;
 
     QString YANDEX_FOLDER_ID = "b1gdvvrsofu7cdcuro7r";
     QString YANDEX_API_KEY = "AQVN1U-MaZdwjE0LDO33OkAYBC5-ntvdiIyhzzsg"; // сюда ключ
@@ -126,3 +95,11 @@ void ReadNowWidget::translateSelectedText(QMouseEvent *mouseEvent)
     //msgBox.setText(first_translation.value("text").toString());
     //msgBox.exec();
 }
+
+void ReadNowWidget::on_pushButton_2_clicked()
+{
+    if (ui->translationWindow->toPlainText() != "") {
+        dbHandler->sendPostRequestWithAWord(email, currentWord, ui->translationWindow->toPlainText());
+    }
+}
+

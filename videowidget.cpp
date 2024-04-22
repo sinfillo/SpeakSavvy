@@ -17,6 +17,7 @@ VideoWidget::VideoWidget(QWidget *parent)
     path_files_subtitles[0] = "lolsubtitles.srt";
     path_files_video[1] = "example2.mp4";
     path_files_subtitles[1] = "example2.srt";
+    prev_file_path = "";
 
     QShortcut *shortcut_space = new QShortcut(QKeySequence(Qt::Key_Space), this);
     QShortcut *shortcut_left = new QShortcut(QKeySequence(Qt::Key_Left), this);
@@ -43,7 +44,18 @@ VideoWidget::VideoWidget(QWidget *parent)
     connect(shortcut_left, &QShortcut::activated, this, &VideoWidget::turnBackVideo);
     connect(shortcut_right, &QShortcut::activated, this, &VideoWidget::turnForwardVideo);
 
-    updateVideoAndSlider();
+    video = new QVideoWidget();
+    video->setGeometry(5, 5, ui->groupBox->width() - 10, ui->groupBox->height() - 10);
+    audio = new QAudioOutput();
+    readSubtitleFile(path_files_subtitles[perm[cur_index_perm]]);
+    video->setParent(ui->groupBox);
+    player->setVideoOutput(video);
+    player->setAudioOutput(audio);
+    player->setSource(QUrl(path_files_video[perm[cur_index_perm]]));
+    video->setVisible(true);
+    ui->horizontalSlider->setRange(0, player->duration());
+    max_duration = player->duration() / 1000;
+    video->show();
 
 }
 
@@ -59,7 +71,7 @@ void VideoWidget::stopOrPlayVideo()
     if (is_video_stop) {
         player->play();
     } else {
-        player->stop();
+        player->pause();
     }
     is_video_stop = !is_video_stop;
 }
@@ -92,17 +104,21 @@ void VideoWidget::turnForwardVideo()
 
 void VideoWidget::updateVideoAndSlider()
 {
+    qDebug() << "ahahahah";
     ui->textEdit->clear();
     ui->translatedText->clear();
     if (is_last_video) {
+        qDebug() << "last video";
         player->setPosition(0);
         player->pause();
     } else {
         if (prev_file_path != "") {
+            qDebug() << prev_file_path;
             if (prev_file_path == path_files_video[perm[cur_index_perm]]) {
                 player->setPosition(0);
                 player->play();
             } else {
+                qDebug() << "i am here";
                 video = new QVideoWidget();
                 video->setGeometry(5, 5, ui->groupBox->width() - 10, ui->groupBox->height() - 10);
                 audio = new QAudioOutput();
@@ -280,6 +296,7 @@ void VideoWidget::on_prevVideoButton_clicked()
 
 void VideoWidget::stopVideo(int kek)
 {
+    qDebug() << kek;
     player->setPosition(0);
     if (kek == 4) {
         prev_file_path = path_files_video[perm[cur_index_perm]];

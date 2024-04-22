@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'librarywidget.ui'
 **
-** Created by: Qt User Interface Compiler version 5.15.2
+** Created by: Qt User Interface Compiler version 6.6.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -25,18 +25,18 @@ public:
     void setupUi(QWidget *Library)
     {
         if (Library->objectName().isEmpty())
-            Library->setObjectName(QString::fromUtf8("Library"));
-        Library->resize(906, 861);
-        QSizePolicy sizePolicy(QSizePolicy::Maximum, QSizePolicy::Maximum);
+            Library->setObjectName("Library");
+        Library->resize(828, 490);
+        QSizePolicy sizePolicy(QSizePolicy::Policy::Maximum, QSizePolicy::Policy::Maximum);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(Library->sizePolicy().hasHeightForWidth());
         Library->setSizePolicy(sizePolicy);
         verticalLayoutWidget = new QWidget(Library);
-        verticalLayoutWidget->setObjectName(QString::fromUtf8("verticalLayoutWidget"));
-        verticalLayoutWidget->setGeometry(QRect(0, 0, 1021, 821));
+        verticalLayoutWidget->setObjectName("verticalLayoutWidget");
+        verticalLayoutWidget->setGeometry(QRect(0, -10, 811, 761));
         verticalLayout = new QVBoxLayout(verticalLayoutWidget);
-        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+        verticalLayout->setObjectName("verticalLayout");
         verticalLayout->setContentsMargins(0, 0, 0, 0);
 
         retranslateUi(Library);

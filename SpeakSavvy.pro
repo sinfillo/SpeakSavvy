@@ -25,8 +25,13 @@ SOURCES += \
     mainwindow.cpp \
     profile.cpp \
     readnowwidget.cpp \
+    revisionwidget.cpp \
     signup.cpp \
-    videowidget.cpp
+    quizwidget.cpp \
+    resultquizwidget.cpp \
+    startquizwidget.cpp \
+    videowidget.cpp \
+    word.cpp
 
 HEADERS += \
     authhandler.h \
@@ -39,8 +44,13 @@ HEADERS += \
     mainwindow.h \
     profile.h \
     readnowwidget.h \
+    revisionwidget.h \
     signup.h \
-    videowidget.h
+    videowidget.h \
+    quizwidget.h \
+    resultquizwidget.h \
+    startquizwidget.h \
+    word.h
 
 FORMS += \
     bookwidget.ui \
@@ -50,13 +60,19 @@ FORMS += \
     mainwindow.ui \
     profile.ui \
     readnowwidget.ui \
+    revisionwidget.ui \
     signup.ui \
-    videowidget.ui
+    videowidget.ui \
+    quizwidget.ui \
+    resultquizwidget.ui \
+    startquizwidget.ui \
 
 TRANSLATIONS += \
     SpeakSavvy_ru_RU.ts
 CONFIG += lrelease
 CONFIG += embed_translations
+
+UI_DIR = $$PWD
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

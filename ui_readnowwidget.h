@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'readnowwidget.ui'
 **
-** Created by: Qt User Interface Compiler version 5.15.2
+** Created by: Qt User Interface Compiler version 6.6.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -23,41 +23,45 @@ class Ui_ReadNow
 {
 public:
     QGridLayout *gridLayout;
-    QTextEdit *currentBook;
     QTextEdit *translationWindow;
     QSpacerItem *verticalSpacer;
-    QPushButton *pushButton;
+    QPushButton *pushButton_2;
+    QTextEdit *currentBook;
 
     void setupUi(QWidget *ReadNow)
     {
         if (ReadNow->objectName().isEmpty())
-            ReadNow->setObjectName(QString::fromUtf8("ReadNow"));
+            ReadNow->setObjectName("ReadNow");
         ReadNow->resize(400, 300);
-        QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+        QSizePolicy sizePolicy(QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Expanding);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(ReadNow->sizePolicy().hasHeightForWidth());
         ReadNow->setSizePolicy(sizePolicy);
         gridLayout = new QGridLayout(ReadNow);
-        gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
-        currentBook = new QTextEdit(ReadNow);
-        currentBook->setObjectName(QString::fromUtf8("currentBook"));
-
-        gridLayout->addWidget(currentBook, 0, 0, 2, 1);
-
+        gridLayout->setObjectName("gridLayout");
         translationWindow = new QTextEdit(ReadNow);
-        translationWindow->setObjectName(QString::fromUtf8("translationWindow"));
+        translationWindow->setObjectName("translationWindow");
+        translationWindow->setStyleSheet(QString::fromUtf8("font: 20pt \"PT Mono\";"));
 
-        gridLayout->addWidget(translationWindow, 0, 1, 1, 1);
+        gridLayout->addWidget(translationWindow, 0, 2, 1, 1);
 
-        verticalSpacer = new QSpacerItem(20, 145, QSizePolicy::Minimum, QSizePolicy::Expanding);
+        verticalSpacer = new QSpacerItem(20, 126, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
 
-        gridLayout->addItem(verticalSpacer, 1, 1, 2, 1);
+        gridLayout->addItem(verticalSpacer, 2, 2, 2, 1);
 
-        pushButton = new QPushButton(ReadNow);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+        pushButton_2 = new QPushButton(ReadNow);
+        pushButton_2->setObjectName("pushButton_2");
+        pushButton_2->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 144, 106);\n"
+"font: 20pt \"PT Mono\";"));
 
-        gridLayout->addWidget(pushButton, 2, 0, 1, 1);
+        gridLayout->addWidget(pushButton_2, 1, 2, 1, 1);
+
+        currentBook = new QTextEdit(ReadNow);
+        currentBook->setObjectName("currentBook");
+        currentBook->setStyleSheet(QString::fromUtf8("font: 20pt \"PT Mono\";"));
+
+        gridLayout->addWidget(currentBook, 0, 0, 4, 1);
 
 
         retranslateUi(ReadNow);
@@ -68,7 +72,7 @@ public:
     void retranslateUi(QWidget *ReadNow)
     {
         ReadNow->setWindowTitle(QCoreApplication::translate("ReadNow", "Form", nullptr));
-        pushButton->setText(QCoreApplication::translate("ReadNow", "Next page", nullptr));
+        pushButton_2->setText(QCoreApplication::translate("ReadNow", "Learn", nullptr));
     } // retranslateUi
 
 };

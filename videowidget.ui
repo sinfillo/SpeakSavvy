@@ -22,6 +22,9 @@
      <height>311</height>
     </rect>
    </property>
+   <property name="mouseTracking">
+    <bool>true</bool>
+   </property>
    <property name="title">
     <string>GroupBox</string>
    </property>
@@ -87,7 +90,7 @@
     </sizepolicy>
    </property>
    <property name="styleSheet">
-    <string notr="true">font: 24pt &quot;Academy Engraved LET&quot;;
+    <string notr="true">font: 20pt &quot;PT Mono&quot;;
 </string>
    </property>
   </widget>
@@ -137,6 +140,9 @@
      <horstretch>0</horstretch>
      <verstretch>0</verstretch>
     </sizepolicy>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 20pt &quot;PT Mono&quot;;</string>
    </property>
   </widget>
  </widget>
