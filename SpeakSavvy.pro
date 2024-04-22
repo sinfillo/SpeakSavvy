@@ -23,6 +23,7 @@ SOURCES += \
     loginwidget.cpp \
     main.cpp \
     mainwindow.cpp \
+    notificationwindow.cpp \
     profile.cpp \
     readnowwidget.cpp \
     revisionwidget.cpp \
@@ -42,6 +43,7 @@ HEADERS += \
     librarywidget.h \
     loginwidget.h \
     mainwindow.h \
+    notificationwindow.h \
     profile.h \
     readnowwidget.h \
     revisionwidget.h \
@@ -78,3 +80,10 @@ UI_DIR = $$PWD
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+
+RESOURCES += \
+    resources.qrc
+
+DISTFILES += \
+    resources/synonyms.json
