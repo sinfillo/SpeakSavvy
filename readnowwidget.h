@@ -34,6 +34,10 @@ private slots:
 
     void on_pushButton_2_clicked();
 
+    void on_learnButton_clicked();
+
+    void on_contextButton_clicked();
+
 signals:
     void doubleClicked();
 

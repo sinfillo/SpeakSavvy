@@ -44,9 +44,9 @@ public:
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(wordButton->sizePolicy().hasHeightForWidth());
         wordButton->setSizePolicy(sizePolicy);
-        wordButton->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 144, 106);\n"
-"font: 40pt \"PT Mono\";\n"
-"border-radius: 10px;"));
+        wordButton->setStyleSheet(QString::fromUtf8("font: 40pt \"YuGothic\";\n"
+"border-radius: 15;\n"
+"border: 5px solid pink;"));
 
         gridLayout->addWidget(wordButton, 2, 2, 1, 1);
 
@@ -58,6 +58,7 @@ public:
         sizePolicy1.setHeightForWidth(backToMainButton->sizePolicy().hasHeightForWidth());
         backToMainButton->setSizePolicy(sizePolicy1);
         backToMainButton->setStyleSheet(QString::fromUtf8("font: 13pt \"PT Mono\";"));
+        backToMainButton->setFlat(true);
 
         gridLayout->addWidget(backToMainButton, 0, 0, 1, 2);
 
@@ -73,6 +74,7 @@ public:
         sizePolicy2.setHeightForWidth(nextButton->sizePolicy().hasHeightForWidth());
         nextButton->setSizePolicy(sizePolicy2);
         nextButton->setStyleSheet(QString::fromUtf8("font: 20pt \"PT Mono\";"));
+        nextButton->setFlat(true);
 
         gridLayout->addWidget(nextButton, 1, 4, 2, 1);
 
@@ -81,10 +83,9 @@ public:
         sizePolicy.setHeightForWidth(translationButton->sizePolicy().hasHeightForWidth());
         translationButton->setSizePolicy(sizePolicy);
         translationButton->setMinimumSize(QSize(400, 91));
-        translationButton->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 144, 106);\n"
-"font: 40pt \"PT Mono\";\n"
-"border-radius: 10px;\n"
-"\n"
+        translationButton->setStyleSheet(QString::fromUtf8("font: 40pt \"YuGothic\";\n"
+"border-radius: 15;\n"
+"border: 5px solid pink;\n"
 ""));
 
         gridLayout->addWidget(translationButton, 1, 2, 1, 1);
@@ -98,6 +99,7 @@ public:
         sizePolicy2.setHeightForWidth(prevButton->sizePolicy().hasHeightForWidth());
         prevButton->setSizePolicy(sizePolicy2);
         prevButton->setStyleSheet(QString::fromUtf8("font: 20pt \"PT Mono\";"));
+        prevButton->setFlat(true);
 
         gridLayout->addWidget(prevButton, 1, 0, 2, 1);
 
@@ -111,10 +113,10 @@ public:
     {
         RevisionWidget->setWindowTitle(QCoreApplication::translate("RevisionWidget", "Form", nullptr));
         wordButton->setText(QString());
-        backToMainButton->setText(QCoreApplication::translate("RevisionWidget", "<\342\200\224\342\200\224\342\200\224\342\200\224", nullptr));
-        nextButton->setText(QCoreApplication::translate("RevisionWidget", ">", nullptr));
+        backToMainButton->setText(QString());
+        nextButton->setText(QString());
         translationButton->setText(QString());
-        prevButton->setText(QCoreApplication::translate("RevisionWidget", "<", nullptr));
+        prevButton->setText(QString());
     } // retranslateUi
 
 };

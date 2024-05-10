@@ -2191,7 +2191,7 @@ public:
         retranslateUi(GamesWidget);
 
         StatsButton->setDefault(false);
-        stackedWidget->setCurrentIndex(1);
+        stackedWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(GamesWidget);

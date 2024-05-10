@@ -23,9 +23,9 @@
       </sizepolicy>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color: rgb(255, 144, 106);
-font: 40pt &quot;PT Mono&quot;;
-border-radius: 10px;</string>
+      <string notr="true">font: 40pt &quot;YuGothic&quot;;
+border-radius: 15;
+border: 5px solid pink;</string>
      </property>
      <property name="text">
       <string/>
@@ -44,7 +44,10 @@ border-radius: 10px;</string>
       <string notr="true">font: 13pt &quot;PT Mono&quot;;</string>
      </property>
      <property name="text">
-      <string>&lt;————</string>
+      <string/>
+     </property>
+     <property name="flat">
+      <bool>true</bool>
      </property>
     </widget>
    </item>
@@ -73,7 +76,10 @@ border-radius: 10px;</string>
       <string notr="true">font: 20pt &quot;PT Mono&quot;;</string>
      </property>
      <property name="text">
-      <string>&gt;</string>
+      <string/>
+     </property>
+     <property name="flat">
+      <bool>true</bool>
      </property>
     </widget>
    </item>
@@ -92,10 +98,9 @@ border-radius: 10px;</string>
       </size>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color: rgb(255, 144, 106);
-font: 40pt &quot;PT Mono&quot;;
-border-radius: 10px;
-
+      <string notr="true">font: 40pt &quot;YuGothic&quot;;
+border-radius: 15;
+border: 5px solid pink;
 </string>
      </property>
      <property name="text">
@@ -128,7 +133,10 @@ border-radius: 10px;
       <string notr="true">font: 20pt &quot;PT Mono&quot;;</string>
      </property>
      <property name="text">
-      <string>&lt;</string>
+      <string/>
+     </property>
+     <property name="flat">
+      <bool>true</bool>
      </property>
     </widget>
    </item>

@@ -26,7 +26,7 @@ public:
     {
         if (Library->objectName().isEmpty())
             Library->setObjectName("Library");
-        Library->resize(828, 490);
+        Library->resize(796, 677);
         QSizePolicy sizePolicy(QSizePolicy::Policy::Maximum, QSizePolicy::Policy::Maximum);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -34,7 +34,7 @@ public:
         Library->setSizePolicy(sizePolicy);
         verticalLayoutWidget = new QWidget(Library);
         verticalLayoutWidget->setObjectName("verticalLayoutWidget");
-        verticalLayoutWidget->setGeometry(QRect(0, -10, 811, 761));
+        verticalLayoutWidget->setGeometry(QRect(12, 12, 681, 491));
         verticalLayout = new QVBoxLayout(verticalLayoutWidget);
         verticalLayout->setObjectName("verticalLayout");
         verticalLayout->setContentsMargins(0, 0, 0, 0);

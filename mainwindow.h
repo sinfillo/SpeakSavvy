@@ -67,6 +67,18 @@ private slots:
 
     void endRevision();
 
+    void on_goToGamesButton_clicked();
+
+    void on_goToLibraryButton_clicked();
+
+    void on_goToProfileButton_clicked();
+
+    void on_goToQuizButton_clicked();
+
+    void on_goToReadingButton_clicked();
+
+    void on_goToVideoButton_clicked();
+
 signals:
     void signal(QString nickname);
 

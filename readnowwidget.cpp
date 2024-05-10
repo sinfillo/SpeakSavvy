@@ -10,9 +10,9 @@ ReadNowWidget::ReadNowWidget(QWidget *parent)
     ui->setupUi(this);
     ui->currentBook->append("You haven't opened any books yet. Go to library and get started!");
     ui->currentBook->setReadOnly(true);
-    ui->translationWindow->setReadOnly(true);
+    //ui->translationWindow->setReadOnly(true);
     ui->currentBook->viewport()->installEventFilter(this);
-    qDebug() << ui->pushButton_2->text();
+    //qDebug() << ui->pushButton_2->text();
     dbHandler = new DatabaseHandler;
     dbHandler->getBookInfoFromDB();
     //connect(dbHandler, &DatabaseHandler::booksRead, this, &ReadNowWidget::updateReadNowWidget);
@@ -51,6 +51,8 @@ void ReadNowWidget::updateReadNowWidget()
     qDebug() << currentBookId;
     if (currentBookId >= 0 && currentBookId < dbHandler->getBooks().size()) {
         ui->currentBook->append(dbHandler->getBooks()[currentBookId].getBookText());
+        ui->currentBook->moveCursor (QTextCursor::Start) ;
+        ui->currentBook->ensureCursorVisible() ;
     } else {
         ui->currentBook->append("You haven't opened any books yet. Go to library and get started!");
     }
@@ -85,12 +87,17 @@ void ReadNowWidget::translateSelectedText(QMouseEvent *mouseEvent)
     loop.exec();
 
     QByteArray response_data = reply->readAll();
-    //qDebug() << response_data;
+    qDebug() << response_data;
     QJsonDocument json_doc = QJsonDocument::fromJson(response_data);
     QJsonObject json_obj = json_doc.object();
     QJsonArray translations = json_obj.value("translations").toArray();
     QJsonObject first_translation = translations.first().toObject();
-    ui->translationWindow->setText(first_translation.value("text").toString());
+
+    QPixmap yandexPixmap("Yandex_Translate_icon.png");
+    QIcon yandexButtonIcon(yandexPixmap);
+    ui->translationWindow->setIcon(yandexButtonIcon);
+
+    ui->translationWindow->setText(word.toLower() + " — " + first_translation.value("text").toString().toLower());
     //QMessageBox msgBox;
     //msgBox.setText(first_translation.value("text").toString());
     //msgBox.exec();
@@ -98,8 +105,29 @@ void ReadNowWidget::translateSelectedText(QMouseEvent *mouseEvent)
 
 void ReadNowWidget::on_pushButton_2_clicked()
 {
-    if (ui->translationWindow->toPlainText() != "") {
-        dbHandler->sendPostRequestWithAWord(email, currentWord, ui->translationWindow->toPlainText());
+    if (ui->translationWindow->text() != "") {
+        dbHandler->sendPostRequestWithAWord(email, currentWord, ui->translationWindow->text());
     }
+}
+
+
+void ReadNowWidget::on_learnButton_clicked()
+{
+    if (ui->translationWindow->text() != "") {
+        QString originalString = ui->translationWindow->text();
+
+        int firstSpace = originalString.indexOf(" ");
+        int secondSpace = originalString.indexOf(" ", firstSpace + 1);
+
+        QString result = originalString.mid(secondSpace + 1).toLower();
+        qDebug() <<"WQEHFGVJKHIOIOJKNKNLBJJK " << result;
+        dbHandler->sendPostRequestWithAWord(email, currentWord, result);
+    }
+}
+
+
+void ReadNowWidget::on_contextButton_clicked()
+{
+    //пока что ничего)
 }
 

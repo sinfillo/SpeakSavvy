@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'bookwidget.ui'
 **
-** Created by: Qt User Interface Compiler version 5.15.2
+** Created by: Qt User Interface Compiler version 6.6.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -28,19 +28,19 @@ public:
     void setupUi(QWidget *BookWidget)
     {
         if (BookWidget->objectName().isEmpty())
-            BookWidget->setObjectName(QString::fromUtf8("BookWidget"));
+            BookWidget->setObjectName("BookWidget");
         BookWidget->resize(400, 300);
         readButton = new QPushButton(BookWidget);
-        readButton->setObjectName(QString::fromUtf8("readButton"));
+        readButton->setObjectName("readButton");
         readButton->setGeometry(QRect(40, 250, 271, 31));
         nameLabel = new QLabel(BookWidget);
-        nameLabel->setObjectName(QString::fromUtf8("nameLabel"));
+        nameLabel->setObjectName("nameLabel");
         nameLabel->setGeometry(QRect(30, 130, 241, 21));
         authorLabel = new QLabel(BookWidget);
-        authorLabel->setObjectName(QString::fromUtf8("authorLabel"));
+        authorLabel->setObjectName("authorLabel");
         authorLabel->setGeometry(QRect(30, 170, 211, 16));
         genreLabel = new QLabel(BookWidget);
-        genreLabel->setObjectName(QString::fromUtf8("genreLabel"));
+        genreLabel->setObjectName("genreLabel");
         genreLabel->setGeometry(QRect(30, 210, 191, 16));
 
         retranslateUi(BookWidget);

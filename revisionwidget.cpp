@@ -16,6 +16,19 @@ RevisionWidget::RevisionWidget(QString username, QWidget *parent) : username(use
     dbHandler = new DatabaseHandler;
     dbHandler->getWordsInfoFromDB(username);
     connect(dbHandler, &DatabaseHandler::wordsRead, this, &RevisionWidget::updateWords);
+
+    QPixmap backPixmap("left-arrow.png");
+    QIcon backButtonIcon(backPixmap);
+    ui->backToMainButton->setIcon(backButtonIcon);
+
+    QPixmap leftPixmap("left-arrow-black.png");
+    QIcon leftButtonIcon(leftPixmap);
+    ui->prevButton->setIcon(leftButtonIcon);
+
+    QPixmap rightPixmap("right-arrow-black.png");
+    QIcon rightButtonIcon(rightPixmap.scaledToWidth(50));
+    ui->nextButton->setIcon(rightButtonIcon);
+
 }
 
 RevisionWidget::~RevisionWidget()

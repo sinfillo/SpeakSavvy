@@ -18,8 +18,51 @@ MainWindow::MainWindow(QWidget *parent)
     startQuizWidget = new StartQuizWidget;
     resultQuizWidget = new ResultQuizWidget;
     ui->setupUi(this);
-    ui->tabWidget->setTabBarAutoHide(true);
-    ui->tabWidget->insertTab(0, signUpWidget, "SignUp");
+    //ui->stackedWidget->setTabBarAutoHide(true);
+
+    ui->statusbar->hide();
+    //ui->goToGamesButton->setText("");
+    //ui->goToLibraryButton->setText("");
+    //ui->goToProfileButton->setText("");
+    //ui->goToReadingButton->setText("");
+    //ui->goToQuizButton->setText("");
+    //ui->goToVideoButton->setText("");
+
+
+    QPixmap gamePixmap("game-console.png");
+    QIcon gameButtonIcon(gamePixmap);
+    ui->goToGamesButton->setIcon(gameButtonIcon);
+
+
+    QPixmap booksPixmap("books.png");
+    QIcon booksButtonIcon(booksPixmap);
+    ui->goToLibraryButton->setIcon(booksButtonIcon);
+
+
+    QPixmap homePixmap("home.png");
+    QIcon homeButtonIcon(homePixmap);
+    ui->goToProfileButton->setIcon(homeButtonIcon);
+
+    QPixmap openBookPixmap("open-book.png");
+    QIcon readNowButtonIcon(openBookPixmap);
+    ui->goToReadingButton->setIcon(readNowButtonIcon);
+
+    QPixmap quizPixmap("quiz.png");
+    QIcon quizButtonIcon(quizPixmap);
+    ui->goToQuizButton->setIcon(quizButtonIcon);
+
+    QPixmap tvPixmap("tv.png");
+    QIcon videoButtonIcon(tvPixmap);
+    ui->goToVideoButton->setIcon(videoButtonIcon);
+
+    ui->menubar->hide();
+    ui->goToGamesButton->hide();
+    ui->goToLibraryButton->hide();
+    ui->goToProfileButton->hide();
+    ui->goToQuizButton->hide();
+    ui->goToVideoButton->hide();
+    ui->goToReadingButton->hide();
+    ui->stackedWidget->insertWidget(0, signUpWidget);
     connect(profile, &Profile::logOut, this, &MainWindow::logOut);
     connect(signUpWidget, &SignUp::changeTabToLogIn, this, &MainWindow::changeTabToLogIn);
     connect(logInWidget, &LogInWidget::changeTabToSignUp, this, &MainWindow::changeTabToSignUp);
@@ -29,7 +72,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(authHandler, &AuthHandler::userSignedIn, this, &MainWindow::LogIntoAccount);
     connect(authHandler, &AuthHandler::userSignInError, this, &MainWindow::signInError);
     connect(this, &MainWindow::signal, profile, &Profile::slot);
-    connect(ui->tabWidget, &QTabWidget::currentChanged, videoWidget, &VideoWidget::stopVideo);
+    connect(ui->stackedWidget, &QStackedWidget::currentChanged, videoWidget, &VideoWidget::stopVideo);
     connect(startQuizWidget, &StartQuizWidget::changeWidget, this, &MainWindow::changeToQuiz);
     connect(quizWidget, &QuizWidget::changeWidgetToStart, this, &MainWindow::changeToStartQuizBack);
     connect(quizWidget, &QuizWidget::changeWidgetToResult, this, &MainWindow::changeToResult);
@@ -57,15 +100,25 @@ MainWindow::~MainWindow()
 
 void MainWindow::LogIntoAccount(QString m_idToken, QString email)
 {
+
+    ui->goToGamesButton->show();
+    ui->goToLibraryButton->show();
+    ui->goToProfileButton->show();
+    ui->goToQuizButton->show();
+    ui->goToVideoButton->show();
+    ui->goToReadingButton->show();
     revisionWidget = new RevisionWidget(this->removeSpecialCharsFromEmail(authHandler->getUsername()));
     connect(revisionWidget, &RevisionWidget::endRevision, this, &MainWindow::endRevision);
-    ui->tabWidget->clear();
-    ui->tabWidget->insertTab(0, profile, "Profile");
-    ui->tabWidget->insertTab(1, readNowWidget, "Reading now");
-    ui->tabWidget->insertTab(2, libraryWidget, "Library");
-    ui->tabWidget->insertTab(3, gamesWidget, "Games");
-    ui->tabWidget->insertTab(4, videoWidget, "Video");
-    ui->tabWidget->insertTab(5, startQuizWidget, "Quiz");
+    //ui->stackedWidget->clear();
+    ui->stackedWidget->removeWidget(signUpWidget);
+    ui->stackedWidget->removeWidget(logInWidget);
+    ui->stackedWidget->insertWidget(0, profile);
+    ui->stackedWidget->insertWidget(1, readNowWidget);
+    ui->stackedWidget->insertWidget(2, libraryWidget);
+    ui->stackedWidget->insertWidget(3, gamesWidget);
+    ui->stackedWidget->insertWidget(4, videoWidget);
+    ui->stackedWidget->insertWidget(5, startQuizWidget);
+    ui->stackedWidget->setCurrentIndex(0);
     readNowWidget->setEmail(this->removeSpecialCharsFromEmail(authHandler->getUsername()));
     emit signal(email);
 }
@@ -80,20 +133,22 @@ void MainWindow::signInError(QString error)
 void MainWindow::changeTabToReadNow(int bookId)
 {
     readNowWidget->setCurrentBookId(bookId);
-    ui->tabWidget->setCurrentIndex(1);
+    ui->stackedWidget->setCurrentIndex(1);
 
 }
 
 void MainWindow::changeTabToSignUp()
 {
-    ui->tabWidget->clear();
-    ui->tabWidget->insertTab(0, signUpWidget, "SignUp");
+    //ui->stackedWidget->clear();
+    ui->stackedWidget->insertWidget(0, signUpWidget);
+    ui->stackedWidget->setCurrentIndex(0);
 }
 
 void MainWindow::changeTabToLogIn()
 {
-    ui->tabWidget->clear();
-    ui->tabWidget->insertTab(0, logInWidget, "LogIn");
+    //ui->stackedWidget->clear();
+    ui->stackedWidget->insertWidget(0, logInWidget);
+    ui->stackedWidget->setCurrentIndex(0);
 }
 
 void MainWindow::signUp(QString email, QString password)
@@ -112,51 +167,106 @@ void MainWindow::logIn(QString email, QString password)
 
 void MainWindow::logOut()
 {
-    ui->tabWidget->clear();
-    ui->tabWidget->insertTab(0, signUpWidget, "SignUp");
+    //ui->stackedWidget->clear();
+    ui->stackedWidget->insertWidget(0, signUpWidget);
+    ui->stackedWidget->setCurrentIndex(0);
+    ui->goToGamesButton->hide();
+    ui->goToLibraryButton->hide();
+    ui->goToProfileButton->hide();
+    ui->goToQuizButton->hide();
+    ui->goToVideoButton->hide();
+    ui->goToReadingButton->hide();
 }
 
 void MainWindow::changeToQuiz()
 {
+    ui->goToGamesButton->hide();
+    ui->goToLibraryButton->hide();
+    ui->goToProfileButton->hide();
+    ui->goToQuizButton->hide();
+    ui->goToVideoButton->hide();
+    ui->goToReadingButton->hide();
     //ui->tabWidget->setTabVisible(0, false);
-    ui->tabWidget->removeTab(5);
+    ui->stackedWidget->removeWidget(startQuizWidget);
     quizWidget->regenNewQuiz();
-    ui->tabWidget->insertTab(5, quizWidget, "Quiz");
-    ui->tabWidget->setCurrentIndex(5);
-    ui->tabWidget->tabBar()->hide();
+    ui->stackedWidget->insertWidget(5, quizWidget);
+    ui->stackedWidget->setCurrentIndex(5);
+    //ui->stackedWidget->tabBar()->hide();
 }
 
 void MainWindow::changeToStartQuizBack()
 {
-    ui->tabWidget->tabBar()->show();
+    ui->goToGamesButton->show();
+    ui->goToLibraryButton->show();
+    ui->goToProfileButton->show();
+    ui->goToQuizButton->show();
+    ui->goToVideoButton->show();
+    ui->goToReadingButton->show();
+    //ui->stackedWidget->tabBar()->show();!!!
     //ui->tabWidget->setTabVisible(0, true);
     //ui->tabWidget->insertTab(0, video, "tiktok");
-    ui->tabWidget->removeTab(5);
-    ui->tabWidget->insertTab(5, startQuizWidget, "quiz");
-    ui->tabWidget->setCurrentIndex(5);
+    ui->stackedWidget->removeWidget(quizWidget);
+    ui->stackedWidget->insertWidget(5, startQuizWidget);
+    ui->stackedWidget->setCurrentIndex(5);
 }
 
 void MainWindow::changeToResult(size_t cnt_correct)
 {
-    ui->tabWidget->removeTab(5);
+    ui->stackedWidget->removeWidget(quizWidget);
     resultQuizWidget->updateResults(cnt_correct);
-    ui->tabWidget->insertTab(5, resultQuizWidget, "Results");
-    ui->tabWidget->setCurrentIndex(5);
-    ui->tabWidget->tabBar()->hide();
+    ui->stackedWidget->insertWidget(5, resultQuizWidget);
+    ui->stackedWidget->setCurrentIndex(5);
+    //ui->stackedWidget->tabBar()->hide();!!!
     qDebug() << cnt_correct;
 }
 
 void MainWindow::changeTabToRevision()
 {
     //revisionWidget->setUsername(this->removeSpecialCharsFromEmail(authHandler->getUsername()));
-    ui->tabWidget->insertTab(6, revisionWidget, "Revision");
-    ui->tabWidget->setCurrentIndex(6);
-    ui->tabWidget->tabBar()->hide();
+    ui->stackedWidget->insertWidget(6, revisionWidget);
+    ui->stackedWidget->setCurrentIndex(6);
+    //ui->stackedWidget->tabBar()->hide();!!!
 }
 
 void MainWindow::endRevision()
 {
-    ui->tabWidget->removeTab(6);
-    ui->tabWidget->setCurrentIndex(0);
-    ui->tabWidget->tabBar()->show();
+    ui->stackedWidget->removeWidget(revisionWidget);
+    ui->stackedWidget->setCurrentIndex(0);
+    //ui->stackedWidget->tabBar()->show();
 }
+
+void MainWindow::on_goToGamesButton_clicked()
+{
+    ui->stackedWidget->setCurrentWidget(gamesWidget);
+}
+
+
+void MainWindow::on_goToLibraryButton_clicked()
+{
+    ui->stackedWidget->setCurrentWidget(libraryWidget);
+}
+
+
+void MainWindow::on_goToProfileButton_clicked()
+{
+    ui->stackedWidget->setCurrentWidget(profile);
+}
+
+
+void MainWindow::on_goToQuizButton_clicked()
+{
+    ui->stackedWidget->setCurrentWidget(startQuizWidget);
+}
+
+
+void MainWindow::on_goToReadingButton_clicked()
+{
+    ui->stackedWidget->setCurrentWidget(readNowWidget);
+}
+
+
+void MainWindow::on_goToVideoButton_clicked()
+{
+    ui->stackedWidget->setCurrentWidget(videoWidget);
+}
+
