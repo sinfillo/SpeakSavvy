@@ -36,18 +36,23 @@ private slots:
 
     void on_learnButton_clicked();
 
-    void on_contextButton_clicked();
 
 signals:
     void doubleClicked();
 
 private:
     Ui::ReadNow *ui;
-    void translateSelectedText(QMouseEvent *mouseEvent);
+    void checkSelectedText(QMouseEvent *mouseEvent);
+    void updateContextTextEdit(QString text, bool need_translate = false);
     DatabaseHandler* dbHandler;
     int currentBookId = 0;
     QString email;
     QString currentWord;
+    QString allBookText;
+    bool detect_click_context = false;
+    QString contextSentence;
+    QString translateText(const QString& text);
+    bool isDelimiter(QChar sym);
 };
 
 #endif // READNOWWIDGET_H

@@ -14,7 +14,7 @@ MainWindow::MainWindow(QWidget *parent)
     logInWidget = new LogInWidget;
     gamesWidget = new GamesWidget;
     videoWidget = new VideoWidget;
-    quizWidget = new QuizWidget;
+    //quizWidget = new QuizWidget;
     startQuizWidget = new StartQuizWidget;
     resultQuizWidget = new ResultQuizWidget;
     ui->setupUi(this);
@@ -74,9 +74,8 @@ MainWindow::MainWindow(QWidget *parent)
     connect(this, &MainWindow::signal, profile, &Profile::slot);
     connect(ui->stackedWidget, &QStackedWidget::currentChanged, videoWidget, &VideoWidget::stopVideo);
     connect(startQuizWidget, &StartQuizWidget::changeWidget, this, &MainWindow::changeToQuiz);
-    connect(quizWidget, &QuizWidget::changeWidgetToStart, this, &MainWindow::changeToStartQuizBack);
-    connect(quizWidget, &QuizWidget::changeWidgetToResult, this, &MainWindow::changeToResult);
     connect(resultQuizWidget, &ResultQuizWidget::backToStart, this, &MainWindow::changeToStartQuizBack);
+    connect(resultQuizWidget, &ResultQuizWidget::showRevision, this, &MainWindow::changeTabToRevision);
     connect(profile, &Profile::goToRevision, this,  &MainWindow::changeTabToRevision);
 }
 
@@ -120,6 +119,9 @@ void MainWindow::LogIntoAccount(QString m_idToken, QString email)
     ui->stackedWidget->insertWidget(5, startQuizWidget);
     ui->stackedWidget->setCurrentIndex(0);
     readNowWidget->setEmail(this->removeSpecialCharsFromEmail(authHandler->getUsername()));
+    quizWidget = new QuizWidget(this->removeSpecialCharsFromEmail(authHandler->getUsername()));
+    connect(quizWidget, &QuizWidget::changeWidgetToStartOrProfile, this, &MainWindow::changeToStartQuizOrProfile);
+    connect(quizWidget, &QuizWidget::changeWidgetToResult, this, &MainWindow::changeToResult);
     emit signal(email);
 }
 
@@ -178,7 +180,7 @@ void MainWindow::logOut()
     ui->goToReadingButton->hide();
 }
 
-void MainWindow::changeToQuiz()
+void MainWindow::changeToQuiz(size_t cnt)
 {
     ui->goToGamesButton->hide();
     ui->goToLibraryButton->hide();
@@ -188,11 +190,30 @@ void MainWindow::changeToQuiz()
     ui->goToReadingButton->hide();
     //ui->tabWidget->setTabVisible(0, false);
     ui->stackedWidget->removeWidget(startQuizWidget);
-    quizWidget->regenNewQuiz();
     ui->stackedWidget->insertWidget(5, quizWidget);
+    quizWidget->regenNewQuiz(cnt);
+    qDebug() << "helllllooo";
     ui->stackedWidget->setCurrentIndex(5);
     //ui->stackedWidget->tabBar()->hide();
 }
+
+void MainWindow::changeToStartQuizOrProfile(bool is_profile)
+{
+  ui->goToGamesButton->show();
+  ui->goToLibraryButton->show();
+  ui->goToProfileButton->show();
+  ui->goToQuizButton->show();
+  ui->goToVideoButton->show();
+  ui->goToReadingButton->show();
+  ui->stackedWidget->removeWidget(quizWidget);
+  if (is_profile) {
+    ui->stackedWidget->setCurrentIndex(0);
+  } else {
+    ui->stackedWidget->insertWidget(5, startQuizWidget);
+    ui->stackedWidget->setCurrentIndex(5);
+  }
+}
+
 
 void MainWindow::changeToStartQuizBack()
 {
@@ -202,18 +223,15 @@ void MainWindow::changeToStartQuizBack()
     ui->goToQuizButton->show();
     ui->goToVideoButton->show();
     ui->goToReadingButton->show();
-    //ui->stackedWidget->tabBar()->show();!!!
-    //ui->tabWidget->setTabVisible(0, true);
-    //ui->tabWidget->insertTab(0, video, "tiktok");
     ui->stackedWidget->removeWidget(quizWidget);
     ui->stackedWidget->insertWidget(5, startQuizWidget);
     ui->stackedWidget->setCurrentIndex(5);
 }
 
-void MainWindow::changeToResult(size_t cnt_correct)
+void MainWindow::changeToResult(size_t cnt_correct, size_t cnt_all)
 {
     ui->stackedWidget->removeWidget(quizWidget);
-    resultQuizWidget->updateResults(cnt_correct);
+    resultQuizWidget->updateResults(cnt_correct, cnt_all);
     ui->stackedWidget->insertWidget(5, resultQuizWidget);
     ui->stackedWidget->setCurrentIndex(5);
     //ui->stackedWidget->tabBar()->hide();!!!

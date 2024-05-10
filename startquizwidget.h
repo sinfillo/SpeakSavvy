@@ -18,7 +18,7 @@ public:
 private slots:
     void on_startQuizButton_clicked();
 signals:
-    void changeWidget();
+    void changeWidget(size_t cnt);
 private:
     Ui::StartQuizWidget *ui;
 };

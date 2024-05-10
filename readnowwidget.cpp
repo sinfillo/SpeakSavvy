@@ -9,10 +9,11 @@ ReadNowWidget::ReadNowWidget(QWidget *parent)
 {
     ui->setupUi(this);
     ui->currentBook->append("You haven't opened any books yet. Go to library and get started!");
+    ReadNowWidget::updateContextTextEdit("Click here to see in context");
     ui->currentBook->setReadOnly(true);
-    //ui->translationWindow->setReadOnly(true);
+    ui->contextTextEdit->setReadOnly(true);
     ui->currentBook->viewport()->installEventFilter(this);
-    //qDebug() << ui->pushButton_2->text();
+    ui->contextTextEdit->viewport()->installEventFilter(this);
     dbHandler = new DatabaseHandler;
     dbHandler->getBookInfoFromDB();
     //connect(dbHandler, &DatabaseHandler::booksRead, this, &ReadNowWidget::updateReadNowWidget);
@@ -25,7 +26,17 @@ bool ReadNowWidget::eventFilter(QObject *watched, QEvent *event)
         event->type() == QEvent::MouseButtonDblClick)
     {
         QMouseEvent *mouseEvent = static_cast<QMouseEvent*>(event);
-        ReadNowWidget::translateSelectedText(mouseEvent);
+        ReadNowWidget::checkSelectedText(mouseEvent);
+    } else if ((watched == ui->contextTextEdit || watched == ui->contextTextEdit->viewport()))
+    {
+        QTextCursor cursor = ui->contextTextEdit->textCursor();
+        cursor.clearSelection();
+        cursor.movePosition(QTextCursor::NoMove);
+        ui->contextTextEdit->setTextCursor(cursor);
+        if (event->type() == QEvent::MouseButtonPress && detect_click_context) {
+            ReadNowWidget::updateContextTextEdit(contextSentence, true);
+            detect_click_context = false;
+        }
     }
 }
 
@@ -47,26 +58,52 @@ void ReadNowWidget::setEmail(QString email)
 
 void ReadNowWidget::updateReadNowWidget()
 {
+    ReadNowWidget::updateContextTextEdit("Click here to see in context");
+    detect_click_context = false;
     ui->currentBook->clear();
-    qDebug() << currentBookId;
+    allBookText = "You haven't opened any books yet. Go to library and get started!";
     if (currentBookId >= 0 && currentBookId < dbHandler->getBooks().size()) {
-        ui->currentBook->append(dbHandler->getBooks()[currentBookId].getBookText());
-        ui->currentBook->moveCursor (QTextCursor::Start) ;
-        ui->currentBook->ensureCursorVisible() ;
-    } else {
-        ui->currentBook->append("You haven't opened any books yet. Go to library and get started!");
+      allBookText = dbHandler->getBooks()[currentBookId].getBookText();
     }
+    ui->currentBook->append(allBookText);
 }
 
-void ReadNowWidget::translateSelectedText(QMouseEvent *mouseEvent)
+void ReadNowWidget::checkSelectedText(QMouseEvent *mouseEvent)
 {
+    // берем предложение-контекст
+    ReadNowWidget::updateContextTextEdit("Click here to see in context");
+    detect_click_context = true;
     QTextCursor textCursor = ui->currentBook->cursorForPosition(mouseEvent->pos());
+    int cur_pos = textCursor.positionInBlock();
+    QString left_part_sent = "";
+    qDebug() << allBookText;
+    while (cur_pos >= 0 && !isDelimiter(allBookText[cur_pos])) {
+      left_part_sent += allBookText[cur_pos];
+      --cur_pos;
+    }
+    while (!left_part_sent.isEmpty() && left_part_sent.back() == ' ') {
+      left_part_sent.chop(1);
+    }
+    std::reverse(left_part_sent.begin(), left_part_sent.end());
+    cur_pos = textCursor.positionInBlock() + 1;
+    QString right_part_sent = "";
+    while (cur_pos < allBookText.size() && !isDelimiter(allBookText[cur_pos])) {
+      right_part_sent += allBookText[cur_pos];
+      ++cur_pos;
+    }
+    if (cur_pos < allBookText.size() && isDelimiter(allBookText[cur_pos])) {
+      right_part_sent += allBookText[cur_pos];
+    }
+    contextSentence = left_part_sent + right_part_sent;
+
+    // берем слово
+    textCursor = ui->currentBook->cursorForPosition(mouseEvent->pos());
     textCursor.select(QTextCursor::WordUnderCursor);
     ui->currentBook->setTextCursor(textCursor);
     QString word = textCursor.selectedText();
     currentWord = word;
 
-    QString YANDEX_FOLDER_ID = "b1gdvvrsofu7cdcuro7r";
+    /*QString YANDEX_FOLDER_ID = "b1gdvvrsofu7cdcuro7r";
     QString YANDEX_API_KEY = "AQVN1U-MaZdwjE0LDO33OkAYBC5-ntvdiIyhzzsg"; // сюда ключ
     QNetworkAccessManager manager;
     QNetworkRequest request;
@@ -87,47 +124,83 @@ void ReadNowWidget::translateSelectedText(QMouseEvent *mouseEvent)
     loop.exec();
 
     QByteArray response_data = reply->readAll();
-    qDebug() << response_data;
+    //qDebug() << response_data;
     QJsonDocument json_doc = QJsonDocument::fromJson(response_data);
     QJsonObject json_obj = json_doc.object();
     QJsonArray translations = json_obj.value("translations").toArray();
-    QJsonObject first_translation = translations.first().toObject();
+    QJsonObject first_translation = translations.first().toObject();*/
+    QString translation = translateText(word);
 
     QPixmap yandexPixmap("Yandex_Translate_icon.png");
     QIcon yandexButtonIcon(yandexPixmap);
     ui->translationWindow->setIcon(yandexButtonIcon);
 
-    ui->translationWindow->setText(word.toLower() + " — " + first_translation.value("text").toString().toLower());
-    //QMessageBox msgBox;
-    //msgBox.setText(first_translation.value("text").toString());
-    //msgBox.exec();
+    ui->translationWindow->setText(word.toLower() + " — " + translation.toLower());
+}
+
+void ReadNowWidget::updateContextTextEdit(QString text, bool need_translate)
+{
+  if (need_translate) {
+    text = translateText(text);
+  }
+  ui->contextTextEdit->setText(text);
+}
+
+QString ReadNowWidget::translateText(const QString& text)
+{
+    QString YANDEX_FOLDER_ID = "b1gdvvrsofu7cdcuro7r";
+    QString YANDEX_API_KEY = "AQVN1U-MaZdwjE0LDO33OkAYBC5-ntvdiIyhzzsg"; // сюда ключ
+    QNetworkAccessManager manager;
+    QNetworkRequest request;
+    QUrl url("https://translate.api.cloud.yandex.net/translate/v2/translate");
+    QJsonObject json;
+    json["targetLanguageCode"] = "ru";
+    json["format"] = "PLAIN_TEXT";
+    json["texts"] = QJsonArray::fromStringList({text});
+    json["folderId"] = YANDEX_FOLDER_ID;
+
+    request.setUrl(url);
+    request.setRawHeader("Authorization", QString("Api-Key %1").arg(YANDEX_API_KEY).toUtf8());
+    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+
+    QNetworkReply* reply = manager.post(request, QJsonDocument(json).toJson());
+    QEventLoop loop;
+    QObject::connect(reply, SIGNAL(finished()), &loop, SLOT(quit()));
+    loop.exec();
+
+    QByteArray response_data = reply->readAll();
+    //qDebug() << response_data;
+    QJsonDocument json_doc = QJsonDocument::fromJson(response_data);
+    QJsonObject json_obj = json_doc.object();
+    QJsonArray translations = json_obj.value("translations").toArray();
+    QJsonObject first_translation = translations.first().toObject();
+    return first_translation.value("text").toString();
+}
+
+bool ReadNowWidget::isDelimiter(QChar sym)
+{
+    return (sym == '.' || sym == '!' || sym == '?' || sym == ';');
 }
 
 void ReadNowWidget::on_pushButton_2_clicked()
 {
-    if (ui->translationWindow->text() != "") {
-        dbHandler->sendPostRequestWithAWord(email, currentWord, ui->translationWindow->text());
-    }
+  if (ui->translationWindow->text() != "") {
+      dbHandler->sendPostRequestWithAWord(email, currentWord, ui->translationWindow->text());
+  }
 }
-
 
 void ReadNowWidget::on_learnButton_clicked()
 {
-    if (ui->translationWindow->text() != "") {
-        QString originalString = ui->translationWindow->text();
+  if (ui->translationWindow->text() != "") {
+    QString originalString = ui->translationWindow->text();
 
-        int firstSpace = originalString.indexOf(" ");
-        int secondSpace = originalString.indexOf(" ", firstSpace + 1);
+    int firstSpace = originalString.indexOf(" ");
+    int secondSpace = originalString.indexOf(" ", firstSpace + 1);
 
-        QString result = originalString.mid(secondSpace + 1).toLower();
-        qDebug() <<"WQEHFGVJKHIOIOJKNKNLBJJK " << result;
-        dbHandler->sendPostRequestWithAWord(email, currentWord, result);
-    }
+    QString result = originalString.mid(secondSpace + 1).toLower();
+    qDebug() <<"WQEHFGVJKHIOIOJKNKNLBJJK " << result;
+    dbHandler->sendPostRequestWithAWord(email, currentWord, result);
+  }
 }
 
-
-void ReadNowWidget::on_contextButton_clicked()
-{
-    //пока что ничего)
-}
 

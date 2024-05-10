@@ -29,9 +29,6 @@ VideoWidget::VideoWidget(QWidget *parent)
     ui->textEdit->setReadOnly(true);
     ui->textEdit->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->textEdit->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    ui->translatedText->setReadOnly(true);
-    ui->translatedText->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    ui->translatedText->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->textEdit->viewport()->installEventFilter(this);
     ui->groupBox->installEventFilter(this);
     ui->groupBox->setFocus();
@@ -43,6 +40,10 @@ VideoWidget::VideoWidget(QWidget *parent)
     connect(shortcut_space, &QShortcut::activated, this, &VideoWidget::stopOrPlayVideo);
     connect(shortcut_left, &QShortcut::activated, this, &VideoWidget::turnBackVideo);
     connect(shortcut_right, &QShortcut::activated, this, &VideoWidget::turnForwardVideo);
+
+    QPixmap yandexPixmap("Yandex_Translate_icon.png");
+    QIcon yandexButtonIcon(yandexPixmap);
+    ui->translatedText->setIcon(yandexButtonIcon);
 
     video = new QVideoWidget();
     video->setGeometry(5, 5, ui->groupBox->width() - 10, ui->groupBox->height() - 10);
@@ -56,6 +57,7 @@ VideoWidget::VideoWidget(QWidget *parent)
     ui->horizontalSlider->setRange(0, player->duration());
     max_duration = player->duration() / 1000;
     video->show();
+    //updateVideoAndSlider();
 
 }
 
@@ -104,11 +106,9 @@ void VideoWidget::turnForwardVideo()
 
 void VideoWidget::updateVideoAndSlider()
 {
-    qDebug() << "ahahahah";
     ui->textEdit->clear();
-    ui->translatedText->clear();
+    ui->translatedText->setText("");
     if (is_last_video) {
-        qDebug() << "last video";
         player->setPosition(0);
         player->pause();
     } else {
@@ -250,8 +250,8 @@ void VideoWidget::translateSelectedText(QMouseEvent *mouseEvent)
     QJsonObject json_obj = json_doc.object();
     QJsonArray translations = json_obj.value("translations").toArray();
     QJsonObject first_translation = translations.first().toObject();
-    ui->translatedText->clear();
-    ui->translatedText->append(first_translation.value("text").toString());
+    ui->translatedText->setText("");
+    ui->translatedText->setText(word.toLower() + " — " + first_translation.value("text").toString().toLower());
 }
 
 

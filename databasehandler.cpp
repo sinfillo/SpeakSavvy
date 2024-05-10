@@ -28,7 +28,7 @@ void DatabaseHandler::getBookInfoFromDB() {
 
 void DatabaseHandler::getWordsInfoFromDB(QString email)
 {
-    qDebug() << email;
+    qDebug() << email << "12131";
     m_networkReply = m_networkManager->get(QNetworkRequest(QUrl("https://speaksavvydb-default-rtdb.firebaseio.com/users/"+ email +".json")));
     connect(m_networkReply, &QNetworkReply::readyRead, this, &DatabaseHandler::networkReplyReadyReadWords);
 }
@@ -74,6 +74,7 @@ QList<Word> DatabaseHandler::extractPairsFromJsonDocument(const QJsonDocument &j
 
 QList<Word> DatabaseHandler::getWords()
 {
+    qDebug() << "yeees" << words.size() << '\n';
     return words;
 }
 

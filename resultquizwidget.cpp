@@ -13,13 +13,15 @@ ResultQuizWidget::~ResultQuizWidget()
     delete ui;
 }
 
-void ResultQuizWidget::updateResults(size_t cnt_correct)
+void ResultQuizWidget::updateResults(size_t cnt_correct, size_t cnt)
 {
     QString result_text = "Ваш результат: ";
     result_text += QString::number(static_cast<int>(cnt_correct));
-    result_text += " из 10!";
+    result_text += " из ";
+    result_text += QString::number(static_cast<int>(cnt));
+    result_text += "!";
     ui->resultTextLabel->setText(result_text);
-    if (cnt_correct >= 8) {
+    if (cnt_correct >= 0,4 * cnt) {
         ui->repeatButton->hide();
     } else {
         ui->repeatButton->show();
@@ -30,4 +32,9 @@ void ResultQuizWidget::updateResults(size_t cnt_correct)
 void ResultQuizWidget::on_backToStartButton_clicked()
 {
     emit backToStart();
+}
+
+void ResultQuizWidget::on_repeatButton_clicked()
+{
+    emit showRevision();
 }

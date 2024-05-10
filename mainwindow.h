@@ -59,9 +59,10 @@ private slots:
 
     void logOut();
 
-    void changeToQuiz();
+    void changeToQuiz(size_t cnt);
+    void changeToStartQuizOrProfile(bool is_profile);
     void changeToStartQuizBack();
-    void changeToResult(size_t cnt_correct);
+    void changeToResult(size_t cnt_correct, size_t cnt_all);
 
     void changeTabToRevision();
 

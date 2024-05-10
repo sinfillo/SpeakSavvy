@@ -15,5 +15,5 @@ StartQuizWidget::~StartQuizWidget()
 
 void StartQuizWidget::on_startQuizButton_clicked()
 {
-    emit changeWidget();
+    emit changeWidget(static_cast<size_t>(QString(ui->comboBox->currentText()).toInt()));
 }
