@@ -1,5 +1,6 @@
 #include "quizwidget.h"
 #include "ui_quizwidget.h"
+#include <iostream>
 
 QuizWidget::QuizWidget(QWidget *parent)
     : QWidget(parent)
@@ -34,7 +35,6 @@ QuizWidget::QuizWidget(const QString &username_, QWidget *parent)
     ui->timeLabel->setText(answer_time.toString(format_time));
     timer = new QTimer(this);
     timer->setParent(this);
-    qDebug() << "hahahahahhaha";
     connect(timer, &QTimer::timeout, this, &QuizWidget::updateTimeInfo);
     start_tour_time = answer_time;
     end_tour_time = end_time;
@@ -54,14 +54,13 @@ QuizWidget::QuizWidget(const QString &username_, QWidget *parent)
 
 
     dbHandler = new DatabaseHandler;
-    dbHandler->getWordsInfoFromDB(username);
+    //dbHandler->getWordsInfoFromDB(username);
     connect(dbHandler, &DatabaseHandler::wordsRead, this, &QuizWidget::updateWords);
 
 }
 
 void QuizWidget::regenNewQuiz(size_t new_cnt)
 {
-    qDebug() << "kukuk";
     ui->cntCorrectLabel->setText("0");
     ui->cntAllLabel->setText(QString::number(new_cnt));
     ui->cntCorrectLabel->setStyleSheet(style_translation_button);
@@ -76,7 +75,8 @@ void QuizWidget::regenNewQuiz(size_t new_cnt)
     start_tour_time = answer_time;
     QString remainder = "Осталось слов: " + QString::number(cnt - cnt_tour);
     ui->remainderLabel->setText(remainder);
-    selectNewWord();
+    //selectNewWord();
+    dbHandler->getWordsInfoFromDB(username);
 }
 
 
@@ -109,30 +109,34 @@ void QuizWidget::selectNewWord()
     ui->translationButton2->setStyleSheet(neutral_color);
     ui->translationButton3->setStyleSheet(neutral_color);
     indx_correct_translation = dis_word(gen);
+    std::cerr << indx_correct_translation << "translation indx" << std::endl;
+    std::cerr << words.size() << std::endl;
     indx_correct_button = dis_button(gen);
-    ui->curWordLabel->setText(eng_words[indx_correct_translation]);
-    size_t indx_wrong1 = dis_word(gen);
-    while (indx_wrong1 == indx_correct_translation || translations[indx_wrong1] == translations[indx_correct_translation]) {
-        indx_wrong1 = dis_word(gen);
+    ui->curWordLabel->setText(words[indx_correct_translation].getWord());
+    size_t indx_wrong1 = genWordIndx();
+    qDebug() << indx_wrong1 << "wrong translation indx";
+    while (indx_wrong1 == indx_correct_translation || words[indx_wrong1].getTranslation() == words[indx_correct_translation].getTranslation()) {
+        indx_wrong1 = genWordIndx();
     }
-    size_t indx_wrong2 = dis_word(gen);
-    while (indx_wrong2 == indx_correct_translation || translations[indx_wrong2] == translations[indx_correct_translation] || indx_wrong2 == indx_wrong1 || translations[indx_wrong1] == translations[indx_wrong2]) {
-        indx_wrong2 = dis_word(gen);
+    size_t indx_wrong2 = genWordIndx();
+    while (indx_wrong2 == indx_correct_translation || words[indx_wrong2].getTranslation() == words[indx_correct_translation].getTranslation() ||
+            indx_wrong2 == indx_wrong1 || words[indx_wrong1].getTranslation() == words[indx_wrong2].getTranslation()) {
+        indx_wrong2 = genWordIndx();
     }
+
     if (indx_correct_button == 0) {
-        ui->translationButton1->setText(translations[indx_correct_translation]);
-        ui->translationButton2->setText(translations[indx_wrong1]);
-        ui->translationButton3->setText(translations[indx_wrong2]);
+        ui->translationButton1->setText(words[indx_correct_translation].getTranslation());
+        ui->translationButton2->setText(words[indx_wrong1].getTranslation());
+        ui->translationButton3->setText(words[indx_wrong2].getTranslation());
     } else if (indx_correct_button == 1) {
-        ui->translationButton2->setText(translations[indx_correct_translation]);
-        ui->translationButton1->setText(translations[indx_wrong1]);
-        ui->translationButton3->setText(translations[indx_wrong2]);
+        ui->translationButton2->setText(words[indx_correct_translation].getTranslation());
+        ui->translationButton1->setText(words[indx_wrong1].getTranslation());
+        ui->translationButton3->setText(words[indx_wrong2].getTranslation());
     } else {
-        ui->translationButton3->setText(translations[indx_correct_translation]);
-        ui->translationButton2->setText(translations[indx_wrong1]);
-        ui->translationButton1->setText(translations[indx_wrong2]);
+        ui->translationButton3->setText(words[indx_correct_translation].getTranslation());
+        ui->translationButton2->setText(words[indx_wrong1].getTranslation());
+        ui->translationButton1->setText(words[indx_wrong2].getTranslation());
     }
-    qDebug() << translations[indx_correct_translation];
 }
 
 void QuizWidget::pushNotification(QString msg)
@@ -146,7 +150,19 @@ void QuizWidget::pushNotification(QString msg)
     auto timer2 = new QTimer(msgbox);
     QObject::connect(timer2, &QTimer::timeout, msgbox, &QMessageBox::deleteLater);
     QObject::connect(timer2, &QTimer::timeout, this, &QuizWidget::selectNewWordAndUpdTimer);
-    timer2->start(2000);
+    timer2->start(1500);
+}
+
+size_t QuizWidget::genWordIndx()
+{
+    size_t gen_sum = dis_sum(gen);
+    size_t pos_in_word = std::lower_bound(pref_sum.begin(), pref_sum.end(), gen_sum) - pref_sum.begin();
+    while (pos_in_word == 0) {
+        pos_in_word = dis_word(gen);
+    }
+    qDebug() << pos_in_word << "uraaa";
+    --pos_in_word;
+    return pos_in_word;
 }
 
 void QuizWidget::paintCorrectButton()
@@ -188,6 +204,7 @@ void QuizWidget::on_translationButton1_clicked()
     }
     if (indx_correct_button == 0) {
         timer->stop();
+        cnt_correct_click[words[indx_correct_translation].getWord()];
         updateProgressBar();
         pushNotification(correct_button_msg);
     } else {
@@ -212,6 +229,7 @@ void QuizWidget::on_translationButton2_clicked()
     }
     if (indx_correct_button == 1) {
         timer->stop();
+        cnt_correct_click[words[indx_correct_translation].getWord()];
         updateProgressBar();
         pushNotification(correct_button_msg);
     } else {
@@ -234,6 +252,7 @@ void QuizWidget::on_translationButton3_clicked()
     }
     if (indx_correct_button == 2) {
         timer->stop();
+        cnt_correct_click[words[indx_correct_translation].getWord()];
         updateProgressBar();
         pushNotification(correct_button_msg);
     } else {
@@ -272,15 +291,7 @@ void QuizWidget::selectNewWordAndUpdTimer()
 
 void QuizWidget::updateWords()
 {
-    QList<Word> words = dbHandler->getWords();
-    //words.clear();
-    //cnt = words.size();
-    //cnt = 0;
-    std::vector<size_t> perm(words.size());
-    std::iota(perm.begin(), perm.end(), 0);
-    std::random_device rd;
-    std::mt19937 g(rd());
-    std::shuffle(perm.begin(), perm.end(), g);
+    words = dbHandler->getWords();
     if (words.size() == 0) {
         back_to_start = false;
         ui->curWordLabel->setText("You haven't added any words yet!");
@@ -293,15 +304,23 @@ void QuizWidget::updateWords()
         ui->translationButton2->hide();
         ui->translationButton3->hide();
     } else {
-        qDebug() << "i hate";
-        translations.resize(cnt);
-        eng_words.resize(cnt);
-        dis_word = std::uniform_int_distribution<int>(0, cnt - 1);
-        dis_button = std::uniform_int_distribution<int>(0, 2);
-        for (size_t i = 0; i < cnt; ++i) {
-            eng_words[i] = words[perm[i % words.size()]].getWord();
-            translations[i] = words[perm[i % words.size()]].getTranslation();
+        int64_t cnt_all_correct_click = 0;
+        for (const auto& word : words) {
+            if (cnt_correct_click.find(word.getWord()) == cnt_correct_click.end()) {
+                cnt_correct_click[word.getWord()] = 1;
+            }
+            cnt_all_correct_click += cnt_correct_click[word.getWord()];
         }
+        pref_sum.resize(words.size() + 1, 0);
+        size_t pt = 1;
+        for (const auto& word_info : cnt_correct_click) {
+            pref_sum[pt] = pref_sum[pt - 1] + (cnt_all_correct_click - word_info.second);
+            ++pt;
+        }
+
+        dis_sum = std::uniform_int_distribution<int64_t>(0, pref_sum.back());
+        dis_button = std::uniform_int_distribution<size_t>(0, 2);
+        dis_word = std::uniform_int_distribution<size_t>(1, words.size());
         selectNewWord();
     }
 }

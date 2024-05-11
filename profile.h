@@ -30,7 +30,7 @@ private slots:
 
 signals:
     void logOut();
-    void goToRevision();
+    void goToRevision(bool flag = false);
 
 private:
     Ui::Profile *ui;

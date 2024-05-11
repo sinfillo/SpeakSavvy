@@ -10,12 +10,12 @@ Word::Word(QString word, QString translation, QObject *parent)
 
 }
 
-QString Word::getWord()
+QString Word::getWord() const
 {
     return word;
 }
 
-QString Word::getTranslation()
+QString Word::getTranslation() const
 {
     return translation;
 }

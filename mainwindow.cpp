@@ -197,8 +197,9 @@ void MainWindow::changeToQuiz(size_t cnt)
     //ui->stackedWidget->tabBar()->hide();
 }
 
-void MainWindow::changeToStartQuizOrProfile(bool is_profile)
+void MainWindow::changeToStartQuizOrProfile(bool is_start)
 {
+  qDebug() << is_start;
   ui->goToGamesButton->show();
   ui->goToLibraryButton->show();
   ui->goToProfileButton->show();
@@ -206,10 +207,10 @@ void MainWindow::changeToStartQuizOrProfile(bool is_profile)
   ui->goToVideoButton->show();
   ui->goToReadingButton->show();
   ui->stackedWidget->removeWidget(quizWidget);
-  if (is_profile) {
+  ui->stackedWidget->insertWidget(5, startQuizWidget);
+  if (!is_start) {
     ui->stackedWidget->setCurrentIndex(0);
   } else {
-    ui->stackedWidget->insertWidget(5, startQuizWidget);
     ui->stackedWidget->setCurrentIndex(5);
   }
 }
@@ -238,17 +239,29 @@ void MainWindow::changeToResult(size_t cnt_correct, size_t cnt_all)
     qDebug() << cnt_correct;
 }
 
-void MainWindow::changeTabToRevision()
+void MainWindow::changeTabToRevision(bool flag)
 {
     //revisionWidget->setUsername(this->removeSpecialCharsFromEmail(authHandler->getUsername()));
     ui->stackedWidget->insertWidget(6, revisionWidget);
+    revisionWidget->setQuizFlag(flag);
     ui->stackedWidget->setCurrentIndex(6);
     //ui->stackedWidget->tabBar()->hide();!!!
 }
 
-void MainWindow::endRevision()
+void MainWindow::endRevision(bool from_quiz)
 {
+    //qDebug() << "bug_here!!!";
+    ui->goToGamesButton->show();
+    ui->goToLibraryButton->show();
+    ui->goToProfileButton->show();
+    ui->goToQuizButton->show();
+    ui->goToVideoButton->show();
+    ui->goToReadingButton->show();
     ui->stackedWidget->removeWidget(revisionWidget);
+    if (from_quiz) {
+      ui->stackedWidget->removeWidget(resultQuizWidget);
+      ui->stackedWidget->insertWidget(5, startQuizWidget);
+    }
     ui->stackedWidget->setCurrentIndex(0);
     //ui->stackedWidget->tabBar()->show();
 }

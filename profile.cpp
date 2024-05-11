@@ -38,12 +38,12 @@ void Profile::on_pushButton_5_clicked()
 
 void Profile::on_pushButton_6_clicked()
 {
-    emit goToRevision();
+    emit goToRevision(false);
 }
 
 
 void Profile::on_wordsButton_clicked()
 {
-    emit goToRevision();
+    emit goToRevision(false);
 }
 

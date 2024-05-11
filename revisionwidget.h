@@ -24,6 +24,7 @@ public:
     int currentWordIndx;
     ~RevisionWidget();
     void setUsername(QString username);
+    void setQuizFlag(bool flag);
 
 private slots:
 
@@ -36,11 +37,12 @@ private slots:
     void updateWords();
 
 signals:
-    void endRevision();
+    void endRevision(bool from_quiz);
 
 private:
     Ui::RevisionWidget *ui;
     QString username;
+    bool from_quiz = false;
 };
 
 #endif // REVISIONWIDGET_H

@@ -60,13 +60,13 @@ private slots:
     void logOut();
 
     void changeToQuiz(size_t cnt);
-    void changeToStartQuizOrProfile(bool is_profile);
+    void changeToStartQuizOrProfile(bool is_start);
     void changeToStartQuizBack();
     void changeToResult(size_t cnt_correct, size_t cnt_all);
 
-    void changeTabToRevision();
+    void changeTabToRevision(bool flag = false);
 
-    void endRevision();
+    void endRevision(bool from_quiz);
 
     void on_goToGamesButton_clicked();
 
@@ -86,6 +86,7 @@ signals:
 
 private:
     Ui::MainWindow *ui;
+
 };
 
 #endif // MAINWINDOW_H

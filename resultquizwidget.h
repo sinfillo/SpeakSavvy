@@ -22,7 +22,7 @@ private slots:
 
 signals:
     void backToStart();
-    void showRevision();
+    void showRevision(bool flag);
 
 private:
     Ui::ResultQuizWidget *ui;

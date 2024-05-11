@@ -8,7 +8,8 @@ ReadNowWidget::ReadNowWidget(QWidget *parent)
     , ui(new Ui::ReadNow)
 {
     ui->setupUi(this);
-    ui->currentBook->append("You haven't opened any books yet. Go to library and get started!");
+    allBookText = "You haven't opened any books yet. Go to library and get started!";
+    ui->currentBook->append(allBookText);
     ReadNowWidget::updateContextTextEdit("Click here to see in context");
     ui->currentBook->setReadOnly(true);
     ui->contextTextEdit->setReadOnly(true);

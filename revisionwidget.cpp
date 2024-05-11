@@ -41,6 +41,11 @@ void RevisionWidget::setUsername(QString username)
     this->username = username;
 }
 
+void RevisionWidget::setQuizFlag(bool flag)
+{
+    from_quiz = flag;
+}
+
 void RevisionWidget::on_prevButton_clicked()
 {
     if (currentWordIndx > 0) {
@@ -71,7 +76,7 @@ void RevisionWidget::on_nextButton_clicked()
 
 void RevisionWidget::on_backToMainButton_clicked()
 {
-    emit endRevision();
+    emit endRevision(from_quiz);
 }
 
 void RevisionWidget::updateWords()

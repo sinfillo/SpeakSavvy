@@ -11,6 +11,7 @@
 #include <vector>
 #include <chrono>
 #include <random>
+#include <map>
 #include "databasehandler.h"
 
 namespace Ui {
@@ -53,8 +54,9 @@ private:
     size_t indx_correct_button = 0;
     size_t indx_correct_translation = 0;
     size_t cnt_correct = 0;
-    std::uniform_int_distribution<int> dis_word;
-    std::uniform_int_distribution<int> dis_button;
+    std::uniform_int_distribution<int64_t> dis_sum;
+    std::uniform_int_distribution<size_t> dis_button;
+    std::uniform_int_distribution<size_t> dis_word;
     void selectNewWord();
     size_t cnt_tour = 0;
     QString correct_color;
@@ -76,6 +78,10 @@ private:
     QString end_time_msg = "Time is over :(";
     QString correct_button_msg = "This is the correct answer!";
     QString wrong_button_msg = "This is the wrong answer :(";
+    std::map<QString, int64_t> cnt_correct_click;
+    QList<Word> words;
+    std::vector<int64_t> pref_sum;
+    size_t genWordIndx();
 };
 
 #endif // QUIZWIDGET_H

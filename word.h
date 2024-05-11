@@ -10,8 +10,8 @@ class Word : public QObject
 public:
     explicit Word(QObject *parent = nullptr);
     Word(QString word, QString translation, QObject *parent = nullptr);
-    QString getWord();
-    QString getTranslation();
+    QString getWord() const;
+    QString getTranslation() const;
     Word(const Word &other);
     Word& operator=(const Word &other);
 
