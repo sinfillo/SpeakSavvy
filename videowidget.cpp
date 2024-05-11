@@ -8,7 +8,6 @@ VideoWidget::VideoWidget(QWidget *parent)
     perm.resize(cnt_video);
     perm[0] = 0;
     perm[1] = 1;
-    //auto rng = std::default_random_engine {};
     gen_permutatuon(perm);
 
     path_files_video.resize(cnt_video);
@@ -57,7 +56,6 @@ VideoWidget::VideoWidget(QWidget *parent)
     ui->horizontalSlider->setRange(0, player->duration());
     max_duration = player->duration() / 1000;
     video->show();
-    //updateVideoAndSlider();
 
 }
 
@@ -113,12 +111,10 @@ void VideoWidget::updateVideoAndSlider()
         player->pause();
     } else {
         if (prev_file_path != "") {
-            qDebug() << prev_file_path;
             if (prev_file_path == path_files_video[perm[cur_index_perm]]) {
                 player->setPosition(0);
                 player->play();
             } else {
-                qDebug() << "i am here";
                 video = new QVideoWidget();
                 video->setGeometry(5, 5, ui->groupBox->width() - 10, ui->groupBox->height() - 10);
                 audio = new QAudioOutput();

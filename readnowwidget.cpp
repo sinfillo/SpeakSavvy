@@ -104,32 +104,6 @@ void ReadNowWidget::checkSelectedText(QMouseEvent *mouseEvent)
     QString word = textCursor.selectedText();
     currentWord = word;
 
-    /*QString YANDEX_FOLDER_ID = "b1gdvvrsofu7cdcuro7r";
-    QString YANDEX_API_KEY = "AQVN1U-MaZdwjE0LDO33OkAYBC5-ntvdiIyhzzsg"; // сюда ключ
-    QNetworkAccessManager manager;
-    QNetworkRequest request;
-    QUrl url("https://translate.api.cloud.yandex.net/translate/v2/translate");
-    QJsonObject json;
-    json["targetLanguageCode"] = "ru";
-    json["format"] = "PLAIN_TEXT";
-    json["texts"] = QJsonArray::fromStringList({word});
-    json["folderId"] = YANDEX_FOLDER_ID;
-
-    request.setUrl(url);
-    request.setRawHeader("Authorization", QString("Api-Key %1").arg(YANDEX_API_KEY).toUtf8());
-    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
-
-    QNetworkReply* reply = manager.post(request, QJsonDocument(json).toJson());
-    QEventLoop loop;
-    QObject::connect(reply, SIGNAL(finished()), &loop, SLOT(quit()));
-    loop.exec();
-
-    QByteArray response_data = reply->readAll();
-    //qDebug() << response_data;
-    QJsonDocument json_doc = QJsonDocument::fromJson(response_data);
-    QJsonObject json_obj = json_doc.object();
-    QJsonArray translations = json_obj.value("translations").toArray();
-    QJsonObject first_translation = translations.first().toObject();*/
     QString translation = translateText(word);
 
     QPixmap yandexPixmap("Yandex_Translate_icon.png");
@@ -170,7 +144,6 @@ QString ReadNowWidget::translateText(const QString& text)
     loop.exec();
 
     QByteArray response_data = reply->readAll();
-    //qDebug() << response_data;
     QJsonDocument json_doc = QJsonDocument::fromJson(response_data);
     QJsonObject json_obj = json_doc.object();
     QJsonArray translations = json_obj.value("translations").toArray();

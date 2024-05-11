@@ -15,9 +15,9 @@ ResultQuizWidget::~ResultQuizWidget()
 
 void ResultQuizWidget::updateResults(size_t cnt_correct, size_t cnt)
 {
-    QString result_text = "Ваш результат: ";
+    QString result_text = "Your score is ";
     result_text += QString::number(static_cast<int>(cnt_correct));
-    result_text += " из ";
+    result_text += " out of ";
     result_text += QString::number(static_cast<int>(cnt));
     result_text += "!";
     ui->resultTextLabel->setText(result_text);

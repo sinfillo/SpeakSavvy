@@ -35,35 +35,35 @@ private slots:
     void on_horizontalSlider_valueChanged(int value);
     void durationChanged(qint64 durationTime);
     void getSubtitleText(qint64 playTime);
-
     void on_nextVideoButton_clicked();
-
     void on_prevVideoButton_clicked();
 public slots:
     void stopVideo(int kek);
 
 private:
-    size_t cnt_video = 2;
     Ui::VideoWidget *ui;
     QMediaPlayer *player;
     QVideoWidget *video;
     QAudioOutput *audio;
+
+    size_t cnt_video = 2;
     double prev_start_time = -1;
     bool is_video_stop = false;
-    void stopOrPlayVideo();
     qint64 max_duration;
-    void updateDuration(qint64 durationTime);
-    void turnBackVideo();
-    void turnForwardVideo();
     std::vector<size_t> perm;
     std::vector<QString> path_files_video;
     std::vector<QString> path_files_subtitles;
+    QString prev_file_path = "";
     size_t cur_index_perm = 0;
-    void updateVideoAndSlider();
     bool is_last_video = false;
     bool stop_video_another_widget = true;
+
     void gen_permutatuon(std::vector<size_t>& perm);
-    QString prev_file_path = "";
+    void updateVideoAndSlider();
+    void updateDuration(qint64 durationTime);
+    void turnBackVideo();
+    void turnForwardVideo();
+    void stopOrPlayVideo();
 
 };
 
