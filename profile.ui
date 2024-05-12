@@ -3650,7 +3650,7 @@ border: 1px solid pink;</string>
 border: 1px solid pink;</string>
        </property>
        <property name="text">
-        <string>0 day sreak</string>
+        <string>0 day streak</string>
        </property>
        <property name="default">
         <bool>true</bool>

@@ -891,7 +891,7 @@ public:
         wordsButton->setText(QCoreApplication::translate("Profile", "Words", nullptr));
         GameButton_11->setText(QCoreApplication::translate("Profile", "Books", nullptr));
         GameButton_5->setText(QCoreApplication::translate("Profile", "Statistics", nullptr));
-        GameButton_6->setText(QCoreApplication::translate("Profile", "0 day sreak", nullptr));
+        GameButton_6->setText(QCoreApplication::translate("Profile", "0 day streak", nullptr));
         GameButton_9->setText(QCoreApplication::translate("Profile", "0 total XP", nullptr));
         GameButton_7->setText(QCoreApplication::translate("Profile", "No current league", nullptr));
         GameButton_10->setText(QCoreApplication::translate("Profile", "0 top finishes", nullptr));

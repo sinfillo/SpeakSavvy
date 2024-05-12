@@ -128,8 +128,6 @@ void MainWindow::LogIntoAccount(QString m_idToken, QString email)
 void MainWindow::signInError(QString error)
 {
     QMessageBox msgBox;
-    msgBox.setGeometry(850, 450, 250, 200);
-    msgBox.setStandardButtons(QMessageBox::NoButton);
     if (error == "INVALID_EMAIL") {
         msgBox.setText("Invalid email");
     } else if (error == "INVALID_LOGIN_CREDENTIALS") {

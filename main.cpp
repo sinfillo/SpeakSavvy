@@ -23,10 +23,8 @@ int main(int argc, char *argv[]){
         }
     }
 
-    //bookWindow w;
-    //w.show();
     MainWindow w;
-    //w.setWindowState(Qt::WindowFullScreen);
+    w.setWindowTitle("SpeakSavvy");
     w.show();
     return app.exec();
 }
