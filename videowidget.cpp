@@ -271,7 +271,7 @@ void VideoWidget::on_nextVideoButton_clicked() {
         is_last_video = true;
         updateVideoAndSlider();
         QMessageBox msgBox;
-        msgBox.setText("На сегодня все!");
+        msgBox.setText("All for now!");
         msgBox.exec();
     } else {
         ++cur_index_perm;

@@ -177,8 +177,8 @@ void MainWindow::signUp(QString email, QString password)
 void MainWindow::logIn(QString email, QString password)
 {
     authHandler->setAPIKey("AIzaSyBk6-Ki3TqW5sxiMTshkKgX2RSx6nCzEkY");
-    //authHandler->signUserIn(email, password);
-    authHandler->signUserIn("test@inbox.ru", "password");
+    authHandler->signUserIn(email, password);
+    //authHandler->signUserIn("test@inbox.ru", "password");
 }
 
 void MainWindow::logOut()

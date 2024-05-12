@@ -178,6 +178,16 @@ void ReadNowWidget::on_learnButton_clicked()
     int secondSpace = originalString.indexOf(" ", firstSpace + 1);
 
     QString result = originalString.mid(secondSpace + 1).toLower();
+    auto msgbox = new QMessageBox(this);
+    msgbox->setGeometry(850, 450, 200, 50);
+    msgbox->setWindowTitle("Notification");
+    msgbox->setText("Added!");
+    msgbox->setStandardButtons(QMessageBox::NoButton);
+    msgbox->open();
+    auto timer2 = new QTimer(msgbox);
+    QObject::connect(timer2, &QTimer::timeout, msgbox, &QMessageBox::deleteLater);
+    //QObject::connect(timer2, &QTimer::timeout, this, &QuizWidget::selectNewWordAndUpdTimer);
+    timer2->start(1000);
     qDebug() <<"WQEHFGVJKHIOIOJKNKNLBJJK " << result;
     dbHandler->sendPostRequestWithAWord(email, currentWord.toLower(), result);
   }
