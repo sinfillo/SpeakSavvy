@@ -22,13 +22,12 @@ MainWindow::MainWindow(QWidget *parent)
     //ui->stackedWidget->setTabBarAutoHide(true);
 
     ui->statusbar->hide();
-    //ui->goToGamesButton->setText("");
-    //ui->goToLibraryButton->setText("");
-    //ui->goToProfileButton->setText("");
-    //ui->goToReadingButton->setText("");
-    //ui->goToQuizButton->setText("");
-    //ui->goToVideoButton->setText("");
-
+    ui->goToGamesButton->setToolTip("Game");
+    ui->goToLibraryButton->setToolTip("Library");
+    ui->goToProfileButton->setToolTip("My profile");
+    ui->goToQuizButton->setToolTip("Quiz");
+    ui->goToVideoButton->setToolTip("Video");
+    ui->goToReadingButton->setToolTip("Reading now");
 
     QPixmap gamePixmap(":/png/game-console.png");
     QIcon gameButtonIcon(gamePixmap);
