@@ -22,7 +22,7 @@ QuizWidget::QuizWidget(const QString &username_, QWidget *parent)
     safe_color = QString("QProgressBar::chunk {background-color: %1; width: 5px;}").arg(QColor(Qt::darkGreen).name());
     //style_translation_button = QString("font-size: 24pt; font-family: PT Mono");
     //border-radius: 15; border: border: 1px solid black
-    style_translation_button = QString("font-size: 24pt; font-family: YuGothic; border-radius: 15; border-width: 1px; border-style: solid; border-color: black");
+    style_translation_button = QString("font-size: 24pt; font-family: Arial; border-radius: 15; border-width: 1px; border-style: solid; border-color: black");
     other_style = QString("font-size: 24pt; font-family: YuGothic");
     neutral_color += ("; " + style_translation_button);
     correct_color += ("; " + style_translation_button);

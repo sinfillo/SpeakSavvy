@@ -107,6 +107,14 @@
        <height>60</height>
       </size>
      </property>
+     <property name="font">
+      <font>
+       <family>YuGothic</family>
+       <pointsize>24</pointsize>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
      <property name="styleSheet">
       <string notr="true">font: 24pt &quot;YuGothic&quot;;
 border-radius: 15;
