@@ -13,9 +13,9 @@ VideoWidget::VideoWidget(QWidget *parent)
     path_files_video.resize(cnt_video);
     path_files_subtitles.resize(cnt_video);
     path_files_video[0] = "qrc:/mp4/lolvideo.mp4";
-    path_files_subtitles[0] = "lolsubtitles.srt";
+    path_files_subtitles[0] = ":/txt/subtitles1.txt";
     path_files_video[1] = "qrc:/mp4/example2.mp4";
-    path_files_subtitles[1] = "example2.srt";
+    path_files_subtitles[1] = ":/txt/subtitles2.txt";
     prev_file_path = "";
 
     QShortcut *shortcut_space = new QShortcut(QKeySequence(Qt::Key_Space), this);
@@ -165,7 +165,7 @@ void VideoWidget::getSubtitleText(qint64 playTime)
         double endTime = element->getEndTime();
         if( (startTime <= playTime) && (playTime <= endTime)) {
             if (prev_start_time == -1 || prev_start_time != startTime) {
-                ui->textEdit->setText(QString::fromStdString(element->getText()));
+                ui->textEdit->setText(element->getSubtitle());
                 prev_start_time = startTime;
             }
             return;
@@ -177,24 +177,20 @@ void VideoWidget::getSubtitleText(qint64 playTime)
 
 void VideoWidget::readSubtitleFile(QString directory)
 {
-    if(!isFileExist(directory.toStdString())) {
-        qDebug() << "file does not exist";
-        return;
+    QFile subtitle_file(directory);
+    subtitle_file.open(QIODevice::ReadOnly);
+    QTextStream in(&subtitle_file);
+    sub.clear();
+    while (!in.atEnd()) {
+        QString line = in.readLine();
+        QStringList lst_list = line.split(QString("___"));
+        QString subtitle = lst_list.at(0);
+        qint64 start_time = lst_list.at(1).toLongLong();
+        qint64 end_time = lst_list.at(2).toLongLong();
+        qDebug() << subtitle << start_time << end_time;
+        sub.push_back(new SubtitleItem(subtitle, start_time, end_time));
     }
-    SubtitleParserFactory *subParserFactory = new SubtitleParserFactory(directory.toStdString());
-    SubtitleParser *parser = subParserFactory->getParser();
-
-    sub = parser->getSubtitles();
-}
-
-bool VideoWidget::isFileExist(const std::string &temp)
-{
-    if (FILE *file = fopen(temp.c_str(), "r")) {
-        fclose(file);
-        return true;
-    } else {
-        return false;
-    }
+    subtitle_file.close();
 }
 
 bool VideoWidget::eventFilter(QObject *watched, QEvent *event)

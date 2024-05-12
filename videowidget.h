@@ -11,9 +11,12 @@
 #include <QtWidgets>
 #include <QVector>
 #include <QString>
+#include <QFile>
+#include <QTextStream>
+#include <QStringList>
 #include <algorithm>
 #include <random>
-#include "subtitlesparser.h"
+#include "subtitleitem.h"
 
 namespace Ui {
 class VideoWidget;
@@ -26,11 +29,7 @@ class VideoWidget : public QWidget
 public:
     explicit VideoWidget(QWidget *parent = nullptr);
     ~VideoWidget();
-    std::vector<SubtitleItem*> sub;
-    void readSubtitleFile(QString directory);
-    bool isFileExist(const std::string& temp);
     bool eventFilter(QObject *watched, QEvent *event);
-    void translateSelectedText(QMouseEvent *mouseEvent);
 private slots:
     void on_horizontalSlider_valueChanged(int value);
     void durationChanged(qint64 durationTime);
@@ -54,10 +53,13 @@ private:
     std::vector<QString> path_files_video;
     std::vector<QString> path_files_subtitles;
     QString prev_file_path = "";
+    std::vector<SubtitleItem*> sub;
     size_t cur_index_perm = 0;
     bool is_last_video = false;
     bool stop_video_another_widget = true;
 
+    void translateSelectedText(QMouseEvent *mouseEvent);
+    void readSubtitleFile(QString directory);
     void gen_permutatuon(std::vector<size_t>& perm);
     void updateVideoAndSlider();
     void updateDuration(qint64 durationTime);

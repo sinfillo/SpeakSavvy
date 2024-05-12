@@ -2,6 +2,8 @@
     <qresource prefix="/img"/>
     <qresource prefix="/txt">
         <file>resources/Dictionary.txt</file>
+        <file>subtitles1.txt</file>
+        <file>subtitles2.txt</file>
     </qresource>
     <qresource prefix="/json">
         <file>resources/statistics.json</file>
