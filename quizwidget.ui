@@ -108,7 +108,10 @@
       </size>
      </property>
      <property name="styleSheet">
-      <string notr="true">font: 20pt &quot;PT Mono&quot;;</string>
+      <string notr="true">font: 24pt &quot;YuGothic&quot;;
+border-radius: 15;
+border: 1px solid black;
+</string>
      </property>
      <property name="text">
       <string>ПЕРЕВОД 1</string>
@@ -150,7 +153,9 @@
       </size>
      </property>
      <property name="styleSheet">
-      <string notr="true">font: 20pt &quot;PT Mono&quot;;</string>
+      <string notr="true">font: 24pt &quot;YuGothic&quot;;
+border-radius: 15;
+border: 1px solid black;</string>
      </property>
      <property name="text">
       <string>ПЕРЕВОД 2</string>
@@ -192,7 +197,9 @@
       </size>
      </property>
      <property name="styleSheet">
-      <string notr="true">font: 20pt &quot;PT Mono&quot;;</string>
+      <string notr="true">font: 24pt &quot;YuGothic&quot;;
+border-radius: 15;
+border: 1px solid black;</string>
      </property>
      <property name="text">
       <string>ПЕРЕВОД 3</string>

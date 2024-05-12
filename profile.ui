@@ -530,6 +530,26 @@ background-color: rgb(231, 231, 231);</string>
        </property>
       </widget>
      </item>
+     <item>
+      <widget class="QPushButton" name="pushButton">
+       <property name="maximumSize">
+        <size>
+         <width>60</width>
+         <height>30</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border-radius: 15;
+border: 1px solid pink;</string>
+       </property>
+       <property name="text">
+        <string>Log out</string>
+       </property>
+       <property name="flat">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
     </layout>
    </item>
    <item>
@@ -4653,7 +4673,7 @@ border: 1px solid pink;</string>
 border: 1px solid pink;</string>
        </property>
        <property name="text">
-        <string>No current League</string>
+        <string>No current league</string>
        </property>
        <property name="flat">
         <bool>true</bool>

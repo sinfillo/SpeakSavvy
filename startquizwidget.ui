@@ -20,7 +20,7 @@
       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;You will see a word in English and several translations.&lt;/p&gt;&lt;p&gt;Choose the correct one. &lt;/p&gt;&lt;p&gt;But hurry, time is limited!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
      <property name="styleSheet">
-      <string notr="true">font: 20pt &quot;PT Mono&quot;;</string>
+      <string notr="true">font: 24pt &quot;YuGothic&quot;;</string>
      </property>
      <property name="text">
       <string>You will see a word in English and several translations. Choose the correct one. But hurry, time is limited! Good luck!</string>
@@ -37,9 +37,14 @@
     <widget class="QLabel" name="label">
      <property name="font">
       <font>
-       <family>PT Mono</family>
+       <family>YuGothic</family>
        <pointsize>20</pointsize>
+       <italic>false</italic>
+       <bold>false</bold>
       </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 20pt &quot;YuGothic&quot;;</string>
      </property>
      <property name="text">
       <string>Select word count:</string>
@@ -51,14 +56,17 @@
      <property name="font">
       <font>
        <family>PT Mono</family>
-       <pointsize>24</pointsize>
+       <pointsize>20</pointsize>
        <italic>false</italic>
        <bold>false</bold>
       </font>
      </property>
      <property name="styleSheet">
-      <string notr="true">font: 24pt &quot;PT Mono&quot;;
-background-color: rgb(255, 144, 106);</string>
+      <string notr="true">border: 1px solid pink;
+background-color: pink;
+font: 20pt;
+border-radius: 10;
+</string>
      </property>
      <item>
       <property name="text">
@@ -80,8 +88,10 @@ background-color: rgb(255, 144, 106);</string>
    <item row="2" column="0" colspan="2">
     <widget class="QPushButton" name="startQuizButton">
      <property name="styleSheet">
-      <string notr="true">font: 24pt &quot;PT Mono&quot;;
-background-color: rgb(255, 144, 106);</string>
+      <string notr="true">font: 24pt &quot;YuGothic&quot;;
+border-radius: 10;
+border: 1px solid pink;
+background-color: pink;</string>
      </property>
      <property name="text">
       <string>Start quiz</string>

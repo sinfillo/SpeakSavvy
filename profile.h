@@ -28,6 +28,8 @@ private slots:
 
     void on_wordsButton_clicked();
 
+    void on_pushButton_clicked();
+
 signals:
     void logOut();
     void goToRevision(bool flag = false);

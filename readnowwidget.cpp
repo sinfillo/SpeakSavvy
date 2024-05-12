@@ -17,6 +17,8 @@ ReadNowWidget::ReadNowWidget(QWidget *parent)
     ui->contextTextEdit->viewport()->installEventFilter(this);
     dbHandler = new DatabaseHandler;
     dbHandler->getBookInfoFromDB();
+    this->setStyleSheet("QScrollBar { background-color: transparent; } QScrollBar::handle:vertical {  background: pink; border-radius: 5px; } QScrollBar::left-arrow:vertical, QScrollBar::right-arrow:vertical { border: none; background: none; color: none;} QScrollBar::add-line:vertical {border: none;background: none;} QScrollBar::sub-line:vertical {border: none;background: none;}");
+
     //connect(dbHandler, &DatabaseHandler::booksRead, this, &ReadNowWidget::updateReadNowWidget);
     //connect(this, &BookWidget::doubleClicked, this, &BookWidget::translateSelectedText);
 }
@@ -67,6 +69,8 @@ void ReadNowWidget::updateReadNowWidget()
       allBookText = dbHandler->getBooks()[currentBookId].getBookText();
     }
     ui->currentBook->append(allBookText);
+    ui->currentBook->moveCursor (QTextCursor::Start) ;
+    ui->currentBook->ensureCursorVisible() ;
 }
 
 void ReadNowWidget::checkSelectedText(QMouseEvent *mouseEvent)
@@ -106,7 +110,7 @@ void ReadNowWidget::checkSelectedText(QMouseEvent *mouseEvent)
 
     QString translation = translateText(word);
 
-    QPixmap yandexPixmap("Yandex_Translate_icon.png");
+    QPixmap yandexPixmap(":/png/Yandex_Translate_icon.png");
     QIcon yandexButtonIcon(yandexPixmap);
     ui->translationWindow->setIcon(yandexButtonIcon);
 
@@ -144,6 +148,7 @@ QString ReadNowWidget::translateText(const QString& text)
     loop.exec();
 
     QByteArray response_data = reply->readAll();
+    qDebug() << response_data;
     QJsonDocument json_doc = QJsonDocument::fromJson(response_data);
     QJsonObject json_obj = json_doc.object();
     QJsonArray translations = json_obj.value("translations").toArray();
@@ -159,7 +164,7 @@ bool ReadNowWidget::isDelimiter(QChar sym)
 void ReadNowWidget::on_pushButton_2_clicked()
 {
   if (ui->translationWindow->text() != "") {
-      dbHandler->sendPostRequestWithAWord(email, currentWord, ui->translationWindow->text());
+        dbHandler->sendPostRequestWithAWord(email, currentWord.toLower(), ui->translationWindow->text());
   }
 }
 
@@ -173,7 +178,7 @@ void ReadNowWidget::on_learnButton_clicked()
 
     QString result = originalString.mid(secondSpace + 1).toLower();
     qDebug() <<"WQEHFGVJKHIOIOJKNKNLBJJK " << result;
-    dbHandler->sendPostRequestWithAWord(email, currentWord, result);
+    dbHandler->sendPostRequestWithAWord(email, currentWord.toLower(), result);
   }
 }
 

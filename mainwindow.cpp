@@ -29,29 +29,29 @@ MainWindow::MainWindow(QWidget *parent)
     //ui->goToVideoButton->setText("");
 
 
-    QPixmap gamePixmap("game-console.png");
+    QPixmap gamePixmap(":/png/game-console.png");
     QIcon gameButtonIcon(gamePixmap);
     ui->goToGamesButton->setIcon(gameButtonIcon);
 
 
-    QPixmap booksPixmap("books.png");
+    QPixmap booksPixmap(":/png/books.png");
     QIcon booksButtonIcon(booksPixmap);
     ui->goToLibraryButton->setIcon(booksButtonIcon);
 
 
-    QPixmap homePixmap("home.png");
+    QPixmap homePixmap(":/png/home.png");
     QIcon homeButtonIcon(homePixmap);
     ui->goToProfileButton->setIcon(homeButtonIcon);
 
-    QPixmap openBookPixmap("open-book.png");
+    QPixmap openBookPixmap(":/png/open-book.png");
     QIcon readNowButtonIcon(openBookPixmap);
     ui->goToReadingButton->setIcon(readNowButtonIcon);
 
-    QPixmap quizPixmap("quiz.png");
+    QPixmap quizPixmap(":/png/quiz.png");
     QIcon quizButtonIcon(quizPixmap);
     ui->goToQuizButton->setIcon(quizButtonIcon);
 
-    QPixmap tvPixmap("tv.png");
+    QPixmap tvPixmap(":/png/tv.png");
     QIcon videoButtonIcon(tvPixmap);
     ui->goToVideoButton->setIcon(videoButtonIcon);
 
@@ -128,7 +128,15 @@ void MainWindow::LogIntoAccount(QString m_idToken, QString email)
 void MainWindow::signInError(QString error)
 {
     QMessageBox msgBox;
-    msgBox.setText(error);
+    msgBox.setGeometry(850, 450, 250, 200);
+    msgBox.setStandardButtons(QMessageBox::NoButton);
+    if (error == "INVALID_EMAIL") {
+        msgBox.setText("Invalid email");
+    } else if (error == "INVALID_LOGIN_CREDENTIALS") {
+        msgBox.setText("Invalid log-in credentials");
+    } else {
+        msgBox.setText(error);
+    }
     msgBox.exec();
 }
 
@@ -163,8 +171,8 @@ void MainWindow::signUp(QString email, QString password)
 void MainWindow::logIn(QString email, QString password)
 {
     authHandler->setAPIKey("AIzaSyBk6-Ki3TqW5sxiMTshkKgX2RSx6nCzEkY");
-    //authHandler->signUserIn(email, password);
-    authHandler->signUserIn("test@inbox.ru", "password");
+    authHandler->signUserIn(email, password);
+    //authHandler->signUserIn("test@inbox.ru", "password");
 }
 
 void MainWindow::logOut()

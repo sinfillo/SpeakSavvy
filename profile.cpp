@@ -6,7 +6,7 @@ Profile::Profile(QWidget *parent)
     , ui(new Ui::Profile)
 {
     ui->setupUi(this);
-    QPixmap bearPixmap("bear-2.png");
+    QPixmap bearPixmap(":/png/bear-2.png");
     QIcon avatarButtonIcon(bearPixmap);
     ui->avatarButton->setIcon(avatarButtonIcon);
 
@@ -45,5 +45,11 @@ void Profile::on_pushButton_6_clicked()
 void Profile::on_wordsButton_clicked()
 {
     emit goToRevision(false);
+}
+
+
+void Profile::on_pushButton_clicked()
+{
+    emit logOut();
 }
 

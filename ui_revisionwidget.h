@@ -23,18 +23,18 @@ class Ui_RevisionWidget
 public:
     QGridLayout *gridLayout;
     QPushButton *wordButton;
-    QPushButton *backToMainButton;
     QSpacerItem *horizontalSpacer_2;
     QPushButton *nextButton;
     QPushButton *translationButton;
     QSpacerItem *horizontalSpacer;
     QPushButton *prevButton;
+    QPushButton *backToMainButton;
 
     void setupUi(QWidget *RevisionWidget)
     {
         if (RevisionWidget->objectName().isEmpty())
             RevisionWidget->setObjectName("RevisionWidget");
-        RevisionWidget->resize(610, 354);
+        RevisionWidget->resize(618, 354);
         gridLayout = new QGridLayout(RevisionWidget);
         gridLayout->setObjectName("gridLayout");
         wordButton = new QPushButton(RevisionWidget);
@@ -44,23 +44,13 @@ public:
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(wordButton->sizePolicy().hasHeightForWidth());
         wordButton->setSizePolicy(sizePolicy);
-        wordButton->setStyleSheet(QString::fromUtf8("font: 40pt \"YuGothic\";\n"
+        wordButton->setStyleSheet(QString::fromUtf8("font: 24pt \"YuGothic\";\n"
 "border-radius: 15;\n"
-"border: 5px solid pink;"));
+"border: 5px solid pink;\n"
+"background-color: pink;\n"
+""));
 
         gridLayout->addWidget(wordButton, 2, 2, 1, 1);
-
-        backToMainButton = new QPushButton(RevisionWidget);
-        backToMainButton->setObjectName("backToMainButton");
-        QSizePolicy sizePolicy1(QSizePolicy::Policy::Ignored, QSizePolicy::Policy::Fixed);
-        sizePolicy1.setHorizontalStretch(0);
-        sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(backToMainButton->sizePolicy().hasHeightForWidth());
-        backToMainButton->setSizePolicy(sizePolicy1);
-        backToMainButton->setStyleSheet(QString::fromUtf8("font: 13pt \"PT Mono\";"));
-        backToMainButton->setFlat(true);
-
-        gridLayout->addWidget(backToMainButton, 0, 0, 1, 2);
 
         horizontalSpacer_2 = new QSpacerItem(20, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
 
@@ -68,11 +58,11 @@ public:
 
         nextButton = new QPushButton(RevisionWidget);
         nextButton->setObjectName("nextButton");
-        QSizePolicy sizePolicy2(QSizePolicy::Policy::Fixed, QSizePolicy::Policy::Fixed);
-        sizePolicy2.setHorizontalStretch(0);
-        sizePolicy2.setVerticalStretch(0);
-        sizePolicy2.setHeightForWidth(nextButton->sizePolicy().hasHeightForWidth());
-        nextButton->setSizePolicy(sizePolicy2);
+        QSizePolicy sizePolicy1(QSizePolicy::Policy::Fixed, QSizePolicy::Policy::Fixed);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(nextButton->sizePolicy().hasHeightForWidth());
+        nextButton->setSizePolicy(sizePolicy1);
         nextButton->setStyleSheet(QString::fromUtf8("font: 20pt \"PT Mono\";"));
         nextButton->setFlat(true);
 
@@ -83,9 +73,10 @@ public:
         sizePolicy.setHeightForWidth(translationButton->sizePolicy().hasHeightForWidth());
         translationButton->setSizePolicy(sizePolicy);
         translationButton->setMinimumSize(QSize(400, 91));
-        translationButton->setStyleSheet(QString::fromUtf8("font: 40pt \"YuGothic\";\n"
+        translationButton->setStyleSheet(QString::fromUtf8("font: 24pt \"Arial\";\n"
 "border-radius: 15;\n"
 "border: 5px solid pink;\n"
+"background-color: pink;\n"
 ""));
 
         gridLayout->addWidget(translationButton, 1, 2, 1, 1);
@@ -96,12 +87,25 @@ public:
 
         prevButton = new QPushButton(RevisionWidget);
         prevButton->setObjectName("prevButton");
-        sizePolicy2.setHeightForWidth(prevButton->sizePolicy().hasHeightForWidth());
-        prevButton->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(prevButton->sizePolicy().hasHeightForWidth());
+        prevButton->setSizePolicy(sizePolicy1);
         prevButton->setStyleSheet(QString::fromUtf8("font: 20pt \"PT Mono\";"));
         prevButton->setFlat(true);
 
         gridLayout->addWidget(prevButton, 1, 0, 2, 1);
+
+        backToMainButton = new QPushButton(RevisionWidget);
+        backToMainButton->setObjectName("backToMainButton");
+        QSizePolicy sizePolicy2(QSizePolicy::Policy::Ignored, QSizePolicy::Policy::Fixed);
+        sizePolicy2.setHorizontalStretch(0);
+        sizePolicy2.setVerticalStretch(0);
+        sizePolicy2.setHeightForWidth(backToMainButton->sizePolicy().hasHeightForWidth());
+        backToMainButton->setSizePolicy(sizePolicy2);
+        backToMainButton->setMaximumSize(QSize(40, 16777215));
+        backToMainButton->setStyleSheet(QString::fromUtf8("font: 13pt \"PT Mono\";"));
+        backToMainButton->setFlat(true);
+
+        gridLayout->addWidget(backToMainButton, 0, 0, 1, 1);
 
 
         retranslateUi(RevisionWidget);
@@ -113,10 +117,10 @@ public:
     {
         RevisionWidget->setWindowTitle(QCoreApplication::translate("RevisionWidget", "Form", nullptr));
         wordButton->setText(QString());
-        backToMainButton->setText(QString());
         nextButton->setText(QString());
         translationButton->setText(QString());
         prevButton->setText(QString());
+        backToMainButton->setText(QString());
     } // retranslateUi
 
 };

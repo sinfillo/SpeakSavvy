@@ -93,7 +93,10 @@ public:
         translationButton1 = new QPushButton(QuizWidget);
         translationButton1->setObjectName("translationButton1");
         translationButton1->setMinimumSize(QSize(400, 60));
-        translationButton1->setStyleSheet(QString::fromUtf8("font: 20pt \"PT Mono\";"));
+        translationButton1->setStyleSheet(QString::fromUtf8("font: 24pt \"YuGothic\";\n"
+"border-radius: 15;\n"
+"border: 1px solid black;\n"
+""));
 
         gridLayout->addWidget(translationButton1, 2, 2, 1, 1);
 
@@ -108,7 +111,9 @@ public:
         translationButton2 = new QPushButton(QuizWidget);
         translationButton2->setObjectName("translationButton2");
         translationButton2->setMinimumSize(QSize(400, 60));
-        translationButton2->setStyleSheet(QString::fromUtf8("font: 20pt \"PT Mono\";"));
+        translationButton2->setStyleSheet(QString::fromUtf8("font: 24pt \"YuGothic\";\n"
+"border-radius: 15;\n"
+"border: 1px solid black;"));
 
         gridLayout->addWidget(translationButton2, 3, 2, 1, 1);
 
@@ -123,7 +128,9 @@ public:
         translationButton3 = new QPushButton(QuizWidget);
         translationButton3->setObjectName("translationButton3");
         translationButton3->setMinimumSize(QSize(400, 60));
-        translationButton3->setStyleSheet(QString::fromUtf8("font: 20pt \"PT Mono\";"));
+        translationButton3->setStyleSheet(QString::fromUtf8("font: 24pt \"YuGothic\";\n"
+"border-radius: 15;\n"
+"border: 1px solid black;"));
 
         gridLayout->addWidget(translationButton3, 4, 2, 1, 1);
 

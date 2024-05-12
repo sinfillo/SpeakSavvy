@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>610</width>
+    <width>618</width>
     <height>354</height>
    </rect>
   </property>
@@ -23,31 +23,14 @@
       </sizepolicy>
      </property>
      <property name="styleSheet">
-      <string notr="true">font: 40pt &quot;YuGothic&quot;;
+      <string notr="true">font: 24pt &quot;YuGothic&quot;;
 border-radius: 15;
-border: 5px solid pink;</string>
+border: 5px solid pink;
+background-color: pink;
+</string>
      </property>
      <property name="text">
       <string/>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="0" colspan="2">
-    <widget class="QPushButton" name="backToMainButton">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">font: 13pt &quot;PT Mono&quot;;</string>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-     <property name="flat">
-      <bool>true</bool>
      </property>
     </widget>
    </item>
@@ -98,9 +81,10 @@ border: 5px solid pink;</string>
       </size>
      </property>
      <property name="styleSheet">
-      <string notr="true">font: 40pt &quot;YuGothic&quot;;
+      <string notr="true">font: 24pt &quot;Arial&quot;;
 border-radius: 15;
 border: 5px solid pink;
+background-color: pink;
 </string>
      </property>
      <property name="text">
@@ -131,6 +115,31 @@ border: 5px solid pink;
      </property>
      <property name="styleSheet">
       <string notr="true">font: 20pt &quot;PT Mono&quot;;</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="flat">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0">
+    <widget class="QPushButton" name="backToMainButton">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>40</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 13pt &quot;PT Mono&quot;;</string>
      </property>
      <property name="text">
       <string/>

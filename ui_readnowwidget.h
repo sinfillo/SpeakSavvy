@@ -27,14 +27,14 @@ public:
     QPushButton *translationWindow;
     QPushButton *learnButton;
     QHBoxLayout *HeaderLayout_2;
-    QPushButton *contextButton;
+    QTextEdit *contextTextEdit;
     QTextEdit *currentBook;
 
     void setupUi(QWidget *ReadNow)
     {
         if (ReadNow->objectName().isEmpty())
             ReadNow->setObjectName("ReadNow");
-        ReadNow->resize(400, 300);
+        ReadNow->resize(404, 300);
         QSizePolicy sizePolicy(QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Expanding);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -145,24 +145,26 @@ public:
         learnButton->setMaximumSize(QSize(55, 30));
         QPalette palette1;
         palette1.setBrush(QPalette::Active, QPalette::WindowText, brush);
-        palette1.setBrush(QPalette::Active, QPalette::Button, brush1);
-        palette1.setBrush(QPalette::Active, QPalette::Light, brush2);
-        QBrush brush11(QColor(217, 217, 217, 255));
+        QBrush brush11(QColor(255, 192, 203, 255));
         brush11.setStyle(Qt::SolidPattern);
-        palette1.setBrush(QPalette::Active, QPalette::Midlight, brush11);
-        QBrush brush12(QColor(90, 90, 90, 255));
+        palette1.setBrush(QPalette::Active, QPalette::Button, brush11);
+        palette1.setBrush(QPalette::Active, QPalette::Light, brush2);
+        QBrush brush12(QColor(217, 217, 217, 255));
         brush12.setStyle(Qt::SolidPattern);
-        palette1.setBrush(QPalette::Active, QPalette::Dark, brush12);
-        QBrush brush13(QColor(119, 119, 119, 255));
+        palette1.setBrush(QPalette::Active, QPalette::Midlight, brush12);
+        QBrush brush13(QColor(90, 90, 90, 255));
         brush13.setStyle(Qt::SolidPattern);
-        palette1.setBrush(QPalette::Active, QPalette::Mid, brush13);
+        palette1.setBrush(QPalette::Active, QPalette::Dark, brush13);
+        QBrush brush14(QColor(119, 119, 119, 255));
+        brush14.setStyle(Qt::SolidPattern);
+        palette1.setBrush(QPalette::Active, QPalette::Mid, brush14);
         palette1.setBrush(QPalette::Active, QPalette::Text, brush);
         palette1.setBrush(QPalette::Active, QPalette::BrightText, brush2);
         palette1.setBrush(QPalette::Active, QPalette::ButtonText, brush);
-        palette1.setBrush(QPalette::Active, QPalette::Base, brush1);
-        palette1.setBrush(QPalette::Active, QPalette::Window, brush1);
+        palette1.setBrush(QPalette::Active, QPalette::Base, brush11);
+        palette1.setBrush(QPalette::Active, QPalette::Window, brush11);
         palette1.setBrush(QPalette::Active, QPalette::Shadow, brush);
-        palette1.setBrush(QPalette::Active, QPalette::AlternateBase, brush11);
+        palette1.setBrush(QPalette::Active, QPalette::AlternateBase, brush12);
         palette1.setBrush(QPalette::Active, QPalette::ToolTipBase, brush6);
         palette1.setBrush(QPalette::Active, QPalette::ToolTipText, brush);
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
@@ -170,55 +172,57 @@ public:
 #endif
         palette1.setBrush(QPalette::Active, QPalette::Accent, brush2);
         palette1.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
-        palette1.setBrush(QPalette::Inactive, QPalette::Button, brush1);
+        palette1.setBrush(QPalette::Inactive, QPalette::Button, brush11);
         palette1.setBrush(QPalette::Inactive, QPalette::Light, brush2);
-        palette1.setBrush(QPalette::Inactive, QPalette::Midlight, brush11);
-        palette1.setBrush(QPalette::Inactive, QPalette::Dark, brush12);
-        palette1.setBrush(QPalette::Inactive, QPalette::Mid, brush13);
+        palette1.setBrush(QPalette::Inactive, QPalette::Midlight, brush12);
+        palette1.setBrush(QPalette::Inactive, QPalette::Dark, brush13);
+        palette1.setBrush(QPalette::Inactive, QPalette::Mid, brush14);
         palette1.setBrush(QPalette::Inactive, QPalette::Text, brush);
         palette1.setBrush(QPalette::Inactive, QPalette::BrightText, brush2);
         palette1.setBrush(QPalette::Inactive, QPalette::ButtonText, brush);
-        palette1.setBrush(QPalette::Inactive, QPalette::Base, brush1);
-        palette1.setBrush(QPalette::Inactive, QPalette::Window, brush1);
+        palette1.setBrush(QPalette::Inactive, QPalette::Base, brush11);
+        palette1.setBrush(QPalette::Inactive, QPalette::Window, brush11);
         palette1.setBrush(QPalette::Inactive, QPalette::Shadow, brush);
-        palette1.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush11);
+        palette1.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush12);
         palette1.setBrush(QPalette::Inactive, QPalette::ToolTipBase, brush6);
         palette1.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush);
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
         palette1.setBrush(QPalette::Inactive, QPalette::PlaceholderText, brush7);
 #endif
         palette1.setBrush(QPalette::Inactive, QPalette::Accent, brush2);
-        palette1.setBrush(QPalette::Disabled, QPalette::WindowText, brush12);
-        palette1.setBrush(QPalette::Disabled, QPalette::Button, brush1);
+        palette1.setBrush(QPalette::Disabled, QPalette::WindowText, brush13);
+        palette1.setBrush(QPalette::Disabled, QPalette::Button, brush11);
         palette1.setBrush(QPalette::Disabled, QPalette::Light, brush2);
-        palette1.setBrush(QPalette::Disabled, QPalette::Midlight, brush11);
-        palette1.setBrush(QPalette::Disabled, QPalette::Dark, brush12);
-        palette1.setBrush(QPalette::Disabled, QPalette::Mid, brush13);
-        palette1.setBrush(QPalette::Disabled, QPalette::Text, brush12);
+        palette1.setBrush(QPalette::Disabled, QPalette::Midlight, brush12);
+        palette1.setBrush(QPalette::Disabled, QPalette::Dark, brush13);
+        palette1.setBrush(QPalette::Disabled, QPalette::Mid, brush14);
+        palette1.setBrush(QPalette::Disabled, QPalette::Text, brush13);
         palette1.setBrush(QPalette::Disabled, QPalette::BrightText, brush2);
-        palette1.setBrush(QPalette::Disabled, QPalette::ButtonText, brush12);
-        palette1.setBrush(QPalette::Disabled, QPalette::Base, brush1);
-        palette1.setBrush(QPalette::Disabled, QPalette::Window, brush1);
+        palette1.setBrush(QPalette::Disabled, QPalette::ButtonText, brush13);
+        palette1.setBrush(QPalette::Disabled, QPalette::Base, brush11);
+        palette1.setBrush(QPalette::Disabled, QPalette::Window, brush11);
         palette1.setBrush(QPalette::Disabled, QPalette::Shadow, brush);
-        QBrush brush14(QColor(179, 179, 179, 255));
-        brush14.setStyle(Qt::SolidPattern);
-        palette1.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush14);
+        QBrush brush15(QColor(179, 179, 179, 255));
+        brush15.setStyle(Qt::SolidPattern);
+        palette1.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush15);
         palette1.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush6);
         palette1.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush);
-        QBrush brush15(QColor(90, 90, 90, 127));
-        brush15.setStyle(Qt::SolidPattern);
-#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette1.setBrush(QPalette::Disabled, QPalette::PlaceholderText, brush15);
-#endif
-        QBrush brush16(QColor(233, 233, 233, 255));
+        QBrush brush16(QColor(90, 90, 90, 127));
         brush16.setStyle(Qt::SolidPattern);
-        palette1.setBrush(QPalette::Disabled, QPalette::Accent, brush16);
+#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
+        palette1.setBrush(QPalette::Disabled, QPalette::PlaceholderText, brush16);
+#endif
+        QBrush brush17(QColor(233, 233, 233, 255));
+        brush17.setStyle(Qt::SolidPattern);
+        palette1.setBrush(QPalette::Disabled, QPalette::Accent, brush17);
         learnButton->setPalette(palette1);
         QFont font;
         font.setStyleStrategy(QFont::PreferDefault);
         learnButton->setFont(font);
         learnButton->setCursor(QCursor(Qt::ArrowCursor));
-        learnButton->setStyleSheet(QString::fromUtf8("border: 1px solid red;"));
+        learnButton->setStyleSheet(QString::fromUtf8("border: 1px solid pink;\n"
+"border-radius: 10;\n"
+"background-color: pink;"));
         learnButton->setIconSize(QSize(40, 40));
         learnButton->setAutoDefault(false);
         learnButton->setFlat(false);
@@ -232,89 +236,40 @@ public:
         HeaderLayout_2->setSpacing(0);
         HeaderLayout_2->setObjectName("HeaderLayout_2");
         HeaderLayout_2->setContentsMargins(5, -1, 5, -1);
-        contextButton = new QPushButton(ReadNow);
-        contextButton->setObjectName("contextButton");
-        contextButton->setMinimumSize(QSize(370, 30));
-        contextButton->setMaximumSize(QSize(200, 30));
-        QPalette palette2;
-        palette2.setBrush(QPalette::Active, QPalette::WindowText, brush);
-        palette2.setBrush(QPalette::Active, QPalette::Button, brush1);
-        palette2.setBrush(QPalette::Active, QPalette::Light, brush2);
-        palette2.setBrush(QPalette::Active, QPalette::Midlight, brush3);
-        palette2.setBrush(QPalette::Active, QPalette::Dark, brush4);
-        palette2.setBrush(QPalette::Active, QPalette::Mid, brush5);
-        palette2.setBrush(QPalette::Active, QPalette::Text, brush);
-        palette2.setBrush(QPalette::Active, QPalette::BrightText, brush2);
-        palette2.setBrush(QPalette::Active, QPalette::ButtonText, brush);
-        palette2.setBrush(QPalette::Active, QPalette::Base, brush1);
-        palette2.setBrush(QPalette::Active, QPalette::Window, brush1);
-        palette2.setBrush(QPalette::Active, QPalette::Shadow, brush);
-        palette2.setBrush(QPalette::Active, QPalette::AlternateBase, brush3);
-        palette2.setBrush(QPalette::Active, QPalette::ToolTipBase, brush6);
-        palette2.setBrush(QPalette::Active, QPalette::ToolTipText, brush);
-#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette2.setBrush(QPalette::Active, QPalette::PlaceholderText, brush7);
-#endif
-        palette2.setBrush(QPalette::Active, QPalette::Accent, brush2);
-        palette2.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
-        palette2.setBrush(QPalette::Inactive, QPalette::Button, brush1);
-        palette2.setBrush(QPalette::Inactive, QPalette::Light, brush2);
-        palette2.setBrush(QPalette::Inactive, QPalette::Midlight, brush3);
-        palette2.setBrush(QPalette::Inactive, QPalette::Dark, brush4);
-        palette2.setBrush(QPalette::Inactive, QPalette::Mid, brush5);
-        palette2.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        palette2.setBrush(QPalette::Inactive, QPalette::BrightText, brush2);
-        palette2.setBrush(QPalette::Inactive, QPalette::ButtonText, brush);
-        palette2.setBrush(QPalette::Inactive, QPalette::Base, brush1);
-        palette2.setBrush(QPalette::Inactive, QPalette::Window, brush1);
-        palette2.setBrush(QPalette::Inactive, QPalette::Shadow, brush);
-        palette2.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush3);
-        palette2.setBrush(QPalette::Inactive, QPalette::ToolTipBase, brush6);
-        palette2.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush);
-#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette2.setBrush(QPalette::Inactive, QPalette::PlaceholderText, brush7);
-#endif
-        palette2.setBrush(QPalette::Inactive, QPalette::Accent, brush2);
-        palette2.setBrush(QPalette::Disabled, QPalette::WindowText, brush4);
-        palette2.setBrush(QPalette::Disabled, QPalette::Button, brush1);
-        palette2.setBrush(QPalette::Disabled, QPalette::Light, brush2);
-        palette2.setBrush(QPalette::Disabled, QPalette::Midlight, brush3);
-        palette2.setBrush(QPalette::Disabled, QPalette::Dark, brush4);
-        palette2.setBrush(QPalette::Disabled, QPalette::Mid, brush5);
-        palette2.setBrush(QPalette::Disabled, QPalette::Text, brush4);
-        palette2.setBrush(QPalette::Disabled, QPalette::BrightText, brush2);
-        palette2.setBrush(QPalette::Disabled, QPalette::ButtonText, brush4);
-        palette2.setBrush(QPalette::Disabled, QPalette::Base, brush1);
-        palette2.setBrush(QPalette::Disabled, QPalette::Window, brush1);
-        palette2.setBrush(QPalette::Disabled, QPalette::Shadow, brush);
-        palette2.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush8);
-        palette2.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush6);
-        palette2.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush);
-#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette2.setBrush(QPalette::Disabled, QPalette::PlaceholderText, brush9);
-#endif
-        palette2.setBrush(QPalette::Disabled, QPalette::Accent, brush10);
-        contextButton->setPalette(palette2);
-        contextButton->setAutoFillBackground(false);
-        contextButton->setStyleSheet(QString::fromUtf8("background-color: rgba(0, 0, 0, 0)"));
-        contextButton->setIconSize(QSize(40, 40));
-        contextButton->setAutoDefault(false);
-        contextButton->setFlat(true);
+        contextTextEdit = new QTextEdit(ReadNow);
+        contextTextEdit->setObjectName("contextTextEdit");
+        QSizePolicy sizePolicy1(QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Fixed);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(contextTextEdit->sizePolicy().hasHeightForWidth());
+        contextTextEdit->setSizePolicy(sizePolicy1);
+        contextTextEdit->setMinimumSize(QSize(360, 50));
+        QFont font1;
+        font1.setFamilies({QString::fromUtf8("Arial")});
+        font1.setPointSize(20);
+        font1.setBold(false);
+        font1.setItalic(false);
+        contextTextEdit->setFont(font1);
+        contextTextEdit->setStyleSheet(QString::fromUtf8("font: 20pt \"Arial\";\n"
+"border-radius: 15;\n"
+"border: 5px solid pink;"));
 
-        HeaderLayout_2->addWidget(contextButton);
+        HeaderLayout_2->addWidget(contextTextEdit);
 
 
         verticalLayout->addLayout(HeaderLayout_2);
 
         currentBook = new QTextEdit(ReadNow);
         currentBook->setObjectName("currentBook");
-        QFont font1;
-        font1.setFamilies({QString::fromUtf8("YuGothic")});
-        font1.setPointSize(20);
-        font1.setBold(false);
-        font1.setItalic(false);
-        currentBook->setFont(font1);
-        currentBook->setStyleSheet(QString::fromUtf8(""));
+        sizePolicy.setHeightForWidth(currentBook->sizePolicy().hasHeightForWidth());
+        currentBook->setSizePolicy(sizePolicy);
+        QFont font2;
+        font2.setFamilies({QString::fromUtf8("YuGothic")});
+        font2.setPointSize(20);
+        font2.setBold(false);
+        font2.setItalic(false);
+        currentBook->setFont(font2);
+        currentBook->setStyleSheet(QString::fromUtf8("font: 20pt \"YuGothic\""));
 
         verticalLayout->addWidget(currentBook);
 
@@ -332,7 +287,6 @@ public:
         ReadNow->setWindowTitle(QCoreApplication::translate("ReadNow", "Form", nullptr));
         translationWindow->setText(QString());
         learnButton->setText(QCoreApplication::translate("ReadNow", "Learn", nullptr));
-        contextButton->setText(QCoreApplication::translate("ReadNow", "See in context", nullptr));
     } // retranslateUi
 
 };

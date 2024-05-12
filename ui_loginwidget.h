@@ -123,15 +123,21 @@ public:
 
         pushButton_2 = new QPushButton(LogInWidget);
         pushButton_2->setObjectName("pushButton_2");
-        pushButton_2->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 144, 106);\n"
-"font: 14pt \"Monaco\"; "));
+        pushButton_2->setStyleSheet(QString::fromUtf8("border-radius: 10;\n"
+"border: 1px solid pink;\n"
+"background-color: pink;\n"
+"font: 15pt "));
+        pushButton_2->setFlat(true);
 
         gridLayout->addWidget(pushButton_2, 9, 3, 1, 1);
 
         pushButton = new QPushButton(LogInWidget);
         pushButton->setObjectName("pushButton");
-        pushButton->setStyleSheet(QString::fromUtf8("font: 13pt \"Monaco\";\n"
-"background-color: rgb(255, 144, 106);"));
+        pushButton->setStyleSheet(QString::fromUtf8("border-radius: 10;\n"
+"border: 1px solid pink;\n"
+"background-color: pink;\n"
+"font: 15pt "));
+        pushButton->setFlat(true);
 
         gridLayout->addWidget(pushButton, 6, 1, 1, 3);
 

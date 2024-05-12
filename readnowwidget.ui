@@ -565,10 +565,10 @@
           </colorrole>
           <colorrole role="Button">
            <brush brushstyle="SolidPattern">
-            <color alpha="0">
-             <red>0</red>
-             <green>0</green>
-             <blue>0</blue>
+            <color alpha="255">
+             <red>255</red>
+             <green>192</green>
+             <blue>203</blue>
             </color>
            </brush>
           </colorrole>
@@ -637,19 +637,19 @@
           </colorrole>
           <colorrole role="Base">
            <brush brushstyle="SolidPattern">
-            <color alpha="0">
-             <red>0</red>
-             <green>0</green>
-             <blue>0</blue>
+            <color alpha="255">
+             <red>255</red>
+             <green>192</green>
+             <blue>203</blue>
             </color>
            </brush>
           </colorrole>
           <colorrole role="Window">
            <brush brushstyle="SolidPattern">
-            <color alpha="0">
-             <red>0</red>
-             <green>0</green>
-             <blue>0</blue>
+            <color alpha="255">
+             <red>255</red>
+             <green>192</green>
+             <blue>203</blue>
             </color>
            </brush>
           </colorrole>
@@ -720,10 +720,10 @@
           </colorrole>
           <colorrole role="Button">
            <brush brushstyle="SolidPattern">
-            <color alpha="0">
-             <red>0</red>
-             <green>0</green>
-             <blue>0</blue>
+            <color alpha="255">
+             <red>255</red>
+             <green>192</green>
+             <blue>203</blue>
             </color>
            </brush>
           </colorrole>
@@ -792,19 +792,19 @@
           </colorrole>
           <colorrole role="Base">
            <brush brushstyle="SolidPattern">
-            <color alpha="0">
-             <red>0</red>
-             <green>0</green>
-             <blue>0</blue>
+            <color alpha="255">
+             <red>255</red>
+             <green>192</green>
+             <blue>203</blue>
             </color>
            </brush>
           </colorrole>
           <colorrole role="Window">
            <brush brushstyle="SolidPattern">
-            <color alpha="0">
-             <red>0</red>
-             <green>0</green>
-             <blue>0</blue>
+            <color alpha="255">
+             <red>255</red>
+             <green>192</green>
+             <blue>203</blue>
             </color>
            </brush>
           </colorrole>
@@ -875,10 +875,10 @@
           </colorrole>
           <colorrole role="Button">
            <brush brushstyle="SolidPattern">
-            <color alpha="0">
-             <red>0</red>
-             <green>0</green>
-             <blue>0</blue>
+            <color alpha="255">
+             <red>255</red>
+             <green>192</green>
+             <blue>203</blue>
             </color>
            </brush>
           </colorrole>
@@ -947,19 +947,19 @@
           </colorrole>
           <colorrole role="Base">
            <brush brushstyle="SolidPattern">
-            <color alpha="0">
-             <red>0</red>
-             <green>0</green>
-             <blue>0</blue>
+            <color alpha="255">
+             <red>255</red>
+             <green>192</green>
+             <blue>203</blue>
             </color>
            </brush>
           </colorrole>
           <colorrole role="Window">
            <brush brushstyle="SolidPattern">
-            <color alpha="0">
-             <red>0</red>
-             <green>0</green>
-             <blue>0</blue>
+            <color alpha="255">
+             <red>255</red>
+             <green>192</green>
+             <blue>203</blue>
             </color>
            </brush>
           </colorrole>
@@ -1029,7 +1029,9 @@
         <cursorShape>ArrowCursor</cursorShape>
        </property>
        <property name="styleSheet">
-        <string notr="true">border: 1px solid red;</string>
+        <string notr="true">border: 1px solid pink;
+border-radius: 10;
+background-color: pink;</string>
        </property>
        <property name="text">
         <string>Learn</string>
@@ -1080,14 +1082,14 @@
        </property>
        <property name="font">
         <font>
-         <family>PT Mono</family>
+         <family>Arial</family>
          <pointsize>20</pointsize>
          <italic>false</italic>
          <bold>false</bold>
         </font>
        </property>
        <property name="styleSheet">
-        <string notr="true">font: 20pt &quot;PT Mono&quot;;
+        <string notr="true">font: 20pt &quot;Arial&quot;;
 border-radius: 15;
 border: 5px solid pink;</string>
        </property>
@@ -1105,14 +1107,14 @@ border: 5px solid pink;</string>
      </property>
      <property name="font">
       <font>
-       <family>PT Mono</family>
+       <family>YuGothic</family>
        <pointsize>20</pointsize>
        <italic>false</italic>
        <bold>false</bold>
       </font>
      </property>
      <property name="styleSheet">
-      <string notr="true"/>
+      <string notr="true">font: 20pt &quot;YuGothic&quot;</string>
      </property>
     </widget>
    </item>

@@ -25,6 +25,7 @@ public:
     QVBoxLayout *verticalLayout;
     QHBoxLayout *HeaderLayout;
     QPushButton *GameButton;
+    QPushButton *pushButton;
     QHBoxLayout *HeaderLayout_2;
     QPushButton *avatarButton;
     QPushButton *label;
@@ -153,6 +154,15 @@ public:
         GameButton->setFlat(true);
 
         HeaderLayout->addWidget(GameButton);
+
+        pushButton = new QPushButton(Profile);
+        pushButton->setObjectName("pushButton");
+        pushButton->setMaximumSize(QSize(60, 30));
+        pushButton->setStyleSheet(QString::fromUtf8("border-radius: 15;\n"
+"border: 1px solid pink;"));
+        pushButton->setFlat(true);
+
+        HeaderLayout->addWidget(pushButton);
 
 
         verticalLayout->addLayout(HeaderLayout);
@@ -875,6 +885,7 @@ public:
     {
         Profile->setWindowTitle(QCoreApplication::translate("Profile", "Form", nullptr));
         GameButton->setText(QCoreApplication::translate("Profile", "Profile", nullptr));
+        pushButton->setText(QCoreApplication::translate("Profile", "Log out", nullptr));
         avatarButton->setText(QString());
         label->setText(QCoreApplication::translate("Profile", "email", nullptr));
         wordsButton->setText(QCoreApplication::translate("Profile", "Words", nullptr));
@@ -882,7 +893,7 @@ public:
         GameButton_5->setText(QCoreApplication::translate("Profile", "Statistics", nullptr));
         GameButton_6->setText(QCoreApplication::translate("Profile", "0 day sreak", nullptr));
         GameButton_9->setText(QCoreApplication::translate("Profile", "0 total XP", nullptr));
-        GameButton_7->setText(QCoreApplication::translate("Profile", "No current League", nullptr));
+        GameButton_7->setText(QCoreApplication::translate("Profile", "No current league", nullptr));
         GameButton_10->setText(QCoreApplication::translate("Profile", "0 top finishes", nullptr));
     } // retranslateUi
 

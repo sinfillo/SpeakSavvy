@@ -88,7 +88,13 @@ void AuthHandler::parseResponse(const QByteArray &response)
     QJsonDocument jsonDocument = QJsonDocument::fromJson(response);
     if (jsonDocument.object().contains("error")) {
         qDebug() << "Error occured: " << response;
-        QString error_message = "An error occured";
+
+        QJsonDocument json_doc = QJsonDocument::fromJson(response);
+        QJsonObject json_obj = json_doc.object();
+        QJsonObject info = json_obj.value("error").toObject();
+        QString error_message = info.value("message").toString();
+
+        //QString error_message = "An error occured";
         emit userSignInError(error_message);
     } else if (jsonDocument.object().contains("kind")) {
         QString idToken = jsonDocument.object().value("idToken").toString();

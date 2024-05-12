@@ -199,22 +199,32 @@
    <item row="9" column="3">
     <widget class="QPushButton" name="pushButton_2">
      <property name="styleSheet">
-      <string notr="true">background-color: rgb(255, 144, 106);
-font: 14pt &quot;Monaco&quot;; </string>
+      <string notr="true">border-radius: 10;
+border: 1px solid pink;
+background-color: pink;
+font: 15pt </string>
      </property>
      <property name="text">
       <string>Sign Up</string>
+     </property>
+     <property name="flat">
+      <bool>true</bool>
      </property>
     </widget>
    </item>
    <item row="6" column="1" colspan="3">
     <widget class="QPushButton" name="pushButton">
      <property name="styleSheet">
-      <string notr="true">font: 13pt &quot;Monaco&quot;;
-background-color: rgb(255, 144, 106);</string>
+      <string notr="true">border-radius: 10;
+border: 1px solid pink;
+background-color: pink;
+font: 15pt </string>
      </property>
      <property name="text">
       <string>Log In</string>
+     </property>
+     <property name="flat">
+      <bool>true</bool>
      </property>
     </widget>
    </item>

@@ -35,22 +35,26 @@ public:
         verticalLayout->setObjectName("verticalLayout");
         resultTextLabel = new QLabel(ResultQuizWidget);
         resultTextLabel->setObjectName("resultTextLabel");
-        resultTextLabel->setStyleSheet(QString::fromUtf8("font: 20pt \"PT Mono\";"));
+        resultTextLabel->setStyleSheet(QString::fromUtf8("font: 20pt \"YuGothic\";"));
         resultTextLabel->setAlignment(Qt::AlignCenter);
 
         verticalLayout->addWidget(resultTextLabel);
 
         repeatButton = new QPushButton(ResultQuizWidget);
         repeatButton->setObjectName("repeatButton");
-        repeatButton->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 144, 106);\n"
-"font: 20pt \"PT Mono\";"));
+        repeatButton->setMinimumSize(QSize(0, 40));
+        repeatButton->setStyleSheet(QString::fromUtf8("border-radius: 15;\n"
+"border: 1px solid pink;\n"
+"font: 20pt \"YuGothic\";"));
 
         verticalLayout->addWidget(repeatButton);
 
         backToStartButton = new QPushButton(ResultQuizWidget);
         backToStartButton->setObjectName("backToStartButton");
-        backToStartButton->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 144, 106);\n"
-"font: 20pt \"PT Mono\";"));
+        backToStartButton->setMinimumSize(QSize(0, 40));
+        backToStartButton->setStyleSheet(QString::fromUtf8("border-radius: 15;\n"
+"border: 1px solid pink;\n"
+"font: 20pt \"YuGothic\";"));
 
         verticalLayout->addWidget(backToStartButton);
 

@@ -53,8 +53,10 @@ public:
         gridLayout->setObjectName("gridLayout");
         pushButton = new QPushButton(SignUp);
         pushButton->setObjectName("pushButton");
-        pushButton->setStyleSheet(QString::fromUtf8("font: 13pt \"Monaco\";\n"
-"background-color: rgb(255, 144, 106);"));
+        pushButton->setStyleSheet(QString::fromUtf8("border-radius: 10;\n"
+"border: 1px solid pink;\n"
+"background-color: pink;\n"
+"font: 15pt "));
 
         gridLayout->addWidget(pushButton, 6, 2, 1, 2);
 
@@ -72,8 +74,11 @@ public:
 
         pushButton_2 = new QPushButton(SignUp);
         pushButton_2->setObjectName("pushButton_2");
-        pushButton_2->setStyleSheet(QString::fromUtf8("font: 13pt \"Monaco\";\n"
-"background-color: rgb(255, 144, 106);"));
+        pushButton_2->setStyleSheet(QString::fromUtf8("border-radius: 7;\n"
+"border: 1px solid pink;\n"
+"background-color: pink;\n"
+"font: 13pt"));
+        pushButton_2->setFlat(true);
 
         gridLayout->addWidget(pushButton_2, 11, 3, 1, 1);
 
