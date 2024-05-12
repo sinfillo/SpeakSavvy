@@ -20,11 +20,14 @@ QuizWidget::QuizWidget(const QString &username_, QWidget *parent)
     danger_color = QString("QProgressBar::chunk {background-color: %1; width: 5px;}").arg(QColor(Qt::darkRed).name());
     neutral_color_prbar = QString("QProgressBar::chunk {background-color: %1; width: 5px;}").arg(QColor(Qt::darkYellow).name());
     safe_color = QString("QProgressBar::chunk {background-color: %1; width: 5px;}").arg(QColor(Qt::darkGreen).name());
-    style_translation_button = QString("font-size: 20pt; font-family: PT Mono");
+    //style_translation_button = QString("font-size: 24pt; font-family: PT Mono");
+    //border-radius: 15; border: border: 1px solid black
+    style_translation_button = QString("font-size: 24pt; font-family: YuGothic; border-radius: 15; border-width: 1px; border-style: solid; border-color: black");
+    other_style = QString("font-size: 24pt; font-family: YuGothic");
     neutral_color += ("; " + style_translation_button);
     correct_color += ("; " + style_translation_button);
-    wrong_color += ("; " +  style_translation_button);
-
+    wrong_color += ("; " + style_translation_button);
+    qDebug() << neutral_color;
     ui->cntAllLabel->setText("10");
     ui->cntCorrectLabel->setText("0");
     QTime answer_time(0, 0, 15, 0);
@@ -36,15 +39,17 @@ QuizWidget::QuizWidget(const QString &username_, QWidget *parent)
     start_tour_time = answer_time;
     end_tour_time = end_time;
 
-    QString remainder = "Осталось слов: " + QString::number(cnt - cnt_tour);
+    QString remainder = QString::number(cnt - cnt_tour) + " words left";
     ui->remainderLabel->setText(remainder);
-    ui->remainderLabel->setStyleSheet(style_translation_button);
+    ui->remainderLabel->setStyleSheet(other_style);
     ui->cntAllLabel->setAlignment(Qt::AlignHCenter);
-    ui->cntAllLabel->setStyleSheet(style_translation_button);
+    ui->cntAllLabel->setStyleSheet(other_style);
     ui->cntCorrectLabel->setAlignment(Qt::AlignHCenter);
-    ui->cntCorrectLabel->setStyleSheet(style_translation_button);
+    ui->cntCorrectLabel->setStyleSheet(other_style);
     ui->curWordLabel->setAlignment(Qt::AlignHCenter);
-    ui->backButton->setIcon(style()->standardIcon(QStyle::SP_FileDialogBack));
+    QPixmap backPixmap(":/png/left-arrow.png");
+    QIcon backButtonIcon(backPixmap);
+    ui->backButton->setIcon(backButtonIcon);
 
     connect(this, &QuizWidget::correctButton1, this, &QuizWidget::on_translationButton1_clicked);
     connect(this, &QuizWidget::correctButton2, this, &QuizWidget::on_translationButton2_clicked);
@@ -61,7 +66,7 @@ void QuizWidget::regenNewQuiz(size_t new_cnt)
     ui->backButton->hide();
     ui->cntAllLabel->hide();
     ui->cntCorrectLabel->hide();
-    ui->curWordLabel->setText("Waiting for the quiz");
+    ui->curWordLabel->setText("Waiting for the quiz...");
     ui->progressBar->hide();
     ui->remainderLabel->hide();
     ui->timeLabel->hide();
@@ -169,7 +174,7 @@ void QuizWidget::updateProgressBar()
 {
     ui->progressBar->setValue(++cnt_correct);
     ui->cntCorrectLabel->setText(QString::number(static_cast<int>(cnt_correct)));
-    ui->cntCorrectLabel->setStyleSheet(style_translation_button);
+    ui->cntCorrectLabel->setStyleSheet(other_style);
     if (cnt_correct > 0 && cnt_correct <= cnt * 0.3) {
         ui->progressBar->setStyleSheet(danger_color);
     } else if (cnt_correct > cnt * 0.3 && cnt_correct <= cnt * 0.7) {
@@ -183,9 +188,9 @@ void QuizWidget::updateProgressBar()
 void QuizWidget::on_translationButton1_clicked()
 {
     ++cnt_tour;
-    QString remainder = "Осталось слов: " + QString::number(cnt - cnt_tour);
+    QString remainder = QString::number(cnt - cnt_tour) + " words left";
     ui->remainderLabel->setText(remainder);
-    ui->remainderLabel->setStyleSheet(style_translation_button);
+    ui->remainderLabel->setStyleSheet(other_style);
     paintCorrectButton();
     if (start_tour_time == end_tour_time) {
         pushNotification(end_time_msg);
@@ -209,7 +214,7 @@ void QuizWidget::on_translationButton1_clicked()
 void QuizWidget::on_translationButton2_clicked()
 {
     ++cnt_tour;
-    QString remainder = "Осталось слов: " + QString::number(cnt - cnt_tour);
+    QString remainder = QString::number(cnt - cnt_tour) + " words left";
     ui->remainderLabel->setText(remainder);
     paintCorrectButton();
     if (start_tour_time == end_tour_time) {
@@ -232,7 +237,7 @@ void QuizWidget::on_translationButton2_clicked()
 void QuizWidget::on_translationButton3_clicked()
 {
     ++cnt_tour;
-    QString remainder = "Осталось слов: " + QString::number(cnt - cnt_tour);
+    QString remainder = QString::number(cnt - cnt_tour) + " words left";
     ui->remainderLabel->setText(remainder);
     paintCorrectButton();
     if (start_tour_time == end_tour_time) {
@@ -272,7 +277,7 @@ void QuizWidget::selectNewWordAndUpdTimer()
 {
     QTime answer_time(0, 0, 15, 0);
     ui->timeLabel->setText(answer_time.toString(format_time));
-    ui->timeLabel->setStyleSheet(style_translation_button);
+    ui->timeLabel->setStyleSheet(other_style);
     timer->start(1000);
     start_tour_time = answer_time;
     selectNewWord();
@@ -292,16 +297,16 @@ void QuizWidget::updateWords()
 
     ui->cntCorrectLabel->setText("0");
     ui->cntAllLabel->setText(QString::number(cnt));
-    ui->cntCorrectLabel->setStyleSheet(style_translation_button);
+    ui->cntCorrectLabel->setStyleSheet(other_style);
     cnt_correct = 0;
     cnt_tour = 0;
     ui->progressBar->setValue(0);
     QTime answer_time(0, 0, 15, 0);
     ui->timeLabel->setText(answer_time.toString(format_time));
-    ui->timeLabel->setStyleSheet(style_translation_button);
+    ui->timeLabel->setStyleSheet(other_style);
     timer->start(1000);
     start_tour_time = answer_time;
-    QString remainder = "Осталось слов: " + QString::number(cnt - cnt_tour);
+    QString remainder = QString::number(cnt - cnt_tour) + " words left";
     ui->remainderLabel->setText(remainder);
 
     words = dbHandler->getWords();

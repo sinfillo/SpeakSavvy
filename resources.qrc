@@ -22,4 +22,12 @@
         <file>tv.png</file>
         <file>Yandex_Translate_icon.png</file>
     </qresource>
+    <qresource prefix="/mp4">
+        <file>example2.mp4</file>
+        <file>lolvideo.mp4</file>
+    </qresource>
+    <qresource prefix="/srt">
+        <file>lolsubtitles.srt</file>
+        <file>example2.srt</file>
+    </qresource>
 </RCC>

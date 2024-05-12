@@ -12,9 +12,9 @@ VideoWidget::VideoWidget(QWidget *parent)
 
     path_files_video.resize(cnt_video);
     path_files_subtitles.resize(cnt_video);
-    path_files_video[0] = "lolvideo.mp4";
+    path_files_video[0] = "qrc:/mp4/lolvideo.mp4";
     path_files_subtitles[0] = "lolsubtitles.srt";
-    path_files_video[1] = "example2.mp4";
+    path_files_video[1] = "qrc:/mp4/example2.mp4";
     path_files_subtitles[1] = "example2.srt";
     prev_file_path = "";
 
@@ -40,7 +40,7 @@ VideoWidget::VideoWidget(QWidget *parent)
     connect(shortcut_left, &QShortcut::activated, this, &VideoWidget::turnBackVideo);
     connect(shortcut_right, &QShortcut::activated, this, &VideoWidget::turnForwardVideo);
 
-    QPixmap yandexPixmap("Yandex_Translate_icon.png");
+    QPixmap yandexPixmap(":/png/Yandex_Translate_icon.png");
     QIcon yandexButtonIcon(yandexPixmap);
     ui->translatedText->setIcon(yandexButtonIcon);
 

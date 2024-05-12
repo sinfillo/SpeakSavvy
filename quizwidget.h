@@ -55,6 +55,7 @@ private:
     QString danger_color, safe_color;
     QString neutral_color_prbar;
     QString style_translation_button;
+    QString other_style;
     QString end_time_msg = "Time is over :(";
     QString correct_button_msg = "This is the correct answer!";
     QString wrong_button_msg = "This is the wrong answer :(";
