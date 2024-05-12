@@ -46,6 +46,7 @@ bool ReadNowWidget::eventFilter(QObject *watched, QEvent *event)
 void ReadNowWidget::setCurrentBookId(int bookId)
 {
     currentBookId = bookId;
+    qDebug() << bookId;
     updateReadNowWidget();
 }
 

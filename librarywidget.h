@@ -22,17 +22,24 @@ public:
     explicit LibraryWidget(QWidget *parent = nullptr);
     LibraryWidget(QList<Book> books, QWidget *parent = nullptr);
     ~LibraryWidget();
+    void setEmail(QString email);
 
 private slots:
     void updateLibrary();
 
 signals:
     void signalToReadNow(int bookId);
+    void signalToAddTocollection(int bookId);
+
 
 private:
     Ui::Library *ui;
     DatabaseHandler *dbHandler;
     std::vector<QWidget *> bookWidgets;
+    QString email;
+
+signals:
+    void layoutReady();
 };
 
 #endif // LIBRARYWIDGET_H

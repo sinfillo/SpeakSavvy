@@ -28,8 +28,14 @@ void DatabaseHandler::getBookInfoFromDB() {
 
 void DatabaseHandler::getWordsInfoFromDB(QString email)
 {
-    m_networkReply = m_networkManager->get(QNetworkRequest(QUrl("https://speaksavvydb-default-rtdb.firebaseio.com/users/"+ email +".json")));
+    m_networkReply = m_networkManager->get(QNetworkRequest(QUrl("https://speaksavvydb-default-rtdb.firebaseio.com/users/words/"+ email +".json")));
     connect(m_networkReply, &QNetworkReply::readyRead, this, &DatabaseHandler::networkReplyReadyReadWords);
+}
+
+void DatabaseHandler::getCollectionFromDB(QString email)
+{
+    m_networkReply = m_networkManager->get(QNetworkRequest(QUrl("https://speaksavvydb-default-rtdb.firebaseio.com/users/books/"+ email +".json")));
+    connect(m_networkReply, &QNetworkReply::readyRead, this, &DatabaseHandler::networkReplyReadyReadCollection);
 }
 
 void DatabaseHandler::sendPostRequestWithAWord(QString email, QString word, QString translation)
@@ -39,17 +45,16 @@ void DatabaseHandler::sendPostRequestWithAWord(QString email, QString word, QStr
     QJsonObject json_object;
     json_object.insert(word, QJsonValue::fromVariant(translation));
     QJsonDocument json_doc(json_object);
-    m_networkReply = m_networkManager->post(QNetworkRequest(QUrl("https://speaksavvydb-default-rtdb.firebaseio.com/users/" + email +".json")), json_doc.toJson());
+    m_networkReply = m_networkManager->post(QNetworkRequest(QUrl("https://speaksavvydb-default-rtdb.firebaseio.com/users/words/" + email +".json")), json_doc.toJson());
     connect(m_networkReply, &QNetworkReply::finished, this, &DatabaseHandler::postRequestDone);
 }
 
-void DatabaseHandler::sendPostRequestWithABook(QString m_idToken, QString book)
+void DatabaseHandler::sendPostRequestWithABook(QString email, QString title, int bookId)
 {
-    qDebug() << "I'm here";
     QJsonObject json_object;
-    json_object.insert("users_id_Token", QJsonValue::fromVariant("cat dog blas"));
+    json_object.insert(title, QJsonValue::fromVariant(bookId));
     QJsonDocument json_doc(json_object);
-    m_networkReply = m_networkManager->post(QNetworkRequest(QUrl("https://speaksavvydb-default-rtdb.firebaseio.com/users.json")), json_doc.toJson());
+    m_networkReply = m_networkManager->post(QNetworkRequest(QUrl("https://speaksavvydb-default-rtdb.firebaseio.com/users/books/" + email +".json")), json_doc.toJson());
     connect(m_networkReply, &QNetworkReply::finished, this, &DatabaseHandler::postRequestDone);
 }
 
@@ -71,9 +76,32 @@ QList<Word> DatabaseHandler::extractPairsFromJsonDocument(const QJsonDocument &j
     return pairs;
 }
 
+QList<QPair<QString, int>> DatabaseHandler::extractCollectionPairsFromJsonDocument(const QJsonDocument &jsonDoc)
+{
+    QList<QPair<QString, int>> pairs;
+    QJsonObject jsonObj = jsonDoc.object();
+
+    for (auto it = jsonObj.begin(); it != jsonObj.end(); ++it) {
+        QString key = it.key();
+        QJsonObject innerObj = it.value().toObject();
+        for (auto innerIt = innerObj.begin(); innerIt != innerObj.end(); ++innerIt) {
+            qDebug() << innerIt.key() << ": " << innerIt.value().toInt();
+            pairs.append(qMakePair(innerIt.key(), innerIt.value().toInt()));
+        }
+    }
+
+    return pairs;
+}
+
+
 QList<Word> DatabaseHandler::getWords()
 {
     return words;
+}
+
+QList<QPair<QString, int> > DatabaseHandler::getCollection()
+{
+    return collection;
 }
 
 void DatabaseHandler::networkReplyReadyReadBooks()
@@ -100,7 +128,20 @@ void DatabaseHandler::postRequestDone()
 void DatabaseHandler::networkReplyReadyReadWords()
 {
     QJsonDocument jsonDoc = QJsonDocument::fromJson(m_networkReply->readAll());
+    //qDebug() <<m_networkReply->readAll() << "RHG";
     words = extractPairsFromJsonDocument(jsonDoc);
     emit wordsRead();
+}
+
+void DatabaseHandler::networkReplyReadyReadCollection()
+{
+    QJsonDocument jsonDoc = QJsonDocument::fromJson(m_networkReply->readAll());
+    //qDebug() << m_networkReply->readAll() << "REP";
+    collection = extractCollectionPairsFromJsonDocument(jsonDoc);
+    //for (int i = 0; i < collection.size(); ++i) {
+      //  qDebug() << collection[i].first << " " << collection[i].second;
+    //}
+    qDebug() << "COLLECT";
+    emit collectionRead();
 }
 

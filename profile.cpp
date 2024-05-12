@@ -53,3 +53,9 @@ void Profile::on_pushButton_clicked()
     emit logOut();
 }
 
+
+void Profile::on_GameButton_11_clicked()
+{
+    emit goToCollection();
+}
+

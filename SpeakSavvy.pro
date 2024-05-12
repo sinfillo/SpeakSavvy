@@ -16,6 +16,7 @@ CONFIG += c++11
 SOURCES += \
     authhandler.cpp \
     book.cpp \
+    bookscollection.cpp \
     bookwidget.cpp \
     databasehandler.cpp \
     gameswidget.cpp \
@@ -37,6 +38,7 @@ SOURCES += \
 HEADERS += \
     authhandler.h \
     book.h \
+    bookscollection.h \
     bookwidget.h \
     databasehandler.h \
     gameswidget.h \
@@ -55,6 +57,7 @@ HEADERS += \
     word.h
 
 FORMS += \
+    bookscollection.ui \
     bookwidget.ui \
     gameswidget.ui \
     librarywidget.ui \

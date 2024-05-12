@@ -15,6 +15,7 @@
 #include "quizwidget.h"
 #include "resultquizwidget.h"
 #include "revisionwidget.h"
+#include "bookscollection.h"
 
 namespace Ui {
 class MainWindow;
@@ -39,6 +40,7 @@ public:
     StartQuizWidget* startQuizWidget;
     ResultQuizWidget* resultQuizWidget;
     RevisionWidget *revisionWidget;
+    BooksCollection *booksCollection;
     explicit MainWindow(QWidget *parent = nullptr);
     QString removeSpecialCharsFromEmail(QString email);
     ~MainWindow();
@@ -66,6 +68,10 @@ private slots:
 
     void changeTabToRevision(bool flag = false);
 
+    void changeTabToCollection();
+
+    void connectButton();
+
     void endRevision(bool from_quiz);
 
     void on_goToGamesButton_clicked();
@@ -86,6 +92,7 @@ signals:
 
 private:
     Ui::MainWindow *ui;
+    void addToCollection(int bookId);
 
 };
 

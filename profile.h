@@ -30,9 +30,12 @@ private slots:
 
     void on_pushButton_clicked();
 
+    void on_GameButton_11_clicked();
+
 signals:
     void logOut();
     void goToRevision(bool flag = false);
+    void goToCollection();
 
 private:
     Ui::Profile *ui;

@@ -7,6 +7,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     profile = new Profile;
     authHandler = new AuthHandler;
+    dbHandler = new DatabaseHandler;
     readNowWidget = new ReadNowWidget;
     //QList<Book> books = dbHandler.getBooks();
     libraryWidget = new LibraryWidget;
@@ -106,8 +107,14 @@ void MainWindow::LogIntoAccount(QString m_idToken, QString email)
     ui->goToQuizButton->show();
     ui->goToVideoButton->show();
     ui->goToReadingButton->show();
+    QObject::connect(ui->goToLibraryButton, &QPushButton::clicked, this, [=]() { ui->stackedWidget->setCurrentWidget(libraryWidget); });
     revisionWidget = new RevisionWidget(this->removeSpecialCharsFromEmail(authHandler->getUsername()));
+    booksCollection = new BooksCollection(this->removeSpecialCharsFromEmail(authHandler->getUsername()));
+    connect(booksCollection, &BooksCollection::layoutReady, this, &MainWindow::connectButton);
+    connect(booksCollection, &BooksCollection::signalToReadNow, this, &MainWindow::changeTabToReadNow);
     connect(revisionWidget, &RevisionWidget::endRevision, this, &MainWindow::endRevision);
+
+
     //ui->stackedWidget->clear();
     ui->stackedWidget->removeWidget(signUpWidget);
     ui->stackedWidget->removeWidget(logInWidget);
@@ -119,6 +126,8 @@ void MainWindow::LogIntoAccount(QString m_idToken, QString email)
     ui->stackedWidget->insertWidget(5, startQuizWidget);
     ui->stackedWidget->setCurrentIndex(0);
     readNowWidget->setEmail(this->removeSpecialCharsFromEmail(authHandler->getUsername()));
+    libraryWidget->setEmail(this->removeSpecialCharsFromEmail(authHandler->getUsername()));
+    //booksCollection->setEmail(this->removeSpecialCharsFromEmail(authHandler->getUsername()));
     quizWidget = new QuizWidget(this->removeSpecialCharsFromEmail(authHandler->getUsername()));
     connect(quizWidget, &QuizWidget::changeWidgetToStartOrProfile, this, &MainWindow::changeToStartQuizOrProfile);
     connect(quizWidget, &QuizWidget::changeWidgetToResult, this, &MainWindow::changeToResult);
@@ -169,8 +178,8 @@ void MainWindow::signUp(QString email, QString password)
 void MainWindow::logIn(QString email, QString password)
 {
     authHandler->setAPIKey("AIzaSyBk6-Ki3TqW5sxiMTshkKgX2RSx6nCzEkY");
-    authHandler->signUserIn(email, password);
-    //authHandler->signUserIn("test@inbox.ru", "password");
+    //authHandler->signUserIn(email, password);
+    authHandler->signUserIn("test@inbox.ru", "password");
 }
 
 void MainWindow::logOut()
@@ -254,6 +263,17 @@ void MainWindow::changeTabToRevision(bool flag)
     //ui->stackedWidget->tabBar()->hide();!!!
 }
 
+void MainWindow::changeTabToCollection()
+{
+    ui->stackedWidget->insertWidget(6, booksCollection);
+    ui->stackedWidget->setCurrentIndex(6);
+}
+
+void MainWindow::connectButton()
+{
+    connect(profile, &Profile::goToCollection, this, &MainWindow::changeTabToCollection);
+}
+
 void MainWindow::endRevision(bool from_quiz)
 {
     //qDebug() << "bug_here!!!";
@@ -280,7 +300,7 @@ void MainWindow::on_goToGamesButton_clicked()
 
 void MainWindow::on_goToLibraryButton_clicked()
 {
-    ui->stackedWidget->setCurrentWidget(libraryWidget);
+    //ui->stackedWidget->setCurrentWidget(libraryWidget);
 }
 
 
@@ -306,4 +326,5 @@ void MainWindow::on_goToVideoButton_clicked()
 {
     ui->stackedWidget->setCurrentWidget(videoWidget);
 }
+
 
