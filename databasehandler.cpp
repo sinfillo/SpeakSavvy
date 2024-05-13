@@ -121,7 +121,6 @@ void DatabaseHandler::networkReplyReadyReadBooks()
 
 void DatabaseHandler::postRequestDone()
 {
-    qDebug() << "I'm here";
     qDebug() << m_networkReply->readAll();
 }
 

@@ -15,20 +15,17 @@ public:
     QString getName();
     QString getAuthor();
     QString getGenre();
-    //QString getBookCover();
     QString getBookText();
 
     void setName(QString name);
     void setAuthor(QString author);
     void setGenre(QString genre);
-    //void setBookCover(QString bookCover);
     void setBookText(QString text);
 
 private:
     QString name;
     QString author;
     QString genre;
-    //QString bookCover;
     QString text;
 };
 

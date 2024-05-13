@@ -25,7 +25,7 @@ QuizWidget::QuizWidget(const QString &username_, QWidget *parent)
     neutral_color += ("; " + style_translation_button);
     correct_color += ("; " + style_translation_button);
     wrong_color += ("; " + style_translation_button);
-    qDebug() << neutral_color;
+
     ui->cntAllLabel->setText("10");
     ui->cntCorrectLabel->setText("0");
     QTime answer_time(0, 0, 15, 0);

@@ -76,7 +76,6 @@ void BooksCollection::updateCollection()
     QScrollArea* m_pQScrollArea = new QScrollArea;
     m_pQScrollArea->setWidget(my_widget);
     ui->verticalLayout->addWidget(m_pQScrollArea);
-    qDebug() << "CAPS";
 
     this->setStyleSheet("QScrollBar { background-color: transparent; } QScrollBar::handle:horizontal {  background: pink; border-radius: 5px; } QScrollBar::left-arrow:horizontal, QScrollBar::right-arrow:horizontal { border: none; background: none; color: none;} QScrollBar::add-line:horizontal {border: none;background: none;} QScrollBar::sub-line:horizontal {border: none;background: none;}");
     emit layoutReady();
