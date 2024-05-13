@@ -33,7 +33,8 @@ SOURCES += \
     resultquizwidget.cpp \
     startquizwidget.cpp \
     videowidget.cpp \
-    word.cpp
+    word.cpp \
+    subtitleitem.cpp
 
 HEADERS += \
     authhandler.h \
@@ -54,7 +55,8 @@ HEADERS += \
     quizwidget.h \
     resultquizwidget.h \
     startquizwidget.h \
-    word.h
+    word.h \
+    subtitleitem.h
 
 FORMS += \
     bookscollection.ui \
