@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'gameswidget.ui'
 **
-** Created by: Qt User Interface Compiler version 6.6.2
+** Created by: Qt User Interface Compiler version 6.7.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -33,6 +33,7 @@ public:
     QPushButton *howToPlayButton;
     QPushButton *GameButton;
     QPushButton *StatsButton;
+    QLabel *SynonymLabel;
     QStackedWidget *stackedWidget;
     QWidget *HelpPage;
     QVBoxLayout *verticalLayout;
@@ -262,6 +263,9 @@ public:
         brush10.setStyle(Qt::SolidPattern);
         palette.setBrush(QPalette::Disabled, QPalette::Accent, brush10);
         howToPlayButton->setPalette(palette);
+        QFont font;
+        font.setFamilies({QString::fromUtf8("YuGothic")});
+        howToPlayButton->setFont(font);
         howToPlayButton->setAutoFillBackground(false);
         howToPlayButton->setStyleSheet(QString::fromUtf8("background-color: rgba(0, 0, 0, 0)"));
         howToPlayButton->setIconSize(QSize(40, 40));
@@ -349,11 +353,11 @@ public:
         brush18.setStyle(Qt::SolidPattern);
         palette1.setBrush(QPalette::Disabled, QPalette::Accent, brush18);
         GameButton->setPalette(palette1);
-        QFont font;
-        font.setFamilies({QString::fromUtf8("Yu Gothic UI Semibold")});
-        font.setPointSize(32);
-        font.setBold(true);
-        GameButton->setFont(font);
+        QFont font1;
+        font1.setFamilies({QString::fromUtf8("Yu Gothic UI Semibold")});
+        font1.setPointSize(32);
+        font1.setBold(true);
+        GameButton->setFont(font1);
         GameButton->setStyleSheet(QString::fromUtf8("background-color: rgba(0, 0, 0, 0)"));
         GameButton->setFlat(true);
 
@@ -434,9 +438,10 @@ public:
         brush24.setStyle(Qt::SolidPattern);
         palette2.setBrush(QPalette::Disabled, QPalette::Accent, brush24);
         StatsButton->setPalette(palette2);
-        QFont font1;
-        font1.setStyleStrategy(QFont::PreferDefault);
-        StatsButton->setFont(font1);
+        QFont font2;
+        font2.setFamilies({QString::fromUtf8("YuGothic")});
+        font2.setStyleStrategy(QFont::PreferDefault);
+        StatsButton->setFont(font2);
         StatsButton->setCursor(QCursor(Qt::ArrowCursor));
         StatsButton->setStyleSheet(QString::fromUtf8("background-color: rgba(0, 0, 0, 0)"));
         StatsButton->setIconSize(QSize(40, 40));
@@ -447,6 +452,13 @@ public:
 
 
         verticalLayout_5->addLayout(HeaderLayout);
+
+        SynonymLabel = new QLabel(GamesWidget);
+        SynonymLabel->setObjectName("SynonymLabel");
+        SynonymLabel->setFont(font);
+        SynonymLabel->setAlignment(Qt::AlignCenter);
+
+        verticalLayout_5->addWidget(SynonymLabel);
 
         stackedWidget = new QStackedWidget(GamesWidget);
         stackedWidget->setObjectName("stackedWidget");
@@ -607,10 +619,10 @@ public:
 #endif
         palette4.setBrush(QPalette::Disabled, QPalette::Accent, brush2);
         howToPlaytext->setPalette(palette4);
-        QFont font2;
-        font2.setFamilies({QString::fromUtf8("Arial")});
-        font2.setPointSize(12);
-        howToPlaytext->setFont(font2);
+        QFont font3;
+        font3.setFamilies({QString::fromUtf8("Arial")});
+        font3.setPointSize(12);
+        howToPlaytext->setFont(font3);
         howToPlaytext->viewport()->setProperty("cursor", QVariant(QCursor(Qt::ArrowCursor)));
         howToPlaytext->setMouseTracking(true);
         howToPlaytext->setAcceptDrops(true);
@@ -639,9 +651,9 @@ public:
         howToPlay2_2->setContentsMargins(10, 7, 10, 5);
         howToPlayEx1 = new QWidget(HelpPage);
         howToPlayEx1->setObjectName("howToPlayEx1");
-        QFont font3;
-        font3.setFamilies({QString::fromUtf8("Arial")});
-        howToPlayEx1->setFont(font3);
+        QFont font4;
+        font4.setFamilies({QString::fromUtf8("Arial")});
+        howToPlayEx1->setFont(font4);
         howToPlayEx1->setStyleSheet(QString::fromUtf8("QLabel {\n"
 "	font-family: Yu Ghotic UI Semibold;\n"
 "	font-weight: bold;\n"
@@ -716,10 +728,10 @@ public:
         palette7.setBrush(QPalette::Disabled, QPalette::PlaceholderText, brush37);
 #endif
         first_let->setPalette(palette7);
-        QFont font4;
-        font4.setFamilies({QString::fromUtf8("Yu Ghotic UI Semibold")});
-        font4.setBold(true);
-        first_let->setFont(font4);
+        QFont font5;
+        font5.setFamilies({QString::fromUtf8("Yu Ghotic UI Semibold")});
+        font5.setBold(true);
+        first_let->setFont(font5);
         first_let->setStyleSheet(QString::fromUtf8("background-color: #ff007f;\n"
 "color: white;\n"
 "border-style: hidden;"));
@@ -835,10 +847,10 @@ public:
         brush43.setStyle(Qt::SolidPattern);
         palette10.setBrush(QPalette::Disabled, QPalette::Accent, brush43);
         howToPlay1->setPalette(palette10);
-        QFont font5;
-        font5.setFamilies({QString::fromUtf8("Yu Gothic UI")});
-        font5.setPointSize(12);
-        howToPlay1->setFont(font5);
+        QFont font6;
+        font6.setFamilies({QString::fromUtf8("Yu Gothic UI")});
+        font6.setPointSize(12);
+        howToPlay1->setFont(font6);
         howToPlay1->viewport()->setProperty("cursor", QVariant(QCursor(Qt::ArrowCursor)));
         howToPlay1->setFrameShape(QFrame::NoFrame);
         howToPlay1->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -993,7 +1005,7 @@ public:
         brush47.setStyle(Qt::SolidPattern);
         palette15.setBrush(QPalette::Disabled, QPalette::Accent, brush47);
         howToPlay2->setPalette(palette15);
-        howToPlay2->setFont(font5);
+        howToPlay2->setFont(font6);
         howToPlay2->viewport()->setProperty("cursor", QVariant(QCursor(Qt::ArrowCursor)));
         howToPlay2->setFrameShape(QFrame::NoFrame);
         howToPlay2->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -1152,7 +1164,7 @@ public:
         brush53.setStyle(Qt::SolidPattern);
         palette20.setBrush(QPalette::Disabled, QPalette::Accent, brush53);
         howToPlay3->setPalette(palette20);
-        howToPlay3->setFont(font5);
+        howToPlay3->setFont(font6);
         howToPlay3->viewport()->setProperty("cursor", QVariant(QCursor(Qt::ArrowCursor)));
         howToPlay3->setFrameShape(QFrame::NoFrame);
         howToPlay3->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -1311,7 +1323,7 @@ public:
         palette30.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette30.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         letter_65->setPalette(palette30);
-        letter_65->setFont(font4);
+        letter_65->setFont(font5);
         letter_65->setAlignment(Qt::AlignCenter);
 
         gridLayout->addWidget(letter_65, 10, 6, 1, 1);
@@ -1332,7 +1344,7 @@ public:
         palette32.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette32.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         letter_15->setPalette(palette32);
-        letter_15->setFont(font4);
+        letter_15->setFont(font5);
         letter_15->setAlignment(Qt::AlignCenter);
 
         gridLayout->addWidget(letter_15, 5, 6, 1, 1);
@@ -1353,13 +1365,13 @@ public:
         palette34.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette34.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         letter_11->setPalette(palette34);
-        QFont font6;
-        font6.setFamilies({QString::fromUtf8("Arial")});
-        font6.setPointSize(13);
-        font6.setBold(false);
-        font6.setItalic(false);
-        font6.setKerning(false);
-        letter_11->setFont(font6);
+        QFont font7;
+        font7.setFamilies({QString::fromUtf8("Arial")});
+        font7.setPointSize(13);
+        font7.setBold(false);
+        font7.setItalic(false);
+        font7.setKerning(false);
+        letter_11->setFont(font7);
         letter_11->setStyleSheet(QString::fromUtf8("font: 13pt \"Arial\";"));
         letter_11->setAlignment(Qt::AlignCenter);
 
@@ -1412,7 +1424,7 @@ public:
         palette39.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette39.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         letter_61->setPalette(palette39);
-        letter_61->setFont(font4);
+        letter_61->setFont(font5);
         letter_61->setAlignment(Qt::AlignCenter);
 
         gridLayout->addWidget(letter_61, 10, 1, 1, 1);
@@ -1911,10 +1923,10 @@ public:
         palette54.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette54.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         AllRoundsNum->setPalette(palette54);
-        QFont font7;
-        font7.setFamilies({QString::fromUtf8("Yu Ghotic UI")});
-        font7.setWeight(QFont::DemiBold);
-        AllRoundsNum->setFont(font7);
+        QFont font8;
+        font8.setFamilies({QString::fromUtf8("Yu Ghotic UI")});
+        font8.setWeight(QFont::DemiBold);
+        AllRoundsNum->setFont(font8);
         AllRoundsNum->setAlignment(Qt::AlignCenter);
 
         StatsLayout_1->addWidget(AllRoundsNum, 0, 0, 1, 1);
@@ -1966,11 +1978,11 @@ public:
         palette57.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette57.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         Statistics->setPalette(palette57);
-        QFont font8;
-        font8.setFamilies({QString::fromUtf8("Yu Gothic UI")});
-        font8.setPointSize(18);
-        font8.setBold(true);
-        Statistics->setFont(font8);
+        QFont font9;
+        font9.setFamilies({QString::fromUtf8("Yu Gothic UI")});
+        font9.setPointSize(18);
+        font9.setBold(true);
+        Statistics->setFont(font9);
         Statistics->setAlignment(Qt::AlignCenter);
 
         verticalLayout_4->addWidget(Statistics);
@@ -2191,7 +2203,7 @@ public:
         retranslateUi(GamesWidget);
 
         StatsButton->setDefault(false);
-        stackedWidget->setCurrentIndex(0);
+        stackedWidget->setCurrentIndex(2);
 
 
         QMetaObject::connectSlotsByName(GamesWidget);
@@ -2203,6 +2215,7 @@ public:
         howToPlayButton->setText(QCoreApplication::translate("GamesWidget", "Help", nullptr));
         GameButton->setText(QCoreApplication::translate("GamesWidget", "Game", nullptr));
         StatsButton->setText(QCoreApplication::translate("GamesWidget", "Stats", nullptr));
+        SynonymLabel->setText(QString());
         howToPlaytext->setMarkdown(QCoreApplication::translate("GamesWidget", "**HOW TO PLAY**  \n"
 "\n"
 "Word consists of 5 letters, you have 6 attempts to guess it\n"
@@ -2231,7 +2244,7 @@ public:
 "li.unchecked::marker { content: \"\\2610\"; }\n"
 "li.checked::marker { content: \"\\2612\"; }\n"
 "</style></head><body style=\" font-family:'Yu Gothic UI'; font-size:12pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">W is in its place</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">G is in its place</p>\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>", nullptr));
         howToPlaylet5->setText(QCoreApplication::translate("GamesWidget", "A", nullptr));
         howToPlaylet3->setText(QCoreApplication::translate("GamesWidget", "S", nullptr));
@@ -2247,9 +2260,9 @@ public:
 "</style></head><body style=\" font-family:'Yu Gothic UI'; font-size:12pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">A is in the word, but not in this place</p>\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>", nullptr));
-        howToPlaylet10->setText(QCoreApplication::translate("GamesWidget", "A", nullptr));
-        howToPlaylet9->setText(QCoreApplication::translate("GamesWidget", "B", nullptr));
-        howToPlaylet8->setText(QCoreApplication::translate("GamesWidget", "O", nullptr));
+        howToPlaylet10->setText(QCoreApplication::translate("GamesWidget", "I", nullptr));
+        howToPlaylet9->setText(QCoreApplication::translate("GamesWidget", "L", nullptr));
+        howToPlaylet8->setText(QCoreApplication::translate("GamesWidget", "I", nullptr));
         howToPlaylet6->setText(QCoreApplication::translate("GamesWidget", "A", nullptr));
         howToPlaylet7->setText(QCoreApplication::translate("GamesWidget", "B", nullptr));
         howToPlay3->setHtml(QCoreApplication::translate("GamesWidget", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
