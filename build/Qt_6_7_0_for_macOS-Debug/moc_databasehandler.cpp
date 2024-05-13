@@ -6,7 +6,7 @@
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "../../databasehandler.h"
+#include "../../inc/databasehandler.h"
 #include <QtNetwork/QSslError>
 #include <QtCore/qmetatype.h>
 
@@ -39,8 +39,12 @@ constexpr auto qt_meta_stringdata_CLASSDatabaseHandlerENDCLASS = QtMocHelpers::s
     "DatabaseHandler",
     "booksRead",
     "",
+    "wordsRead",
+    "collectionRead",
     "networkReplyReadyReadBooks",
-    "postRequestDone"
+    "postRequestDone",
+    "networkReplyReadyReadWords",
+    "networkReplyReadyReadCollection"
 );
 #else  // !QT_MOC_HAS_STRINGDATA
 #error "qtmochelpers.h not found or too old."
@@ -53,24 +57,32 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSDatabaseHandlerENDCLASS[] = {
       12,       // revision
        0,       // classname
        0,    0, // classinfo
-       3,   14, // methods
+       7,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       1,       // signalCount
+       3,       // signalCount
 
  // signals: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,   32,    2, 0x06,    1 /* Public */,
+       1,    0,   56,    2, 0x06,    1 /* Public */,
+       3,    0,   57,    2, 0x06,    2 /* Public */,
+       4,    0,   58,    2, 0x06,    3 /* Public */,
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       3,    0,   33,    2, 0x0a,    2 /* Public */,
-       4,    0,   34,    2, 0x0a,    3 /* Public */,
+       5,    0,   59,    2, 0x0a,    4 /* Public */,
+       6,    0,   60,    2, 0x0a,    5 /* Public */,
+       7,    0,   61,    2, 0x0a,    6 /* Public */,
+       8,    0,   62,    2, 0x0a,    7 /* Public */,
 
  // signals: parameters
     QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
 
  // slots: parameters
+    QMetaType::Void,
+    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
 
@@ -88,9 +100,17 @@ Q_CONSTINIT const QMetaObject DatabaseHandler::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<DatabaseHandler, std::true_type>,
         // method 'booksRead'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'wordsRead'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'collectionRead'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'networkReplyReadyReadBooks'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'postRequestDone'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'networkReplyReadyReadWords'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'networkReplyReadyReadCollection'
         QtPrivate::TypeAndForceComplete<void, std::false_type>
     >,
     nullptr
@@ -103,8 +123,12 @@ void DatabaseHandler::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int 
         (void)_t;
         switch (_id) {
         case 0: _t->booksRead(); break;
-        case 1: _t->networkReplyReadyReadBooks(); break;
-        case 2: _t->postRequestDone(); break;
+        case 1: _t->wordsRead(); break;
+        case 2: _t->collectionRead(); break;
+        case 3: _t->networkReplyReadyReadBooks(); break;
+        case 4: _t->postRequestDone(); break;
+        case 5: _t->networkReplyReadyReadWords(); break;
+        case 6: _t->networkReplyReadyReadCollection(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -113,6 +137,20 @@ void DatabaseHandler::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int 
             using _t = void (DatabaseHandler::*)();
             if (_t _q_method = &DatabaseHandler::booksRead; *reinterpret_cast<_t *>(_a[1]) == _q_method) {
                 *result = 0;
+                return;
+            }
+        }
+        {
+            using _t = void (DatabaseHandler::*)();
+            if (_t _q_method = &DatabaseHandler::wordsRead; *reinterpret_cast<_t *>(_a[1]) == _q_method) {
+                *result = 1;
+                return;
+            }
+        }
+        {
+            using _t = void (DatabaseHandler::*)();
+            if (_t _q_method = &DatabaseHandler::collectionRead; *reinterpret_cast<_t *>(_a[1]) == _q_method) {
+                *result = 2;
                 return;
             }
         }
@@ -139,13 +177,13 @@ int DatabaseHandler::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 3)
+        if (_id < 7)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 3;
+        _id -= 7;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 3)
+        if (_id < 7)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 3;
+        _id -= 7;
     }
     return _id;
 }
@@ -154,5 +192,17 @@ int DatabaseHandler::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 void DatabaseHandler::booksRead()
 {
     QMetaObject::activate(this, &staticMetaObject, 0, nullptr);
+}
+
+// SIGNAL 1
+void DatabaseHandler::wordsRead()
+{
+    QMetaObject::activate(this, &staticMetaObject, 1, nullptr);
+}
+
+// SIGNAL 2
+void DatabaseHandler::collectionRead()
+{
+    QMetaObject::activate(this, &staticMetaObject, 2, nullptr);
 }
 QT_WARNING_POP

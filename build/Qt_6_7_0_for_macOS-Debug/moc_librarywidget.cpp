@@ -6,7 +6,7 @@
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "../../librarywidget.h"
+#include "../../inc/librarywidget.h"
 #include <QtGui/qtextcursor.h>
 #include <QtNetwork/QSslError>
 #include <QtCore/qmetatype.h>
@@ -41,6 +41,8 @@ constexpr auto qt_meta_stringdata_CLASSLibraryWidgetENDCLASS = QtMocHelpers::str
     "signalToReadNow",
     "",
     "bookId",
+    "signalToAddTocollection",
+    "layoutReady",
     "updateLibrary"
 );
 #else  // !QT_MOC_HAS_STRINGDATA
@@ -54,21 +56,25 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSLibraryWidgetENDCLASS[] = {
       12,       // revision
        0,       // classname
        0,    0, // classinfo
-       2,   14, // methods
+       4,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       1,       // signalCount
+       3,       // signalCount
 
  // signals: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    1,   26,    2, 0x06,    1 /* Public */,
+       1,    1,   38,    2, 0x06,    1 /* Public */,
+       4,    1,   41,    2, 0x06,    3 /* Public */,
+       5,    0,   44,    2, 0x06,    5 /* Public */,
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       4,    0,   29,    2, 0x08,    3 /* Private */,
+       6,    0,   45,    2, 0x08,    6 /* Private */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::Int,    3,
+    QMetaType::Void, QMetaType::Int,    3,
+    QMetaType::Void,
 
  // slots: parameters
     QMetaType::Void,
@@ -88,6 +94,11 @@ Q_CONSTINIT const QMetaObject LibraryWidget::staticMetaObject = { {
         // method 'signalToReadNow'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<int, std::false_type>,
+        // method 'signalToAddTocollection'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<int, std::false_type>,
+        // method 'layoutReady'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'updateLibrary'
         QtPrivate::TypeAndForceComplete<void, std::false_type>
     >,
@@ -101,7 +112,9 @@ void LibraryWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
         (void)_t;
         switch (_id) {
         case 0: _t->signalToReadNow((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
-        case 1: _t->updateLibrary(); break;
+        case 1: _t->signalToAddTocollection((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
+        case 2: _t->layoutReady(); break;
+        case 3: _t->updateLibrary(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -110,6 +123,20 @@ void LibraryWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
             using _t = void (LibraryWidget::*)(int );
             if (_t _q_method = &LibraryWidget::signalToReadNow; *reinterpret_cast<_t *>(_a[1]) == _q_method) {
                 *result = 0;
+                return;
+            }
+        }
+        {
+            using _t = void (LibraryWidget::*)(int );
+            if (_t _q_method = &LibraryWidget::signalToAddTocollection; *reinterpret_cast<_t *>(_a[1]) == _q_method) {
+                *result = 1;
+                return;
+            }
+        }
+        {
+            using _t = void (LibraryWidget::*)();
+            if (_t _q_method = &LibraryWidget::layoutReady; *reinterpret_cast<_t *>(_a[1]) == _q_method) {
+                *result = 2;
                 return;
             }
         }
@@ -135,13 +162,13 @@ int LibraryWidget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 2)
+        if (_id < 4)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 2;
+        _id -= 4;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 2)
+        if (_id < 4)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 2;
+        _id -= 4;
     }
     return _id;
 }
@@ -151,5 +178,18 @@ void LibraryWidget::signalToReadNow(int _t1)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);
+}
+
+// SIGNAL 1
+void LibraryWidget::signalToAddTocollection(int _t1)
+{
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
+    QMetaObject::activate(this, &staticMetaObject, 1, _a);
+}
+
+// SIGNAL 2
+void LibraryWidget::layoutReady()
+{
+    QMetaObject::activate(this, &staticMetaObject, 2, nullptr);
 }
 QT_WARNING_POP

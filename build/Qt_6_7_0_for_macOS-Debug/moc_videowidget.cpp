@@ -6,9 +6,11 @@
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "../../videowidget.h"
+#include "../../inc/videowidget.h"
 #include <QtGui/qtextcursor.h>
 #include <QtGui/qscreen.h>
+#include <QtNetwork/QSslPreSharedKeyAuthenticator>
+#include <QtNetwork/QSslError>
 #include <QtCore/qmetatype.h>
 
 #include <QtCore/qtmochelpers.h>

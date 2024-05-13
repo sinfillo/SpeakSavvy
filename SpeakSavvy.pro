@@ -14,63 +14,65 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    authhandler.cpp \
-    book.cpp \
-    bookscollection.cpp \
-    bookwidget.cpp \
-    databasehandler.cpp \
-    gameswidget.cpp \
-    librarywidget.cpp \
-    loginwidget.cpp \
-    main.cpp \
-    mainwindow.cpp \
-    notificationwindow.cpp \
-    profile.cpp \
-    readnowwidget.cpp \
-    revisionwidget.cpp \
-    signup.cpp \
-    quizwidget.cpp \
-    resultquizwidget.cpp \
-    startquizwidget.cpp \
-    videowidget.cpp \
-    word.cpp
+    src/authhandler.cpp \
+    src/book.cpp \
+    src/bookscollection.cpp \
+    src/bookwidget.cpp \
+    src/databasehandler.cpp \
+    src/gameswidget.cpp \
+    src/librarywidget.cpp \
+    src/loginwidget.cpp \
+    src/main.cpp \
+    src/mainwindow.cpp \
+    src/notificationwindow.cpp \
+    src/profile.cpp \
+    src/readnowwidget.cpp \
+    src/revisionwidget.cpp \
+    src/signup.cpp \
+    src/quizwidget.cpp \
+    src/resultquizwidget.cpp \
+    src/startquizwidget.cpp \
+    src/subtitleitem.cpp \
+    src/videowidget.cpp \
+    src/word.cpp
 
 HEADERS += \
-    authhandler.h \
-    book.h \
-    bookscollection.h \
-    bookwidget.h \
-    databasehandler.h \
-    gameswidget.h \
-    librarywidget.h \
-    loginwidget.h \
-    mainwindow.h \
-    notificationwindow.h \
-    profile.h \
-    readnowwidget.h \
-    revisionwidget.h \
-    signup.h \
-    videowidget.h \
-    quizwidget.h \
-    resultquizwidget.h \
-    startquizwidget.h \
-    word.h
+    inc/authhandler.h \
+    inc/book.h \
+    inc/bookscollection.h \
+    inc/bookwidget.h \
+    inc/databasehandler.h \
+    inc/gameswidget.h \
+    inc/librarywidget.h \
+    inc/loginwidget.h \
+    inc/mainwindow.h \
+    inc/notificationwindow.h \
+    inc/profile.h \
+    inc/readnowwidget.h \
+    inc/revisionwidget.h \
+    inc/signup.h \
+    inc/subtitleitem.h \
+    inc/videowidget.h \
+    inc/quizwidget.h \
+    inc/resultquizwidget.h \
+    inc/startquizwidget.h \
+    inc/word.h
 
 FORMS += \
-    bookscollection.ui \
-    bookwidget.ui \
-    gameswidget.ui \
-    librarywidget.ui \
-    loginwidget.ui \
-    mainwindow.ui \
-    profile.ui \
-    readnowwidget.ui \
-    revisionwidget.ui \
-    signup.ui \
-    videowidget.ui \
-    quizwidget.ui \
-    resultquizwidget.ui \
-    startquizwidget.ui \
+    ui/src/bookscollection.ui \
+    ui/src/bookwidget.ui \
+    ui/src/gameswidget.ui \
+    ui/src/librarywidget.ui \
+    ui/src/loginwidget.ui \
+    ui/src/mainwindow.ui \
+    ui/src/profile.ui \
+    ui/src/readnowwidget.ui \
+    ui/src/revisionwidget.ui \
+    ui/src/signup.ui \
+    ui/src/videowidget.ui \
+    ui/src/quizwidget.ui \
+    ui/src/resultquizwidget.ui \
+    ui/src/startquizwidget.ui \
 
 TRANSLATIONS += \
     SpeakSavvy_ru_RU.ts
@@ -86,7 +88,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 
 RESOURCES += \
-    resources.qrc
+    resrc/resources.qrc
 
 DISTFILES += \
-    resources/synonyms.json
+    resrc/resources/synonyms.json

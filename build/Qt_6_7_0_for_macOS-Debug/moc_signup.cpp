@@ -6,7 +6,7 @@
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "../../signup.h"
+#include "../../inc/signup.h"
 #include <QtCore/qmetatype.h>
 
 #include <QtCore/qtmochelpers.h>

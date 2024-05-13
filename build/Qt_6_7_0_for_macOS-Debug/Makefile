@@ -17,7 +17,7 @@ CXX           = /Library/Developer/CommandLineTools/usr/bin/clang++
 DEFINES       = -DQT_QML_DEBUG -DQT_MULTIMEDIAWIDGETS_LIB -DQT_MULTIMEDIA_LIB -DQT_WIDGETS_LIB -DQT_SVG_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -g $(EXPORT_ARCH_ARGS) -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -mmacosx-version-min=11.0 -Wall -Wextra $(DEFINES)
 CXXFLAGS      = -pipe -stdlib=libc++ -g -std=gnu++1z $(EXPORT_ARCH_ARGS) -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -mmacosx-version-min=11.0 -Wall -Wextra $(DEFINES)
-INCPATH       = -I../../../SpeakSavvy -I. -I../../../../Qt/6.7.0/macos/lib/QtMultimediaWidgets.framework/Headers -I../../../../Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers -I../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers -I../../../../Qt/6.7.0/macos/lib/QtSvg.framework/Headers -I../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers -I../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers -I../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/OpenGL.framework/Headers -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/AGL.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/OpenGL.framework/Headers -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/AGL.framework/Headers -I../../../../Qt/6.7.0/macos/mkspecs/macx-clang -F/Users/sinfillo/Qt/6.7.0/macos/lib
+INCPATH       = -I../../../SpeakSavvy -I. -I../../../../Qt/6.7.0/macos/lib/QtMultimediaWidgets.framework/Headers -I../../../../Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers -I../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers -I../../../../Qt/6.7.0/macos/lib/QtSvg.framework/Headers -I../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers -I../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers -I../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/OpenGL.framework/Headers -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/AGL.framework/Headers -I../../../SpeakSavvy -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/OpenGL.framework/Headers -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/AGL.framework/Headers -I../../../../Qt/6.7.0/macos/mkspecs/macx-clang -F/Users/sinfillo/Qt/6.7.0/macos/lib
 QMAKE         = /Users/sinfillo/Qt/6.7.0/macos/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -52,32 +52,49 @@ OBJECTS_DIR   = ./
 
 ####### Files
 
-SOURCES       = ../../authhandler.cpp \
-		../../book.cpp \
-		../../bookwidget.cpp \
-		../../databasehandler.cpp \
-		../../gameswidget.cpp \
-		../../librarywidget.cpp \
-		../../loginwidget.cpp \
-		../../main.cpp \
-		../../mainwindow.cpp \
-		../../profile.cpp \
-		../../readnowwidget.cpp \
-		../../signup.cpp \
-		../../videowidget.cpp qrc_qmake_qmake_qm_files.cpp \
+SOURCES       = ../../src/authhandler.cpp \
+		../../src/book.cpp \
+		../../src/bookscollection.cpp \
+		../../src/bookwidget.cpp \
+		../../src/databasehandler.cpp \
+		../../src/gameswidget.cpp \
+		../../src/librarywidget.cpp \
+		../../src/loginwidget.cpp \
+		../../src/main.cpp \
+		../../src/mainwindow.cpp \
+		../../src/notificationwindow.cpp \
+		../../src/profile.cpp \
+		../../src/readnowwidget.cpp \
+		../../src/revisionwidget.cpp \
+		../../src/signup.cpp \
+		../../src/quizwidget.cpp \
+		../../src/resultquizwidget.cpp \
+		../../src/startquizwidget.cpp \
+		../../src/subtitleitem.cpp \
+		../../src/videowidget.cpp \
+		../../src/word.cpp qrc_resources.cpp \
+		qrc_qmake_qmake_qm_files.cpp \
 		moc_authhandler.cpp \
+		moc_bookscollection.cpp \
 		moc_bookwidget.cpp \
 		moc_databasehandler.cpp \
 		moc_gameswidget.cpp \
 		moc_librarywidget.cpp \
 		moc_loginwidget.cpp \
 		moc_mainwindow.cpp \
+		moc_notificationwindow.cpp \
 		moc_profile.cpp \
 		moc_readnowwidget.cpp \
+		moc_revisionwidget.cpp \
 		moc_signup.cpp \
-		moc_videowidget.cpp
+		moc_videowidget.cpp \
+		moc_quizwidget.cpp \
+		moc_resultquizwidget.cpp \
+		moc_startquizwidget.cpp \
+		moc_word.cpp
 OBJECTS       = authhandler.o \
 		book.o \
+		bookscollection.o \
 		bookwidget.o \
 		databasehandler.o \
 		gameswidget.o \
@@ -85,23 +102,39 @@ OBJECTS       = authhandler.o \
 		loginwidget.o \
 		main.o \
 		mainwindow.o \
+		notificationwindow.o \
 		profile.o \
 		readnowwidget.o \
+		revisionwidget.o \
 		signup.o \
+		quizwidget.o \
+		resultquizwidget.o \
+		startquizwidget.o \
+		subtitleitem.o \
 		videowidget.o \
+		word.o \
+		qrc_resources.o \
 		qrc_qmake_qmake_qm_files.o \
 		moc_authhandler.o \
+		moc_bookscollection.o \
 		moc_bookwidget.o \
 		moc_databasehandler.o \
 		moc_gameswidget.o \
 		moc_librarywidget.o \
 		moc_loginwidget.o \
 		moc_mainwindow.o \
+		moc_notificationwindow.o \
 		moc_profile.o \
 		moc_readnowwidget.o \
+		moc_revisionwidget.o \
 		moc_signup.o \
-		moc_videowidget.o
-DIST          = /Qt/6.7.0/macos/mkspecs/features/spec_pre.prf \
+		moc_videowidget.o \
+		moc_quizwidget.o \
+		moc_resultquizwidget.o \
+		moc_startquizwidget.o \
+		moc_word.o
+DIST          = ../../resrc/resources/synonyms.json \
+		/Qt/6.7.0/macos/mkspecs/features/spec_pre.prf \
 		/Qt/6.7.0/macos/mkspecs/features/device_config.prf \
 		/Qt/6.7.0/macos/mkspecs/common/unix.conf \
 		/Qt/6.7.0/macos/mkspecs/common/mac.conf \
@@ -332,30 +365,46 @@ DIST          = /Qt/6.7.0/macos/mkspecs/features/spec_pre.prf \
 		/Qt/6.7.0/macos/mkspecs/features/exceptions.prf \
 		/Qt/6.7.0/macos/mkspecs/features/yacc.prf \
 		/Qt/6.7.0/macos/mkspecs/features/lex.prf \
-		../../../../SpeakSavvy.pro ../../authhandler.h \
-		../../book.h \
-		../../bookwidget.h \
-		../../databasehandler.h \
-		../../gameswidget.h \
-		../../librarywidget.h \
-		../../loginwidget.h \
-		../../mainwindow.h \
-		../../profile.h \
-		../../readnowwidget.h \
-		../../signup.h \
-		../../videowidget.h ../../authhandler.cpp \
-		../../book.cpp \
-		../../bookwidget.cpp \
-		../../databasehandler.cpp \
-		../../gameswidget.cpp \
-		../../librarywidget.cpp \
-		../../loginwidget.cpp \
-		../../main.cpp \
-		../../mainwindow.cpp \
-		../../profile.cpp \
-		../../readnowwidget.cpp \
-		../../signup.cpp \
-		../../videowidget.cpp
+		../../../../SpeakSavvy.pro ../../inc/authhandler.h \
+		../../inc/book.h \
+		../../inc/bookscollection.h \
+		../../inc/bookwidget.h \
+		../../inc/databasehandler.h \
+		../../inc/gameswidget.h \
+		../../inc/librarywidget.h \
+		../../inc/loginwidget.h \
+		../../inc/mainwindow.h \
+		../../inc/notificationwindow.h \
+		../../inc/profile.h \
+		../../inc/readnowwidget.h \
+		../../inc/revisionwidget.h \
+		../../inc/signup.h \
+		../../inc/subtitleitem.h \
+		../../inc/videowidget.h \
+		../../inc/quizwidget.h \
+		../../inc/resultquizwidget.h \
+		../../inc/startquizwidget.h \
+		../../inc/word.h ../../src/authhandler.cpp \
+		../../src/book.cpp \
+		../../src/bookscollection.cpp \
+		../../src/bookwidget.cpp \
+		../../src/databasehandler.cpp \
+		../../src/gameswidget.cpp \
+		../../src/librarywidget.cpp \
+		../../src/loginwidget.cpp \
+		../../src/main.cpp \
+		../../src/mainwindow.cpp \
+		../../src/notificationwindow.cpp \
+		../../src/profile.cpp \
+		../../src/readnowwidget.cpp \
+		../../src/revisionwidget.cpp \
+		../../src/signup.cpp \
+		../../src/quizwidget.cpp \
+		../../src/resultquizwidget.cpp \
+		../../src/startquizwidget.cpp \
+		../../src/subtitleitem.cpp \
+		../../src/videowidget.cpp \
+		../../src/word.cpp
 QMAKE_TARGET  = SpeakSavvy
 DESTDIR       = 
 TARGET        = SpeakSavvy.app/Contents/MacOS/SpeakSavvy
@@ -376,7 +425,7 @@ include /Users/sinfillo/Qt/6.7.0/macos/mkspecs/features/mac/sdk.mk
 first: all
 ####### Build rules
 
-SpeakSavvy.app/Contents/MacOS/SpeakSavvy: ui_bookwidget.h ui_gameswidget.h ui_librarywidget.h ui_loginwidget.h ui_mainwindow.h ui_profile.h ui_readnowwidget.h ui_signup.h ui_videowidget.h $(OBJECTS)  
+SpeakSavvy.app/Contents/MacOS/SpeakSavvy: ../../ui_bookscollection.h ../../ui_bookwidget.h ../../ui_gameswidget.h ../../ui_librarywidget.h ../../ui_loginwidget.h ../../ui_mainwindow.h ../../ui_profile.h ../../ui_readnowwidget.h ../../ui_revisionwidget.h ../../ui_signup.h ../../ui_videowidget.h ../../ui_quizwidget.h ../../ui_resultquizwidget.h ../../ui_startquizwidget.h $(OBJECTS)  
 	@test -d SpeakSavvy.app/Contents/MacOS/ || mkdir -p SpeakSavvy.app/Contents/MacOS/
 	$(LINK) $(LFLAGS) -o $(TARGET)  $(OBJECTS) $(OBJCOMP) $(LIBS)
 
@@ -612,6 +661,7 @@ Makefile: ../../SpeakSavvy.pro ../../../../Qt/6.7.0/macos/mkspecs/features/spec_
 		../../../../Qt/6.7.0/macos/mkspecs/features/yacc.prf \
 		../../../../Qt/6.7.0/macos/mkspecs/features/lex.prf \
 		../../SpeakSavvy.pro \
+		../../resrc/resources.qrc \
 		qmake_qmake_qm_files.qrc \
 		../../../../Qt/6.7.0/macos/lib/QtMultimediaWidgets.framework/Resources/QtMultimediaWidgets.prl \
 		../../../../Qt/6.7.0/macos/lib/QtMultimedia.framework/Resources/QtMultimedia.prl \
@@ -853,6 +903,7 @@ Makefile: ../../SpeakSavvy.pro ../../../../Qt/6.7.0/macos/mkspecs/features/spec_
 ../../../../Qt/6.7.0/macos/mkspecs/features/yacc.prf:
 ../../../../Qt/6.7.0/macos/mkspecs/features/lex.prf:
 ../../SpeakSavvy.pro:
+../../resrc/resources.qrc:
 qmake_qmake_qm_files.qrc:
 ../../../../Qt/6.7.0/macos/lib/QtMultimediaWidgets.framework/Resources/QtMultimediaWidgets.prl:
 ../../../../Qt/6.7.0/macos/lib/QtMultimedia.framework/Resources/QtMultimedia.prl:
@@ -886,10 +937,10 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../../SpeakSavvy_ru_RU.ts $(DISTDIR)/
-	$(COPY_FILE) --parents qmake_qmake_qm_files.qrc $(DISTDIR)/
-	$(COPY_FILE) --parents ../../authhandler.h ../../book.h ../../bookwidget.h ../../databasehandler.h ../../gameswidget.h ../../librarywidget.h ../../loginwidget.h ../../mainwindow.h ../../profile.h ../../readnowwidget.h ../../signup.h ../../videowidget.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../../authhandler.cpp ../../book.cpp ../../bookwidget.cpp ../../databasehandler.cpp ../../gameswidget.cpp ../../librarywidget.cpp ../../loginwidget.cpp ../../main.cpp ../../mainwindow.cpp ../../profile.cpp ../../readnowwidget.cpp ../../signup.cpp ../../videowidget.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../../bookwidget.ui ../../gameswidget.ui ../../librarywidget.ui ../../loginwidget.ui ../../mainwindow.ui ../../profile.ui ../../readnowwidget.ui ../../signup.ui ../../videowidget.ui $(DISTDIR)/
+	$(COPY_FILE) --parents ../../resrc/resources.qrc qmake_qmake_qm_files.qrc $(DISTDIR)/
+	$(COPY_FILE) --parents ../../inc/authhandler.h ../../inc/book.h ../../inc/bookscollection.h ../../inc/bookwidget.h ../../inc/databasehandler.h ../../inc/gameswidget.h ../../inc/librarywidget.h ../../inc/loginwidget.h ../../inc/mainwindow.h ../../inc/notificationwindow.h ../../inc/profile.h ../../inc/readnowwidget.h ../../inc/revisionwidget.h ../../inc/signup.h ../../inc/subtitleitem.h ../../inc/videowidget.h ../../inc/quizwidget.h ../../inc/resultquizwidget.h ../../inc/startquizwidget.h ../../inc/word.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../../src/authhandler.cpp ../../src/book.cpp ../../src/bookscollection.cpp ../../src/bookwidget.cpp ../../src/databasehandler.cpp ../../src/gameswidget.cpp ../../src/librarywidget.cpp ../../src/loginwidget.cpp ../../src/main.cpp ../../src/mainwindow.cpp ../../src/notificationwindow.cpp ../../src/profile.cpp ../../src/readnowwidget.cpp ../../src/revisionwidget.cpp ../../src/signup.cpp ../../src/quizwidget.cpp ../../src/resultquizwidget.cpp ../../src/startquizwidget.cpp ../../src/subtitleitem.cpp ../../src/videowidget.cpp ../../src/word.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../../ui/src/bookscollection.ui ../../ui/src/bookwidget.ui ../../ui/src/gameswidget.ui ../../ui/src/librarywidget.ui ../../ui/src/loginwidget.ui ../../ui/src/mainwindow.ui ../../ui/src/profile.ui ../../ui/src/readnowwidget.ui ../../ui/src/revisionwidget.ui ../../ui/src/signup.ui ../../ui/src/videowidget.ui ../../ui/src/quizwidget.ui ../../ui/src/resultquizwidget.ui ../../ui/src/startquizwidget.ui $(DISTDIR)/
 	$(COPY_FILE) --parents ../../SpeakSavvy_ru_RU.ts $(DISTDIR)/
 
 
@@ -923,18 +974,42 @@ compiler_lrelease_clean:
 .qm/SpeakSavvy_ru_RU.qm: ../../SpeakSavvy_ru_RU.ts
 	/Users/sinfillo/Qt/6.7.0/macos/bin/lrelease ../../SpeakSavvy_ru_RU.ts -qm .qm/SpeakSavvy_ru_RU.qm
 
-compiler_rcc_make_all: qrc_qmake_qmake_qm_files.cpp
+compiler_rcc_make_all: qrc_resources.cpp qrc_qmake_qmake_qm_files.cpp
 compiler_rcc_clean:
-	-$(DEL_FILE) qrc_qmake_qmake_qm_files.cpp
+	-$(DEL_FILE) qrc_resources.cpp qrc_qmake_qmake_qm_files.cpp
+qrc_resources.cpp: ../../resrc/resources.qrc \
+		../../../../Qt/6.7.0/macos/libexec/rcc \
+		../../resrc/resources/statistics.json \
+		../../resrc/left-arrow.png \
+		../../resrc/open-book.png \
+		../../resrc/happy_flame.png \
+		../../resrc/books.png \
+		../../resrc/tv.png \
+		../../resrc/left-arrow-black.png \
+		../../resrc/bear.png \
+		../../resrc/cat.png \
+		../../resrc/game-console.png \
+		../../resrc/quiz.png \
+		../../resrc/bear-2.png \
+		../../resrc/Yandex_Translate_icon.png \
+		../../resrc/right-arrow-black.png \
+		../../resrc/home.png \
+		../../resrc/subtitles2.txt \
+		../../resrc/subtitles1.txt \
+		../../resrc/resources/Dictionary.txt \
+		../../resrc/example2.mp4 \
+		../../resrc/lolvideo.mp4
+	/Users/sinfillo/Qt/6.7.0/macos/libexec/rcc -name resources --no-zstd ../../resrc/resources.qrc -o qrc_resources.cpp
+
 qrc_qmake_qmake_qm_files.cpp: qmake_qmake_qm_files.qrc \
 		../../../../Qt/6.7.0/macos/libexec/rcc \
 		.qm/SpeakSavvy_ru_RU.qm
 	/Users/sinfillo/Qt/6.7.0/macos/libexec/rcc -name qmake_qmake_qm_files --no-zstd qmake_qmake_qm_files.qrc -o qrc_qmake_qmake_qm_files.cpp
 
-compiler_moc_header_make_all: moc_authhandler.cpp moc_bookwidget.cpp moc_databasehandler.cpp moc_gameswidget.cpp moc_librarywidget.cpp moc_loginwidget.cpp moc_mainwindow.cpp moc_profile.cpp moc_readnowwidget.cpp moc_signup.cpp moc_videowidget.cpp
+compiler_moc_header_make_all: moc_authhandler.cpp moc_bookscollection.cpp moc_bookwidget.cpp moc_databasehandler.cpp moc_gameswidget.cpp moc_librarywidget.cpp moc_loginwidget.cpp moc_mainwindow.cpp moc_notificationwindow.cpp moc_profile.cpp moc_readnowwidget.cpp moc_revisionwidget.cpp moc_signup.cpp moc_videowidget.cpp moc_quizwidget.cpp moc_resultquizwidget.cpp moc_startquizwidget.cpp moc_word.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_authhandler.cpp moc_bookwidget.cpp moc_databasehandler.cpp moc_gameswidget.cpp moc_librarywidget.cpp moc_loginwidget.cpp moc_mainwindow.cpp moc_profile.cpp moc_readnowwidget.cpp moc_signup.cpp moc_videowidget.cpp
-moc_authhandler.cpp: ../../authhandler.h \
+	-$(DEL_FILE) moc_authhandler.cpp moc_bookscollection.cpp moc_bookwidget.cpp moc_databasehandler.cpp moc_gameswidget.cpp moc_librarywidget.cpp moc_loginwidget.cpp moc_mainwindow.cpp moc_notificationwindow.cpp moc_profile.cpp moc_readnowwidget.cpp moc_revisionwidget.cpp moc_signup.cpp moc_videowidget.cpp moc_quizwidget.cpp moc_resultquizwidget.cpp moc_startquizwidget.cpp moc_word.cpp
+moc_authhandler.cpp: ../../inc/authhandler.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QObject \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qobject.h \
 		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/QNetworkAccessManager \
@@ -944,52 +1019,9 @@ moc_authhandler.cpp: ../../authhandler.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonDocument \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsondocument.h \
 		../../../../Qt/6.7.0/macos/libexec/moc
-	/Users/sinfillo/Qt/6.7.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=13 -D__clang_minor__=1 -D__clang_patchlevel__=6 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/sinfillo/Qt/6.7.0/macos/mkspecs/macx-clang -I/Users/sinfillo/Desktop/SpeakSavvy -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtMultimediaWidgets.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtSvg.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtGui.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtNetwork.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/13.1.6/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/sinfillo/Qt/6.7.0/macos/lib ../../authhandler.h -o moc_authhandler.cpp
+	/Users/sinfillo/Qt/6.7.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=13 -D__clang_minor__=1 -D__clang_patchlevel__=6 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/sinfillo/Qt/6.7.0/macos/mkspecs/macx-clang -I/Users/sinfillo/Desktop/SpeakSavvy -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtMultimediaWidgets.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtSvg.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtGui.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtNetwork.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/13.1.6/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/sinfillo/Qt/6.7.0/macos/lib ../../inc/authhandler.h -o moc_authhandler.cpp
 
-moc_bookwidget.cpp: ../../bookwidget.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QWidget \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qwidget.h \
-		../../../../Qt/6.7.0/macos/libexec/moc
-	/Users/sinfillo/Qt/6.7.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=13 -D__clang_minor__=1 -D__clang_patchlevel__=6 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/sinfillo/Qt/6.7.0/macos/mkspecs/macx-clang -I/Users/sinfillo/Desktop/SpeakSavvy -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtMultimediaWidgets.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtSvg.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtGui.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtNetwork.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/13.1.6/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/sinfillo/Qt/6.7.0/macos/lib ../../bookwidget.h -o moc_bookwidget.cpp
-
-moc_databasehandler.cpp: ../../databasehandler.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QObject \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qobject.h \
-		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/QNetworkAccessManager \
-		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qnetworkaccessmanager.h \
-		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/QNetworkReply \
-		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qnetworkreply.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonDocument \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsondocument.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonValue \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsonvalue.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonArray \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsonarray.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonObject \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsonobject.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QVariant \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qvariant.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QByteArray \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qbytearray.h \
-		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/QHttpMultiPart \
-		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qhttpmultipart.h \
-		../../book.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QString \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstring.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QUrl \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qurl.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QPixmap \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpixmap.h \
-		../../../../Qt/6.7.0/macos/libexec/moc
-	/Users/sinfillo/Qt/6.7.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=13 -D__clang_minor__=1 -D__clang_patchlevel__=6 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/sinfillo/Qt/6.7.0/macos/mkspecs/macx-clang -I/Users/sinfillo/Desktop/SpeakSavvy -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtMultimediaWidgets.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtSvg.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtGui.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtNetwork.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/13.1.6/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/sinfillo/Qt/6.7.0/macos/lib ../../databasehandler.h -o moc_databasehandler.cpp
-
-moc_gameswidget.cpp: ../../gameswidget.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QWidget \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qwidget.h \
-		../../../../Qt/6.7.0/macos/libexec/moc
-	/Users/sinfillo/Qt/6.7.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=13 -D__clang_minor__=1 -D__clang_patchlevel__=6 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/sinfillo/Qt/6.7.0/macos/mkspecs/macx-clang -I/Users/sinfillo/Desktop/SpeakSavvy -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtMultimediaWidgets.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtSvg.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtGui.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtNetwork.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/13.1.6/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/sinfillo/Qt/6.7.0/macos/lib ../../gameswidget.h -o moc_gameswidget.cpp
-
-moc_librarywidget.cpp: ../../librarywidget.h \
+moc_bookscollection.cpp: ../../inc/bookscollection.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QWidget \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qwidget.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QListView \
@@ -1002,7 +1034,7 @@ moc_librarywidget.cpp: ../../librarywidget.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgridlayout.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QScrollArea \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qscrollarea.h \
-		../../databasehandler.h \
+		../../inc/databasehandler.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QObject \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qobject.h \
 		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/QNetworkAccessManager \
@@ -1023,28 +1055,149 @@ moc_librarywidget.cpp: ../../librarywidget.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qbytearray.h \
 		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/QHttpMultiPart \
 		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qhttpmultipart.h \
-		../../book.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QPair \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qpair.h \
+		../../inc/book.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QString \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstring.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QUrl \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qurl.h \
 		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QPixmap \
 		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpixmap.h \
+		../../inc/word.h \
 		../../../../Qt/6.7.0/macos/libexec/moc
-	/Users/sinfillo/Qt/6.7.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=13 -D__clang_minor__=1 -D__clang_patchlevel__=6 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/sinfillo/Qt/6.7.0/macos/mkspecs/macx-clang -I/Users/sinfillo/Desktop/SpeakSavvy -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtMultimediaWidgets.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtSvg.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtGui.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtNetwork.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/13.1.6/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/sinfillo/Qt/6.7.0/macos/lib ../../librarywidget.h -o moc_librarywidget.cpp
+	/Users/sinfillo/Qt/6.7.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=13 -D__clang_minor__=1 -D__clang_patchlevel__=6 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/sinfillo/Qt/6.7.0/macos/mkspecs/macx-clang -I/Users/sinfillo/Desktop/SpeakSavvy -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtMultimediaWidgets.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtSvg.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtGui.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtNetwork.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/13.1.6/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/sinfillo/Qt/6.7.0/macos/lib ../../inc/bookscollection.h -o moc_bookscollection.cpp
 
-moc_loginwidget.cpp: ../../loginwidget.h \
+moc_bookwidget.cpp: ../../inc/bookwidget.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QWidget \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qwidget.h \
 		../../../../Qt/6.7.0/macos/libexec/moc
-	/Users/sinfillo/Qt/6.7.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=13 -D__clang_minor__=1 -D__clang_patchlevel__=6 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/sinfillo/Qt/6.7.0/macos/mkspecs/macx-clang -I/Users/sinfillo/Desktop/SpeakSavvy -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtMultimediaWidgets.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtSvg.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtGui.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtNetwork.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/13.1.6/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/sinfillo/Qt/6.7.0/macos/lib ../../loginwidget.h -o moc_loginwidget.cpp
+	/Users/sinfillo/Qt/6.7.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=13 -D__clang_minor__=1 -D__clang_patchlevel__=6 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/sinfillo/Qt/6.7.0/macos/mkspecs/macx-clang -I/Users/sinfillo/Desktop/SpeakSavvy -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtMultimediaWidgets.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtSvg.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtGui.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtNetwork.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/13.1.6/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/sinfillo/Qt/6.7.0/macos/lib ../../inc/bookwidget.h -o moc_bookwidget.cpp
 
-moc_mainwindow.cpp: ../../mainwindow.h \
+moc_databasehandler.cpp: ../../inc/databasehandler.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QObject \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qobject.h \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/QNetworkAccessManager \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qnetworkaccessmanager.h \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/QNetworkReply \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qnetworkreply.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonDocument \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsondocument.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonValue \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsonvalue.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonArray \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsonarray.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonObject \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsonobject.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QVariant \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qvariant.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QByteArray \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qbytearray.h \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/QHttpMultiPart \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qhttpmultipart.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QPair \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qpair.h \
+		../../inc/book.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QString \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstring.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QUrl \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qurl.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QPixmap \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpixmap.h \
+		../../inc/word.h \
+		../../../../Qt/6.7.0/macos/libexec/moc
+	/Users/sinfillo/Qt/6.7.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=13 -D__clang_minor__=1 -D__clang_patchlevel__=6 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/sinfillo/Qt/6.7.0/macos/mkspecs/macx-clang -I/Users/sinfillo/Desktop/SpeakSavvy -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtMultimediaWidgets.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtSvg.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtGui.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtNetwork.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/13.1.6/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/sinfillo/Qt/6.7.0/macos/lib ../../inc/databasehandler.h -o moc_databasehandler.cpp
+
+moc_gameswidget.cpp: ../../inc/gameswidget.h \
+		../../inc/notificationwindow.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QWidget \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qwidget.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QPropertyAnimation \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qpropertyanimation.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QLabel \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qlabel.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QVBoxLayout \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qboxlayout.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QTimer \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtimer.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QAbstractButton \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qabstractbutton.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QFile \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qfile.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonObject \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsonobject.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonDocument \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsondocument.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QProgressBar \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qprogressbar.h \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/QNetworkAccessManager \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qnetworkaccessmanager.h \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/QNetworkReply \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qnetworkreply.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonArray \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsonarray.h \
+		../../../../Qt/6.7.0/macos/libexec/moc
+	/Users/sinfillo/Qt/6.7.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=13 -D__clang_minor__=1 -D__clang_patchlevel__=6 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/sinfillo/Qt/6.7.0/macos/mkspecs/macx-clang -I/Users/sinfillo/Desktop/SpeakSavvy -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtMultimediaWidgets.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtSvg.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtGui.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtNetwork.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/13.1.6/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/sinfillo/Qt/6.7.0/macos/lib ../../inc/gameswidget.h -o moc_gameswidget.cpp
+
+moc_librarywidget.cpp: ../../inc/librarywidget.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QWidget \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qwidget.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QListView \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qlistview.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QPushButton \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qpushbutton.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QLabel \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qlabel.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGridLayout \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgridlayout.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QScrollArea \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qscrollarea.h \
+		../../inc/databasehandler.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QObject \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qobject.h \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/QNetworkAccessManager \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qnetworkaccessmanager.h \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/QNetworkReply \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qnetworkreply.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonDocument \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsondocument.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonValue \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsonvalue.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonArray \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsonarray.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonObject \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsonobject.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QVariant \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qvariant.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QByteArray \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qbytearray.h \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/QHttpMultiPart \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qhttpmultipart.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QPair \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qpair.h \
+		../../inc/book.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QString \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstring.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QUrl \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qurl.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QPixmap \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpixmap.h \
+		../../inc/word.h \
+		../../../../Qt/6.7.0/macos/libexec/moc
+	/Users/sinfillo/Qt/6.7.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=13 -D__clang_minor__=1 -D__clang_patchlevel__=6 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/sinfillo/Qt/6.7.0/macos/mkspecs/macx-clang -I/Users/sinfillo/Desktop/SpeakSavvy -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtMultimediaWidgets.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtSvg.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtGui.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtNetwork.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/13.1.6/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/sinfillo/Qt/6.7.0/macos/lib ../../inc/librarywidget.h -o moc_librarywidget.cpp
+
+moc_loginwidget.cpp: ../../inc/loginwidget.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QWidget \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qwidget.h \
+		../../../../Qt/6.7.0/macos/libexec/moc
+	/Users/sinfillo/Qt/6.7.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=13 -D__clang_minor__=1 -D__clang_patchlevel__=6 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/sinfillo/Qt/6.7.0/macos/mkspecs/macx-clang -I/Users/sinfillo/Desktop/SpeakSavvy -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtMultimediaWidgets.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtSvg.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtGui.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtNetwork.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/13.1.6/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/sinfillo/Qt/6.7.0/macos/lib ../../inc/loginwidget.h -o moc_loginwidget.cpp
+
+moc_mainwindow.cpp: ../../inc/mainwindow.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QMainWindow \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qmainwindow.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QMessageBox \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qmessagebox.h \
-		../../profile.h \
+		../../inc/profile.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QWidget \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qwidget.h \
 		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/QNetworkAccessManager \
@@ -1053,12 +1206,12 @@ moc_mainwindow.cpp: ../../mainwindow.h \
 		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qnetworkreply.h \
 		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QPixmap \
 		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpixmap.h \
-		../../authhandler.h \
+		../../inc/authhandler.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QObject \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qobject.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonDocument \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsondocument.h \
-		../../readnowwidget.h \
+		../../inc/readnowwidget.h \
 		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/QtNetwork \
 		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qtnetworkglobal.h \
 		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qabstractnetworkcache.h \
@@ -1446,31 +1599,43 @@ moc_mainwindow.cpp: ../../mainwindow.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qxpfunctional.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qyieldcpu.h \
 		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QTextCursor \
-		../../databasehandler.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QPushButton \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qpushbutton.h \
+		../../inc/databasehandler.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonValue \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonArray \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonObject \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QVariant \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QByteArray \
 		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/QHttpMultiPart \
-		../../book.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QPair \
+		../../inc/book.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QString \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QUrl \
-		../../librarywidget.h \
+		../../inc/word.h \
+		../../inc/librarywidget.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QListView \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qlistview.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QPushButton \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qpushbutton.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QLabel \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qlabel.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGridLayout \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgridlayout.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QScrollArea \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qscrollarea.h \
-		../../signup.h \
-		../../loginwidget.h \
-		../../gameswidget.h \
-		../../videowidget.h \
+		../../inc/signup.h \
+		../../inc/loginwidget.h \
+		../../inc/gameswidget.h \
+		../../inc/notificationwindow.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QPropertyAnimation \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QVBoxLayout \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qboxlayout.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QTimer \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QAbstractButton \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qabstractbutton.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QFile \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QProgressBar \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qprogressbar.h \
+		../../inc/videowidget.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QFileDialog \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qfiledialog.h \
 		../../../../Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers/QtMultimedia \
@@ -1513,7 +1678,6 @@ moc_mainwindow.cpp: ../../mainwindow.h \
 		../../../../Qt/6.7.0/macos/lib/QtMultimediaWidgets.framework/Headers/qvideowidget.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QtWidgets \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qtwidgetsglobal.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qabstractbutton.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qabstractitemdelegate.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qabstractitemview.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qabstractscrollarea.h \
@@ -1523,7 +1687,6 @@ moc_mainwindow.cpp: ../../mainwindow.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qaction.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qactiongroup.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qapplication.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qboxlayout.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qbuttongroup.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qcalendarwidget.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qcheckbox.h \
@@ -1581,7 +1744,6 @@ moc_mainwindow.cpp: ../../mainwindow.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qmenu.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qmenubar.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qplaintextedit.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qprogressbar.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qprogressdialog.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qproxystyle.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qradiobutton.h \
@@ -1626,11 +1788,36 @@ moc_mainwindow.cpp: ../../mainwindow.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qwidgetaction.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qwizard.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QVector \
-		../../subtitlesparser.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QTextStream \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QStringList \
+		../../inc/subtitleitem.h \
+		../../inc/startquizwidget.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QMenu \
+		../../inc/quizwidget.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QStyle \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QTime \
+		../../inc/resultquizwidget.h \
+		../../inc/revisionwidget.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QPalette \
+		../../inc/bookscollection.h \
 		../../../../Qt/6.7.0/macos/libexec/moc
-	/Users/sinfillo/Qt/6.7.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=13 -D__clang_minor__=1 -D__clang_patchlevel__=6 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/sinfillo/Qt/6.7.0/macos/mkspecs/macx-clang -I/Users/sinfillo/Desktop/SpeakSavvy -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtMultimediaWidgets.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtSvg.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtGui.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtNetwork.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/13.1.6/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/sinfillo/Qt/6.7.0/macos/lib ../../mainwindow.h -o moc_mainwindow.cpp
+	/Users/sinfillo/Qt/6.7.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=13 -D__clang_minor__=1 -D__clang_patchlevel__=6 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/sinfillo/Qt/6.7.0/macos/mkspecs/macx-clang -I/Users/sinfillo/Desktop/SpeakSavvy -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtMultimediaWidgets.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtSvg.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtGui.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtNetwork.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/13.1.6/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/sinfillo/Qt/6.7.0/macos/lib ../../inc/mainwindow.h -o moc_mainwindow.cpp
 
-moc_profile.cpp: ../../profile.h \
+moc_notificationwindow.cpp: ../../inc/notificationwindow.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QWidget \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qwidget.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QPropertyAnimation \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qpropertyanimation.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QLabel \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qlabel.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QVBoxLayout \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qboxlayout.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QTimer \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtimer.h \
+		../../../../Qt/6.7.0/macos/libexec/moc
+	/Users/sinfillo/Qt/6.7.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=13 -D__clang_minor__=1 -D__clang_patchlevel__=6 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/sinfillo/Qt/6.7.0/macos/mkspecs/macx-clang -I/Users/sinfillo/Desktop/SpeakSavvy -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtMultimediaWidgets.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtSvg.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtGui.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtNetwork.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/13.1.6/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/sinfillo/Qt/6.7.0/macos/lib ../../inc/notificationwindow.h -o moc_notificationwindow.cpp
+
+moc_profile.cpp: ../../inc/profile.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QWidget \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qwidget.h \
 		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/QNetworkAccessManager \
@@ -1640,9 +1827,9 @@ moc_profile.cpp: ../../profile.h \
 		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QPixmap \
 		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpixmap.h \
 		../../../../Qt/6.7.0/macos/libexec/moc
-	/Users/sinfillo/Qt/6.7.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=13 -D__clang_minor__=1 -D__clang_patchlevel__=6 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/sinfillo/Qt/6.7.0/macos/mkspecs/macx-clang -I/Users/sinfillo/Desktop/SpeakSavvy -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtMultimediaWidgets.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtSvg.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtGui.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtNetwork.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/13.1.6/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/sinfillo/Qt/6.7.0/macos/lib ../../profile.h -o moc_profile.cpp
+	/Users/sinfillo/Qt/6.7.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=13 -D__clang_minor__=1 -D__clang_patchlevel__=6 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/sinfillo/Qt/6.7.0/macos/mkspecs/macx-clang -I/Users/sinfillo/Desktop/SpeakSavvy -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtMultimediaWidgets.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtSvg.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtGui.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtNetwork.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/13.1.6/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/sinfillo/Qt/6.7.0/macos/lib ../../inc/profile.h -o moc_profile.cpp
 
-moc_readnowwidget.cpp: ../../readnowwidget.h \
+moc_readnowwidget.cpp: ../../inc/readnowwidget.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QWidget \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qwidget.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QMainWindow \
@@ -2043,7 +2230,9 @@ moc_readnowwidget.cpp: ../../readnowwidget.h \
 		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/QNetworkAccessManager \
 		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/QNetworkReply \
 		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QTextCursor \
-		../../databasehandler.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QPushButton \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qpushbutton.h \
+		../../inc/databasehandler.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QObject \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonDocument \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonValue \
@@ -2052,20 +2241,63 @@ moc_readnowwidget.cpp: ../../readnowwidget.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QVariant \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QByteArray \
 		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/QHttpMultiPart \
-		../../book.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QPair \
+		../../inc/book.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QString \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QUrl \
 		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QPixmap \
+		../../inc/word.h \
 		../../../../Qt/6.7.0/macos/libexec/moc
-	/Users/sinfillo/Qt/6.7.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=13 -D__clang_minor__=1 -D__clang_patchlevel__=6 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/sinfillo/Qt/6.7.0/macos/mkspecs/macx-clang -I/Users/sinfillo/Desktop/SpeakSavvy -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtMultimediaWidgets.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtSvg.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtGui.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtNetwork.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/13.1.6/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/sinfillo/Qt/6.7.0/macos/lib ../../readnowwidget.h -o moc_readnowwidget.cpp
+	/Users/sinfillo/Qt/6.7.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=13 -D__clang_minor__=1 -D__clang_patchlevel__=6 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/sinfillo/Qt/6.7.0/macos/mkspecs/macx-clang -I/Users/sinfillo/Desktop/SpeakSavvy -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtMultimediaWidgets.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtSvg.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtGui.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtNetwork.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/13.1.6/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/sinfillo/Qt/6.7.0/macos/lib ../../inc/readnowwidget.h -o moc_readnowwidget.cpp
 
-moc_signup.cpp: ../../signup.h \
+moc_revisionwidget.cpp: ../../inc/revisionwidget.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QWidget \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qwidget.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QString \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstring.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QMessageBox \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qmessagebox.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QPalette \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpalette.h \
+		../../inc/word.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QObject \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qobject.h \
+		../../inc/databasehandler.h \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/QNetworkAccessManager \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qnetworkaccessmanager.h \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/QNetworkReply \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qnetworkreply.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonDocument \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsondocument.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonValue \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsonvalue.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonArray \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsonarray.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonObject \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsonobject.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QVariant \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qvariant.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QByteArray \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qbytearray.h \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/QHttpMultiPart \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qhttpmultipart.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QPair \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qpair.h \
+		../../inc/book.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QUrl \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qurl.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QPixmap \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpixmap.h \
+		../../../../Qt/6.7.0/macos/libexec/moc
+	/Users/sinfillo/Qt/6.7.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=13 -D__clang_minor__=1 -D__clang_patchlevel__=6 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/sinfillo/Qt/6.7.0/macos/mkspecs/macx-clang -I/Users/sinfillo/Desktop/SpeakSavvy -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtMultimediaWidgets.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtSvg.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtGui.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtNetwork.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/13.1.6/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/sinfillo/Qt/6.7.0/macos/lib ../../inc/revisionwidget.h -o moc_revisionwidget.cpp
+
+moc_signup.cpp: ../../inc/signup.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QWidget \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qwidget.h \
 		../../../../Qt/6.7.0/macos/libexec/moc
-	/Users/sinfillo/Qt/6.7.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=13 -D__clang_minor__=1 -D__clang_patchlevel__=6 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/sinfillo/Qt/6.7.0/macos/mkspecs/macx-clang -I/Users/sinfillo/Desktop/SpeakSavvy -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtMultimediaWidgets.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtSvg.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtGui.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtNetwork.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/13.1.6/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/sinfillo/Qt/6.7.0/macos/lib ../../signup.h -o moc_signup.cpp
+	/Users/sinfillo/Qt/6.7.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=13 -D__clang_minor__=1 -D__clang_patchlevel__=6 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/sinfillo/Qt/6.7.0/macos/mkspecs/macx-clang -I/Users/sinfillo/Desktop/SpeakSavvy -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtMultimediaWidgets.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtSvg.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtGui.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtNetwork.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/13.1.6/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/sinfillo/Qt/6.7.0/macos/lib ../../inc/signup.h -o moc_signup.cpp
 
-moc_videowidget.cpp: ../../videowidget.h \
+moc_videowidget.cpp: ../../inc/videowidget.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QWidget \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qwidget.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QFileDialog \
@@ -2575,52 +2807,146 @@ moc_videowidget.cpp: ../../videowidget.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qwizard.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QVector \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QString \
-		../../subtitlesparser.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QFile \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QTextStream \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QStringList \
+		../../inc/subtitleitem.h \
 		../../../../Qt/6.7.0/macos/libexec/moc
-	/Users/sinfillo/Qt/6.7.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=13 -D__clang_minor__=1 -D__clang_patchlevel__=6 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/sinfillo/Qt/6.7.0/macos/mkspecs/macx-clang -I/Users/sinfillo/Desktop/SpeakSavvy -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtMultimediaWidgets.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtSvg.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtGui.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtNetwork.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/13.1.6/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/sinfillo/Qt/6.7.0/macos/lib ../../videowidget.h -o moc_videowidget.cpp
+	/Users/sinfillo/Qt/6.7.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=13 -D__clang_minor__=1 -D__clang_patchlevel__=6 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/sinfillo/Qt/6.7.0/macos/mkspecs/macx-clang -I/Users/sinfillo/Desktop/SpeakSavvy -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtMultimediaWidgets.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtSvg.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtGui.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtNetwork.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/13.1.6/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/sinfillo/Qt/6.7.0/macos/lib ../../inc/videowidget.h -o moc_videowidget.cpp
+
+moc_quizwidget.cpp: ../../inc/quizwidget.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QWidget \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qwidget.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QPushButton \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qpushbutton.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QLabel \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qlabel.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QStyle \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qstyle.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QMessageBox \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qmessagebox.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QTime \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qdatetime.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QTimer \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtimer.h \
+		../../inc/databasehandler.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QObject \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qobject.h \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/QNetworkAccessManager \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qnetworkaccessmanager.h \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/QNetworkReply \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qnetworkreply.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonDocument \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsondocument.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonValue \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsonvalue.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonArray \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsonarray.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonObject \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsonobject.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QVariant \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qvariant.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QByteArray \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qbytearray.h \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/QHttpMultiPart \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qhttpmultipart.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QPair \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qpair.h \
+		../../inc/book.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QString \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstring.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QUrl \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qurl.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QPixmap \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpixmap.h \
+		../../inc/word.h \
+		../../../../Qt/6.7.0/macos/libexec/moc
+	/Users/sinfillo/Qt/6.7.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=13 -D__clang_minor__=1 -D__clang_patchlevel__=6 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/sinfillo/Qt/6.7.0/macos/mkspecs/macx-clang -I/Users/sinfillo/Desktop/SpeakSavvy -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtMultimediaWidgets.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtSvg.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtGui.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtNetwork.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/13.1.6/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/sinfillo/Qt/6.7.0/macos/lib ../../inc/quizwidget.h -o moc_quizwidget.cpp
+
+moc_resultquizwidget.cpp: ../../inc/resultquizwidget.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QWidget \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qwidget.h \
+		../../../../Qt/6.7.0/macos/libexec/moc
+	/Users/sinfillo/Qt/6.7.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=13 -D__clang_minor__=1 -D__clang_patchlevel__=6 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/sinfillo/Qt/6.7.0/macos/mkspecs/macx-clang -I/Users/sinfillo/Desktop/SpeakSavvy -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtMultimediaWidgets.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtSvg.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtGui.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtNetwork.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/13.1.6/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/sinfillo/Qt/6.7.0/macos/lib ../../inc/resultquizwidget.h -o moc_resultquizwidget.cpp
+
+moc_startquizwidget.cpp: ../../inc/startquizwidget.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QWidget \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qwidget.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QMenu \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qmenu.h \
+		../../../../Qt/6.7.0/macos/libexec/moc
+	/Users/sinfillo/Qt/6.7.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=13 -D__clang_minor__=1 -D__clang_patchlevel__=6 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/sinfillo/Qt/6.7.0/macos/mkspecs/macx-clang -I/Users/sinfillo/Desktop/SpeakSavvy -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtMultimediaWidgets.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtSvg.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtGui.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtNetwork.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/13.1.6/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/sinfillo/Qt/6.7.0/macos/lib ../../inc/startquizwidget.h -o moc_startquizwidget.cpp
+
+moc_word.cpp: ../../inc/word.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QObject \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qobject.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QString \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstring.h \
+		../../../../Qt/6.7.0/macos/libexec/moc
+	/Users/sinfillo/Qt/6.7.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=13 -D__clang_minor__=1 -D__clang_patchlevel__=6 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/sinfillo/Qt/6.7.0/macos/mkspecs/macx-clang -I/Users/sinfillo/Desktop/SpeakSavvy -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtMultimediaWidgets.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtSvg.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtGui.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtNetwork.framework/Headers -I/Users/sinfillo/Qt/6.7.0/macos/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/13.1.6/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/sinfillo/Qt/6.7.0/macos/lib ../../inc/word.h -o moc_word.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_bookwidget.h ui_gameswidget.h ui_librarywidget.h ui_loginwidget.h ui_mainwindow.h ui_profile.h ui_readnowwidget.h ui_signup.h ui_videowidget.h
+compiler_uic_make_all: ../../ui_bookscollection.h ../../ui_bookwidget.h ../../ui_gameswidget.h ../../ui_librarywidget.h ../../ui_loginwidget.h ../../ui_mainwindow.h ../../ui_profile.h ../../ui_readnowwidget.h ../../ui_revisionwidget.h ../../ui_signup.h ../../ui_videowidget.h ../../ui_quizwidget.h ../../ui_resultquizwidget.h ../../ui_startquizwidget.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_bookwidget.h ui_gameswidget.h ui_librarywidget.h ui_loginwidget.h ui_mainwindow.h ui_profile.h ui_readnowwidget.h ui_signup.h ui_videowidget.h
-ui_bookwidget.h: ../../bookwidget.ui \
+	-$(DEL_FILE) ../../ui_bookscollection.h ../../ui_bookwidget.h ../../ui_gameswidget.h ../../ui_librarywidget.h ../../ui_loginwidget.h ../../ui_mainwindow.h ../../ui_profile.h ../../ui_readnowwidget.h ../../ui_revisionwidget.h ../../ui_signup.h ../../ui_videowidget.h ../../ui_quizwidget.h ../../ui_resultquizwidget.h ../../ui_startquizwidget.h
+../../ui_bookscollection.h: ../../ui/src/bookscollection.ui \
 		../../../../Qt/6.7.0/macos/libexec/uic
-	/Users/sinfillo/Qt/6.7.0/macos/libexec/uic ../../bookwidget.ui -o ui_bookwidget.h
+	/Users/sinfillo/Qt/6.7.0/macos/libexec/uic ../../ui/src/bookscollection.ui -o ../../ui_bookscollection.h
 
-ui_gameswidget.h: ../../gameswidget.ui \
+../../ui_bookwidget.h: ../../ui/src/bookwidget.ui \
 		../../../../Qt/6.7.0/macos/libexec/uic
-	/Users/sinfillo/Qt/6.7.0/macos/libexec/uic ../../gameswidget.ui -o ui_gameswidget.h
+	/Users/sinfillo/Qt/6.7.0/macos/libexec/uic ../../ui/src/bookwidget.ui -o ../../ui_bookwidget.h
 
-ui_librarywidget.h: ../../librarywidget.ui \
+../../ui_gameswidget.h: ../../ui/src/gameswidget.ui \
 		../../../../Qt/6.7.0/macos/libexec/uic
-	/Users/sinfillo/Qt/6.7.0/macos/libexec/uic ../../librarywidget.ui -o ui_librarywidget.h
+	/Users/sinfillo/Qt/6.7.0/macos/libexec/uic ../../ui/src/gameswidget.ui -o ../../ui_gameswidget.h
 
-ui_loginwidget.h: ../../loginwidget.ui \
+../../ui_librarywidget.h: ../../ui/src/librarywidget.ui \
 		../../../../Qt/6.7.0/macos/libexec/uic
-	/Users/sinfillo/Qt/6.7.0/macos/libexec/uic ../../loginwidget.ui -o ui_loginwidget.h
+	/Users/sinfillo/Qt/6.7.0/macos/libexec/uic ../../ui/src/librarywidget.ui -o ../../ui_librarywidget.h
 
-ui_mainwindow.h: ../../mainwindow.ui \
+../../ui_loginwidget.h: ../../ui/src/loginwidget.ui \
 		../../../../Qt/6.7.0/macos/libexec/uic
-	/Users/sinfillo/Qt/6.7.0/macos/libexec/uic ../../mainwindow.ui -o ui_mainwindow.h
+	/Users/sinfillo/Qt/6.7.0/macos/libexec/uic ../../ui/src/loginwidget.ui -o ../../ui_loginwidget.h
 
-ui_profile.h: ../../profile.ui \
+../../ui_mainwindow.h: ../../ui/src/mainwindow.ui \
 		../../../../Qt/6.7.0/macos/libexec/uic
-	/Users/sinfillo/Qt/6.7.0/macos/libexec/uic ../../profile.ui -o ui_profile.h
+	/Users/sinfillo/Qt/6.7.0/macos/libexec/uic ../../ui/src/mainwindow.ui -o ../../ui_mainwindow.h
 
-ui_readnowwidget.h: ../../readnowwidget.ui \
+../../ui_profile.h: ../../ui/src/profile.ui \
 		../../../../Qt/6.7.0/macos/libexec/uic
-	/Users/sinfillo/Qt/6.7.0/macos/libexec/uic ../../readnowwidget.ui -o ui_readnowwidget.h
+	/Users/sinfillo/Qt/6.7.0/macos/libexec/uic ../../ui/src/profile.ui -o ../../ui_profile.h
 
-ui_signup.h: ../../signup.ui \
+../../ui_readnowwidget.h: ../../ui/src/readnowwidget.ui \
 		../../../../Qt/6.7.0/macos/libexec/uic
-	/Users/sinfillo/Qt/6.7.0/macos/libexec/uic ../../signup.ui -o ui_signup.h
+	/Users/sinfillo/Qt/6.7.0/macos/libexec/uic ../../ui/src/readnowwidget.ui -o ../../ui_readnowwidget.h
 
-ui_videowidget.h: ../../videowidget.ui \
+../../ui_revisionwidget.h: ../../ui/src/revisionwidget.ui \
 		../../../../Qt/6.7.0/macos/libexec/uic
-	/Users/sinfillo/Qt/6.7.0/macos/libexec/uic ../../videowidget.ui -o ui_videowidget.h
+	/Users/sinfillo/Qt/6.7.0/macos/libexec/uic ../../ui/src/revisionwidget.ui -o ../../ui_revisionwidget.h
+
+../../ui_signup.h: ../../ui/src/signup.ui \
+		../../../../Qt/6.7.0/macos/libexec/uic
+	/Users/sinfillo/Qt/6.7.0/macos/libexec/uic ../../ui/src/signup.ui -o ../../ui_signup.h
+
+../../ui_videowidget.h: ../../ui/src/videowidget.ui \
+		../../../../Qt/6.7.0/macos/libexec/uic
+	/Users/sinfillo/Qt/6.7.0/macos/libexec/uic ../../ui/src/videowidget.ui -o ../../ui_videowidget.h
+
+../../ui_quizwidget.h: ../../ui/src/quizwidget.ui \
+		../../../../Qt/6.7.0/macos/libexec/uic
+	/Users/sinfillo/Qt/6.7.0/macos/libexec/uic ../../ui/src/quizwidget.ui -o ../../ui_quizwidget.h
+
+../../ui_resultquizwidget.h: ../../ui/src/resultquizwidget.ui \
+		../../../../Qt/6.7.0/macos/libexec/uic
+	/Users/sinfillo/Qt/6.7.0/macos/libexec/uic ../../ui/src/resultquizwidget.ui -o ../../ui_resultquizwidget.h
+
+../../ui_startquizwidget.h: ../../ui/src/startquizwidget.ui \
+		../../../../Qt/6.7.0/macos/libexec/uic
+	/Users/sinfillo/Qt/6.7.0/macos/libexec/uic ../../ui/src/startquizwidget.ui -o ../../ui_startquizwidget.h
 
 compiler_rez_source_make_all:
 compiler_rez_source_clean:
@@ -2634,7 +2960,7 @@ compiler_clean: compiler_lrelease_clean compiler_rcc_clean compiler_moc_header_c
 
 ####### Compile
 
-authhandler.o: ../../authhandler.cpp ../../authhandler.h \
+authhandler.o: ../../src/authhandler.cpp ../../inc/authhandler.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QObject \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qobject.h \
 		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/QNetworkAccessManager \
@@ -2651,64 +2977,18 @@ authhandler.o: ../../authhandler.cpp ../../authhandler.h \
 		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qnetworkrequest.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonObject \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsonobject.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o authhandler.o ../../authhandler.cpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o authhandler.o ../../src/authhandler.cpp
 
-book.o: ../../book.cpp ../../book.h \
+book.o: ../../src/book.cpp ../../inc/book.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QString \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstring.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QUrl \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qurl.h \
 		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QPixmap \
 		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpixmap.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o book.o ../../book.cpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o book.o ../../src/book.cpp
 
-bookwidget.o: ../../bookwidget.cpp ../../bookwidget.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QWidget \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qwidget.h \
-		../../ui_bookwidget.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o bookwidget.o ../../bookwidget.cpp
-
-databasehandler.o: ../../databasehandler.cpp ../../databasehandler.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QObject \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qobject.h \
-		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/QNetworkAccessManager \
-		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qnetworkaccessmanager.h \
-		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/QNetworkReply \
-		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qnetworkreply.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonDocument \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsondocument.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonValue \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsonvalue.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonArray \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsonarray.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonObject \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsonobject.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QVariant \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qvariant.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QByteArray \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qbytearray.h \
-		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/QHttpMultiPart \
-		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qhttpmultipart.h \
-		../../book.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QString \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstring.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QUrl \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qurl.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QPixmap \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpixmap.h \
-		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/QNetworkRequest \
-		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qnetworkrequest.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QDebug \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qdebug.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o databasehandler.o ../../databasehandler.cpp
-
-gameswidget.o: ../../gameswidget.cpp ../../gameswidget.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QWidget \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qwidget.h \
-		../../ui_gameswidget.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o gameswidget.o ../../gameswidget.cpp
-
-librarywidget.o: ../../librarywidget.cpp ../../librarywidget.h \
+bookscollection.o: ../../src/bookscollection.cpp ../../inc/bookscollection.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QWidget \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qwidget.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QListView \
@@ -2721,7 +3001,7 @@ librarywidget.o: ../../librarywidget.cpp ../../librarywidget.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgridlayout.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QScrollArea \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qscrollarea.h \
-		../../databasehandler.h \
+		../../inc/databasehandler.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QObject \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qobject.h \
 		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/QNetworkAccessManager \
@@ -2742,24 +3022,166 @@ librarywidget.o: ../../librarywidget.cpp ../../librarywidget.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qbytearray.h \
 		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/QHttpMultiPart \
 		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qhttpmultipart.h \
-		../../book.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QPair \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qpair.h \
+		../../inc/book.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QString \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstring.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QUrl \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qurl.h \
 		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QPixmap \
 		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpixmap.h \
-		../../ui_librarywidget.h \
-		../../bookwidget.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o librarywidget.o ../../librarywidget.cpp
+		../../inc/word.h \
+		../../ui/inc/ui_bookscollection.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QFont \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qfont.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QMessageBox \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qmessagebox.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o bookscollection.o ../../src/bookscollection.cpp
 
-loginwidget.o: ../../loginwidget.cpp ../../loginwidget.h \
+bookwidget.o: ../../src/bookwidget.cpp ../../inc/bookwidget.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QWidget \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qwidget.h \
-		../../ui_loginwidget.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o loginwidget.o ../../loginwidget.cpp
+		../../ui/inc/ui_bookwidget.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o bookwidget.o ../../src/bookwidget.cpp
 
-main.o: ../../main.cpp ../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QApplication \
+databasehandler.o: ../../src/databasehandler.cpp ../../inc/databasehandler.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QObject \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qobject.h \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/QNetworkAccessManager \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qnetworkaccessmanager.h \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/QNetworkReply \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qnetworkreply.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonDocument \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsondocument.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonValue \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsonvalue.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonArray \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsonarray.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonObject \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsonobject.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QVariant \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qvariant.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QByteArray \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qbytearray.h \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/QHttpMultiPart \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qhttpmultipart.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QPair \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qpair.h \
+		../../inc/book.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QString \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstring.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QUrl \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qurl.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QPixmap \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpixmap.h \
+		../../inc/word.h \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/QNetworkRequest \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qnetworkrequest.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QDebug \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qdebug.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o databasehandler.o ../../src/databasehandler.cpp
+
+gameswidget.o: ../../src/gameswidget.cpp ../../inc/gameswidget.h \
+		../../inc/notificationwindow.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QWidget \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qwidget.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QPropertyAnimation \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qpropertyanimation.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QLabel \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qlabel.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QVBoxLayout \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qboxlayout.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QTimer \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtimer.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QAbstractButton \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qabstractbutton.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QFile \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qfile.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonObject \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsonobject.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonDocument \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsondocument.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QProgressBar \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qprogressbar.h \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/QNetworkAccessManager \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qnetworkaccessmanager.h \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/QNetworkReply \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qnetworkreply.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonArray \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsonarray.h \
+		../../ui/inc/ui_gameswidget.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QDir \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qdir.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QFileDialog \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qfiledialog.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QTextStream \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtextstream.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QKeyEvent \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qevent.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QButtonGroup \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qbuttongroup.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o gameswidget.o ../../src/gameswidget.cpp
+
+librarywidget.o: ../../src/librarywidget.cpp ../../inc/librarywidget.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QWidget \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qwidget.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QListView \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qlistview.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QPushButton \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qpushbutton.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QLabel \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qlabel.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGridLayout \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgridlayout.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QScrollArea \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qscrollarea.h \
+		../../inc/databasehandler.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QObject \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qobject.h \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/QNetworkAccessManager \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qnetworkaccessmanager.h \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/QNetworkReply \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qnetworkreply.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonDocument \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsondocument.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonValue \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsonvalue.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonArray \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsonarray.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonObject \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsonobject.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QVariant \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qvariant.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QByteArray \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qbytearray.h \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/QHttpMultiPart \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qhttpmultipart.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QPair \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qpair.h \
+		../../inc/book.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QString \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstring.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QUrl \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qurl.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QPixmap \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpixmap.h \
+		../../inc/word.h \
+		../../ui/inc/ui_librarywidget.h \
+		../../inc/bookwidget.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QFont \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qfont.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QMessageBox \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qmessagebox.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o librarywidget.o ../../src/librarywidget.cpp
+
+loginwidget.o: ../../src/loginwidget.cpp ../../inc/loginwidget.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QWidget \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qwidget.h \
+		../../ui/inc/ui_loginwidget.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o loginwidget.o ../../src/loginwidget.cpp
+
+main.o: ../../src/main.cpp ../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QApplication \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qapplication.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QLocale \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qlocale.h \
@@ -2773,7 +3195,7 @@ main.o: ../../main.cpp ../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Header
 		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qaction.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QMessageBox \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qmessagebox.h \
-		../../databasehandler.h \
+		../../inc/databasehandler.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QObject \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qobject.h \
 		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/QNetworkAccessManager \
@@ -2794,19 +3216,22 @@ main.o: ../../main.cpp ../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Header
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qbytearray.h \
 		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/QHttpMultiPart \
 		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qhttpmultipart.h \
-		../../book.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QPair \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qpair.h \
+		../../inc/book.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QString \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstring.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QUrl \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qurl.h \
 		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QPixmap \
 		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpixmap.h \
-		../../mainwindow.h \
-		../../profile.h \
+		../../inc/word.h \
+		../../inc/mainwindow.h \
+		../../inc/profile.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QWidget \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qwidget.h \
-		../../authhandler.h \
-		../../readnowwidget.h \
+		../../inc/authhandler.h \
+		../../inc/readnowwidget.h \
 		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/QtNetwork \
 		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qtnetworkglobal.h \
 		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qabstractnetworkcache.h \
@@ -3076,7 +3501,6 @@ main.o: ../../main.cpp ../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Header
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qobjectdefs.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qoperatingsystemversion.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qoverload.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qpair.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qparallelanimationgroup.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qpauseanimation.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qpermissions.h \
@@ -3183,21 +3607,31 @@ main.o: ../../main.cpp ../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Header
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qxpfunctional.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qyieldcpu.h \
 		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QTextCursor \
-		../../librarywidget.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QListView \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qlistview.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QPushButton \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qpushbutton.h \
+		../../inc/librarywidget.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QListView \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qlistview.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QLabel \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qlabel.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGridLayout \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgridlayout.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QScrollArea \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qscrollarea.h \
-		../../signup.h \
-		../../loginwidget.h \
-		../../gameswidget.h \
-		../../videowidget.h \
+		../../inc/signup.h \
+		../../inc/loginwidget.h \
+		../../inc/gameswidget.h \
+		../../inc/notificationwindow.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QPropertyAnimation \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QVBoxLayout \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qboxlayout.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QTimer \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QAbstractButton \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qabstractbutton.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QFile \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QProgressBar \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qprogressbar.h \
+		../../inc/videowidget.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QFileDialog \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qfiledialog.h \
 		../../../../Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers/QtMultimedia \
@@ -3240,7 +3674,6 @@ main.o: ../../main.cpp ../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Header
 		../../../../Qt/6.7.0/macos/lib/QtMultimediaWidgets.framework/Headers/qvideowidget.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QtWidgets \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qtwidgetsglobal.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qabstractbutton.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qabstractitemdelegate.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qabstractitemview.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qabstractscrollarea.h \
@@ -3249,7 +3682,6 @@ main.o: ../../main.cpp ../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Header
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qaccessiblewidget.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qaction.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qactiongroup.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qboxlayout.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qbuttongroup.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qcalendarwidget.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qcheckbox.h \
@@ -3307,7 +3739,6 @@ main.o: ../../main.cpp ../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Header
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qmenu.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qmenubar.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qplaintextedit.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qprogressbar.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qprogressdialog.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qproxystyle.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qradiobutton.h \
@@ -3351,15 +3782,26 @@ main.o: ../../main.cpp ../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Header
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qwidgetaction.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qwizard.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QVector \
-		../../subtitlesparser.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../../main.cpp
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QTextStream \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QStringList \
+		../../inc/subtitleitem.h \
+		../../inc/startquizwidget.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QMenu \
+		../../inc/quizwidget.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QStyle \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QTime \
+		../../inc/resultquizwidget.h \
+		../../inc/revisionwidget.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QPalette \
+		../../inc/bookscollection.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../../src/main.cpp
 
-mainwindow.o: ../../mainwindow.cpp ../../mainwindow.h \
+mainwindow.o: ../../src/mainwindow.cpp ../../inc/mainwindow.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QMainWindow \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qmainwindow.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QMessageBox \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qmessagebox.h \
-		../../profile.h \
+		../../inc/profile.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QWidget \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qwidget.h \
 		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/QNetworkAccessManager \
@@ -3368,12 +3810,12 @@ mainwindow.o: ../../mainwindow.cpp ../../mainwindow.h \
 		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qnetworkreply.h \
 		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QPixmap \
 		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpixmap.h \
-		../../authhandler.h \
+		../../inc/authhandler.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QObject \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qobject.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonDocument \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsondocument.h \
-		../../readnowwidget.h \
+		../../inc/readnowwidget.h \
 		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/QtNetwork \
 		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qtnetworkglobal.h \
 		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qabstractnetworkcache.h \
@@ -3761,31 +4203,43 @@ mainwindow.o: ../../mainwindow.cpp ../../mainwindow.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qxpfunctional.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qyieldcpu.h \
 		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QTextCursor \
-		../../databasehandler.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QPushButton \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qpushbutton.h \
+		../../inc/databasehandler.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonValue \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonArray \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonObject \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QVariant \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QByteArray \
 		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/QHttpMultiPart \
-		../../book.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QPair \
+		../../inc/book.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QString \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QUrl \
-		../../librarywidget.h \
+		../../inc/word.h \
+		../../inc/librarywidget.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QListView \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qlistview.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QPushButton \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qpushbutton.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QLabel \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qlabel.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGridLayout \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgridlayout.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QScrollArea \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qscrollarea.h \
-		../../signup.h \
-		../../loginwidget.h \
-		../../gameswidget.h \
-		../../videowidget.h \
+		../../inc/signup.h \
+		../../inc/loginwidget.h \
+		../../inc/gameswidget.h \
+		../../inc/notificationwindow.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QPropertyAnimation \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QVBoxLayout \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qboxlayout.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QTimer \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QAbstractButton \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qabstractbutton.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QFile \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QProgressBar \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qprogressbar.h \
+		../../inc/videowidget.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QFileDialog \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qfiledialog.h \
 		../../../../Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers/QtMultimedia \
@@ -3826,6 +4280,1087 @@ mainwindow.o: ../../mainwindow.cpp ../../mainwindow.h \
 		../../../../Qt/6.7.0/macos/lib/QtMultimediaWidgets.framework/Headers/qgraphicsvideoitem.h \
 		../../../../Qt/6.7.0/macos/lib/QtMultimediaWidgets.framework/Headers/qtmultimediawidgetsversion.h \
 		../../../../Qt/6.7.0/macos/lib/QtMultimediaWidgets.framework/Headers/qvideowidget.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QtWidgets \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qtwidgetsglobal.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qabstractitemdelegate.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qabstractitemview.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qabstractscrollarea.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qabstractslider.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qabstractspinbox.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qaccessiblewidget.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qaction.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qactiongroup.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qapplication.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qbuttongroup.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qcalendarwidget.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qcheckbox.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qcolordialog.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qcolormap.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qcolumnview.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qcombobox.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qcommandlinkbutton.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qcommonstyle.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qcompleter.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qdatawidgetmapper.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qdatetimeedit.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qdial.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qdialog.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qdialogbuttonbox.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qdockwidget.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qdrawutil.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qerrormessage.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qfileiconprovider.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qfilesystemmodel.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qfocusframe.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qfontcombobox.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qfontdialog.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qformlayout.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qframe.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgesture.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgesturerecognizer.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsanchorlayout.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicseffect.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsgridlayout.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsitem.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsitemanimation.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicslayout.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicslayoutitem.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicslinearlayout.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsproxywidget.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsscene.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicssceneevent.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicstransform.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsview.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicswidget.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgroupbox.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qheaderview.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qinputdialog.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qitemdelegate.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qitemeditorfactory.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qkeysequenceedit.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qlayout.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qlayoutitem.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qlcdnumber.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qlineedit.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qlistwidget.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qmdiarea.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qmdisubwindow.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qmenu.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qmenubar.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qplaintextedit.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qprogressdialog.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qproxystyle.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qradiobutton.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qrhiwidget.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qrubberband.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qscrollbar.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qscroller.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qscrollerproperties.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qshortcut.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qsizegrip.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qsizepolicy.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qslider.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qspinbox.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qsplashscreen.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qsplitter.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qstackedlayout.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qstackedwidget.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qstatusbar.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qstyle.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qstyleditemdelegate.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qstylefactory.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qstyleoption.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qstylepainter.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qstyleplugin.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qsystemtrayicon.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qtabbar.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qtableview.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qtablewidget.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qtabwidget.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qtextbrowser.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qtextedit.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qtoolbar.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qtoolbox.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qtoolbutton.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qtooltip.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qtreeview.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qtreewidget.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qtreewidgetitemiterator.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qtwidgetsversion.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qundoview.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qwhatsthis.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qwidgetaction.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qwizard.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QVector \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QTextStream \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QStringList \
+		../../inc/subtitleitem.h \
+		../../inc/startquizwidget.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QMenu \
+		../../inc/quizwidget.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QStyle \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QTime \
+		../../inc/resultquizwidget.h \
+		../../inc/revisionwidget.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QPalette \
+		../../inc/bookscollection.h \
+		../../ui/inc/ui_mainwindow.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../../src/mainwindow.cpp
+
+notificationwindow.o: ../../src/notificationwindow.cpp ../../inc/notificationwindow.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QWidget \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qwidget.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QPropertyAnimation \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qpropertyanimation.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QLabel \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qlabel.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QVBoxLayout \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qboxlayout.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QTimer \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtimer.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QPainter \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpainter.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QApplication \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qapplication.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QScreen \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qscreen.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o notificationwindow.o ../../src/notificationwindow.cpp
+
+profile.o: ../../src/profile.cpp ../../inc/profile.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QWidget \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qwidget.h \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/QNetworkAccessManager \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qnetworkaccessmanager.h \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/QNetworkReply \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qnetworkreply.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QPixmap \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpixmap.h \
+		../../ui/inc/ui_profile.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o profile.o ../../src/profile.cpp
+
+readnowwidget.o: ../../src/readnowwidget.cpp ../../inc/readnowwidget.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QWidget \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qwidget.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QMainWindow \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qmainwindow.h \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/QtNetwork \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qtnetworkglobal.h \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qabstractnetworkcache.h \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qabstractsocket.h \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qauthenticator.h \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qdnslookup.h \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qdtls.h \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qhostaddress.h \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qhostinfo.h \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qhstspolicy.h \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qhttp1configuration.h \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qhttp2configuration.h \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qhttpheaders.h \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qhttpmultipart.h \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qlocalserver.h \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qlocalsocket.h \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qnetworkaccessmanager.h \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qnetworkcookie.h \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qnetworkcookiejar.h \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qnetworkdatagram.h \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qnetworkdiskcache.h \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qnetworkinformation.h \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qnetworkinterface.h \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qnetworkproxy.h \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qnetworkreply.h \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qnetworkrequest.h \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qnetworkrequestfactory.h \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qocspresponse.h \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qpassworddigestor.h \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qrestaccessmanager.h \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qrestreply.h \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qssl.h \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qsslcertificate.h \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qsslcertificateextension.h \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qsslcipher.h \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qsslconfiguration.h \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qssldiffiehellmanparameters.h \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qsslellipticcurve.h \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qsslerror.h \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qsslkey.h \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qsslpresharedkeyauthenticator.h \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qsslserver.h \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qsslsocket.h \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qtcpserver.h \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qtcpsocket.h \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qtnetworkversion.h \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qudpsocket.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QtGui \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qtguiglobal.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qabstractfileiconprovider.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qabstracttextdocumentlayout.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qaccessible.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qaccessiblebridge.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qaccessibleobject.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qaccessibleplugin.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qaction.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qactiongroup.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qbackingstore.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qbitmap.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qbrush.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qclipboard.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qcolor.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qcolorspace.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qcolortransform.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qcursor.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qdesktopservices.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qdrag.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qevent.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qeventpoint.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qfilesystemmodel.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qfont.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qfontdatabase.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qfontinfo.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qfontmetrics.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qgenericmatrix.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qgenericplugin.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qgenericpluginfactory.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qglyphrun.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qguiapplication.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qicon.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qiconengine.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qiconengineplugin.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qimage.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qimageiohandler.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qimagereader.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qimagewriter.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qinputdevice.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qinputmethod.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qkeysequence.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qmatrix4x4.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qmovie.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qoffscreensurface.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qopengl.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qopenglcontext.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qopenglextrafunctions.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qopenglfunctions.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpagedpaintdevice.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpagelayout.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpageranges.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpagesize.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpaintdevice.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpaintdevicewindow.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpaintengine.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpainter.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpainterpath.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpalette.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpdfwriter.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpen.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpicture.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpixelformat.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpixmap.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpixmapcache.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpointingdevice.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpolygon.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qquaternion.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qrasterwindow.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qrawfont.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qregion.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qrgb.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qrgba64.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qrgbafloat.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qscreen.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qsessionmanager.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qshortcut.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qstandarditemmodel.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qstatictext.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qstylehints.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qsurface.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qsurfaceformat.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qsyntaxhighlighter.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qtextcursor.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qtextdocument.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qtextdocumentfragment.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qtextdocumentwriter.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qtextformat.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qtextlayout.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qtextlist.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qtextobject.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qtextoption.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qtexttable.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qtguiversion.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qtransform.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qundogroup.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qundostack.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qutimimeconverter.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qvalidator.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qvector2d.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qvector3d.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qvector4d.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qvectornd.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qwindow.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qwindowdefs.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QtCore \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qglobal.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/q20algorithm.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/q20chrono.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/q20functional.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/q20iterator.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/q20map.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/q20memory.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/q20vector.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/q23functional.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/q23utility.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qabstractanimation.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qabstracteventdispatcher.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qabstractitemmodel.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qabstractnativeeventfilter.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qabstractproxymodel.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qalgorithms.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qanimationgroup.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qanystringview.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qapplicationstatic.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qarraydata.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qarraydataops.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qarraydatapointer.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qassert.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qassociativeiterable.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qatomic.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qatomicscopedvaluerollback.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qbasictimer.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qbindingstorage.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qbitarray.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qbuffer.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qbytearray.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qbytearrayalgorithms.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qbytearraylist.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qbytearraymatcher.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qbytearrayview.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qcache.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qcalendar.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qcborarray.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qcborcommon.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qcbormap.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qcborstream.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qcborstreamreader.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qcborstreamwriter.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qcborvalue.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qchar.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qcollator.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qcommandlineoption.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qcommandlineparser.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qcompare.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qcompilerdetection.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qconcatenatetablesproxymodel.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qconstructormacros.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qcontainerfwd.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qcontainerinfo.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qcontiguouscache.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qcoreapplication.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qcoreevent.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qcryptographichash.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qdarwinhelpers.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qdatastream.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qdatetime.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qdeadlinetimer.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qdebug.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qdir.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qdiriterator.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qeasingcurve.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qelapsedtimer.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qendian.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qeventloop.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qexception.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qexceptionhandling.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qfactoryinterface.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qfile.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qfiledevice.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qfileinfo.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qfileselector.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qfilesystemwatcher.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qflags.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qforeach.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qfunctionpointer.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qfuture.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qfutureinterface.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qfuturesynchronizer.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qfuturewatcher.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qgenericatomic.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qglobalstatic.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qhash.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qhashfunctions.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qidentityproxymodel.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qiodevice.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qiodevicebase.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qitemselectionmodel.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qiterable.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qiterator.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsonarray.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsondocument.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsonobject.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsonvalue.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qlatin1stringmatcher.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qlatin1stringview.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qlibrary.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qlibraryinfo.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qline.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qlist.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qlocale.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qlockfile.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qloggingcategory.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qmalloc.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qmap.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qmargins.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qmath.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qmessageauthenticationcode.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qmetacontainer.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qmetaobject.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qmetatype.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qmimedata.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qmimedatabase.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qmimetype.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qminmax.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qmutex.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qnamespace.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qnativeinterface.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qnumeric.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qobject.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qobjectcleanuphandler.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qobjectdefs.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qoperatingsystemversion.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qoverload.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qpair.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qparallelanimationgroup.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qpauseanimation.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qpermissions.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qplugin.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qpluginloader.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qpoint.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qpointer.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qprocess.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qprocessordetection.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qpromise.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qproperty.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qpropertyanimation.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qpropertyprivate.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qqueue.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qrandom.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qreadwritelock.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qrect.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qrefcount.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qregularexpression.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qresource.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qresultstore.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qrunnable.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qsavefile.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qscopedpointer.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qscopedvaluerollback.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qscopeguard.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qsemaphore.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qsequentialanimationgroup.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qsequentialiterable.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qset.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qsettings.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qshareddata.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qsharedmemory.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qsharedpointer.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qsignalmapper.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qsimd.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qsize.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qsocketnotifier.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qsortfilterproxymodel.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qspan.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstack.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstandardpaths.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstaticlatin1stringmatcher.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstorageinfo.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstring.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstringalgorithms.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstringbuilder.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstringconverter.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstringfwd.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstringlist.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstringlistmodel.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstringliteral.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstringmatcher.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstringtokenizer.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstringview.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qswap.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qsysinfo.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qsystemdetection.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qsystemsemaphore.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtaggedpointer.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtclasshelpermacros.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtconfiginclude.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtconfigmacros.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtcoreversion.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtdeprecationmarkers.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtemporarydir.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtemporaryfile.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtenvironmentvariables.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtextboundaryfinder.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtextstream.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qthread.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qthreadpool.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qthreadstorage.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtimeline.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtimer.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtimezone.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtipccommon.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtmetamacros.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtnoop.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtpreprocessorsupport.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtranslator.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtransposeproxymodel.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtresource.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtsymbolmacros.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qttranslation.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qttypetraits.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtversion.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtversionchecks.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtypeinfo.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtyperevision.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtypes.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qurl.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qurlquery.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qutf8stringview.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/quuid.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qvariant.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qvariantanimation.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qvarianthash.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qvariantlist.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qvariantmap.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qvarlengtharray.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qvector.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qversionnumber.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qversiontagging.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qwaitcondition.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qwineventnotifier.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qxmlstream.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qxpfunctional.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qyieldcpu.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QMessageBox \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qmessagebox.h \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/QNetworkAccessManager \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/QNetworkReply \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QTextCursor \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QPushButton \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qpushbutton.h \
+		../../inc/databasehandler.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QObject \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonDocument \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonValue \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonArray \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonObject \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QVariant \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QByteArray \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/QHttpMultiPart \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QPair \
+		../../inc/book.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QString \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QUrl \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QPixmap \
+		../../inc/word.h \
+		../../ui/inc/ui_readnowwidget.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o readnowwidget.o ../../src/readnowwidget.cpp
+
+revisionwidget.o: ../../src/revisionwidget.cpp ../../inc/revisionwidget.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QWidget \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qwidget.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QString \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstring.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QMessageBox \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qmessagebox.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QPalette \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpalette.h \
+		../../inc/word.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QObject \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qobject.h \
+		../../inc/databasehandler.h \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/QNetworkAccessManager \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qnetworkaccessmanager.h \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/QNetworkReply \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qnetworkreply.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonDocument \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsondocument.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonValue \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsonvalue.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonArray \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsonarray.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonObject \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsonobject.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QVariant \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qvariant.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QByteArray \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qbytearray.h \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/QHttpMultiPart \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qhttpmultipart.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QPair \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qpair.h \
+		../../inc/book.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QUrl \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qurl.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QPixmap \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpixmap.h \
+		../../ui/inc/ui_revisionwidget.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o revisionwidget.o ../../src/revisionwidget.cpp
+
+signup.o: ../../src/signup.cpp ../../inc/signup.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QWidget \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qwidget.h \
+		../../ui/inc/ui_signup.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o signup.o ../../src/signup.cpp
+
+quizwidget.o: ../../src/quizwidget.cpp ../../inc/quizwidget.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QWidget \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qwidget.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QPushButton \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qpushbutton.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QLabel \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qlabel.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QStyle \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qstyle.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QMessageBox \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qmessagebox.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QTime \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qdatetime.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QTimer \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtimer.h \
+		../../inc/databasehandler.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QObject \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qobject.h \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/QNetworkAccessManager \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qnetworkaccessmanager.h \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/QNetworkReply \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qnetworkreply.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonDocument \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsondocument.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonValue \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsonvalue.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonArray \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsonarray.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonObject \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsonobject.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QVariant \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qvariant.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QByteArray \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qbytearray.h \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/QHttpMultiPart \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qhttpmultipart.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QPair \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qpair.h \
+		../../inc/book.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QString \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstring.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QUrl \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qurl.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QPixmap \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpixmap.h \
+		../../inc/word.h \
+		../../ui/inc/ui_quizwidget.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o quizwidget.o ../../src/quizwidget.cpp
+
+resultquizwidget.o: ../../src/resultquizwidget.cpp ../../inc/resultquizwidget.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QWidget \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qwidget.h \
+		../../ui_resultquizwidget.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o resultquizwidget.o ../../src/resultquizwidget.cpp
+
+startquizwidget.o: ../../src/startquizwidget.cpp ../../inc/startquizwidget.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QWidget \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qwidget.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QMenu \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qmenu.h \
+		../../ui/inc/ui_startquizwidget.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o startquizwidget.o ../../src/startquizwidget.cpp
+
+subtitleitem.o: ../../src/subtitleitem.cpp ../../inc/subtitleitem.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QString \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstring.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o subtitleitem.o ../../src/subtitleitem.cpp
+
+videowidget.o: ../../src/videowidget.cpp ../../inc/videowidget.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QWidget \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qwidget.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QFileDialog \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qfiledialog.h \
+		../../../../Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers/QtMultimedia \
+		../../../../Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers/qtmultimediaglobal.h \
+		../../../../Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers/qaudio.h \
+		../../../../Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers/qaudiobuffer.h \
+		../../../../Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers/qaudiodecoder.h \
+		../../../../Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers/qaudiodevice.h \
+		../../../../Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers/qaudioformat.h \
+		../../../../Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers/qaudioinput.h \
+		../../../../Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers/qaudiooutput.h \
+		../../../../Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers/qaudiosink.h \
+		../../../../Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers/qaudiosource.h \
+		../../../../Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers/qcamera.h \
+		../../../../Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers/qcameradevice.h \
+		../../../../Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers/qcapturablewindow.h \
+		../../../../Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers/qimagecapture.h \
+		../../../../Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers/qmediacapturesession.h \
+		../../../../Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers/qmediadevices.h \
+		../../../../Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers/qmediaenumdebug.h \
+		../../../../Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers/qmediaformat.h \
+		../../../../Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers/qmediametadata.h \
+		../../../../Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers/qmediaplayer.h \
+		../../../../Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers/qmediarecorder.h \
+		../../../../Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers/qmediatimerange.h \
+		../../../../Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers/qscreencapture.h \
+		../../../../Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers/qsoundeffect.h \
+		../../../../Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers/qtaudio.h \
+		../../../../Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers/qtmultimediaversion.h \
+		../../../../Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers/qtvideo.h \
+		../../../../Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers/qvideoframe.h \
+		../../../../Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers/qvideoframeformat.h \
+		../../../../Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers/qvideosink.h \
+		../../../../Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers/qwavedecoder.h \
+		../../../../Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers/qwindowcapture.h \
+		../../../../Qt/6.7.0/macos/lib/QtMultimediaWidgets.framework/Headers/QtMultimediaWidgets \
+		../../../../Qt/6.7.0/macos/lib/QtMultimediaWidgets.framework/Headers/qtmultimediawidgetsglobal.h \
+		../../../../Qt/6.7.0/macos/lib/QtMultimediaWidgets.framework/Headers/qgraphicsvideoitem.h \
+		../../../../Qt/6.7.0/macos/lib/QtMultimediaWidgets.framework/Headers/qtmultimediawidgetsversion.h \
+		../../../../Qt/6.7.0/macos/lib/QtMultimediaWidgets.framework/Headers/qvideowidget.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QtCore \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qglobal.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/q20algorithm.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/q20chrono.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/q20functional.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/q20iterator.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/q20map.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/q20memory.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/q20vector.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/q23functional.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/q23utility.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qabstractanimation.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qabstracteventdispatcher.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qabstractitemmodel.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qabstractnativeeventfilter.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qabstractproxymodel.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qalgorithms.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qanimationgroup.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qanystringview.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qapplicationstatic.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qarraydata.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qarraydataops.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qarraydatapointer.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qassert.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qassociativeiterable.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qatomic.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qatomicscopedvaluerollback.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qbasictimer.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qbindingstorage.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qbitarray.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qbuffer.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qbytearray.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qbytearrayalgorithms.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qbytearraylist.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qbytearraymatcher.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qbytearrayview.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qcache.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qcalendar.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qcborarray.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qcborcommon.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qcbormap.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qcborstream.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qcborstreamreader.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qcborstreamwriter.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qcborvalue.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qchar.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qcollator.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qcommandlineoption.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qcommandlineparser.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qcompare.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qcompilerdetection.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qconcatenatetablesproxymodel.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qconstructormacros.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qcontainerfwd.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qcontainerinfo.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qcontiguouscache.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qcoreapplication.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qcoreevent.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qcryptographichash.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qdarwinhelpers.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qdatastream.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qdatetime.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qdeadlinetimer.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qdebug.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qdir.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qdiriterator.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qeasingcurve.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qelapsedtimer.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qendian.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qeventloop.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qexception.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qexceptionhandling.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qfactoryinterface.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qfile.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qfiledevice.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qfileinfo.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qfileselector.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qfilesystemwatcher.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qflags.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qforeach.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qfunctionpointer.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qfuture.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qfutureinterface.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qfuturesynchronizer.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qfuturewatcher.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qgenericatomic.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qglobalstatic.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qhash.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qhashfunctions.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qidentityproxymodel.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qiodevice.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qiodevicebase.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qitemselectionmodel.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qiterable.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qiterator.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsonarray.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsondocument.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsonobject.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsonvalue.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qlatin1stringmatcher.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qlatin1stringview.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qlibrary.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qlibraryinfo.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qline.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qlist.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qlocale.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qlockfile.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qloggingcategory.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qmalloc.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qmap.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qmargins.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qmath.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qmessageauthenticationcode.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qmetacontainer.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qmetaobject.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qmetatype.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qmimedata.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qmimedatabase.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qmimetype.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qminmax.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qmutex.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qnamespace.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qnativeinterface.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qnumeric.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qobject.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qobjectcleanuphandler.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qobjectdefs.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qoperatingsystemversion.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qoverload.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qpair.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qparallelanimationgroup.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qpauseanimation.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qpermissions.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qplugin.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qpluginloader.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qpoint.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qpointer.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qprocess.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qprocessordetection.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qpromise.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qproperty.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qpropertyanimation.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qpropertyprivate.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qqueue.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qrandom.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qreadwritelock.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qrect.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qrefcount.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qregularexpression.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qresource.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qresultstore.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qrunnable.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qsavefile.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qscopedpointer.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qscopedvaluerollback.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qscopeguard.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qsemaphore.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qsequentialanimationgroup.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qsequentialiterable.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qset.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qsettings.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qshareddata.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qsharedmemory.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qsharedpointer.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qsignalmapper.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qsimd.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qsize.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qsocketnotifier.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qsortfilterproxymodel.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qspan.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstack.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstandardpaths.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstaticlatin1stringmatcher.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstorageinfo.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstring.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstringalgorithms.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstringbuilder.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstringconverter.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstringfwd.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstringlist.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstringlistmodel.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstringliteral.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstringmatcher.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstringtokenizer.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstringview.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qswap.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qsysinfo.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qsystemdetection.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qsystemsemaphore.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtaggedpointer.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtclasshelpermacros.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtconfiginclude.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtconfigmacros.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtcoreversion.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtdeprecationmarkers.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtemporarydir.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtemporaryfile.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtenvironmentvariables.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtextboundaryfinder.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtextstream.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qthread.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qthreadpool.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qthreadstorage.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtimeline.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtimer.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtimezone.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtipccommon.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtmetamacros.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtnoop.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtpreprocessorsupport.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtranslator.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtransposeproxymodel.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtresource.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtsymbolmacros.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qttranslation.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qttypetraits.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtversion.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtversionchecks.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtypeinfo.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtyperevision.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtypes.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qurl.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qurlquery.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qutf8stringview.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/quuid.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qvariant.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qvariantanimation.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qvarianthash.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qvariantlist.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qvariantmap.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qvarlengtharray.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qvector.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qversionnumber.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qversiontagging.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qwaitcondition.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qwineventnotifier.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qxmlstream.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qxpfunctional.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qyieldcpu.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QtGui \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qtguiglobal.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qabstractfileiconprovider.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qabstracttextdocumentlayout.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qaccessible.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qaccessiblebridge.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qaccessibleobject.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qaccessibleplugin.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qaction.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qactiongroup.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qbackingstore.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qbitmap.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qbrush.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qclipboard.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qcolor.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qcolorspace.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qcolortransform.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qcursor.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qdesktopservices.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qdrag.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qevent.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qeventpoint.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qfilesystemmodel.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qfont.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qfontdatabase.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qfontinfo.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qfontmetrics.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qgenericmatrix.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qgenericplugin.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qgenericpluginfactory.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qglyphrun.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qguiapplication.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qicon.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qiconengine.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qiconengineplugin.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qimage.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qimageiohandler.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qimagereader.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qimagewriter.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qinputdevice.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qinputmethod.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qkeysequence.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qmatrix4x4.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qmovie.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qoffscreensurface.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qopengl.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qopenglcontext.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qopenglextrafunctions.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qopenglfunctions.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpagedpaintdevice.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpagelayout.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpageranges.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpagesize.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpaintdevice.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpaintdevicewindow.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpaintengine.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpainter.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpainterpath.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpalette.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpdfwriter.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpen.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpicture.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpixelformat.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpixmap.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpixmapcache.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpointingdevice.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpolygon.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qquaternion.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qrasterwindow.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qrawfont.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qregion.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qrgb.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qrgba64.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qrgbafloat.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qscreen.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qsessionmanager.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qshortcut.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qstandarditemmodel.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qstatictext.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qstylehints.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qsurface.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qsurfaceformat.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qsyntaxhighlighter.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qtextcursor.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qtextdocument.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qtextdocumentfragment.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qtextdocumentwriter.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qtextformat.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qtextlayout.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qtextlist.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qtextobject.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qtextoption.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qtexttable.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qtguiversion.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qtransform.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qundogroup.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qundostack.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qutimimeconverter.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qvalidator.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qvector2d.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qvector3d.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qvector4d.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qvectornd.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qwindow.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qwindowdefs.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QtWidgets \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qtwidgetsglobal.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qabstractbutton.h \
@@ -3880,947 +5415,6 @@ mainwindow.o: ../../mainwindow.cpp ../../mainwindow.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicstransform.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsview.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicswidget.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgroupbox.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qheaderview.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qinputdialog.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qitemdelegate.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qitemeditorfactory.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qkeysequenceedit.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qlayout.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qlayoutitem.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qlcdnumber.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qlineedit.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qlistwidget.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qmdiarea.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qmdisubwindow.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qmenu.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qmenubar.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qplaintextedit.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qprogressbar.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qprogressdialog.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qproxystyle.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qradiobutton.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qrhiwidget.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qrubberband.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qscrollbar.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qscroller.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qscrollerproperties.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qshortcut.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qsizegrip.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qsizepolicy.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qslider.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qspinbox.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qsplashscreen.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qsplitter.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qstackedlayout.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qstackedwidget.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qstatusbar.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qstyle.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qstyleditemdelegate.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qstylefactory.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qstyleoption.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qstylepainter.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qstyleplugin.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qsystemtrayicon.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qtabbar.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qtableview.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qtablewidget.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qtabwidget.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qtextbrowser.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qtextedit.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qtoolbar.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qtoolbox.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qtoolbutton.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qtooltip.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qtreeview.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qtreewidget.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qtreewidgetitemiterator.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qtwidgetsversion.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qundoview.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qwhatsthis.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qwidgetaction.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qwizard.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QVector \
-		../../subtitlesparser.h \
-		../../ui_mainwindow.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../../mainwindow.cpp
-
-profile.o: ../../profile.cpp ../../profile.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QWidget \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qwidget.h \
-		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/QNetworkAccessManager \
-		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qnetworkaccessmanager.h \
-		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/QNetworkReply \
-		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qnetworkreply.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QPixmap \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpixmap.h \
-		../../ui_profile.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o profile.o ../../profile.cpp
-
-readnowwidget.o: ../../readnowwidget.cpp ../../readnowwidget.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QWidget \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qwidget.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QMainWindow \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qmainwindow.h \
-		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/QtNetwork \
-		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qtnetworkglobal.h \
-		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qabstractnetworkcache.h \
-		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qabstractsocket.h \
-		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qauthenticator.h \
-		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qdnslookup.h \
-		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qdtls.h \
-		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qhostaddress.h \
-		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qhostinfo.h \
-		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qhstspolicy.h \
-		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qhttp1configuration.h \
-		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qhttp2configuration.h \
-		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qhttpheaders.h \
-		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qhttpmultipart.h \
-		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qlocalserver.h \
-		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qlocalsocket.h \
-		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qnetworkaccessmanager.h \
-		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qnetworkcookie.h \
-		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qnetworkcookiejar.h \
-		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qnetworkdatagram.h \
-		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qnetworkdiskcache.h \
-		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qnetworkinformation.h \
-		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qnetworkinterface.h \
-		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qnetworkproxy.h \
-		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qnetworkreply.h \
-		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qnetworkrequest.h \
-		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qnetworkrequestfactory.h \
-		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qocspresponse.h \
-		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qpassworddigestor.h \
-		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qrestaccessmanager.h \
-		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qrestreply.h \
-		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qssl.h \
-		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qsslcertificate.h \
-		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qsslcertificateextension.h \
-		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qsslcipher.h \
-		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qsslconfiguration.h \
-		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qssldiffiehellmanparameters.h \
-		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qsslellipticcurve.h \
-		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qsslerror.h \
-		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qsslkey.h \
-		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qsslpresharedkeyauthenticator.h \
-		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qsslserver.h \
-		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qsslsocket.h \
-		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qtcpserver.h \
-		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qtcpsocket.h \
-		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qtnetworkversion.h \
-		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/qudpsocket.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QtGui \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qtguiglobal.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qabstractfileiconprovider.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qabstracttextdocumentlayout.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qaccessible.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qaccessiblebridge.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qaccessibleobject.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qaccessibleplugin.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qaction.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qactiongroup.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qbackingstore.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qbitmap.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qbrush.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qclipboard.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qcolor.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qcolorspace.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qcolortransform.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qcursor.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qdesktopservices.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qdrag.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qevent.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qeventpoint.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qfilesystemmodel.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qfont.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qfontdatabase.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qfontinfo.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qfontmetrics.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qgenericmatrix.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qgenericplugin.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qgenericpluginfactory.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qglyphrun.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qguiapplication.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qicon.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qiconengine.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qiconengineplugin.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qimage.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qimageiohandler.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qimagereader.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qimagewriter.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qinputdevice.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qinputmethod.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qkeysequence.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qmatrix4x4.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qmovie.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qoffscreensurface.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qopengl.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qopenglcontext.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qopenglextrafunctions.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qopenglfunctions.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpagedpaintdevice.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpagelayout.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpageranges.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpagesize.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpaintdevice.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpaintdevicewindow.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpaintengine.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpainter.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpainterpath.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpalette.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpdfwriter.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpen.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpicture.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpixelformat.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpixmap.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpixmapcache.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpointingdevice.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpolygon.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qquaternion.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qrasterwindow.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qrawfont.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qregion.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qrgb.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qrgba64.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qrgbafloat.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qscreen.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qsessionmanager.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qshortcut.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qstandarditemmodel.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qstatictext.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qstylehints.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qsurface.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qsurfaceformat.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qsyntaxhighlighter.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qtextcursor.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qtextdocument.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qtextdocumentfragment.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qtextdocumentwriter.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qtextformat.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qtextlayout.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qtextlist.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qtextobject.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qtextoption.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qtexttable.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qtguiversion.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qtransform.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qundogroup.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qundostack.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qutimimeconverter.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qvalidator.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qvector2d.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qvector3d.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qvector4d.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qvectornd.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qwindow.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qwindowdefs.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QtCore \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qglobal.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/q20algorithm.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/q20chrono.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/q20functional.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/q20iterator.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/q20map.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/q20memory.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/q20vector.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/q23functional.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/q23utility.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qabstractanimation.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qabstracteventdispatcher.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qabstractitemmodel.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qabstractnativeeventfilter.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qabstractproxymodel.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qalgorithms.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qanimationgroup.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qanystringview.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qapplicationstatic.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qarraydata.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qarraydataops.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qarraydatapointer.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qassert.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qassociativeiterable.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qatomic.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qatomicscopedvaluerollback.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qbasictimer.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qbindingstorage.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qbitarray.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qbuffer.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qbytearray.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qbytearrayalgorithms.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qbytearraylist.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qbytearraymatcher.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qbytearrayview.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qcache.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qcalendar.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qcborarray.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qcborcommon.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qcbormap.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qcborstream.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qcborstreamreader.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qcborstreamwriter.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qcborvalue.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qchar.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qcollator.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qcommandlineoption.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qcommandlineparser.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qcompare.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qcompilerdetection.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qconcatenatetablesproxymodel.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qconstructormacros.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qcontainerfwd.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qcontainerinfo.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qcontiguouscache.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qcoreapplication.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qcoreevent.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qcryptographichash.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qdarwinhelpers.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qdatastream.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qdatetime.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qdeadlinetimer.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qdebug.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qdir.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qdiriterator.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qeasingcurve.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qelapsedtimer.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qendian.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qeventloop.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qexception.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qexceptionhandling.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qfactoryinterface.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qfile.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qfiledevice.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qfileinfo.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qfileselector.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qfilesystemwatcher.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qflags.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qforeach.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qfunctionpointer.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qfuture.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qfutureinterface.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qfuturesynchronizer.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qfuturewatcher.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qgenericatomic.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qglobalstatic.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qhash.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qhashfunctions.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qidentityproxymodel.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qiodevice.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qiodevicebase.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qitemselectionmodel.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qiterable.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qiterator.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsonarray.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsondocument.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsonobject.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsonvalue.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qlatin1stringmatcher.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qlatin1stringview.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qlibrary.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qlibraryinfo.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qline.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qlist.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qlocale.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qlockfile.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qloggingcategory.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qmalloc.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qmap.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qmargins.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qmath.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qmessageauthenticationcode.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qmetacontainer.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qmetaobject.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qmetatype.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qmimedata.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qmimedatabase.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qmimetype.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qminmax.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qmutex.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qnamespace.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qnativeinterface.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qnumeric.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qobject.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qobjectcleanuphandler.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qobjectdefs.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qoperatingsystemversion.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qoverload.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qpair.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qparallelanimationgroup.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qpauseanimation.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qpermissions.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qplugin.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qpluginloader.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qpoint.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qpointer.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qprocess.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qprocessordetection.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qpromise.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qproperty.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qpropertyanimation.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qpropertyprivate.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qqueue.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qrandom.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qreadwritelock.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qrect.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qrefcount.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qregularexpression.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qresource.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qresultstore.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qrunnable.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qsavefile.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qscopedpointer.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qscopedvaluerollback.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qscopeguard.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qsemaphore.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qsequentialanimationgroup.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qsequentialiterable.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qset.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qsettings.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qshareddata.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qsharedmemory.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qsharedpointer.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qsignalmapper.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qsimd.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qsize.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qsocketnotifier.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qsortfilterproxymodel.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qspan.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstack.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstandardpaths.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstaticlatin1stringmatcher.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstorageinfo.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstring.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstringalgorithms.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstringbuilder.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstringconverter.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstringfwd.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstringlist.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstringlistmodel.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstringliteral.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstringmatcher.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstringtokenizer.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstringview.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qswap.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qsysinfo.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qsystemdetection.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qsystemsemaphore.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtaggedpointer.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtclasshelpermacros.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtconfiginclude.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtconfigmacros.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtcoreversion.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtdeprecationmarkers.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtemporarydir.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtemporaryfile.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtenvironmentvariables.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtextboundaryfinder.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtextstream.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qthread.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qthreadpool.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qthreadstorage.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtimeline.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtimer.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtimezone.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtipccommon.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtmetamacros.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtnoop.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtpreprocessorsupport.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtranslator.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtransposeproxymodel.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtresource.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtsymbolmacros.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qttranslation.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qttypetraits.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtversion.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtversionchecks.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtypeinfo.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtyperevision.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtypes.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qurl.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qurlquery.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qutf8stringview.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/quuid.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qvariant.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qvariantanimation.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qvarianthash.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qvariantlist.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qvariantmap.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qvarlengtharray.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qvector.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qversionnumber.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qversiontagging.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qwaitcondition.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qwineventnotifier.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qxmlstream.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qxpfunctional.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qyieldcpu.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QMessageBox \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qmessagebox.h \
-		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/QNetworkAccessManager \
-		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/QNetworkReply \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QTextCursor \
-		../../databasehandler.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QObject \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonDocument \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonValue \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonArray \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonObject \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QVariant \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QByteArray \
-		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers/QHttpMultiPart \
-		../../book.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QString \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QUrl \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QPixmap \
-		../../ui_readnowwidget.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o readnowwidget.o ../../readnowwidget.cpp
-
-signup.o: ../../signup.cpp ../../signup.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QWidget \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qwidget.h \
-		../../ui_signup.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o signup.o ../../signup.cpp
-
-videowidget.o: ../../videowidget.cpp ../../videowidget.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QWidget \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qwidget.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QFileDialog \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qfiledialog.h \
-		../../../../Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers/QtMultimedia \
-		../../../../Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers/qtmultimediaglobal.h \
-		../../../../Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers/qaudio.h \
-		../../../../Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers/qaudiobuffer.h \
-		../../../../Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers/qaudiodecoder.h \
-		../../../../Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers/qaudiodevice.h \
-		../../../../Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers/qaudioformat.h \
-		../../../../Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers/qaudioinput.h \
-		../../../../Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers/qaudiooutput.h \
-		../../../../Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers/qaudiosink.h \
-		../../../../Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers/qaudiosource.h \
-		../../../../Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers/qcamera.h \
-		../../../../Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers/qcameradevice.h \
-		../../../../Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers/qcapturablewindow.h \
-		../../../../Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers/qimagecapture.h \
-		../../../../Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers/qmediacapturesession.h \
-		../../../../Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers/qmediadevices.h \
-		../../../../Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers/qmediaenumdebug.h \
-		../../../../Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers/qmediaformat.h \
-		../../../../Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers/qmediametadata.h \
-		../../../../Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers/qmediaplayer.h \
-		../../../../Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers/qmediarecorder.h \
-		../../../../Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers/qmediatimerange.h \
-		../../../../Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers/qscreencapture.h \
-		../../../../Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers/qsoundeffect.h \
-		../../../../Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers/qtaudio.h \
-		../../../../Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers/qtmultimediaversion.h \
-		../../../../Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers/qtvideo.h \
-		../../../../Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers/qvideoframe.h \
-		../../../../Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers/qvideoframeformat.h \
-		../../../../Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers/qvideosink.h \
-		../../../../Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers/qwavedecoder.h \
-		../../../../Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers/qwindowcapture.h \
-		../../../../Qt/6.7.0/macos/lib/QtMultimediaWidgets.framework/Headers/QtMultimediaWidgets \
-		../../../../Qt/6.7.0/macos/lib/QtMultimediaWidgets.framework/Headers/qtmultimediawidgetsglobal.h \
-		../../../../Qt/6.7.0/macos/lib/QtMultimediaWidgets.framework/Headers/qgraphicsvideoitem.h \
-		../../../../Qt/6.7.0/macos/lib/QtMultimediaWidgets.framework/Headers/qtmultimediawidgetsversion.h \
-		../../../../Qt/6.7.0/macos/lib/QtMultimediaWidgets.framework/Headers/qvideowidget.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QtCore \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qglobal.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/q20algorithm.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/q20chrono.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/q20functional.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/q20iterator.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/q20map.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/q20memory.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/q20vector.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/q23functional.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/q23utility.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qabstractanimation.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qabstracteventdispatcher.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qabstractitemmodel.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qabstractnativeeventfilter.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qabstractproxymodel.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qalgorithms.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qanimationgroup.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qanystringview.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qapplicationstatic.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qarraydata.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qarraydataops.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qarraydatapointer.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qassert.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qassociativeiterable.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qatomic.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qatomicscopedvaluerollback.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qbasictimer.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qbindingstorage.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qbitarray.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qbuffer.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qbytearray.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qbytearrayalgorithms.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qbytearraylist.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qbytearraymatcher.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qbytearrayview.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qcache.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qcalendar.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qcborarray.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qcborcommon.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qcbormap.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qcborstream.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qcborstreamreader.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qcborstreamwriter.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qcborvalue.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qchar.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qcollator.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qcommandlineoption.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qcommandlineparser.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qcompare.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qcompilerdetection.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qconcatenatetablesproxymodel.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qconstructormacros.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qcontainerfwd.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qcontainerinfo.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qcontiguouscache.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qcoreapplication.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qcoreevent.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qcryptographichash.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qdarwinhelpers.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qdatastream.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qdatetime.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qdeadlinetimer.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qdebug.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qdir.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qdiriterator.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qeasingcurve.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qelapsedtimer.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qendian.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qeventloop.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qexception.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qexceptionhandling.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qfactoryinterface.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qfile.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qfiledevice.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qfileinfo.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qfileselector.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qfilesystemwatcher.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qflags.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qforeach.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qfunctionpointer.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qfuture.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qfutureinterface.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qfuturesynchronizer.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qfuturewatcher.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qgenericatomic.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qglobalstatic.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qhash.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qhashfunctions.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qidentityproxymodel.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qiodevice.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qiodevicebase.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qitemselectionmodel.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qiterable.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qiterator.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsonarray.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsondocument.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsonobject.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsonvalue.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qlatin1stringmatcher.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qlatin1stringview.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qlibrary.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qlibraryinfo.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qline.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qlist.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qlocale.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qlockfile.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qloggingcategory.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qmalloc.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qmap.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qmargins.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qmath.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qmessageauthenticationcode.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qmetacontainer.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qmetaobject.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qmetatype.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qmimedata.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qmimedatabase.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qmimetype.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qminmax.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qmutex.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qnamespace.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qnativeinterface.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qnumeric.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qobject.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qobjectcleanuphandler.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qobjectdefs.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qoperatingsystemversion.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qoverload.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qpair.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qparallelanimationgroup.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qpauseanimation.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qpermissions.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qplugin.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qpluginloader.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qpoint.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qpointer.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qprocess.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qprocessordetection.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qpromise.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qproperty.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qpropertyanimation.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qpropertyprivate.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qqueue.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qrandom.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qreadwritelock.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qrect.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qrefcount.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qregularexpression.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qresource.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qresultstore.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qrunnable.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qsavefile.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qscopedpointer.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qscopedvaluerollback.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qscopeguard.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qsemaphore.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qsequentialanimationgroup.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qsequentialiterable.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qset.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qsettings.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qshareddata.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qsharedmemory.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qsharedpointer.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qsignalmapper.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qsimd.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qsize.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qsocketnotifier.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qsortfilterproxymodel.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qspan.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstack.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstandardpaths.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstaticlatin1stringmatcher.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstorageinfo.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstring.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstringalgorithms.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstringbuilder.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstringconverter.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstringfwd.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstringlist.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstringlistmodel.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstringliteral.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstringmatcher.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstringtokenizer.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstringview.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qswap.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qsysinfo.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qsystemdetection.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qsystemsemaphore.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtaggedpointer.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtclasshelpermacros.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtconfiginclude.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtconfigmacros.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtcoreversion.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtdeprecationmarkers.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtemporarydir.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtemporaryfile.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtenvironmentvariables.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtextboundaryfinder.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtextstream.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qthread.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qthreadpool.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qthreadstorage.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtimeline.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtimer.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtimezone.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtipccommon.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtmetamacros.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtnoop.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtpreprocessorsupport.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtranslator.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtransposeproxymodel.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtresource.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtsymbolmacros.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qttranslation.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qttypetraits.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtversion.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtversionchecks.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtypeinfo.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtyperevision.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtypes.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qurl.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qurlquery.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qutf8stringview.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/quuid.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qvariant.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qvariantanimation.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qvarianthash.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qvariantlist.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qvariantmap.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qvarlengtharray.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qvector.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qversionnumber.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qversiontagging.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qwaitcondition.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qwineventnotifier.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qxmlstream.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qxpfunctional.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qyieldcpu.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QtGui \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qtguiglobal.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qabstractfileiconprovider.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qabstracttextdocumentlayout.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qaccessible.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qaccessiblebridge.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qaccessibleobject.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qaccessibleplugin.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qaction.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qactiongroup.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qbackingstore.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qbitmap.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qbrush.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qclipboard.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qcolor.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qcolorspace.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qcolortransform.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qcursor.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qdesktopservices.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qdrag.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qevent.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qeventpoint.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qfilesystemmodel.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qfont.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qfontdatabase.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qfontinfo.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qfontmetrics.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qgenericmatrix.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qgenericplugin.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qgenericpluginfactory.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qglyphrun.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qguiapplication.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qicon.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qiconengine.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qiconengineplugin.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qimage.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qimageiohandler.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qimagereader.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qimagewriter.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qinputdevice.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qinputmethod.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qkeysequence.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qmatrix4x4.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qmovie.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qoffscreensurface.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qopengl.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qopenglcontext.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qopenglextrafunctions.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qopenglfunctions.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpagedpaintdevice.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpagelayout.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpageranges.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpagesize.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpaintdevice.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpaintdevicewindow.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpaintengine.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpainter.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpainterpath.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpalette.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpdfwriter.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpen.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpicture.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpixelformat.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpixmap.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpixmapcache.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpointingdevice.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpolygon.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qquaternion.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qrasterwindow.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qrawfont.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qregion.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qrgb.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qrgba64.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qrgbafloat.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qscreen.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qsessionmanager.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qshortcut.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qstandarditemmodel.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qstatictext.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qstylehints.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qsurface.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qsurfaceformat.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qsyntaxhighlighter.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qtextcursor.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qtextdocument.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qtextdocumentfragment.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qtextdocumentwriter.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qtextformat.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qtextlayout.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qtextlist.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qtextobject.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qtextoption.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qtexttable.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qtguiversion.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qtransform.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qundogroup.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qundostack.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qutimimeconverter.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qvalidator.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qvector2d.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qvector3d.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qvector4d.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qvectornd.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qwindow.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qwindowdefs.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QtWidgets \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qtwidgetsglobal.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qabstractbutton.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qabstractitemdelegate.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qabstractitemview.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qabstractscrollarea.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qabstractslider.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qabstractspinbox.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qaccessiblewidget.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qaction.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qactiongroup.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qapplication.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qboxlayout.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qbuttongroup.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qcalendarwidget.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qcheckbox.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qcolordialog.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qcolormap.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qcolumnview.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qcombobox.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qcommandlinkbutton.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qcommonstyle.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qcompleter.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qdatawidgetmapper.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qdatetimeedit.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qdial.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qdialog.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qdialogbuttonbox.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qdockwidget.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qdrawutil.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qerrormessage.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qfileiconprovider.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qfilesystemmodel.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qfocusframe.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qfontcombobox.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qfontdialog.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qformlayout.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qframe.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgesture.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgesturerecognizer.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsanchorlayout.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicseffect.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsgridlayout.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsitem.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsitemanimation.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicslayout.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicslayoutitem.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicslinearlayout.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsproxywidget.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsscene.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicssceneevent.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicstransform.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsview.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicswidget.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgridlayout.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgroupbox.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qheaderview.h \
@@ -4890,15 +5484,31 @@ videowidget.o: ../../videowidget.cpp ../../videowidget.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qwizard.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QVector \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QString \
-		../../subtitlesparser.h \
-		../../ui_videowidget.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o videowidget.o ../../videowidget.cpp
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QFile \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QTextStream \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QStringList \
+		../../inc/subtitleitem.h \
+		../../ui/inc/ui_videowidget.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o videowidget.o ../../src/videowidget.cpp
+
+word.o: ../../src/word.cpp ../../inc/word.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QObject \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qobject.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QString \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstring.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o word.o ../../src/word.cpp
+
+qrc_resources.o: qrc_resources.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_resources.o qrc_resources.cpp
 
 qrc_qmake_qmake_qm_files.o: qrc_qmake_qmake_qm_files.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_qmake_qmake_qm_files.o qrc_qmake_qmake_qm_files.cpp
 
 moc_authhandler.o: moc_authhandler.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_authhandler.o moc_authhandler.cpp
+
+moc_bookscollection.o: moc_bookscollection.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_bookscollection.o moc_bookscollection.cpp
 
 moc_bookwidget.o: moc_bookwidget.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_bookwidget.o moc_bookwidget.cpp
@@ -4918,17 +5528,35 @@ moc_loginwidget.o: moc_loginwidget.cpp
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp
 
+moc_notificationwindow.o: moc_notificationwindow.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_notificationwindow.o moc_notificationwindow.cpp
+
 moc_profile.o: moc_profile.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_profile.o moc_profile.cpp
 
 moc_readnowwidget.o: moc_readnowwidget.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_readnowwidget.o moc_readnowwidget.cpp
 
+moc_revisionwidget.o: moc_revisionwidget.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_revisionwidget.o moc_revisionwidget.cpp
+
 moc_signup.o: moc_signup.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_signup.o moc_signup.cpp
 
 moc_videowidget.o: moc_videowidget.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_videowidget.o moc_videowidget.cpp
+
+moc_quizwidget.o: moc_quizwidget.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_quizwidget.o moc_quizwidget.cpp
+
+moc_resultquizwidget.o: moc_resultquizwidget.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_resultquizwidget.o moc_resultquizwidget.cpp
+
+moc_startquizwidget.o: moc_startquizwidget.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_startquizwidget.o moc_startquizwidget.cpp
+
+moc_word.o: moc_word.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_word.o moc_word.cpp
 
 ####### Install
 

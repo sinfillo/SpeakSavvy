@@ -6,7 +6,7 @@
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "../../authhandler.h"
+#include "../../inc/authhandler.h"
 #include <QtNetwork/QSslError>
 #include <QtCore/qmetatype.h>
 
