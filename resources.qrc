@@ -28,8 +28,4 @@
         <file>example2.mp4</file>
         <file>lolvideo.mp4</file>
     </qresource>
-    <qresource prefix="/srt">
-        <file>lolsubtitles.srt</file>
-        <file>example2.srt</file>
-    </qresource>
 </RCC>
