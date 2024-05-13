@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'quizwidget.ui'
 **
-** Created by: Qt User Interface Compiler version 6.6.2
+** Created by: Qt User Interface Compiler version 6.7.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -93,6 +93,12 @@ public:
         translationButton1 = new QPushButton(QuizWidget);
         translationButton1->setObjectName("translationButton1");
         translationButton1->setMinimumSize(QSize(400, 60));
+        QFont font;
+        font.setFamilies({QString::fromUtf8("YuGothic")});
+        font.setPointSize(24);
+        font.setBold(false);
+        font.setItalic(false);
+        translationButton1->setFont(font);
         translationButton1->setStyleSheet(QString::fromUtf8("font: 24pt \"YuGothic\";\n"
 "border-radius: 15;\n"
 "border: 1px solid black;\n"
@@ -165,7 +171,7 @@ public:
 #if QT_CONFIG(whatsthis)
         curWordLabel->setWhatsThis(QCoreApplication::translate("QuizWidget", "<html><head/><body><p align=\"center\"><br/></p></body></html>", nullptr));
 #endif // QT_CONFIG(whatsthis)
-        curWordLabel->setText(QCoreApplication::translate("QuizWidget", "ABOBA", nullptr));
+        curWordLabel->setText(QCoreApplication::translate("QuizWidget", "WORD", nullptr));
         translationButton1->setText(QCoreApplication::translate("QuizWidget", "\320\237\320\225\320\240\320\225\320\222\320\236\320\224 1", nullptr));
         translationButton2->setText(QCoreApplication::translate("QuizWidget", "\320\237\320\225\320\240\320\225\320\222\320\236\320\224 2", nullptr));
         translationButton3->setText(QCoreApplication::translate("QuizWidget", "\320\237\320\225\320\240\320\225\320\222\320\236\320\224 3", nullptr));
