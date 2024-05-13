@@ -1,5 +1,3 @@
-#include "bookwindow.h"
-
 #include <QApplication>
 #include <QLocale>
 #include <QTranslator>
@@ -9,6 +7,7 @@
 #include <QAction>
 #include <QMessageBox>
 #include "databasehandler.h"
+#include "mainwindow.h"
 
 
 int main(int argc, char *argv[]){
@@ -24,7 +23,8 @@ int main(int argc, char *argv[]){
         }
     }
 
-    bookWindow w;
+    MainWindow w;
+    w.setWindowTitle("SpeakSavvy");
     w.show();
     return app.exec();
 }
