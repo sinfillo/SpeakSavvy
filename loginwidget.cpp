@@ -3,7 +3,7 @@
 
 LogInWidget::LogInWidget(QWidget *parent)
     : QWidget(parent)
-    , ui(new Ui::LogInWidget)
+      , ui(new Ui::LogInWidget)
 {
     ui->setupUi(this);
 
@@ -15,6 +15,12 @@ LogInWidget::LogInWidget(QWidget *parent)
 LogInWidget::~LogInWidget()
 {
     delete ui;
+}
+
+void LogInWidget::deleteText()
+{
+    ui->lineEdit->setText("");
+    ui->lineEdit_2->setText("");
 }
 
 void LogInWidget::on_pushButton_clicked()

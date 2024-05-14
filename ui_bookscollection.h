@@ -11,6 +11,9 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QHBoxLayout>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -21,6 +24,10 @@ class Ui_BooksCollection
 public:
     QWidget *verticalLayoutWidget;
     QVBoxLayout *verticalLayout;
+    QWidget *horizontalLayoutWidget;
+    QHBoxLayout *horizontalLayout;
+    QPushButton *pushButton;
+    QLabel *label;
 
     void setupUi(QWidget *BooksCollection)
     {
@@ -29,10 +36,29 @@ public:
         BooksCollection->resize(617, 490);
         verticalLayoutWidget = new QWidget(BooksCollection);
         verticalLayoutWidget->setObjectName("verticalLayoutWidget");
-        verticalLayoutWidget->setGeometry(QRect(30, 20, 521, 371));
+        verticalLayoutWidget->setGeometry(QRect(20, 100, 521, 351));
         verticalLayout = new QVBoxLayout(verticalLayoutWidget);
         verticalLayout->setObjectName("verticalLayout");
         verticalLayout->setContentsMargins(0, 0, 0, 0);
+        horizontalLayoutWidget = new QWidget(BooksCollection);
+        horizontalLayoutWidget->setObjectName("horizontalLayoutWidget");
+        horizontalLayoutWidget->setGeometry(QRect(20, 10, 521, 71));
+        horizontalLayout = new QHBoxLayout(horizontalLayoutWidget);
+        horizontalLayout->setObjectName("horizontalLayout");
+        horizontalLayout->setContentsMargins(0, 0, 0, 0);
+        pushButton = new QPushButton(horizontalLayoutWidget);
+        pushButton->setObjectName("pushButton");
+        pushButton->setMaximumSize(QSize(50, 16777215));
+        pushButton->setFlat(true);
+
+        horizontalLayout->addWidget(pushButton);
+
+        label = new QLabel(horizontalLayoutWidget);
+        label->setObjectName("label");
+        label->setStyleSheet(QString::fromUtf8("font: 30pt \"YuGothic\""));
+
+        horizontalLayout->addWidget(label);
+
 
         retranslateUi(BooksCollection);
 
@@ -42,6 +68,8 @@ public:
     void retranslateUi(QWidget *BooksCollection)
     {
         BooksCollection->setWindowTitle(QCoreApplication::translate("BooksCollection", "Form", nullptr));
+        pushButton->setText(QString());
+        label->setText(QCoreApplication::translate("BooksCollection", "Book collection", nullptr));
     } // retranslateUi
 
 };

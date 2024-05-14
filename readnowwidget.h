@@ -39,6 +39,7 @@ private slots:
 
 signals:
     void doubleClicked();
+    void wordAdded();
 
 private:
     Ui::ReadNow *ui;

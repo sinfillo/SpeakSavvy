@@ -10,7 +10,7 @@
 
 LibraryWidget::LibraryWidget(QWidget *parent)
     : QWidget(parent)
-    , ui(new Ui::Library)
+      , ui(new Ui::Library)
 {
     ui->setupUi(this);
     dbHandler = new DatabaseHandler;
@@ -21,7 +21,7 @@ LibraryWidget::LibraryWidget(QWidget *parent)
 
 LibraryWidget::LibraryWidget(QList<Book> books, QWidget *parent)
     : QWidget(parent)
-    , ui(new Ui::Library)
+      , ui(new Ui::Library)
 {
     dbHandler = new DatabaseHandler;
     connect(dbHandler, &DatabaseHandler::booksRead, this, &LibraryWidget::updateLibrary);
@@ -60,7 +60,8 @@ void LibraryWidget::updateLibrary()
             dbHandler->sendPostRequestWithABook(email,  title, i);
             QMessageBox msgBox;
             msgBox.setText("Book was added to collection");
-            msgBox.exec();});
+            msgBox.exec();
+            emit bookAdded();});
         layout->addLayout(books_layout.at(i), i / 3, i % 3);
     }
     QWidget *my_widget = new QWidget;
@@ -72,7 +73,7 @@ void LibraryWidget::updateLibrary()
 
 
     this->setStyleSheet("QScrollBar { background-color: transparent; } QScrollBar::handle:horizontal {  background: pink; border-radius: 5px; } QScrollBar::left-arrow:horizontal, QScrollBar::right-arrow:horizontal { border: none; background: none; color: none;} QScrollBar::add-line:horizontal {border: none;background: none;} QScrollBar::sub-line:horizontal {border: none;background: none;}");
-    layoutReady();
+    emit layoutReady();
 }
 
 

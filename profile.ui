@@ -1075,7 +1075,7 @@ background-color: rgb(255, 255, 255);</string>
       <widget class="QPushButton" name="label">
        <property name="minimumSize">
         <size>
-         <width>190</width>
+         <width>300</width>
          <height>63</height>
         </size>
        </property>

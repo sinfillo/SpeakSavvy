@@ -29,6 +29,8 @@ private slots:
     void getCollection();
 
 
+    void on_pushButton_clicked();
+
 private:
     Ui::BooksCollection *ui;
     DatabaseHandler *dbHandlerBooks;
@@ -40,6 +42,7 @@ private:
 signals:
     void layoutReady();
     void signalToReadNow(int bookId);
+    void backToMain();
 };
 
 #endif // BOOKSCOLLECTION_H

@@ -24,6 +24,8 @@ void AuthHandler::signUserUp(const QString &emailAddress, const QString &passwor
 {
     QString signUpEndpoint = "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=" + m_apiKey_;
 
+    username = emailAddress;
+
     QVariantMap variantPayload;
     variantPayload["email"] = emailAddress;
     variantPayload["password"] = password;

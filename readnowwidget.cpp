@@ -5,7 +5,7 @@
 
 ReadNowWidget::ReadNowWidget(QWidget *parent)
     : QWidget(parent)
-    , ui(new Ui::ReadNow)
+      , ui(new Ui::ReadNow)
 {
     ui->setupUi(this);
     allBookText = "You haven't opened any books yet. Go to library and get started!";
@@ -18,15 +18,12 @@ ReadNowWidget::ReadNowWidget(QWidget *parent)
     dbHandler = new DatabaseHandler;
     dbHandler->getBookInfoFromDB();
     this->setStyleSheet("QScrollBar { background-color: transparent; } QScrollBar::handle:vertical {  background: pink; border-radius: 5px; } QScrollBar::left-arrow:vertical, QScrollBar::right-arrow:vertical { border: none; background: none; color: none;} QScrollBar::add-line:vertical {border: none;background: none;} QScrollBar::sub-line:vertical {border: none;background: none;}");
-
-    //connect(dbHandler, &DatabaseHandler::booksRead, this, &ReadNowWidget::updateReadNowWidget);
-    //connect(this, &BookWidget::doubleClicked, this, &BookWidget::translateSelectedText);
 }
 
 bool ReadNowWidget::eventFilter(QObject *watched, QEvent *event)
 {
     if ((watched == ui->currentBook || watched == ui->currentBook->viewport()) &&
-        event->type() == QEvent::MouseButtonDblClick)
+          event->type() == QEvent::MouseButtonDblClick)
     {
         QMouseEvent *mouseEvent = static_cast<QMouseEvent*>(event);
         ReadNowWidget::checkSelectedText(mouseEvent);
@@ -67,11 +64,11 @@ void ReadNowWidget::updateReadNowWidget()
     ui->currentBook->clear();
     allBookText = "You haven't opened any books yet. Go to library and get started!";
     if (currentBookId >= 0 && currentBookId < dbHandler->getBooks().size()) {
-      allBookText = dbHandler->getBooks()[currentBookId].getBookText();
+        allBookText = dbHandler->getBooks()[currentBookId].getBookText();
     }
     ui->currentBook->append(allBookText);
-    ui->currentBook->moveCursor (QTextCursor::Start) ;
-    ui->currentBook->ensureCursorVisible() ;
+    ui->currentBook->moveCursor (QTextCursor::Start);
+    ui->currentBook->ensureCursorVisible();
 }
 
 void ReadNowWidget::checkSelectedText(QMouseEvent *mouseEvent)
@@ -84,21 +81,21 @@ void ReadNowWidget::checkSelectedText(QMouseEvent *mouseEvent)
     QString left_part_sent = "";
     qDebug() << allBookText;
     while (cur_pos >= 0 && !isDelimiter(allBookText[cur_pos])) {
-      left_part_sent += allBookText[cur_pos];
-      --cur_pos;
+        left_part_sent += allBookText[cur_pos];
+        --cur_pos;
     }
     while (!left_part_sent.isEmpty() && left_part_sent.back() == ' ') {
-      left_part_sent.chop(1);
+        left_part_sent.chop(1);
     }
     std::reverse(left_part_sent.begin(), left_part_sent.end());
     cur_pos = textCursor.positionInBlock() + 1;
     QString right_part_sent = "";
     while (cur_pos < allBookText.size() && !isDelimiter(allBookText[cur_pos])) {
-      right_part_sent += allBookText[cur_pos];
-      ++cur_pos;
+        right_part_sent += allBookText[cur_pos];
+        ++cur_pos;
     }
     if (cur_pos < allBookText.size() && isDelimiter(allBookText[cur_pos])) {
-      right_part_sent += allBookText[cur_pos];
+        right_part_sent += allBookText[cur_pos];
     }
     contextSentence = left_part_sent + right_part_sent;
 
@@ -120,10 +117,10 @@ void ReadNowWidget::checkSelectedText(QMouseEvent *mouseEvent)
 
 void ReadNowWidget::updateContextTextEdit(QString text, bool need_translate)
 {
-  if (need_translate) {
-    text = translateText(text);
-  }
-  ui->contextTextEdit->setText(text);
+    if (need_translate) {
+        text = translateText(text);
+    }
+    ui->contextTextEdit->setText(text);
 }
 
 QString ReadNowWidget::translateText(const QString& text)
@@ -164,33 +161,35 @@ bool ReadNowWidget::isDelimiter(QChar sym)
 
 void ReadNowWidget::on_pushButton_2_clicked()
 {
-  if (ui->translationWindow->text() != "") {
+    if (ui->translationWindow->text() != "") {
         dbHandler->sendPostRequestWithAWord(email, currentWord.toLower(), ui->translationWindow->text());
-  }
+    }
 }
 
 void ReadNowWidget::on_learnButton_clicked()
 {
-  if (ui->translationWindow->text() != "") {
-    QString originalString = ui->translationWindow->text();
+    if (ui->translationWindow->text() != "") {
+        QString originalString = ui->translationWindow->text();
 
-    int firstSpace = originalString.indexOf(" ");
-    int secondSpace = originalString.indexOf(" ", firstSpace + 1);
+        int firstSpace = originalString.indexOf(" ");
+        int secondSpace = originalString.indexOf(" ", firstSpace + 1);
 
-    QString result = originalString.mid(secondSpace + 1).toLower();
-    auto msgbox = new QMessageBox(this);
-    msgbox->setGeometry(850, 450, 200, 50);
-    msgbox->setWindowTitle("Notification");
-    msgbox->setText("Added!");
-    msgbox->setStandardButtons(QMessageBox::NoButton);
-    msgbox->open();
-    auto timer2 = new QTimer(msgbox);
-    QObject::connect(timer2, &QTimer::timeout, msgbox, &QMessageBox::deleteLater);
-    //QObject::connect(timer2, &QTimer::timeout, this, &QuizWidget::selectNewWordAndUpdTimer);
-    timer2->start(1000);
-    qDebug() <<"WQEHFGVJKHIOIOJKNKNLBJJK " << result;
-    dbHandler->sendPostRequestWithAWord(email, currentWord.toLower(), result);
-  }
+        QString result = originalString.mid(secondSpace + 1).toLower();
+        auto msgbox = new QMessageBox(this);
+        msgbox->setGeometry(850, 450, 200, 50);
+        msgbox->setWindowTitle("Notification");
+        msgbox->setText("Added!");
+        msgbox->setStandardButtons(QMessageBox::NoButton);
+        msgbox->open();
+        auto timer2 = new QTimer(msgbox);
+        QObject::connect(timer2, &QTimer::timeout, msgbox, &QMessageBox::deleteLater);
+        //QObject::connect(timer2, &QTimer::timeout, this, &QuizWidget::selectNewWordAndUpdTimer);
+        timer2->start(1000);
+        qDebug() <<"WQEHFGVJKHIOIOJKNKNLBJJK " << result;
+        dbHandler->sendPostRequestWithAWord(email, currentWord.toLower(), result);
+
+        emit wordAdded();
+    }
 }
 
 

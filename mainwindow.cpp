@@ -3,7 +3,7 @@
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
-    , ui(new Ui::MainWindow)
+      , ui(new Ui::MainWindow)
 {
     profile = new Profile;
     authHandler = new AuthHandler;
@@ -77,6 +77,8 @@ MainWindow::MainWindow(QWidget *parent)
     connect(resultQuizWidget, &ResultQuizWidget::backToStart, this, &MainWindow::changeToStartQuizBack);
     connect(resultQuizWidget, &ResultQuizWidget::showRevision, this, &MainWindow::changeTabToRevision);
     connect(profile, &Profile::goToRevision, this,  &MainWindow::changeTabToRevision);
+    connect(readNowWidget, &ReadNowWidget::wordAdded, this, &MainWindow::updateRevisionWidget);
+    connect(libraryWidget, &LibraryWidget::bookAdded, this, &MainWindow::updateCollection);
 }
 
 QString MainWindow::removeSpecialCharsFromEmail(QString email)
@@ -84,9 +86,9 @@ QString MainWindow::removeSpecialCharsFromEmail(QString email)
     QString result;
 
     for (QChar c : email) {
-        if(c != '@' && c != '.') {
-            result += c;
-        }
+      if(c != '@' && c != '.') {
+        result += c;
+      }
     }
 
     return result;
@@ -111,10 +113,11 @@ void MainWindow::LogIntoAccount(QString m_idToken, QString email)
     booksCollection = new BooksCollection(this->removeSpecialCharsFromEmail(authHandler->getUsername()));
     connect(booksCollection, &BooksCollection::layoutReady, this, &MainWindow::connectButton);
     connect(booksCollection, &BooksCollection::signalToReadNow, this, &MainWindow::changeTabToReadNow);
+    connect(booksCollection, &BooksCollection::backToMain, this, &MainWindow::goToProfileFromCollection);
     connect(revisionWidget, &RevisionWidget::endRevision, this, &MainWindow::endRevision);
 
 
-    //ui->stackedWidget->clear();
+            //ui->stackedWidget->clear();
     ui->stackedWidget->removeWidget(signUpWidget);
     ui->stackedWidget->removeWidget(logInWidget);
     ui->stackedWidget->insertWidget(0, profile);
@@ -137,11 +140,11 @@ void MainWindow::signInError(QString error)
 {
     QMessageBox msgBox;
     if (error == "INVALID_EMAIL") {
-        msgBox.setText("Invalid email");
+      msgBox.setText("Invalid email");
     } else if (error == "INVALID_LOGIN_CREDENTIALS") {
-        msgBox.setText("Invalid log-in credentials");
+      msgBox.setText("Invalid log-in credentials");
     } else {
-        msgBox.setText(error);
+      msgBox.setText(error);
     }
     msgBox.exec();
 }
@@ -184,6 +187,8 @@ void MainWindow::logIn(QString email, QString password)
 void MainWindow::logOut()
 {
     //ui->stackedWidget->clear();
+    delete revisionWidget;
+    logInWidget->deleteText();
     ui->stackedWidget->insertWidget(0, signUpWidget);
     ui->stackedWidget->setCurrentIndex(0);
     ui->goToGamesButton->hide();
@@ -213,20 +218,20 @@ void MainWindow::changeToQuiz(size_t cnt)
 
 void MainWindow::changeToStartQuizOrProfile(bool is_start)
 {
-  qDebug() << is_start;
-  ui->goToGamesButton->show();
-  ui->goToLibraryButton->show();
-  ui->goToProfileButton->show();
-  ui->goToQuizButton->show();
-  ui->goToVideoButton->show();
-  ui->goToReadingButton->show();
-  ui->stackedWidget->removeWidget(quizWidget);
-  ui->stackedWidget->insertWidget(5, startQuizWidget);
-  if (!is_start) {
-    ui->stackedWidget->setCurrentIndex(0);
-  } else {
-    ui->stackedWidget->setCurrentIndex(5);
-  }
+    qDebug() << is_start;
+    ui->goToGamesButton->show();
+    ui->goToLibraryButton->show();
+    ui->goToProfileButton->show();
+    ui->goToQuizButton->show();
+    ui->goToVideoButton->show();
+    ui->goToReadingButton->show();
+    ui->stackedWidget->removeWidget(quizWidget);
+    ui->stackedWidget->insertWidget(5, startQuizWidget);
+    if (!is_start) {
+      ui->stackedWidget->setCurrentIndex(0);
+    } else {
+      ui->stackedWidget->setCurrentIndex(5);
+    }
 }
 
 
@@ -256,6 +261,12 @@ void MainWindow::changeToResult(size_t cnt_correct, size_t cnt_all)
 void MainWindow::changeTabToRevision(bool flag)
 {
     //revisionWidget->setUsername(this->removeSpecialCharsFromEmail(authHandler->getUsername()));
+    if (wordUpdate) {
+      delete revisionWidget;
+      revisionWidget = new RevisionWidget(this->removeSpecialCharsFromEmail(authHandler->getUsername()));
+      connect(revisionWidget, &RevisionWidget::endRevision, this, &MainWindow::endRevision);
+      wordUpdate = false;
+    }
     ui->stackedWidget->insertWidget(6, revisionWidget);
     revisionWidget->setQuizFlag(flag);
     ui->stackedWidget->setCurrentIndex(6);
@@ -324,6 +335,26 @@ void MainWindow::on_goToReadingButton_clicked()
 void MainWindow::on_goToVideoButton_clicked()
 {
     ui->stackedWidget->setCurrentWidget(videoWidget);
+}
+
+void MainWindow::updateRevisionWidget()
+{
+    wordUpdate = true;
+}
+
+void MainWindow::updateCollection()
+{
+    profile->blockCollection();
+    delete booksCollection;
+    booksCollection = new BooksCollection(this->removeSpecialCharsFromEmail(authHandler->getUsername()));
+    connect(booksCollection, &BooksCollection::layoutReady, profile, &Profile::unblockCollection);
+    connect(booksCollection, &BooksCollection::signalToReadNow, this, &MainWindow::changeTabToReadNow);
+    connect(booksCollection, &BooksCollection::backToMain, this, &MainWindow::goToProfileFromCollection);
+}
+
+void MainWindow::goToProfileFromCollection()
+{
+    ui->stackedWidget->setCurrentWidget(profile);
 }
 
 

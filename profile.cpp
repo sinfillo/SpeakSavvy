@@ -3,9 +3,9 @@
 
 Profile::Profile(QWidget *parent)
     : QWidget(parent)
-    , ui(new Ui::Profile)
+      , ui(new Ui::Profile)
 {
-    ui->setupUi(this);
+  ui->setupUi(this);
     QPixmap bearPixmap(":/png/bear-2.png");
     QIcon avatarButtonIcon(bearPixmap);
     ui->avatarButton->setIcon(avatarButtonIcon);
@@ -23,6 +23,16 @@ Profile::Profile(QWidget *parent)
 Profile::~Profile()
 {
     delete ui;
+}
+
+void Profile::blockCollection()
+{
+    ui->GameButton_11->setEnabled(false);
+}
+
+void Profile::unblockCollection()
+{
+    ui->GameButton_11->setEnabled(true);
 }
 
 void Profile::slot(QString nickname)
