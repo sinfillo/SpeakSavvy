@@ -14,6 +14,7 @@ class LogInWidget : public QWidget
 public:
     explicit LogInWidget(QWidget *parent = nullptr);
     ~LogInWidget();
+    void deleteText();
 
 private slots:
     void on_pushButton_clicked();

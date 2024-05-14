@@ -3,13 +3,13 @@
 
 RevisionWidget::RevisionWidget(QWidget *parent)
     : QWidget(parent)
-    , ui(new Ui::RevisionWidget)
+      , ui(new Ui::RevisionWidget)
 {
     ui->setupUi(this);
 }
 
 RevisionWidget::RevisionWidget(QString username, QWidget *parent) : username(username), QWidget(parent)
-    , ui(new Ui::RevisionWidget)
+                                                                    , ui(new Ui::RevisionWidget)
 {
     ui->setupUi(this);
     currentWordIndx = 0;
@@ -88,9 +88,13 @@ void RevisionWidget::updateWords()
         ui->translationButton->hide();
         ui->prevButton->hide();
         ui->nextButton->hide();
+        QPixmap backPixmap(":/png/left-arrow.png");
+        QIcon backButtonIcon(backPixmap);
+        ui->backToMainButton->setIcon(backButtonIcon);
     } else {
         ui->wordButton->setText(words[currentWordIndx].getWord());
         ui->translationButton->setText(words[currentWordIndx].getTranslation());
     }
+    emit wordsUpdated();
 }
 

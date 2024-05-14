@@ -258,7 +258,7 @@ public:
 
         label = new QPushButton(Profile);
         label->setObjectName("label");
-        label->setMinimumSize(QSize(190, 63));
+        label->setMinimumSize(QSize(300, 63));
         label->setMaximumSize(QSize(190, 63));
         QPalette palette2;
         palette2.setBrush(QPalette::Active, QPalette::WindowText, brush);

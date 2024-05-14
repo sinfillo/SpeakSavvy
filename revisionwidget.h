@@ -38,6 +38,7 @@ private slots:
 
 signals:
     void endRevision(bool from_quiz);
+    void wordsUpdated();
 
 private:
     Ui::RevisionWidget *ui;

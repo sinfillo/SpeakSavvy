@@ -86,6 +86,11 @@ private slots:
 
     void on_goToVideoButton_clicked();
 
+    void updateRevisionWidget();
+
+    void updateCollection();
+    void goToProfileFromCollection();
+
 signals:
     void signal(QString nickname);
 
@@ -93,6 +98,7 @@ signals:
 private:
     Ui::MainWindow *ui;
     void addToCollection(int bookId);
+    bool wordUpdate = false;
 
 };
 

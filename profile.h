@@ -18,9 +18,11 @@ class Profile : public QWidget
 public:
     explicit Profile(QWidget *parent = nullptr);
     ~Profile();
+    void blockCollection();
 
 public slots:
     void slot(QString nickname);
+    void unblockCollection();
 
 private slots:
     void on_pushButton_5_clicked();
@@ -31,6 +33,7 @@ private slots:
     void on_pushButton_clicked();
 
     void on_GameButton_11_clicked();
+
 
 signals:
     void logOut();

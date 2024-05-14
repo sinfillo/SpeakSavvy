@@ -48,7 +48,7 @@ public:
         HeaderLayout->setContentsMargins(5, -1, 5, -1);
         translationWindow = new QPushButton(ReadNow);
         translationWindow->setObjectName("translationWindow");
-        translationWindow->setMinimumSize(QSize(200, 30));
+        translationWindow->setMinimumSize(QSize(320, 30));
         translationWindow->setMaximumSize(QSize(200, 30));
         QPalette palette;
         QBrush brush(QColor(0, 0, 0, 255));

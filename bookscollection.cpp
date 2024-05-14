@@ -9,22 +9,21 @@
 
 BooksCollection::BooksCollection(QWidget *parent)
     : QWidget(parent)
-    , ui(new Ui::BooksCollection)
+      , ui(new Ui::BooksCollection)
 {
     ui->setupUi(this);
-    //dbHandler = new DatabaseHandler;
-    //dbHandler->getBookInfoFromDB();
-    //dbHandler->getCollectionFromDB(email);
-    //connect(dbHandler, &DatabaseHandler::collectionRead, this, &BooksCollection::updateCollection);
 }
 
 BooksCollection::BooksCollection(QString email, QWidget *parent)
     : email(email), QWidget(parent)
-    , ui(new Ui::BooksCollection)
+      , ui(new Ui::BooksCollection)
 {
     ui->setupUi(this);
     dbHandlerBooks = new DatabaseHandler;
     dbHandlerCollection = new DatabaseHandler;
+    QPixmap backPixmap(":/png/left-arrow.png");
+    QIcon backButtonIcon(backPixmap);
+    ui->pushButton->setIcon(backButtonIcon);
     dbHandlerBooks->getBookInfoFromDB();
     connect(dbHandlerBooks, &DatabaseHandler::booksRead, this, &BooksCollection::getCollection);
     //connect(dbHandler, &DatabaseHandler::collectionRead, this, &BooksCollection::updateCollection);
@@ -45,6 +44,10 @@ void BooksCollection::updateCollection()
 {
     QGridLayout *layout = new QGridLayout(this);
     ui->setupUi(this);
+    QPixmap backPixmap(":/png/left-arrow.png");
+    QIcon backButtonIcon(backPixmap);
+    ui->pushButton->setIcon(backButtonIcon);
+    QObject::connect(ui->pushButton, &QPushButton::clicked, this, [=]() { emit backToMain(); });
     QList<QGridLayout*> books_layout;
     QList<Book> books = dbHandlerBooks->getBooks();
     QList<QPair<QString, int>> collection = dbHandlerCollection->getCollection();
@@ -68,7 +71,7 @@ void BooksCollection::updateCollection()
         readButton->setStyleSheet("border-radius: 15; border: 1px solid pink;");
         books_layout.at(i)->addWidget(genreLabel);
         books_layout.at(i)->addWidget(readButton);
-        QObject::connect(readButton, &QPushButton::clicked, this, [=]() { emit signalToReadNow(i); });
+        QObject::connect(readButton, &QPushButton::clicked, this, [=]() { emit signalToReadNow(bookId); });
         layout->addLayout(books_layout.at(i), i / 3, i % 3);
     }
     QWidget *my_widget = new QWidget;
@@ -88,3 +91,9 @@ void BooksCollection::getCollection()
     dbHandlerCollection->getCollectionFromDB(email);
     connect(dbHandlerCollection, &DatabaseHandler::collectionRead, this, &BooksCollection::updateCollection);
 }
+
+void BooksCollection::on_pushButton_clicked()
+{
+    emit backToMain();
+}
+
